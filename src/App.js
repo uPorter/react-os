@@ -87,7 +87,7 @@ function App() {
               </Grid>
             </Grid>
           </div>)}
-        <Unity unityProvider={unityProvider} style={{ display: isLoaded ? "block" : "none" }}/>
+        <Unity className='container' unityProvider={unityProvider} style={{ display: isLoaded ? "block" : "none" }}/>
       </div>
     </div>
   );

@@ -45,20 +45,6 @@
   position: absolute;
 }
 
-@media (hover: none) {    
-  .loadergrid1{
-    position: absolute;
-    left: 0px!important;
-    bottom: 125px!important;
-  }
-	
-  html, body {
-    overflow-x: hidden;
-  }
-  body {
-  }
-
-}
 
 .css-5qj67h-JoyLinearProgress-root {
   color: #ffffff;
@@ -116,19 +102,18 @@
   filter: drop-shadow(1px 23px 32px #000);}
 
 
-.css-m8i8eb-JoyIconButton-root {
-  background-color: rgba(0, 0, 0, 0.250) !important;
+.dockButtons {
+  background-color: rgba(0, 0, 0, 0.250)!important;
   border-radius: var(--IconButton-radius, var(--joy-radius-sm, 50px));
-  /* box-shadow: 0 16px 32px 0 rgb(0 0 0 / 24%);*/
-  transition: .2s cubic-bezier(0.46, 0.03, 0.52, 0.96) 0s
+  transition: .2s cubic-bezier(0.46, 0.03, 0.52, 0.96) 0s;
 }
 
-.css-m8i8eb-JoyIconButton-root:hover {
+.dockButtons:hover {
   background-color: rgba(0, 0, 0, 0.250) !important;
   border-radius: var(--IconButton-radius, var(--joy-radius-sm, 50px));
   transform: scale(1.25);
   box-shadow: 0 16px 48px 0 rgba(0,0,0,.24);
-}
+} 
 
 .css-i4bv87-MuiSvgIcon-root {
   font-size: 1.6rem;
@@ -140,7 +125,7 @@
 }
 
 .MuiSvgIcon-root {
-  transition: .2s cubic-bezier(0.46, 0.03, 0.52, 0.96) 0s
+  transition: .2s cubic-bezier(0.46, 0.03, 0.52, 0.96) 0s;
 }
 
 .overlay {
