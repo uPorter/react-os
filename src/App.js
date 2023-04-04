@@ -14,10 +14,10 @@ import Typography from '@mui/joy/Typography';
 
 function App() {
   const { unityProvider, UNSAFE__unityInstance, isLoaded, loadingProgression } = useUnityContext({
-    loaderUrl: "/unitybuild/Build.loader.js",
-    dataUrl: "/unitybuild/Build.data.unityweb",
-    frameworkUrl: "/unitybuild/Build.framework.js.unityweb",
-    codeUrl: "/unitybuild/Build.wasm.unityweb",
+    loaderUrl: "/unitybuildRPM/Build.loader.js",
+    dataUrl: "/unitybuildRPM/Build.data",
+    frameworkUrl: "/unitybuildRPM/Build.framework.js",
+    codeUrl: "/unitybuildRPM/Build.wasm",
   });
 
   window.unityInstance = UNSAFE__unityInstance
