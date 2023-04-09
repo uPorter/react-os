@@ -13,13 +13,6 @@
   height: 100%;
 }
 
-.container .unityWrapper .loadingBar {
-  width: 400px;
-  height: 10px;
-  border-radius: 5px;
-  overflow: hidden;
-}
-
 .container .unityWrapper .loadingBar .loadingBarFill {
   height: 6px;
   border-radius: 5px;
@@ -138,12 +131,39 @@
 .favButton {
   font-size: 2em;
   color: #ffffff;
+  transition: .2s cubic-bezier(0.46, 0.03, 0.52, 0.96) 0s;
+}
 
+.favButton:hover .favIcon {
+  display: none!important;
+
+}
+
+.favButton:hover .favIconFilled{
+  color: red;
+  display: block!important;
+}
+
+.favButton:active .favIconFilled{
+  color: red;
+  display: block!important;
+}
+
+.favGrid{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: space-between;
+}
+
+.favButton:active .favIcon{
+  display: none!important;
 }
 
 .loaderText {
   position: relative!important;
-  bottom: 25px!important;
+  bottom: 60px!important;
   font-weight: 900!important;
   font-size: 4em!important;
 
@@ -177,6 +197,7 @@
 
 
 .favIcon {
+  transition: .2s cubic-bezier(0.46, 0.03, 0.52, 0.96) 0s;
   position: relative;
   top: 5px!important;
   font-size: 3em!important;
@@ -186,6 +207,7 @@
 }
 
 .favIconFilled {
+  transition: .2s cubic-bezier(0.46, 0.03, 0.52, 0.96) 0s;
   display: none!important;
   position: relative;
   top: 5px!important;
@@ -215,3 +237,143 @@
   color: #fff!important;
   text-decoration: underline;
 }
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+@media only screen and (max-width: 40em) {
+  .loadergrid1 {
+    bottom: 35px!important;
+    margin: 15px!important;
+    left: 0px!important;
+
+  }
+
+  .box{
+    display: none;
+  }
+  
+}
+
+
+.spacer50px {
+  height: 50px;
+  width: 100%;
+}
+
+.box{
+  position: absolute;
+  background-color: white;
+  top: 50%;
+  margin-top: -350px;
+  right: 300px;
+  width: 400px;
+  height: 700px;
+  border-radius: 25px;
+  box-shadow: 0 32px 48px rgba(0,0,0,.25);
+  padding: 32px;
+}
+
+.avatarSelectorTitle {
+  position: relative!important;
+  width: 100%;
+  place-content: flex-start center!important;
+  display: flex!important;
+  flex-flow: row wrap!important;
+  font-weight: 900;
+  font-size: 1.5rem!important;
+}
+
+.avatarInput {
+  padding: 12px;
+  border-color: #3d3d3d!important;
+  top: 15px;
+  --variant-borderWidth: 2px!important;
+  --Input-focusedHighlight: #000000!important;
+  --Input-focusedThickness: var(--joy-focus-thickness, 3px)!important;
+}
+
+
+::-webkit-scrollbar {
+  width: 5px;
+  border-radius: 25px;
+}
+ 
+::-webkit-scrollbar-thumb {
+  background: #1f1f1f; 
+  border-radius: 25px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ddd;
+  border-radius: 25px; 
+} 
+
+.avatarIcons {
+  padding: 10px!important;
+  left: 0px!important;
+  top: 20px!important;
+  position: relative!important;
+  overflow: auto;
+  height: 380px!important;
+
+}
+
+.avatarGridItems{
+  width: 90px;
+  height: 90px;
+  background-color: #ffffff00!important;
+  transition: .2s cubic-bezier(0.46, 0.03, 0.52, 0.96) 0s;
+}
+
+.avatarGridItems:hover{
+  transform: scale(1.1);
+}
+
+.avatarGridItems:focus{
+  transform: scale(1.1);
+  border-style: solid!important;
+  border-color: #3e3e3e!important;
+}
+
+
+.avatarGrid {
+  padding: 3px;
+}
+
+
+.avatarGridAlt {
+  width: 90px!important;
+  height: 90px!important;
+}
+
+.loadLeaveButton {
+  transition: .2s cubic-bezier(0.46, 0.03, 0.52, 0.96) 0s;
+}
+
+.loadLeaveButton:hover {
+  transform: scale(1.05);
+  border-color: #fff!important;
+  box-shadow: 0 16px 48px 0 rgba(0,0,0,.24);
+  
+  
+}
+
+.loadStartButton {
+  transition: .2s cubic-bezier(0.46, 0.03, 0.52, 0.96) 0s;
+}
+
+
+
+.loadStartButton:hover {
+  transform: scale(1.05);
+  box-shadow: 0 16px 48px 0 rgba(0,0,0,.24);
+}
+
+.avatarProgressBar {
+  --CircularProgress-trackColor: black!important;
+  --CircularProgress-progressColor: white!important;
+}
+
