@@ -9,6 +9,7 @@ rpmHideButton.onclick = function () {
 
 };
 
+setupRpmFrame();
 
 function setupRpmFrame(subdomain) {
     rpmFrame.src = `https://metaos.readyplayer.me/avatar?frameApi`;
@@ -49,7 +50,7 @@ function setupRpmFrame(subdomain) {
             rpmContainer.style.display = "none";
             // Send message to a Gameobject in the current scene
             unityInstance.SendMessage(
-                "AvatarLoader", // Target GameObject name
+                "WebAvatarLoader", // Target GameObject name
                 "LoadWebviewAvatar", // Name of function to run
                 json.data.url
             );
@@ -70,6 +71,8 @@ function setupRpmFrame(subdomain) {
         }
     }
 }
+
+
 
 function showRpm() {
     rpmContainer.style.display = "block";

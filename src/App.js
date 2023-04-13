@@ -45,7 +45,12 @@ function App() {
       setIsAvatarSelected(true)
       sendMessage("AvatarNick", "TestSetMethod", inputText);
       sendMessage("AvatarNick", "enableInput");
+      window.setupRpmFrame();
     }
+  }
+
+  const ReactshowRPM = () => {
+    window.showRpm();
   }
 
   useEffect(() => {
@@ -254,7 +259,8 @@ function App() {
               <Item>xs</Item>
             </Grid>
           </Grid>
-          <Input placeholder="Take a good one" className='avatarInput' onChange={handleChange} value={inputText} style={{ position: 'absolute', zIndex: '0' }} />
+          <Input placeholder="Take a good one" className='avatarInput' onChange={handleChange} value={inputText} style={{ position: 'absolute', zIndex: '-1' }} />
+          <Button style={{position:'absolute', zIndex: '15'}} onClick={ReactshowRPM} variant="soft">Soft</Button>
         </div>)}
         <Unity className='container' unityProvider={unityProvider} style={{ display: isLoaded && isAvatarSelected ? "block" : "none" }} />
       </div>
