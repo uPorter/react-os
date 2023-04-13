@@ -10,7 +10,6 @@ rpmHideButton.onclick = function () {
 };
 
 
-
 function setupRpmFrame(subdomain) {
     rpmFrame.src = `https://metaos.readyplayer.me/avatar?frameApi`;
 

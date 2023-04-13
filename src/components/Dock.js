@@ -8,6 +8,7 @@ import CameraAltOutlinedIcon from '@mui/icons-material/CameraAltOutlined';
 import PresentToAllOutlinedIcon from '@mui/icons-material/PresentToAllOutlined';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import MicOffOutlinedIcon from '@mui/icons-material/MicOffOutlined';
+import { Stack } from '@mui/material';
 export class Dock extends Component {
     render() {
         return (<div style={{ display: "flex", justifyContent: "center" }}>
@@ -35,6 +36,9 @@ export class Dock extends Component {
                         fontStyle: 'bold',
                         fontWeight: 'Bold',
                         color: 'black',
+                        paddingLeft: '10px',
+                        paddingRight: '10px',
+                        padding: '3px',
                         '&:hover': {
                             backgroundColor: '#ffffff',
                         },
@@ -61,14 +65,27 @@ export class Dock extends Component {
                 </Tooltip>
 
 
-                <Tooltip sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} arrow color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" endDecorator={<TuneRoundedIcon fontSize="small"></TuneRoundedIcon>} sx={{
+                <Tooltip sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} arrow color="neutral" placement="top" variant="soft" title={
+                <Stack>
+                    <Button size="sm" variant="plain" endDecorator={<TuneRoundedIcon fontSize="small"></TuneRoundedIcon>} sx={{
                     fontStyle: 'bold',
                     fontWeight: 'Bold',
                     color: 'black',
                     '&:hover': {
                         backgroundColor: '#ffffff',
                     },
-                }}>Turn On Video Cam</Button>}>
+                }}>Turn On Video Cam</Button>
+                <Button size="sm" variant="plain" endDecorator={<TuneRoundedIcon fontSize="small"></TuneRoundedIcon>} sx={{
+                    fontStyle: 'bold',
+                    padding: '3px',
+                    fontWeight: 'Bold',
+                    color: 'black',
+                    '&:hover': {
+                        backgroundColor: '#ffffff',
+                    },
+                }}>Turn On Video Cam</Button>
+                </Stack>
+                }>
                     <IconButton className='dockButtons' variant="solid" sx={{
                         "--IconButton-size": "55px",
                         "--IconButton-radius": "50px",

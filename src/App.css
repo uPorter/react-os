@@ -245,14 +245,33 @@ html, body {
 
 @media only screen and (max-width: 40em) {
   .loadergrid1 {
+    display: none!important;
     bottom: 35px!important;
     margin: 15px!important;
     left: 0px!important;
 
   }
 
-  .box{
+  .avatarGridAlt {
+    width: 78px;
+    height: 78px;
+  }
+
+  .mainGrid2{
     display: none;
+    position: absolute;
+  }
+
+  .box{
+    
+  }
+
+  .avatarIcons {
+    padding: 0px!important;
+}
+
+  .responsiveGrid{
+    width: 100%!important;
   }
   
 }
@@ -266,7 +285,8 @@ html, body {
 .box{
   background-color: white;
   max-width: 405px;
-  height: 700px;
+  max-height: 700px;
+  min-height: 100px;
   border-radius: 25px;
   box-shadow: 0 32px 48px rgba(0,0,0,.25);
   padding: 32px;
