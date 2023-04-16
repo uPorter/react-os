@@ -32,6 +32,42 @@
   grid-template-columns: repeat(3, 1fr);
 }
 
+
+.unity-mobile {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.unity-mobile .unityWrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.unity-mobile .unityWrapper .loadingBar .loadingBarFill {
+  height: 6px;
+  border-radius: 5px;
+  margin: 2px;
+  background: #ffffff;
+  transition: 0.3s width ease-out;
+}
+
+.unity-mobile .unityWrapper canvas {
+  width: 100%;
+  height: 100%;
+}
+
+.unity-mobile .screenshots {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+
 #react-unity-webgl-canvas-2{
   width: 100%;
   height: 100%;
@@ -169,6 +205,10 @@
 
 }
 
+.avatarContainer{
+  position: absolute;
+}
+
 .avatar-container {
   bottom: 15px;
   position: relative;
@@ -245,14 +285,13 @@ html, body {
 
 @media only screen and (max-width: 40em) {
   .loadergrid1 {
-    display: none!important;
     bottom: 35px!important;
     margin: 15px!important;
     left: 0px!important;
 
   }
 
-  .avatarGridAlt {
+  /* .avatarGridAlt {
     width: 78px;
     height: 78px;
   }
@@ -272,7 +311,7 @@ html, body {
 
   .responsiveGrid{
     width: 100%!important;
-  }
+  } */
   
 }
 
@@ -283,6 +322,8 @@ html, body {
 }
 
 .box{
+  z-index: 5;
+  position: absolute;
   background-color: white;
   max-width: 405px;
   max-height: 700px;
