@@ -42,13 +42,12 @@ const UnityLoader = () => {
             setIsAvatarSelected(true)
             sendMessage("AvatarNick", "TestSetMethod", inputText);
             sendMessage("AvatarNick", "enableInput");
-            window.setupRpmFrame();
         }
     }
 
-
     const ReactshowRPM = () => {
         window.showRpm();
+        window.setupRpmFrame();
     }
 
     if(isLoaded === true ) {
