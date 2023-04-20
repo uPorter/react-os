@@ -64,16 +64,25 @@
       }
     });
 
-    if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-
-    container.className = "unity-mobile";
-    config.devicePixelRatio = 1;
-    unityShowBanner('WebGL builds are not supported on mobile devices.');
-    } else {
-    canvas.style.width = "100%";
-    canvas.style.height = "100%";
+    function setLocal(key, value) {
+      localStorage.setItem(key, value);
     }
 
+    function getLocal(key) {
+      return localStorage.getItem(key);
+    }
+
+    // Avatar seçimi işlemi
+    function selectAvatar(avatarUrl) {
+      // Avatar URL'sini yerel depolama sistemine kaydet
+      setLocal('avatarUrl', avatarUrl);
+    }
+
+    // Avatar URL'sini getirme işlemi
+    function getAvatar() {
+      // Yerel depolama sisteminden avatar URL'sini al
+      return getLocal('avatarUrl');
+    }
   </script>
   <script src="/external-scripts/ReadyPlayerMeFrame.js"></script>
   <script src="/external-scripts/Global.js"></script>
