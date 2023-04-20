@@ -63,26 +63,7 @@
         isActive = false;
       }
     });
-
-    function setLocal(key, value) {
-      localStorage.setItem(key, value);
-    }
-
-    function getLocal(key) {
-      return localStorage.getItem(key);
-    }
-
-    // Avatar seçimi işlemi
-    function selectAvatar(avatarUrl) {
-      // Avatar URL'sini yerel depolama sistemine kaydet
-      setLocal('avatarUrl', avatarUrl);
-    }
-
-    // Avatar URL'sini getirme işlemi
-    function getAvatar() {
-      // Yerel depolama sisteminden avatar URL'sini al
-      return getLocal('avatarUrl');
-    }
+    
   </script>
   <script src="/external-scripts/ReadyPlayerMeFrame.js"></script>
   <script src="/external-scripts/Global.js"></script>
