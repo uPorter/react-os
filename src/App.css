@@ -470,7 +470,7 @@ html, body {
 
 .loader-progress{
   color: var(--joy-palette-neutral-softColor, var(--joy-palette-neutral-800, #ffffff))!important;
-  background-color: var(--joy-palette-neutral-softBg, var(--joy-palette-neutral-100, #888888))!important;
+  background-color: var(--joy-palette-neutral-softBg, var(--joy-palette-neutral-100, #b4b4b4))!important;
 }
 
 .loader-progress-success{
