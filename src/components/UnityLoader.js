@@ -49,7 +49,6 @@ const UnityLoader = () => {
 
 
   const ReactshowRPM = () => {
-    window.setupRpmFrame();
     window.showRpm();
   }
 
@@ -101,7 +100,7 @@ const UnityLoader = () => {
                 <Item>xs</Item>
               </Grid>
             </Grid>
-            <Button style={{ position: 'absolute', zIndex: '15' }} onClick={ReactshowRPM} variant="soft">Edit Avatar</Button>
+            {/* <Button style={{ position: 'absolute', zIndex: '15' }} onClick={ReactshowRPM} variant="soft">Edit Avatar - PreTest</Button> */}
           </div>)}
 
         <Unity className='container' unityProvider={unityProvider} style={{ display: isLoaded ? "block" : "none" }} />

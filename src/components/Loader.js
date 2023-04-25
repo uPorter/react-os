@@ -46,8 +46,8 @@ const Loader = ({ loadingProgression,avatarHandler,isLoaded,handleChange,inputTe
                       <Typography className='loaderTextDesc' style={{ fontSize: '15px', maxWidth: '500px', position: 'relative', bottom: '35px' }} fontWeight="lg" textColor="common.white" level="h1">
                         This demo was created to present all the functions of mugen to the user and to have a general idea of ​​what they want to do. You can create your avatar, chat with people, have meetings, and even create your own worlds.
                       </Typography>
-                      {isLoaded === false && (<LinearProgress color="neutral" thickness={5} style={{ maxWidth: '600px' }} determinate size="lg" value={loadingProgression * 100} />)}
-                      {isLoaded === true && (<LinearProgress color="success" thickness={5} style={{ maxWidth: '600px' }} determinate size="lg" value={loadingProgression * 100} />)}
+                      {isLoaded === false && (<LinearProgress className="loader-progress" color="neutral" thickness={5} style={{ maxWidth: '600px' }} determinate size="lg" value={loadingProgression * 100} />)}
+                      {isLoaded === true && (<LinearProgress className="loader-progress-success" color="success" thickness={5} style={{ maxWidth: '600px' }} determinate size="lg" value={loadingProgression * 100} />)}
                       <div className='descContainer' style={{ display: 'flex' }}>
                         <Avatar className='avatardesc' style={{ background: '#246eff' }} alt="Porter" src="https://models.readyplayer.me/63d5148460d1b8cc82dca9db.png" size="sm" ></Avatar>
                         <Typography style={{ position: 'relative' }} className='avatarAltText' textColor="common.white" level="body2">Joining as Porter.
