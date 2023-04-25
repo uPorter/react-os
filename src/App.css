@@ -469,13 +469,13 @@ html, body {
 }
 
 .loader-progress{
-  color: var(--joy-palette-neutral-softColor, var(--joy-palette-neutral-800, #919191))!important;
-  background-color: var(--joy-palette-neutral-softBg, var(--joy-palette-neutral-100, #3d3d3d))!important;
+  color: var(--joy-palette-neutral-softColor, var(--joy-palette-neutral-800, #ffffff))!important;
+  background-color: var(--joy-palette-neutral-softBg, var(--joy-palette-neutral-100, #dddddd))!important;
 }
 
 .loader-progress-success{
   color: var(--joy-palette-neutral-softColor, var(--joy-palette-neutral-800, #0f5d26))!important;
-  background-color: var(--joy-palette-neutral-softBg, var(--joy-palette-neutral-100, #3d3d3d))!important;
+  background-color: var(--joy-palette-neutral-softBg, var(--joy-palette-neutral-100, #dddddd))!important;
 }
 
 
