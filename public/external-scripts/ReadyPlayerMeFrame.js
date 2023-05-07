@@ -75,7 +75,7 @@ function setupRpmFrame(subdomain) {
 
 
 function showRpm() {
-    rpmContainer.style.display = "block";
+    rpmContainer.style.display = "flex";
 }
 
 function hideRpm() {

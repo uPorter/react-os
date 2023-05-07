@@ -36,9 +36,6 @@ export class Dock extends Component {
                         fontStyle: 'bold',
                         fontWeight: 'Bold',
                         color: 'black',
-                        paddingLeft: '10px',
-                        paddingRight: '10px',
-                        padding: '3px',
                         '&:hover': {
                             backgroundColor: '#ffffff',
                         },
@@ -67,23 +64,28 @@ export class Dock extends Component {
 
                 <Tooltip sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} arrow color="neutral" placement="top" variant="soft" title={
                 <Stack>
-                    <Button size="sm" variant="plain" endDecorator={<TuneRoundedIcon fontSize="small"></TuneRoundedIcon>} sx={{
+                    <Button size="sm" variant="plain" sx={{
                     fontStyle: 'bold',
+                    fontWeight: 'Bold',
+                    padding: '20px',
+                    paddingTop: '5px',
+                    paddingBottom: '5px',
+                    color: 'black',
+                    '&:hover': {
+                        backgroundColor: '#ffffff',
+                    },
+                }}>Take a Shot!</Button>
+                <Button size="sm" variant="plain" sx={{
+                    fontStyle: 'bold',
+                    padding: '20px',
+                    paddingBottom: '5px',
+                    paddingTop: '5px',
                     fontWeight: 'Bold',
                     color: 'black',
                     '&:hover': {
                         backgroundColor: '#ffffff',
                     },
-                }}>Turn On Video Cam</Button>
-                <Button size="sm" variant="plain" endDecorator={<TuneRoundedIcon fontSize="small"></TuneRoundedIcon>} sx={{
-                    fontStyle: 'bold',
-                    padding: '3px',
-                    fontWeight: 'Bold',
-                    color: 'black',
-                    '&:hover': {
-                        backgroundColor: '#ffffff',
-                    },
-                }}>Turn On Video Cam</Button>
+                }}>Record Screen</Button>
                 </Stack>
                 }>
                     <IconButton className='dockButtons' variant="solid" sx={{

@@ -28,13 +28,29 @@
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <div id="rpm-container"
-    style="width: 100%;display: none;z-index: 999;justify-content: center;position: absolute;align-items: center;border-radius: 25;height: 100%;">
-    <iframe id="rpm-frame" class="rpm-frame" allow="camera *; microphone *"
-      src="https://metaos.readyplayer.me/avatar?frameApi"
-      style=" max-width: 1280px; align-items: center; min-height: 720px; display: flex; flex-direction: row; border-radius: 15px; align-content: flex-start;"></iframe>
+    style="width: 100%;display: none;z-index: 999;justify-content: center;position: absolute;align-items: center;backdrop-filter: blur(9px);height: 100%;">
+    <div class="frameHolder" style="width: fit-content;height: fit-content;">
+      <iframe id="rpm-frame" class="rpm-frame" allow="camera *; microphone *"
+        src="https://metaos.readyplayer.me/avatar?frameApi"
+        style="max-width: 1247px;min-width: 1193px;align-items: center;min-height: 720px;display: flex;flex-direction: row;border-radius: 15px;align-content: flex-start;border-color: transparent;"></iframe>
+      <button onclick="hideRpm()" type="button" id="rpm-hide-button" class="btn-close" style="
+    padding: 4px;
+    width: 34px;
+    height: 34px;
+">
+        <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge  css-c1sh5i" focusable="false" aria-hidden="true"
+          viewBox="0 0 24 24" data-testid="CloseOutlinedIcon" aria-label="fontSize large">
+          <path
+            d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z">
+          </path>
+        </svg>
+      </button>
+    </div>
+
+
   </div>
-  <button style="position: absolute;" id="rpm-hide-button" onclick="hideRpm()">Hide</button>
-  </div>
+
+
 
   <div id="root"></div>
 
@@ -49,22 +65,6 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
 
-  <script>
-    var isActive;
-
-    document.addEventListener('visibilitychange', function () {
-      if (document.visibilityState == "hidden") {
-        isActive = setInterval(function () {
-          unityInstance.SendMessage("KeepAlive", "keepAlive");
-          console.log("Keep Alive!");
-        }, 250);
-      } else {
-        clearInterval(isActive);
-        isActive = false;
-      }
-    });
-    
-  </script>
   <script src="/external-scripts/ReadyPlayerMeFrame.js"></script>
   <script src="/external-scripts/Global.js"></script>
 </body>

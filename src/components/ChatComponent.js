@@ -1,0 +1,95 @@
+import React, { useState, useEffect } from 'react';
+import { SendMessage, Chat, Channel, ChannelHeader, Window } from 'stream-chat-react';
+import { MessageList, MessageInput, MessageLivestream } from 'stream-chat-react';
+import { MessageInputSmall, Thread, withChannelContext } from 'stream-chat-react';
+import { StreamChat } from 'stream-chat';
+import IconButton from '@mui/joy/IconButton';
+import 'stream-chat-react/dist/css/index.css';
+import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
+import QuestionAnswerOutlinedIcon from '@mui/icons-material/QuestionAnswerOutlined';
+import Avatar from '@mui/joy/Avatar';
+import Button from '@mui/joy/Button';
+import './ChatComponent.css'
+
+
+
+const chatClient = StreamChat.getInstance('d9m7j2mj5ju8');
+
+const ChatComponent = (props) => {
+
+  const { userID, userToken, userImage } = props;
+
+  const [isActive, setIsActive] = useState(true);
+  const [tokenHolder, setTokenHolder] = useState('');
+
+  const toggleChat = () => {
+    if (isActive) {
+      const element = document.querySelector('.str-chat__list');
+      element.classList.add('active');
+      element.classList.remove('inActive');
+      const textarea = document.querySelector('.str-chat__small-message-input textarea');
+      textarea.placeholder = 'Disabled...';
+      const mainArea = document.querySelector('.chatProfileSection');
+      mainArea.classList.add('prevent-select')
+      textarea.disabled = true;
+      document.querySelector('.str-chat__small-message-input-emojiselect').style.visibility = 'hidden';
+      const events = Object.keys(textarea);
+      console.log(events);
+    }
+    if (!isActive) {
+      const element = document.querySelector('.str-chat__list');
+      element.classList.add('inActive');
+      element.classList.remove('active');
+      const textarea = document.querySelector('.str-chat__small-message-input textarea');
+      textarea.placeholder = 'Chat';
+      textarea.disabled = false;
+      const mainArea = document.querySelector('.chatProfileSection');
+      mainArea.classList.remove('prevent-select')
+      document.querySelector('.str-chat__small-message-input-emojiselect').style.visibility = 'visible';
+      textarea.addEventListener('keydown', (event) => {
+        if (event.keyCode === 13 && !event.shiftKey) {
+          event.preventDefault();
+          // burada mesaj gönderme işlemlerini yapabilirsiniz
+        }
+      });
+    }
+    setIsActive(!isActive);
+  }
+
+  const testClick = () => {
+    console.log('Hello Guys');
+  }
+  return (
+    <>
+      <div className='chatProfileSection' style={{ width: '400px', height: 'fit-content', position: 'absolute', right: '24px', bottom: '10px', transform: 'scale(1)', zIndex: '50' }} >
+        <Chat client={chatClient} theme='livestream light' user={chatClient.user} userToken={userToken}>
+          <Channel channel={chatClient.channel('livestream', 'BellyRub')} Message={MessageLivestream}>
+            <Window hideOnThread>
+              <ChannelHeader live />
+              <MessageList />
+              <MessageInput Input={MessageInputSmall} onSubmit={testClick} focus />
+              <IconButton onClick={toggleChat} className={`toggle-chat`} variant="solid" sx={{
+                "--IconButton-size": "55px",
+                "--IconButton-radius": "50px",
+              }}>
+                {isActive && <QuestionAnswerIcon className='questionAnswerIcon' />}
+                {!isActive && <QuestionAnswerOutlinedIcon className='questionAnswerIconOutlined' />}
+              </IconButton>
+              <Avatar className='toggle-chat2' style={{
+                bottom: '7px', right: '-6px', position: 'absolute', width: '3.8rem', height: '3.8rem', zIndex: '999',background:'cornflowerblue',
+                '&:hover': {
+                  transform: 'scale(1.1)',
+                  background: 'blue'
+                }
+              }}
+                size="lg" src={userImage} />
+            </Window>
+            <Thread fullWidth />
+          </Channel>
+        </Chat>
+      </div>
+    </>
+  );
+};
+
+export default ChatComponent;
