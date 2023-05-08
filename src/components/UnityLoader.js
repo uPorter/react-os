@@ -109,7 +109,7 @@ const UnityLoader = () => {
 
   const getUserToken = async () => {
     try {
-      const response = await fetch(`http://152.32.192.31:3000/tokens`, { 
+      const response = await fetch(`https://3ec8-152-32-192-31.ngrok-free.app/tokens`, { 
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
