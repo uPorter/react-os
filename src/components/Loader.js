@@ -25,8 +25,8 @@ const Loader = ({ loadingProgression,isLoaded}) => {
                   <Grid className='loadergrid1' style={{ position: 'absolute', left: '4.5%', bottom: '10%' }} container spacing={2} columns={16} sx={{ flexGrow: 1 }}>
                     <Grid xs={16}>
                       <div className='avatar-container' style={{ bottom: '60px', display: 'flex' }}>
-                        <Avatar style={{ background: '#246eff' }} alt={userNameL} src={userImageL} size="md" ></Avatar>
-                        <Typography style={{ position: 'relative', top: '3px' }} className='loaderAvatarText' textColor="common.white" level="body2">{userNameL}</Typography>
+                        <Avatar style={{ background: '#246eff' }} alt={userNameL} src={"https://models.readyplayer.me/63d5148460d1b8cc82dca9db.png"} size="md" ></Avatar>
+                        <Typography style={{ position: 'relative', top: '3px' }} className='loaderAvatarText' textColor="common.white" level="body2">Mugen</Typography>
                       </div>
                       <Typography className='loaderText' style={{ position: 'relative', bottom: '50px' }} fontWeight="lg" textColor="common.white" level="h1">Function Demo
                         <Button

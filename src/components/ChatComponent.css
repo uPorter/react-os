@@ -138,6 +138,7 @@
   scrollbar-width: none;
   transition: transform 0.5s ease-out;
   transform: translateX(0%);
+  user-select: none;
 }
 
 .str-chat__list.active {

@@ -9,11 +9,13 @@ import PresentToAllOutlinedIcon from '@mui/icons-material/PresentToAllOutlined';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import MicOffOutlinedIcon from '@mui/icons-material/MicOffOutlined';
 import { Stack } from '@mui/material';
+
+
 export class Dock extends Component {
     render() {
         return (<div style={{ display: "flex", justifyContent: "center" }}>
             <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap', alignItems: 'center', zIndex: '15' }}>
-                <Tooltip sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} arrow color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" endDecorator={<TuneRoundedIcon fontSize="small"></TuneRoundedIcon>} sx={{
+                <Tooltip  sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive arrow color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" endDecorator={<TuneRoundedIcon fontSize="small"></TuneRoundedIcon>} sx={{
                     fontStyle: 'bold',
                     fontWeight: 'Bold',
                     color: 'black',

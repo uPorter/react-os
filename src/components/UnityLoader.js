@@ -14,6 +14,7 @@ import CloudQueueOutlinedIcon from '@mui/icons-material/CloudQueueOutlined';
 import FileUpload from './FileUpload.js';
 import ChatComponent from './ChatComponent';
 import { StreamChat } from 'stream-chat';
+import { Toaster, toast } from 'sonner'
 import 'stream-chat-react/dist/css/index.css';
 
 const chatClient = StreamChat.getInstance('d9m7j2mj5ju8');
@@ -37,10 +38,9 @@ const UnityLoader = () => {
   const [userName, setUserName] = useState(localStorage.getItem('userName') || '');
   const [userToken, setUserToken] = useState(localStorage.getItem('userToken') || '');
   const [userImage, setUserImage] = useState(localStorage.getItem('userImage') || 'https://models.readyplayer.me/63d5148460d1b8cc82dca9db.png');
-  const [userSigned, setUserSigned] = useState(JSON.parse(localStorage.getItem('userSigned')) || false);
+  const [userSigned, setUserSigned] = useState(JSON.parse(localStorage.getItem('userSigned')) || false)
 
-   // Update local storage when state variables change
-   useEffect(() => {
+  useEffect(() => {
     localStorage.setItem('userID', userID);
   }, [userID]);
 
@@ -65,9 +65,9 @@ const UnityLoader = () => {
       // belirli bir kodu buraya yazabilirsiniz
       handleClick();
       console.clear();
+      sendMessage("AvatarNick", "enableInput");
     }
   }, [isStarted, userSigned]);
-
 
   const handleChange = (e) => {
     const { value } = e.target;
@@ -93,8 +93,9 @@ const UnityLoader = () => {
         userToken,
       );
       connect();
-      console.log("Connection successful!");
+      console.log("Connection successful!!");
     } else {
+      toast.error('Please retry...')
       console.log("Retry");
     }
   };
@@ -104,12 +105,13 @@ const UnityLoader = () => {
     await channel.watch();
     setShowChat(true);
     avatarHandler();
-    setUserSigned(true);
+    await setUserSigned(true);
   }
+
 
   const getUserToken = async () => {
     try {
-      const response = await fetch(`https://3ec8-152-32-192-31.ngrok-free.app/tokens`, { 
+      const response = await fetch(`https://3ec8-152-32-192-31.ngrok-free.app/tokens`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -174,7 +176,7 @@ const UnityLoader = () => {
       <div style={{ height: '100%', width: '100%', position: 'absolute', backgroundImage: "url(img/loader-background.png)", backgroundPosition: "center", backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
         {isStarted === false && (
           <div className='holder'>
-            <Loader  loadingProgression={loadingProgression} avatarHandler={avatarHandler} isLoaded={isLoaded} handleChange={handleChange} inputText={userID}></Loader>
+            <Loader loadingProgression={loadingProgression} avatarHandler={avatarHandler} isLoaded={isLoaded} handleChange={handleChange} inputText={userID}></Loader>
           </div>
         )}
         {isStarted && !showChat && (
@@ -309,11 +311,11 @@ const UnityLoader = () => {
               <Grid style={{ opacity: 0 }} xs>
               </Grid>
             </Grid>
-            <ChatComponent userID={userID} userToken={userToken} userImage={userImage}/>
+            <ChatComponent showChat={showChat} sendMessage={sendMessage} userID={userID} userToken={userToken} userImage={userImage} />
             {/* <FileUpload style={{position: 'absolute', zIndex: '15'}}></FileUpload> */}
             <Button style={{ position: 'absolute', zIndex: '15' }} onClick={ReactshowRPM} variant="soft">Edit Avatar - PreTest</Button>
           </div>)}
-
+          <Toaster richColors position="bottom-center" />
         <Unity className='container' unityProvider={unityProvider} style={{ display: isLoaded ? "block" : "none" }} />
       </div>
     </div>

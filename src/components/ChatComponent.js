@@ -10,6 +10,7 @@ import QuestionAnswerOutlinedIcon from '@mui/icons-material/QuestionAnswerOutlin
 import Avatar from '@mui/joy/Avatar';
 import Button from '@mui/joy/Button';
 import './ChatComponent.css'
+import { ShowChart } from '@mui/icons-material';
 
 
 
@@ -17,10 +18,46 @@ const chatClient = StreamChat.getInstance('d9m7j2mj5ju8');
 
 const ChatComponent = (props) => {
 
-  const { userID, userToken, userImage } = props;
-
+  const { userID, userToken, userImage, sendMessage, showChat} = props;
   const [isActive, setIsActive] = useState(true);
-  const [tokenHolder, setTokenHolder] = useState('');
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const textarea = document.querySelector('.str-chat__small-message-input textarea');
+      console.log(textarea);
+  
+      const onFocus = () => {
+        // onFocus event handling logic here
+        sendMessage("AvatarNick", "Start");
+        console.log('Focused');
+        
+        const edittextarea = document.querySelector('.str-chat__edit-message-form textarea');
+        edittextarea.addEventListener('focus', onFocus);
+        edittextarea.addEventListener('blur', onBlur);
+      };
+  
+      const onBlur = () => {
+        // onBlur event handling logic here
+        sendMessage("AvatarNick", "enableInput");
+        console.log('Blured');
+      };
+  
+      if (textarea) {
+        textarea.addEventListener('focus', onFocus);
+        textarea.addEventListener('blur', onBlur);
+  
+        return () => {
+          textarea.removeEventListener('focus', onFocus);
+          textarea.removeEventListener('blur', onBlur);
+        };
+      }
+    }, 2000);
+  
+    return () => clearTimeout(timer);
+  }, []);
+  
+  
+
 
   const toggleChat = () => {
     if (isActive) {
@@ -34,7 +71,6 @@ const ChatComponent = (props) => {
       textarea.disabled = true;
       document.querySelector('.str-chat__small-message-input-emojiselect').style.visibility = 'hidden';
       const events = Object.keys(textarea);
-      console.log(events);
     }
     if (!isActive) {
       const element = document.querySelector('.str-chat__list');
@@ -56,12 +92,14 @@ const ChatComponent = (props) => {
     setIsActive(!isActive);
   }
 
+
+
   const testClick = () => {
     console.log('Hello Guys');
   }
   return (
     <>
-      <div className='chatProfileSection' style={{ width: '400px', height: 'fit-content', position: 'absolute', right: '24px', bottom: '10px', transform: 'scale(1)', zIndex: '50' }} >
+      <div className='chatProfileSection' style={{ width: '400px', height: 'fit-content', position: 'absolute', right: '24px', bottom: '10px', transform: 'scale(1)', zIndex: '50',userSelect: 'none' }} >
         <Chat client={chatClient} theme='livestream light' user={chatClient.user} userToken={userToken}>
           <Channel channel={chatClient.channel('livestream', 'BellyRub')} Message={MessageLivestream}>
             <Window hideOnThread>
