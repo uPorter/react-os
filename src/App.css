@@ -377,6 +377,10 @@ body {
 	}
 }
 
+.toasterCSS {
+  background: #00000040!important;
+}
+
 .avatarSelectorTitle {
   position: relative !important;
   width: 100%;
@@ -591,37 +595,20 @@ body {
   user-select: none; /* Standard syntax */
 }
 
-@mixin cross($size: 20px, $color: currentColor, $thickness: 1px) {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  background: none;
-  position: relative;
-  width: $size;
-  height: $size;
 
-  &:before,
-  &:after {
-    content: '';
-    position: absolute;
-    top: ($size - $thickness) / 2;
-    left: 0;
-    right: 0;
-    height: $thickness;
-    background: $color;
-    border-radius: $thickness;
-  }
+.MuiTooltip-tooltip{
+  background-color: white!important;
+  border-radius: 25px!important;
+  transform: scale(0.9)!important;
+}
 
-  &:before {
-    transform: rotate(45deg);
-  }
+.MuiTooltip-tooltip:hover{
+  filter: drop-shadow(rgba(0, 0, 0, 0.3) 0 2px 10px);
+}
 
-  &:after {
-    transform: rotate(-45deg);
-  }
 
-  span {
-    display: block;
-  }
-
+.MuiTooltip-arrow{
+  color: white!important;
+  fill: white!important;
+  /* transform: scale(0.9)!important; */
 }

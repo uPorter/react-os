@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Box from '@mui/joy/Box';
 import IconButton from '@mui/joy/IconButton';
 import Button from '@mui/joy/Button';
-import Tooltip from '@mui/joy/Tooltip';
+import Tooltip from '@mui/material/Tooltip';
 import TuneRoundedIcon from '@mui/icons-material/TuneRounded';
 import CameraAltOutlinedIcon from '@mui/icons-material/CameraAltOutlined';
 import PresentToAllOutlinedIcon from '@mui/icons-material/PresentToAllOutlined';
@@ -15,7 +15,7 @@ export class Dock extends Component {
     render() {
         return (<div style={{ display: "flex", justifyContent: "center" }}>
             <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap', alignItems: 'center', zIndex: '15' }}>
-                <Tooltip  sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive arrow color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" endDecorator={<TuneRoundedIcon fontSize="small"></TuneRoundedIcon>} sx={{
+                <Tooltip className='dockTooltip'  sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive arrow color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" endDecorator={<TuneRoundedIcon fontSize="small"></TuneRoundedIcon>} sx={{
                     fontStyle: 'bold',
                     fontWeight: 'Bold',
                     color: 'black',
@@ -32,7 +32,7 @@ export class Dock extends Component {
                 </Tooltip>
 
 
-                <Tooltip sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} arrow color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain"
+                <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} arrow color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain"
                     // endDecorator={<TuneRoundedIcon fontSize="small" ></TuneRoundedIcon>}
                     sx={{
                         fontStyle: 'bold',
@@ -64,7 +64,7 @@ export class Dock extends Component {
                 </Tooltip>
 
 
-                <Tooltip sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} arrow color="neutral" placement="top" variant="soft" title={
+                <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} arrow color="neutral" placement="top" variant="soft" title={
                 <Stack>
                     <Button size="sm" variant="plain" sx={{
                     fontStyle: 'bold',
@@ -98,7 +98,7 @@ export class Dock extends Component {
                     </IconButton>
                 </Tooltip>
 
-                <Tooltip sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} arrow color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
+                <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} arrow color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
                     fontStyle: 'bold',
                     fontWeight: 'Bold',
                     color: 'black',
@@ -114,7 +114,7 @@ export class Dock extends Component {
                     </IconButton>
                 </Tooltip>
 
-                <Tooltip sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} arrow color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
+                <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} arrow color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
                     fontStyle: 'bold',
                     fontWeight: 'Bold',
                     color: 'black',

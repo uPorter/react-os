@@ -93,9 +93,10 @@ const UnityLoader = () => {
         userToken,
       );
       connect();
-      console.log("Connection successful!!");
+      toast.success('Connection successful!')
+      console.log("Connection successful!");
     } else {
-      toast.error('Please retry...')
+      toast.error('We ran into a problem! Please try again..')
       console.log("Retry");
     }
   };
@@ -315,7 +316,7 @@ const UnityLoader = () => {
             {/* <FileUpload style={{position: 'absolute', zIndex: '15'}}></FileUpload> */}
             <Button style={{ position: 'absolute', zIndex: '15' }} onClick={ReactshowRPM} variant="soft">Edit Avatar - PreTest</Button>
           </div>)}
-          <Toaster richColors position="bottom-center" />
+          <Toaster className='toasterCSS' richColors position="top-center" />
         <Unity className='container' unityProvider={unityProvider} style={{ display: isLoaded ? "block" : "none" }} />
       </div>
     </div>
