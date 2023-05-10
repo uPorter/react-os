@@ -667,3 +667,83 @@ iframe{
   max-height: 360px;
   overflow-y: auto;
 }
+
+.avatarProfile {
+  border-radius: 25px;
+  background-color: white;
+  position: relative;
+  display: flex;
+  width: 315px;
+  height: 395px;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+}
+
+.avatarProfileSection{
+  margin-top: 10px;
+  width: 5.8rem!important;
+  height: 5.8rem!important;
+  border-radius: 35px!important;
+  box-shadow: 3px 5px 20px rgb(0 0 0 / 69%)!important;
+}
+
+.avatarStack {
+  display: flex!important;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    grid-gap: 5px;
+    gap: 5px;
+    align-content: center;
+}
+
+
+.avatarButtonContainer{
+  margin-top: 30px;
+    margin-bottom: 0px;
+    width: 275px;
+    border-color: #00000050;
+    border-style: inset;
+    border-width: 2px;
+    border-radius: 11px;
+}
+
+.editavatarContainer{
+  margin-top: 7px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.editavatarContainerV{
+  margin-top: 7px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: flex-start;
+  align-items: center;
+  transition: .1s cubic-bezier(0.46, 0.03, 0.52, 0.96) 0s;
+  cursor: pointer;
+}
+
+.editavatarContainerV:hover{
+  transform: scale(1.05);
+}
+
+
+.mainSwitch{
+  margin-left: 25px!important;
+  --Switch-thumbBackground: var(--joy-palette-neutral-solidColor, var(--joy-palette-common-white, #000));
+  --Switch-trackBackground: var(--joy-palette-neutral-solidBg, var(--joy-palette-neutral-600, #fff));
+}
+
+.MuiSwitch-variantSoft{
+  background-color: #2979FF;
+}

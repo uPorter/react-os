@@ -10,8 +10,18 @@ import QuestionAnswerOutlinedIcon from '@mui/icons-material/QuestionAnswerOutlin
 import Avatar from '@mui/joy/Avatar';
 import Button from '@mui/joy/Button';
 import './ChatComponent.css'
-import { ShowChart } from '@mui/icons-material';
 import Tooltip from '@mui/material/Tooltip';
+import { Stack } from '@mui/material';
+import Input from '@mui/joy/Input';
+import CreateOutlinedIcon from '@mui/icons-material/CreateOutlined';
+import AccessibilityNewOutlinedIcon from '@mui/icons-material/AccessibilityNewOutlined';
+import VideocamOutlinedIcon from '@mui/icons-material/VideocamOutlined';
+import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
+import Divider from '@mui/joy/Divider';
+import Switch from '@mui/joy/Switch';
+import Typography from '@mui/joy/Typography';
+import ManageAccountsOutlinedIcon from '@mui/icons-material/ManageAccountsOutlined';
+
 
 
 
@@ -19,9 +29,10 @@ const chatClient = StreamChat.getInstance('d9m7j2mj5ju8');
 
 const ChatComponent = (props) => {
 
-  const { userID, userToken, userImage, sendMessage, showChat } = props;
+  const { userName, userID, userToken, userImage, sendMessage, showChat } = props;
   const [isActive, setIsActive] = useState(true);
   const [toggleChatText, setToggleChatText] = useState('Hide Chat')
+  const [checked, setChecked] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -74,6 +85,7 @@ const ChatComponent = (props) => {
       document.querySelector('.str-chat__small-message-input-emojiselect').style.visibility = 'hidden';
       const events = Object.keys(textarea);
       setToggleChatText('Show Chat')
+      sendMessage("AvatarEdit", "EditorON");
     }
     if (!isActive) {
       const element = document.querySelector('.str-chat__list');
@@ -86,6 +98,7 @@ const ChatComponent = (props) => {
       mainArea.classList.remove('prevent-select')
       document.querySelector('.str-chat__small-message-input-emojiselect').style.visibility = 'visible';
       setToggleChatText('Hide Chat')
+      sendMessage("AvatarEdit", "EditorOFF");
       textarea.addEventListener('keydown', (event) => {
         if (event.keyCode === 13 && !event.shiftKey) {
           event.preventDefault();
@@ -95,7 +108,6 @@ const ChatComponent = (props) => {
     }
     setIsActive(!isActive);
   }
-
 
 
   const testClick = () => {
@@ -110,12 +122,15 @@ const ChatComponent = (props) => {
               <ChannelHeader live />
               <MessageList />
               <MessageInput Input={MessageInputSmall} onSubmit={testClick} focus />
-              <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive arrow color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
+              <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
                 fontStyle: 'bold',
                 fontWeight: 'Bold',
-                color: 'black',
+                color: 'white',
+                padding: '10px',
+                marginBottom: '-4px',
+                backgroundColor:'#00000040',
                 '&:hover': {
-                  backgroundColor: '#ffffff',
+                  backgroundColor: '#00000040',
                 },
               }}>{toggleChatText}</Button>}>
                 <IconButton onClick={toggleChat} className={`toggle-chat`} variant="solid" sx={{
@@ -126,14 +141,64 @@ const ChatComponent = (props) => {
                   {!isActive && <QuestionAnswerOutlinedIcon className='questionAnswerIconOutlined' />}
                 </IconButton>
               </Tooltip>
-              <Avatar className='toggle-chat2' style={{
-                bottom: '7px', right: '-6px', position: 'absolute', width: '3.8rem', height: '3.8rem', zIndex: '999', background: '#2979FF',
-                '&:hover': {
-                  transform: 'scale(1.1)',
-                  background: 'blue'
-                }
-              }}
-                size="lg" src={userImage} />
+
+
+              <Tooltip sx={{ borderRadius: '0px', backgroundColor: '#ffffff' }} color="neutral" placement="top" variant="soft"
+                title={
+                  <div className='avatarProfile'>
+                    <Stack className='avatarStack'>
+                      <Avatar className='avatarProfileSection' style={{
+                        width: '5.3rem', height: '5.3rem', zIndex: '999', background: '#2979FF',
+                        '&:hover': {
+                          transform: 'scale(1.1)',
+                          background: 'blue'
+                        }
+                      }}
+                        size="lg" src={userImage} />
+                      <Typography style={{fontSize:'27px'}} level="h2">{userName}</Typography>
+                      <Stack className='avatarButtonContainer'>
+                        <div onClick={() => console.log('View Profile')} style={{ marginTop: '7px' }} className='editavatarContainerV'>
+                          <ManageAccountsOutlinedIcon style={{ marginLeft: '25px', color: 'black' }} />
+                          <Button style={{ background: 'white', color: 'black' }} >View Profile</Button>
+                          <ArrowForwardIosOutlinedIcon className='hoverArrow' style={{ marginLeft: '75px', color: 'black', transform: 'scale(0.8)' }}></ArrowForwardIosOutlinedIcon>
+                        </div>
+                        <Divider style={{ height: '2px', marginTop: '7px', marginBottom: '0px', backgroundColor: '#00000050' }} orientation="horizontal" />
+                        <div onClick={() => sendMessage("AvatarEdit", "EditorON")} style={{ marginTop: '7px' }} className='editavatarContainerV'>
+                          <AccessibilityNewOutlinedIcon style={{ marginLeft: '25px', color: 'black' }} />
+                          <Button onClick={() => sendMessage("AvatarEdit", "EditorON")} style={{ background: 'white', color: 'black' }} >Edit Avatar</Button>
+                          <ArrowForwardIosOutlinedIcon style={{ marginLeft: '80px', color: 'black', transform: 'scale(0.8)' }}></ArrowForwardIosOutlinedIcon>
+                        </div>
+                        <Divider style={{ height: '2px', marginTop: '7px', marginBottom: '0px', backgroundColor: '#00000050' }} orientation="horizontal" />
+                        <div style={{ marginTop: '7px', marginBottom: '7px' }} className='editavatarContainer'>
+                          <VideocamOutlinedIcon style={{ marginLeft: '25px', color: 'black' }} />
+                          <Button style={{ background: 'white', color: 'black' }} >Toggle Webcam</Button>
+                          <Switch style={{
+                            marginLeft: '25px',
+                            borderStyle: "solid",
+                            borderColor: "#00000075",
+                            borderRadius: "25px",
+                            marginLeft: "5px",
+                            borderWidth: "2px",
+                            transform: 'scale(0.85)'
+                          }} variant="soft" color="neutral" className="mainSwitch"
+                            checked={checked}
+                            onChange={(event) => setChecked(event.target.checked)}
+                          />
+                          {/* <ArrowForwardIosOutlinedIcon style={{ marginLeft: '18px', color: 'black', transform: 'scale(0.8)' }}></ArrowForwardIosOutlinedIcon> */}
+                        </div>
+                      </Stack>
+                    </Stack>
+                  </div>
+                }>
+                <Avatar className='toggle-chat2' style={{
+                  bottom: '7px', right: '-6px', position: 'absolute', width: '3.8rem', height: '3.8rem', zIndex: '999', background: '#2979FF',borderRadius:'25px',
+                  '&:hover': {
+                    transform: 'scale(1.1)',
+                    background: '#2979FF'
+                  }
+                }}
+                  size="lg" src={userImage} />
+              </Tooltip>
             </Window>
             <Thread fullWidth />
           </Channel>

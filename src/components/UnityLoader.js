@@ -147,6 +147,7 @@ const UnityLoader = () => {
   const ReactshowRPM = () => {
     window.setupRpmFrame();
     window.showRpm();
+    //sendMessage("AvatarEdit", "EditorON");
   }
 
   useEffect(() => {
@@ -312,7 +313,7 @@ const UnityLoader = () => {
               <Grid style={{ opacity: 0 }} xs>
               </Grid>
             </Grid>
-            <ChatComponent showChat={showChat} sendMessage={sendMessage} userID={userID} userToken={userToken} userImage={userImage} />
+            <ChatComponent userName={userName} showChat={showChat} sendMessage={sendMessage} userID={userID} userToken={userToken} userImage={userImage} />
             {/* <FileUpload style={{position: 'absolute', zIndex: '15'}}></FileUpload> */}
             <Button style={{ position: 'absolute', zIndex: '15' }} onClick={ReactshowRPM} variant="soft">Edit Avatar - PreTest</Button>
           </div>)}

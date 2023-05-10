@@ -15,12 +15,13 @@ export class Dock extends Component {
     render() {
         return (<div style={{ display: "flex", justifyContent: "center" }}>
             <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap', alignItems: 'center', zIndex: '15' }}>
-                <Tooltip className='dockTooltip'  sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive arrow color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" endDecorator={<TuneRoundedIcon fontSize="small"></TuneRoundedIcon>} sx={{
+                <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive  color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" endDecorator={<TuneRoundedIcon fontSize="small"></TuneRoundedIcon>} sx={{
                     fontStyle: 'bold',
                     fontWeight: 'Bold',
-                    color: 'black',
+                    color: 'white',
+                    backgroundColor:'#00000040',
                     '&:hover': {
-                        backgroundColor: '#ffffff',
+                        backgroundColor:'#00000040',
                     },
                 }}>Turn On Mic</Button>}>
                     <IconButton className='dockButtons' variant="solid" sx={{
@@ -32,14 +33,15 @@ export class Dock extends Component {
                 </Tooltip>
 
 
-                <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} arrow color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain"
+                <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }}  color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain"
                     // endDecorator={<TuneRoundedIcon fontSize="small" ></TuneRoundedIcon>}
                     sx={{
                         fontStyle: 'bold',
                         fontWeight: 'Bold',
-                        color: 'black',
+                        color: 'white',
+                        backgroundColor:'#00000040',
                         '&:hover': {
-                            backgroundColor: '#ffffff',
+                            backgroundColor:'#00000040',
                         },
                     }}>Reactions</Button>}>
                     <IconButton className='dockButtons' variant="solid" sx={{
@@ -64,31 +66,37 @@ export class Dock extends Component {
                 </Tooltip>
 
 
-                <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} arrow color="neutral" placement="top" variant="soft" title={
-                <Stack>
-                    <Button size="sm" variant="plain" sx={{
-                    fontStyle: 'bold',
-                    fontWeight: 'Bold',
-                    padding: '20px',
-                    paddingTop: '5px',
-                    paddingBottom: '5px',
-                    color: 'black',
-                    '&:hover': {
-                        backgroundColor: '#ffffff',
-                    },
-                }}>Take a Shot!</Button>
-                <Button size="sm" variant="plain" sx={{
-                    fontStyle: 'bold',
-                    padding: '20px',
-                    paddingBottom: '5px',
-                    paddingTop: '5px',
-                    fontWeight: 'Bold',
-                    color: 'black',
-                    '&:hover': {
-                        backgroundColor: '#ffffff',
-                    },
-                }}>Record Screen</Button>
-                </Stack>
+                <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }}  color="neutral" placement="top" variant="soft" title={
+                    <Stack>
+                        <Button size="sm" variant="plain" sx={{
+                            fontStyle: 'bold',
+                            fontWeight: 'Bold',
+                            padding: '20px',
+                            paddingTop: '5px',
+                            paddingBottom: '5px',
+                            borderEndEndRadius: '0px',
+                            borderEndStartRadius: '0px',
+                            color: 'white',
+                            backgroundColor:'#00000040',
+                            '&:hover': {
+                                backgroundColor:'#00000040',
+                            },
+                        }}>Take a Shot!</Button>
+                        <Button size="sm" variant="plain" sx={{
+                            fontStyle: 'bold',
+                            padding: '20px',
+                            borderTopLeftRadius: '0px',
+                            borderTopRightRadius: '0px',
+                            paddingBottom: '5px',
+                            paddingTop: '5px',
+                            fontWeight: 'Bold',
+                            color: 'white',
+                            backgroundColor:'#00000040',
+                            '&:hover': {
+                                backgroundColor:'#00000040',
+                            },
+                        }}>Record Screen</Button>
+                    </Stack>
                 }>
                     <IconButton className='dockButtons' variant="solid" sx={{
                         "--IconButton-size": "55px",
@@ -98,12 +106,13 @@ export class Dock extends Component {
                     </IconButton>
                 </Tooltip>
 
-                <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} arrow color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
+                <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }}  color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
                     fontStyle: 'bold',
                     fontWeight: 'Bold',
-                    color: 'black',
+                    color: 'white',
+                    backgroundColor:'#00000040',
                     '&:hover': {
-                        backgroundColor: '#ffffff',
+                        backgroundColor:'#00000040',
                     },
                 }}>Share Screen</Button>}>
                     <IconButton className='dockButtons' variant="solid" sx={{
@@ -114,12 +123,13 @@ export class Dock extends Component {
                     </IconButton>
                 </Tooltip>
 
-                <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} arrow color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
+                <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }}  color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
                     fontStyle: 'bold',
                     fontWeight: 'Bold',
-                    color: 'black',
+                    color: 'white',
+                    backgroundColor:'#00000040',
                     '&:hover': {
-                        backgroundColor: '#ffffff',
+                        backgroundColor:'#00000040',
                     },
                 }}>Add Content</Button>}>
                     <IconButton className='dockButtons' variant="solid" sx={{

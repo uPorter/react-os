@@ -400,6 +400,10 @@ body {
   --Input-focusedThickness: var(--joy-focus-thickness, 3px) !important;
 }
 
+.avatarInput:focus {
+  filter: blur(0px);
+}
+
 
 ::-webkit-scrollbar {
   width: 5px;
@@ -568,19 +572,13 @@ body {
 }
 
 .btn-close {
-  position: absolute;
-  margin: 0;
+  position: relative;
+  margin-bottom: -25px;
   border: 0;
   border-radius: 50%;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  align-items: center;
+  right: -1170px;
+  display: block;
   cursor: pointer;
-  transition: all 150ms;
-  top: 112px;
-  right: 151px;
-  background: white;
   box-shadow: 0 16px 48px 0 rgba(0, 0, 0, .24);
   transition: .2s cubic-bezier(0.46, 0.03, 0.52, 0.96) 0s;
 }
@@ -597,18 +595,17 @@ body {
 
 
 .MuiTooltip-tooltip{
-  background-color: white!important;
+  background-color: #00000000!important;
   border-radius: 25px!important;
   transform: scale(0.9)!important;
+  transition: .1s cubic-bezier(0.46, 0.03, 0.52, 0.96) 0s;
 }
-
-.MuiTooltip-tooltip:hover{
-  filter: drop-shadow(rgba(0, 0, 0, 0.3) 0 2px 10px);
-}
-
 
 .MuiTooltip-arrow{
-  color: white!important;
-  fill: white!important;
+  color: #00000040!important;
+  fill: #00000040!important;
+  transition: .1s cubic-bezier(0.46, 0.03, 0.52, 0.96) 0s;
   /* transform: scale(0.9)!important; */
 }
+
+
