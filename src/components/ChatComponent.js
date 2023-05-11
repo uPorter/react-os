@@ -190,7 +190,8 @@ const ChatComponent = (props) => {
                             borderRadius: "25px",
                             marginLeft: "5px",
                             borderWidth: "2px",
-                            transform: 'scale(0.85)'
+                            transform: 'scale(0.85)',
+                            position: 'static'
                           }} variant="soft" color="neutral" className="mainSwitch"
                             checked={checked}
                             onChange={(event) => setChecked(event.target.checked)}
