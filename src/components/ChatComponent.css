@@ -670,15 +670,24 @@ iframe{
 
 .avatarProfile {
   border-radius: 25px;
-  background-color: white;
+  background-color: #0000008c;
   position: relative;
   display: flex;
+  backdrop-filter: blur(9px) opacity(0);
   width: 315px;
   height: 395px;
+  right: 15px;
   flex-direction: row;
   flex-wrap: nowrap;
   align-content: center;
   justify-content: center;
+  transition: .1s cubic-bezier(0.46, 0.03, 0.52, 0.96) 0s;
+  transition: backdrop-filter 1s;
+
+}
+
+.avatarProfileonOpen {
+  backdrop-filter: blur(9px) opacity(1);
 }
 
 .avatarProfileSection{
@@ -705,7 +714,7 @@ iframe{
   margin-top: 30px;
     margin-bottom: 0px;
     width: 275px;
-    border-color: #00000050;
+    border-color: #ffffff80;
     border-style: inset;
     border-width: 2px;
     border-radius: 11px;

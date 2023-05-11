@@ -303,7 +303,7 @@ const UnityLoader = () => {
         )}
         {isStarted && showChat && (
           <div className={"ui"}>
-            <Grid className="unityLoaderGrid" style={{ position: "absolute", width: "100%", bottom: "25px" }} container spacing={3} sx={{ flexGrow: 1 }}>
+            <Grid className="unityLoaderGrid" style={{ position: "absolute", width: "100%", bottom: "20px" }} container spacing={3} sx={{ flexGrow: 1 }}>
               <Grid xs style={{ opacity: 0 }}>
                 <Button>Test</Button>
               </Grid>

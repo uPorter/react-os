@@ -109,13 +109,21 @@ const ChatComponent = (props) => {
     setIsActive(!isActive);
   }
 
+  const handleTooltipOpen = () => {
+    document.querySelector('.avatarProfile').classList.add('avatarProfileonOpen');
+  };
+
+  const handleTooltipClose = () => {
+    document.querySelector('.avatarProfile').classList.remove('avatarProfileonOpen');
+  };
+
 
   const testClick = () => {
     console.log('Hello Guys');
   }
   return (
     <>
-      <div className='chatProfileSection' style={{ width: '400px', height: 'fit-content', position: 'absolute', right: '8px', bottom: '-30px', transform: 'scale(0.9)', zIndex: '50', userSelect: 'none' }} >
+      <div className='chatProfileSection' style={{ width: '400px', height: 'fit-content', position: 'absolute', right: '8px', bottom: '-35px', transform: 'scale(0.9)', zIndex: '50', userSelect: 'none' }} >
         <Chat client={chatClient} theme='livestream light' user={chatClient.user} userToken={userToken}>
           <Channel channel={chatClient.channel('livestream', 'BellyRub')} Message={MessageLivestream}>
             <Window hideOnThread>
@@ -143,7 +151,7 @@ const ChatComponent = (props) => {
               </Tooltip>
 
 
-              <Tooltip sx={{ borderRadius: '0px', backgroundColor: '#ffffff' }} color="neutral" placement="top" variant="soft"
+              <Tooltip onOpen={handleTooltipOpen} onClose={handleTooltipClose} sx={{ borderRadius: '0px', backgroundColor: '#ffffff' }} color="neutral" placement="top" variant="soft"
                 title={
                   <div className='avatarProfile'>
                     <Stack className='avatarStack'>
@@ -155,27 +163,27 @@ const ChatComponent = (props) => {
                         }
                       }}
                         size="lg" src={userImage} />
-                      <Typography style={{fontSize:'27px'}} level="h2">{userName}</Typography>
+                      <Typography style={{color: 'white', fontSize:'27px'}} level="h2">{userName}</Typography>
                       <Stack className='avatarButtonContainer'>
                         <div onClick={() => console.log('View Profile')} style={{ marginTop: '7px' }} className='editavatarContainerV'>
-                          <ManageAccountsOutlinedIcon style={{ marginLeft: '25px', color: 'black' }} />
-                          <Button style={{ background: 'white', color: 'black' }} >View Profile</Button>
-                          <ArrowForwardIosOutlinedIcon className='hoverArrow' style={{ marginLeft: '75px', color: 'black', transform: 'scale(0.8)' }}></ArrowForwardIosOutlinedIcon>
+                          <ManageAccountsOutlinedIcon style={{ marginLeft: '25px', color: 'white' }} />
+                          <Button style={{position:'static', background: 'transparent', color: 'white' }} >View Profile</Button>
+                          <ArrowForwardIosOutlinedIcon className='hoverArrow' style={{ marginLeft: '75px', color: 'white', transform: 'scale(0.8)' }}></ArrowForwardIosOutlinedIcon>
                         </div>
-                        <Divider style={{ height: '2px', marginTop: '7px', marginBottom: '0px', backgroundColor: '#00000050' }} orientation="horizontal" />
+                        <Divider style={{ height: '2px', marginTop: '7px', marginBottom: '0px', backgroundColor: '#ffffff80' }} orientation="horizontal" />
                         <div onClick={() => sendMessage("AvatarEdit", "EditorON")} style={{ marginTop: '7px' }} className='editavatarContainerV'>
-                          <AccessibilityNewOutlinedIcon style={{ marginLeft: '25px', color: 'black' }} />
-                          <Button onClick={() => sendMessage("AvatarEdit", "EditorON")} style={{ background: 'white', color: 'black' }} >Edit Avatar</Button>
-                          <ArrowForwardIosOutlinedIcon style={{ marginLeft: '80px', color: 'black', transform: 'scale(0.8)' }}></ArrowForwardIosOutlinedIcon>
+                          <AccessibilityNewOutlinedIcon style={{ marginLeft: '25px', color: 'white' }} />
+                          <Button onClick={() => sendMessage("AvatarEdit", "EditorON")} style={{position:'static', background: 'transparent', color: 'white' }} >Edit Avatar</Button>
+                          <ArrowForwardIosOutlinedIcon style={{ marginLeft: '80px', color: 'white', transform: 'scale(0.8)' }}></ArrowForwardIosOutlinedIcon>
                         </div>
-                        <Divider style={{ height: '2px', marginTop: '7px', marginBottom: '0px', backgroundColor: '#00000050' }} orientation="horizontal" />
+                        <Divider style={{ height: '2px', marginTop: '7px', marginBottom: '0px', backgroundColor: '#ffffff80' }} orientation="horizontal" />
                         <div style={{ marginTop: '7px', marginBottom: '7px' }} className='editavatarContainer'>
-                          <VideocamOutlinedIcon style={{ marginLeft: '25px', color: 'black' }} />
-                          <Button style={{ background: 'white', color: 'black' }} >Toggle Webcam</Button>
+                          <VideocamOutlinedIcon style={{ marginLeft: '25px', color: 'white' }} />
+                          <Button style={{position:'static', background: 'transparent', color: 'white' }} >Toggle Webcam</Button>
                           <Switch style={{
                             marginLeft: '25px',
                             borderStyle: "solid",
-                            borderColor: "#00000075",
+                            borderColor: "#ffffff80",
                             borderRadius: "25px",
                             marginLeft: "5px",
                             borderWidth: "2px",
