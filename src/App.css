@@ -595,7 +595,7 @@ body {
 
 
 .MuiTooltip-tooltip{
-  background-color: transparent;
+  background-color: transparent!important;
   border-radius: 25px!important;
   transform: scale(0.9)!important;
   transition: .1s cubic-bezier(0.46, 0.03, 0.52, 0.96) 0s;
