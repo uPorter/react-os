@@ -28,7 +28,7 @@ import ManageAccountsOutlinedIcon from '@mui/icons-material/ManageAccountsOutlin
 const chatClient = StreamChat.getInstance('d9m7j2mj5ju8');
 
 const ChatComponent = (props) => {
-
+  const [isTooltipOpen, setIsTooltipOpen] = useState(false);
   const { userName, userID, userToken, userImage, sendMessage, showChat } = props;
   const [isActive, setIsActive] = useState(true);
   const [toggleChatText, setToggleChatText] = useState('Hide Chat')
@@ -110,11 +110,14 @@ const ChatComponent = (props) => {
   }
 
   const handleTooltipOpen = () => {
+    setIsTooltipOpen(true);
     document.querySelector('.avatarProfile').classList.add('avatarProfileonOpen');
   };
 
   const handleTooltipClose = () => {
+    setIsTooltipOpen(false);
     document.querySelector('.avatarProfile').classList.remove('avatarProfileonOpen');
+    document.querySelector('.avatarProfile').classList.add('avatarProfileonClose');
   };
 
 
@@ -151,7 +154,7 @@ const ChatComponent = (props) => {
               </Tooltip>
 
 
-              <Tooltip onOpen={handleTooltipOpen} onClose={handleTooltipClose} sx={{ borderRadius: '0px', backgroundColor: '#ffffff' }} color="neutral" placement="top" variant="soft"
+              <Tooltip leaveDelay={300} onOpen={handleTooltipOpen} onClose={handleTooltipClose} sx={{ borderRadius: '0px', backgroundColor: '#ffffff' }} color="neutral" placement="top" variant="soft"
                 title={
                   <div className='avatarProfile'>
                     <Stack className='avatarStack'>

@@ -669,11 +669,11 @@ iframe{
 }
 
 .avatarProfile {
-  border-radius: 25px;
-  background-color: #0000008c;
+  border-radius: 15px;
+  background-color: #00000050;
   position: relative;
   display: flex;
-  backdrop-filter: blur(9px) opacity(0);
+  backdrop-filter: blur(12px) opacity(0);
   width: 315px;
   height: 395px;
   right: 15px;
@@ -683,11 +683,40 @@ iframe{
   justify-content: center;
   transition: .1s cubic-bezier(0.46, 0.03, 0.52, 0.96) 0s;
   transition: backdrop-filter 1s;
-
+  animation: mainAnim 1s ease 0s 1 normal forwards;
 }
 
+@keyframes mainAnim {
+	0% {
+		opacity: 0;
+		transform: translateX(250px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes mainAnimOut {
+	0% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+
+	100% {
+		opacity: 0;
+		transform: translateX(250px);
+	}
+}
+
+
 .avatarProfileonOpen {
-  backdrop-filter: blur(9px) opacity(1);
+  backdrop-filter: blur(12px) opacity(1);
+}
+
+.avatarProfileonClose {
+  animation: mainAnimOut 1s ease 0s 1 normal forwards;
 }
 
 .avatarProfileSection{
@@ -695,7 +724,7 @@ iframe{
   width: 5.8rem!important;
   height: 5.8rem!important;
   border-radius: 35px!important;
-  box-shadow: 3px 5px 20px rgb(0 0 0 / 69%)!important;
+  box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.247)!important;
 }
 
 .avatarStack {
@@ -746,7 +775,6 @@ iframe{
   transform: scale(1.05);
 }
 
-
 .mainSwitch{
   margin-left: 25px!important;
   --Switch-thumbBackground: var(--joy-palette-neutral-solidColor, var(--joy-palette-common-white, #000));
@@ -756,3 +784,5 @@ iframe{
 .MuiSwitch-variantSoft{
   background-color: #2979FF;
 }
+
+
