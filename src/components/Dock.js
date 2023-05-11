@@ -14,7 +14,7 @@ import { Stack } from '@mui/material';
 export class Dock extends Component {
     render() {
         return (<div style={{ display: "flex", justifyContent: "center" }}>
-            <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap', alignItems: 'center', zIndex: '15' }}>
+            <Box sx={{ transform: 'scale(0.9)',display: 'flex', gap: 2, flexWrap: 'wrap', alignItems: 'center', zIndex: '15' }}>
                 <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive  color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" endDecorator={<TuneRoundedIcon fontSize="small"></TuneRoundedIcon>} sx={{
                     fontStyle: 'bold',
                     fontWeight: 'Bold',
