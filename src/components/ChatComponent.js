@@ -28,7 +28,6 @@ import ManageAccountsOutlinedIcon from '@mui/icons-material/ManageAccountsOutlin
 const chatClient = StreamChat.getInstance('d9m7j2mj5ju8');
 
 const ChatComponent = (props) => {
-  const [isTooltipOpen, setIsTooltipOpen] = useState(false);
   const { userName, userID, userToken, userImage, sendMessage, showChat } = props;
   const [isActive, setIsActive] = useState(true);
   const [toggleChatText, setToggleChatText] = useState('Hide Chat')
@@ -110,12 +109,10 @@ const ChatComponent = (props) => {
   }
 
   const handleTooltipOpen = () => {
-    setIsTooltipOpen(true);
     document.querySelector('.avatarProfile').classList.add('avatarProfileonOpen');
   };
 
   const handleTooltipClose = () => {
-    setIsTooltipOpen(false);
     document.querySelector('.avatarProfile').classList.remove('avatarProfileonOpen');
     document.querySelector('.avatarProfile').classList.add('avatarProfileonClose');
   };
@@ -154,7 +151,7 @@ const ChatComponent = (props) => {
               </Tooltip>
 
 
-              <Tooltip leaveDelay={0} onOpen={handleTooltipOpen} onClose={handleTooltipClose} sx={{ borderRadius: '0px', backgroundColor: '#ffffff' }} color="neutral" placement="top" variant="soft"
+              <Tooltip onOpen={handleTooltipOpen} sx={{ borderRadius: '0px', backgroundColor: '#ffffff' }} color="neutral" placement="top" variant="soft"
                 title={
                   <div className='avatarProfile'>
                     <Stack className='avatarStack'>
@@ -173,13 +170,13 @@ const ChatComponent = (props) => {
                           <Button style={{position:'static', background: 'transparent', color: 'white' }} >View Profile</Button>
                           <ArrowForwardIosOutlinedIcon className='hoverArrow' style={{ marginLeft: '75px', color: 'white', transform: 'scale(0.8)' }}></ArrowForwardIosOutlinedIcon>
                         </div>
-                        <Divider style={{ height: '2px', marginTop: '7px', marginBottom: '0px', backgroundColor: '#ffffff80' }} orientation="horizontal" />
+                        <Divider style={{ height: '2px', marginTop: '7px', marginBottom: '0px', backgroundColor: '#ffffff26' }} orientation="horizontal" />
                         <div onClick={() => sendMessage("AvatarEdit", "EditorON")} style={{ marginTop: '7px' }} className='editavatarContainerV'>
                           <AccessibilityNewOutlinedIcon style={{ marginLeft: '25px', color: 'white' }} />
                           <Button onClick={() => sendMessage("AvatarEdit", "EditorON")} style={{position:'static', background: 'transparent', color: 'white' }} >Edit Avatar</Button>
                           <ArrowForwardIosOutlinedIcon style={{ marginLeft: '80px', color: 'white', transform: 'scale(0.8)' }}></ArrowForwardIosOutlinedIcon>
                         </div>
-                        <Divider style={{ height: '2px', marginTop: '7px', marginBottom: '0px', backgroundColor: '#ffffff80' }} orientation="horizontal" />
+                        <Divider style={{ height: '2px', marginTop: '7px', marginBottom: '0px', backgroundColor: '#ffffff26' }} orientation="horizontal" />
                         <div style={{ marginTop: '7px', marginBottom: '7px' }} className='editavatarContainer'>
                           <VideocamOutlinedIcon style={{ marginLeft: '25px', color: 'white' }} />
                           <Button style={{position:'static', background: 'transparent', color: 'white' }} >Toggle Webcam</Button>
