@@ -317,7 +317,7 @@ const UnityLoader = () => {
             {/* <FileUpload style={{position: 'absolute', zIndex: '15'}}></FileUpload> */}
             <Button style={{ position: 'absolute', zIndex: '15' }} onClick={ReactshowRPM} variant="soft">Edit Avatar - PreTest</Button>
           </div>)}
-          <Toaster className='toasterCSS' richColors position="top-center" />
+          <Toaster className='toasterCSS' richColors position="bottom-center" />
         <Unity className='container' unityProvider={unityProvider} style={{ display: isLoaded ? "block" : "none" }} />
       </div>
     </div>
