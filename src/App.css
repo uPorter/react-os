@@ -626,6 +626,13 @@ body {
 [data-rich-colors=true] [data-sonner-toast][data-type=success], [data-rich-colors=true] [data-sonner-toast][data-type=success] [data-close-button] {
   background: #0b41105e!important;
   backdrop-filter: blur(5px);
-  border-color: black!important;
+  border-color: #0b41100e!important;
+  color: white!important;
+}
+
+[data-rich-colors=true] [data-sonner-toast][data-type=error], [data-rich-colors=true] [data-sonner-toast][data-type=error] [data-close-button] {
+  background: #410b0b5e!important;
+  backdrop-filter: blur(5px);
+  border-color: #410b0b11!important;
   color: white!important;
 }
