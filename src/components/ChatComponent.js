@@ -84,7 +84,7 @@ const ChatComponent = (props) => {
       document.querySelector('.str-chat__small-message-input-emojiselect').style.visibility = 'hidden';
       const events = Object.keys(textarea);
       setToggleChatText('Show Chat')
-      sendMessage("AvatarEdit", "EditorON");
+      //sendMessage("AvatarEdit", "EditorON");
     }
     if (!isActive) {
       const element = document.querySelector('.str-chat__list');
@@ -97,7 +97,7 @@ const ChatComponent = (props) => {
       mainArea.classList.remove('prevent-select')
       document.querySelector('.str-chat__small-message-input-emojiselect').style.visibility = 'visible';
       setToggleChatText('Hide Chat')
-      sendMessage("AvatarEdit", "EditorOFF");
+      //sendMessage("AvatarEdit", "EditorOFF");
       textarea.addEventListener('keydown', (event) => {
         if (event.keyCode === 13 && !event.shiftKey) {
           event.preventDefault();
@@ -106,6 +106,12 @@ const ChatComponent = (props) => {
       });
     }
     setIsActive(!isActive);
+  }
+
+  const ReactshowRPM = () => {
+    window.setupRpmFrame();
+    window.showRpm();
+    //sendMessage("AvatarEdit", "EditorON");
   }
 
   const handleTooltipOpen = () => {
@@ -171,9 +177,9 @@ const ChatComponent = (props) => {
                           <ArrowForwardIosOutlinedIcon className='hoverArrow' style={{ marginLeft: '75px', color: 'white', transform: 'scale(0.8)' }}></ArrowForwardIosOutlinedIcon>
                         </div>
                         <Divider style={{ height: '2px', marginTop: '7px', marginBottom: '0px', backgroundColor: '#ffffff26' }} orientation="horizontal" />
-                        <div onClick={() => sendMessage("AvatarEdit", "EditorON")} style={{ marginTop: '7px' }} className='editavatarContainerV'>
+                        <div onClick={ReactshowRPM} style={{ marginTop: '7px' }} className='editavatarContainerV'>
                           <AccessibilityNewOutlinedIcon style={{ marginLeft: '25px', color: 'white' }} />
-                          <Button onClick={() => sendMessage("AvatarEdit", "EditorON")} style={{position:'static', background: 'transparent', color: 'white' }} >Edit Avatar</Button>
+                          <Button onClick={ReactshowRPM} style={{position:'static', background: 'transparent', color: 'white' }} >Edit Avatar</Button>
                           <ArrowForwardIosOutlinedIcon style={{ marginLeft: '80px', color: 'white', transform: 'scale(0.8)' }}></ArrowForwardIosOutlinedIcon>
                         </div>
                         <Divider style={{ height: '2px', marginTop: '7px', marginBottom: '0px', backgroundColor: '#ffffff26' }} orientation="horizontal" />
