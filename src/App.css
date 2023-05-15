@@ -622,3 +622,9 @@ body {
     transform: scale(0.9);
 	}
 }
+
+[data-rich-colors=true] [data-sonner-toast][data-type=success], [data-rich-colors=true] [data-sonner-toast][data-type=success] [data-close-button] {
+  background: #0B4110!important;
+  border-color: black!important;
+  color: white!important;
+}
