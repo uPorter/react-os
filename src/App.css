@@ -628,6 +628,7 @@ body {
   backdrop-filter: blur(5px);
   border-color: #0b41100e!important;
   color: white!important;
+  margin-bottom: 65px!important;
 }
 
 [data-rich-colors=true] [data-sonner-toast][data-type=error], [data-rich-colors=true] [data-sonner-toast][data-type=error] [data-close-button] {
@@ -635,4 +636,5 @@ body {
   backdrop-filter: blur(5px);
   border-color: #410b0b11!important;
   color: white!important;
+  margin-bottom: 65px!important;
 }
