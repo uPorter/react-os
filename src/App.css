@@ -416,7 +416,7 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #ddd;
+  background: #dddddd00;
   border-radius: 25px;
 }
 
