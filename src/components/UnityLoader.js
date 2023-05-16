@@ -54,27 +54,12 @@ const UnityLoader = () => {
   }
 
   useEffect(() => {
-    const fetchData = async () => {
-      if (!userID) {
-        const newUID = generateUID(16);
-        setUserID(newUID);
-        localStorage.setItem('userID', newUID);
-      }
-  
-      if (!userToken) {
-        // 2 saniye beklemek için sleep fonksiyonunu kullanabilirsiniz
-        const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-        await sleep(2000);
-  
-        const data = await getUserToken();
-        setUserToken(data.token);
-        console.log(data.token);
-      }
-    };
-  
-    fetchData();
-  }, [userID, userToken]);
-  
+    if (!userID) {
+      const newUID = generateUID(16);
+      setUserID(newUID);
+      localStorage.setItem('userID', newUID);
+    }
+  }, [userID]);
 
   
 
