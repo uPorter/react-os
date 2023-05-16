@@ -436,9 +436,11 @@
   bottom: 100%;
   right: 0;
   -webkit-transform: scale(1);
-  transform: scale(1);
+  transform: scale(1.25);
   -webkit-transform-origin: 100% 100%;
+  margin-bottom: 10px;
   transform-origin: 100% 100%;
+  backdrop-filter: blur(12px);
 }
 
 
@@ -832,3 +834,85 @@ iframe{
   margin-right: 0px;
 }
 
+.emoji-mart {
+  font-family: -apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif;
+  font-size: 16px;
+  display: inline-block;
+  color: #232528;
+  border: 1px solid #00000040;
+  border-radius: 5px;
+  background: #00000040;
+}
+
+.emoji-mart-anchor {
+  position: relative;
+  display: block;
+  flex: 1 1 auto;
+  color: #ffffff;
+  text-align: center;
+  padding: 12px 4px;
+  overflow: hidden;
+  transition: color .1s ease-out;
+  margin: 0;
+  box-shadow: none;
+  background: none;
+  border: none;
+}
+
+.emoji-mart-search {
+  margin-bottom: 8px;
+  margin-top: 6px;
+  padding: 0 6px;
+  position: relative;
+}
+
+.emoji-mart-search input {
+  background: #00000040;
+  font-size: 16px;
+  display: block;
+  width: 100%;
+  color: white;
+  padding: 5px 25px 6px 10px;
+  border-radius: 5px;
+  border: 1px solid #00000040;
+  outline: 0;
+  font-family: "Public Sans",sans-serif!important;
+}
+
+.emoji-mart-search input::placeholder {
+  color: white;
+  opacity: 0.7;
+}
+
+.emoji-mart-search-icon {
+  position: absolute;
+  top: 7px;
+  right: 11px;
+  fill: white;
+  color: white;
+  z-index: 2;
+  opacity: 1;
+  padding: 2px 5px 1px;
+  border: none;
+  background: none;
+}
+
+.emoji-mart-category-label span {
+  display: block;
+  width: 100%;
+  font-weight: 500;
+  color: white;
+  padding: 5px 6px;
+  background-color: #fff;
+  border-radius: 25px;
+  background-color: #00000000;
+  backdrop-filter: blur(50px);
+  position: relative;
+}
+
+.emoji-mart-category-label {
+  z-index: 2;
+  position: relative;
+  position: static;
+  top: 0;
+}
