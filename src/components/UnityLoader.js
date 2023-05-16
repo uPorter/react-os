@@ -40,6 +40,29 @@ const UnityLoader = () => {
   const [userImage, setUserImage] = useState(localStorage.getItem('userImage') || 'https://models.readyplayer.me/63d5148460d1b8cc82dca9db.png');
   const [userSigned, setUserSigned] = useState(JSON.parse(localStorage.getItem('userSigned')) || false)
 
+
+  function generateUID(length) {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let uid = '';
+    
+    for (let i = 0; i < length; i++) {
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      uid += characters[randomIndex];
+    }
+    
+    return uid;
+  }
+
+  useEffect(() => {
+    if (!userID) {
+      const newUID = generateUID(16);
+      setUserID(newUID);
+      localStorage.setItem('userID', newUID);
+    }
+  }, [userID]);
+
+  
+
   useEffect(() => {
     localStorage.setItem('userID', userID);
   }, [userID]);
@@ -72,8 +95,9 @@ const UnityLoader = () => {
   const handleChange = (e) => {
     const { value } = e.target;
     const sanitizedValue = value.replace(/[^a-zA-Z0-9]/g, '');
-    setUserID(sanitizedValue);
+    //setUserID(sanitizedValue);
     setUserName(value);
+    console.log(userID);
   };
 
   const handleClick = async () => {
