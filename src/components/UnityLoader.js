@@ -53,13 +53,18 @@ const UnityLoader = () => {
     return uid;
   }
 
-  useEffect(() => {
+  useEffect( async () => {
     if (!userID) {
       const newUID = generateUID(16);
       setUserID(newUID);
       localStorage.setItem('userID', newUID);
     }
-  }, [userID]);
+    if (!userToken) {
+      const data = await getUserToken();
+      setUserToken(data.token);
+      console.log(data.token);
+    }
+  }, [userID,userToken]);
 
   
 
