@@ -206,7 +206,7 @@ const ChatComponent = (props) => {
                   </div>
                 }>
                 <Avatar className='toggle-chat2' style={{
-                  bottom: '7px', right: '-6px', position: 'absolute', width: '3.8rem', height: '3.8rem', zIndex: '999', background: '#2979FF',borderRadius:'25px',
+                  bottom: '9px', right: '0px', position: 'absolute', width: '3.8rem', height: '3.8rem', zIndex: '999', background: '#2979FF',borderRadius:'25px',
                   '&:hover': {
                     transform: 'scale(1.1)',
                     background: '#2979FF'
