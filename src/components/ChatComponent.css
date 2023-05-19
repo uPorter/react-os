@@ -295,15 +295,6 @@
   justify-content: flex-start;
 }
 
-/* .str-chat__small-message-input textarea::placeholder {
-  font-family: 'Public Sans', sans-serif;
-  font-weight: 600;
-  color: white;
-  text-align: center;
-  vertical-align: middle;
-  text-indent: 0.5em;
-} */
-
 .rta__textarea.str-chat__textarea__textarea::placeholder {
   color: rgba(255, 255, 255, 0.801);
   text-align-last: left;
@@ -328,16 +319,6 @@
   bottom: 0px;
 }
 
-.str-chat__small-message-input textarea {
-  padding-top: 12px!important;
-  padding-left: 20px!important;
-  background: #00000040 ;
-  min-height: 45px;
-  font-size: 15px;
-  padding: 10px 44px 8px 8px;
-  border-radius: 25px;
-  border: 2px solid #00000000;
-}
 
 .str-chat__small-message-input-emojiselect, .str-chat__small-message-input .rfu-file-upload-button {
   position: absolute;
@@ -354,7 +335,7 @@
   transform: scale(1.15);
   top: 50%;
   margin-top: -14px;
-  right: 50px;
+  right: 42px;
   transition: .1s cubic-bezier(.46,.03,.52,.96) 0s;
 }
 
@@ -374,6 +355,7 @@
   border-radius: 25px;
   color: #c5c5c5;
   font-weight: 600!important;
+  transition: .4s cubic-bezier(.46,.03,.52,.96) 0s;
 }
 
 /* body {
@@ -887,6 +869,7 @@ iframe{
   transform: scale(1.1);
   overflow: hidden;
   width: 265px!important;
+  transition: .4s cubic-bezier(.46,.03,.52,.96) 0s;
 }
 
 
