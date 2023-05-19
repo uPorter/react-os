@@ -398,15 +398,16 @@
   height: 24px;
   display: inline-flex;
   align-items: center;
-  border: 1px solid rgb(0 0 0 / 0%);
+  border: 1px solid transparent;
   justify-content: center;
   background-size: 44px 44px;
-  fill: rgb(255, 255, 255);
+  fill: #fff;
+  -webkit-transform: scale(1.15);
   transform: scale(1.15);
   top: 50%;
-  margin-top: -13px;
+  margin-top: -14px;
   right: 50px;
-  transition: .1s cubic-bezier(0.46, 0.03, 0.52, 0.96) 0s;
+  transition: .1s cubic-bezier(.46,.03,.52,.96) 0s;
 }
 
 .rfu-file-upload-button label {
