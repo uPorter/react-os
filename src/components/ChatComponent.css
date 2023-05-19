@@ -405,7 +405,7 @@
   transform: scale(1.15);
   top: 50%;
   margin-top: -13px;
-  right: 16px;
+  right: 50px;
   transition: .1s cubic-bezier(0.46, 0.03, 0.52, 0.96) 0s;
 }
 
