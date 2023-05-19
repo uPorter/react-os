@@ -295,6 +295,15 @@
   justify-content: flex-start;
 }
 
+/* .str-chat__small-message-input textarea::placeholder {
+  font-family: 'Public Sans', sans-serif;
+  font-weight: 600;
+  color: white;
+  text-align: center;
+  vertical-align: middle;
+  text-indent: 0.5em;
+} */
+
 .rta__textarea.str-chat__textarea__textarea::placeholder {
   color: rgba(255, 255, 255, 0.801);
   text-align-last: left;
@@ -319,6 +328,16 @@
   bottom: 0px;
 }
 
+.str-chat__small-message-input textarea {
+  padding-top: 12px!important;
+  padding-left: 20px!important;
+  background: #00000040 ;
+  min-height: 45px;
+  font-size: 15px;
+  padding: 10px 44px 8px 8px;
+  border-radius: 25px;
+  border: 2px solid #00000000;
+}
 
 .str-chat__small-message-input-emojiselect, .str-chat__small-message-input .rfu-file-upload-button {
   position: absolute;
