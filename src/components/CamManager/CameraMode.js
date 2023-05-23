@@ -8,7 +8,7 @@ import Icon3 from './Icon3';
 
 const CameraMode = () => {
   const [isExpanded, setIsExpanded] = useState(false);
-  const [selectedObject, setSelectedObject] = useState(1);
+  const [selectedObject, setSelectedObject] = useState(2);
 
   const handleHover = () => {
     setIsExpanded(true);
