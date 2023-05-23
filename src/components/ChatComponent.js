@@ -21,6 +21,7 @@ import Divider from '@mui/joy/Divider';
 import Switch from '@mui/joy/Switch';
 import Typography from '@mui/joy/Typography';
 import ManageAccountsOutlinedIcon from '@mui/icons-material/ManageAccountsOutlined';
+import CameraMode from './CamManager/CameraMode';
 
 
 
@@ -136,6 +137,7 @@ const ChatComponent = (props) => {
               <ChannelHeader live />
               <MessageList />
               <MessageInput Input={MessageInputSmall} onSubmit={testClick} focus />
+              <CameraMode/>
               <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
                 fontStyle: 'bold',
                 fontWeight: 'Bold',
