@@ -474,10 +474,6 @@
   transition: .2s cubic-bezier(0.46, 0.03, 0.52, 0.96) 0s;
 }
 
-.toggle-chat2:hover{
-  transform: scale(1.1);
-}
-
 .str-chat__send-button {
   margin-left: 10px;
   border: 0;
