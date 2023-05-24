@@ -22,9 +22,7 @@ import Switch from '@mui/joy/Switch';
 import Typography from '@mui/joy/Typography';
 import ManageAccountsOutlinedIcon from '@mui/icons-material/ManageAccountsOutlined';
 import CameraMode from './CamManager/CameraMode';
-
-
-
+import Fade from '@mui/material/Fade';
 
 const chatClient = StreamChat.getInstance('d9m7j2mj5ju8');
 
@@ -159,7 +157,7 @@ const ChatComponent = (props) => {
               </Tooltip>
 
 
-              <Tooltip onOpen={handleTooltipOpen} onMouseLeave={handleTooltipClose} sx={{ borderRadius: '0px', backgroundColor: '#ffffff' }} color="neutral" placement="top" variant="soft"
+              <Tooltip onOpen={handleTooltipOpen} onMouseLeave={handleTooltipClose} TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} sx={{ borderRadius: '0px', backgroundColor: '#ffffff' }} color="neutral" placement="top" variant="soft"
                 title={
                   <div className='avatarProfile'>
                     <Stack className='avatarStack'>
