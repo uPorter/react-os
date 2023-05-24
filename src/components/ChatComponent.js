@@ -135,7 +135,7 @@ const ChatComponent = (props) => {
               <ChannelHeader live />
               <MessageList />
               <MessageInput Input={MessageInputSmall} onSubmit={testClick} focus />
-              <CameraMode/>
+              <CameraMode sendMessage={sendMessage}/>
               <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
                 fontStyle: 'bold',
                 fontWeight: 'Bold',
