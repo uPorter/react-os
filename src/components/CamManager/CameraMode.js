@@ -6,7 +6,8 @@ import Icon1 from './Icon1';
 import Icon2 from './Icon2';
 import Icon3 from './Icon3';
 
-const CameraMode = () => {
+const CameraMode = (props) => {
+  const { sendMessage } = props;
   const [isExpanded, setIsExpanded] = useState(false);
   const [selectedObject, setSelectedObject] = useState(2);
 
@@ -22,6 +23,23 @@ const CameraMode = () => {
     setSelectedObject(objectId);
   };
 
+  const autoRotate = () => {
+    handleObjectSelect(1)
+    sendMessage("CameraManager", "AutoOrbitVoid");
+  }
+
+  const dragController = () => {
+    handleObjectSelect(2)
+    sendMessage("CameraManager", "DragControllerVoid");
+  }
+
+  const lockOn = () => {
+    handleObjectSelect(3)
+    sendMessage("CameraManager", "LockOnVoid");
+  }
+
+
+
   return (
     <div
         className={`layout-container ${isExpanded ? 'expanded' : ''}`}
@@ -31,7 +49,7 @@ const CameraMode = () => {
         <div className={`object ${isExpanded ? 'visible' : ''}`}>
           <IconButton
             className={`object-icon ${selectedObject === 1 ? 'selected' : ''}`}
-            onClick={() => handleObjectSelect(1)}
+            onClick={autoRotate}
           >
             <Icon1 />
           </IconButton>
@@ -39,7 +57,7 @@ const CameraMode = () => {
         <div className={`object ${isExpanded ? 'visible' : ''}`}>
           <IconButton
             className={`object-icon ${selectedObject === 2 ? 'selected' : ''}`}
-            onClick={() => handleObjectSelect(2)}
+            onClick={dragController}
           >
             <Icon2 />
           </IconButton>
@@ -47,7 +65,7 @@ const CameraMode = () => {
         <div className={`object ${isExpanded ? 'visible' : ''}`}>
           <IconButton
             className={`object-icon ${selectedObject === 3 ? 'selected' : ''}`}
-            onClick={() => handleObjectSelect(3)}
+            onClick={lockOn}
           >
             <Icon3 />
           </IconButton>
