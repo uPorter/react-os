@@ -161,7 +161,7 @@ const ChatComponent = (props) => {
                 title={
                   <div className='avatarProfile'>
                     <Stack className='avatarStack'>
-                      <Avatar onMouseLeave={handleTooltipClose} className='avatarProfileSection' style={{
+                      <Avatar className='avatarProfileSection' style={{
                         width: '5.3rem', height: '5.3rem', zIndex: '999', background: '#2979FF',
                         '&:hover': {
                           transform: 'scale(1.1)',
