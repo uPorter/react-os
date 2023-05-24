@@ -696,7 +696,7 @@ iframe{
 }
 
 .avatarProfileonClose {
-  animation: scale-down-br 0.1s ease 0s 1 reverse forwards;
+  animation: scale-down-br 0.3s ease 0s 1 reverse forwards;
 }
 
 .avatarProfileSection{
