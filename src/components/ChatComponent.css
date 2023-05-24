@@ -629,7 +629,7 @@ iframe{
   background-color: #00000050;
   position: relative;
   display: flex;
-  backdrop-filter: blur(12px) opacity(1);
+  backdrop-filter: blur(12px);
   width: 315px;
   height: 395px;
   right: 15px;

@@ -157,7 +157,7 @@ const ChatComponent = (props) => {
               </Tooltip>
 
 
-              <Tooltip onOpen={handleTooltipOpen} onMouseLeave={handleTooltipClose} TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} sx={{ borderRadius: '0px', backgroundColor: '#ffffff' }} color="neutral" placement="top" variant="soft"
+              <Tooltip onOpen={handleTooltipOpen} onMouseLeave={handleTooltipClose} sx={{ borderRadius: '0px', backgroundColor: '#ffffff' }} color="neutral" placement="top" variant="soft"
                 title={
                   <div className='avatarProfile'>
                     <Stack className='avatarStack'>
