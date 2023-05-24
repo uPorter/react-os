@@ -3,25 +3,27 @@ import Box from '@mui/joy/Box';
 import IconButton from '@mui/joy/IconButton';
 import Button from '@mui/joy/Button';
 import Tooltip from '@mui/material/Tooltip';
+import Grow from '@mui/material/Grow';
 import TuneRoundedIcon from '@mui/icons-material/TuneRounded';
 import CameraAltOutlinedIcon from '@mui/icons-material/CameraAltOutlined';
 import PresentToAllOutlinedIcon from '@mui/icons-material/PresentToAllOutlined';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import MicOffOutlinedIcon from '@mui/icons-material/MicOffOutlined';
-import { Stack } from '@mui/material';
+import { Slide, Stack } from '@mui/material';
+import Fade from '@mui/material/Fade';
 
 
 export class Dock extends Component {
     render() {
         return (<div style={{ display: "flex", justifyContent: "center" }}>
-            <Box sx={{transform: 'scale(0.9)',display: 'flex', gap: 2, flexWrap: 'wrap', alignItems: 'center', zIndex: '15' }}>
-                <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive  color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" endDecorator={<TuneRoundedIcon fontSize="small"></TuneRoundedIcon>} sx={{
+            <Box sx={{ transform: 'scale(0.9)', display: 'flex', gap: 2, flexWrap: 'wrap', alignItems: 'center', zIndex: '15' }}>
+                <Tooltip followCursor className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" endDecorator={<TuneRoundedIcon fontSize="small"></TuneRoundedIcon>} sx={{
                     fontStyle: 'bold',
                     fontWeight: 'Bold',
                     color: 'white',
-                    backgroundColor:'#00000040',
+                    backgroundColor: '#00000040',
                     '&:hover': {
-                        backgroundColor:'#00000040',
+                        backgroundColor: '#00000040',
                     },
                 }}>Turn On Mic</Button>}>
                     <IconButton className='dockButtons' variant="solid" sx={{
@@ -33,17 +35,16 @@ export class Dock extends Component {
                 </Tooltip>
 
 
-                <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }}  color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain"
-                    // endDecorator={<TuneRoundedIcon fontSize="small" ></TuneRoundedIcon>}
-                    sx={{
-                        fontStyle: 'bold',
-                        fontWeight: 'Bold',
-                        color: 'white',
-                        backgroundColor:'#00000040',
-                        '&:hover': {
-                            backgroundColor:'#00000040',
-                        },
-                    }}>Reactions</Button>}>
+                <Tooltip followCursor TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain"
+                        sx={{
+                            fontStyle: 'bold',
+                            fontWeight: 'Bold',
+                            color: 'white',
+                            backgroundColor: '#00000040',
+                            '&:hover': {
+                                backgroundColor: '#00000040',
+                            },
+                        }}>Reactions</Button>}>
                     <IconButton className='dockButtons' variant="solid" sx={{
                         "--IconButton-size": "55px",
                         "--IconButton-radius": "50px",
@@ -66,7 +67,7 @@ export class Dock extends Component {
                 </Tooltip>
 
 
-                <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }}  color="neutral" placement="top" variant="soft" title={
+                <Tooltip followCursor className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} color="neutral" placement="top" variant="soft" title={
                     <Stack>
                         <Button size="sm" variant="plain" sx={{
                             fontStyle: 'bold',
@@ -77,9 +78,9 @@ export class Dock extends Component {
                             borderEndEndRadius: '0px',
                             borderEndStartRadius: '0px',
                             color: 'white',
-                            backgroundColor:'#00000040',
+                            backgroundColor: '#00000040',
                             '&:hover': {
-                                backgroundColor:'#00000040',
+                                backgroundColor: '#00000040',
                             },
                         }}>Take a Shot!</Button>
                         <Button size="sm" variant="plain" sx={{
@@ -91,9 +92,9 @@ export class Dock extends Component {
                             paddingTop: '5px',
                             fontWeight: 'Bold',
                             color: 'white',
-                            backgroundColor:'#00000040',
+                            backgroundColor: '#00000040',
                             '&:hover': {
-                                backgroundColor:'#00000040',
+                                backgroundColor: '#00000040',
                             },
                         }}>Record Screen</Button>
                     </Stack>
@@ -106,13 +107,13 @@ export class Dock extends Component {
                     </IconButton>
                 </Tooltip>
 
-                <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }}  color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
+                <Tooltip followCursor className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
                     fontStyle: 'bold',
                     fontWeight: 'Bold',
                     color: 'white',
-                    backgroundColor:'#00000040',
+                    backgroundColor: '#00000040',
                     '&:hover': {
-                        backgroundColor:'#00000040',
+                        backgroundColor: '#00000040',
                     },
                 }}>Share Screen</Button>}>
                     <IconButton className='dockButtons' variant="solid" sx={{
@@ -123,13 +124,13 @@ export class Dock extends Component {
                     </IconButton>
                 </Tooltip>
 
-                <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }}  color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
+                <Tooltip followCursor className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
                     fontStyle: 'bold',
                     fontWeight: 'Bold',
                     color: 'white',
-                    backgroundColor:'#00000040',
+                    backgroundColor: '#00000040',
                     '&:hover': {
-                        backgroundColor:'#00000040',
+                        backgroundColor: '#00000040',
                     },
                 }}>Add Content</Button>}>
                     <IconButton className='dockButtons' variant="solid" sx={{
