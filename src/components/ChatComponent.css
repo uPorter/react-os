@@ -691,11 +691,11 @@ iframe{
 
 
 .avatarProfileonOpen {
-  animation: scale-up-br 0.35s ease 0s 1 normal forwards;
+  animation: scale-up-br 0.25s ease 0s 1 normal forwards;
 }
 
 .avatarProfileonClose {
-  animation: scale-down-br 0.35s ease 0s 1 normal forwards;
+  animation: scale-down-br 0.25s ease 0s 1 normal forwards;
 }
 
 .avatarProfileSection{
