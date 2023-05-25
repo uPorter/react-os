@@ -81,7 +81,6 @@ const CameraMode = (props) => {
             {selectedObject === 3 && <Icon3 />}
           </div>
         )}
-      <Toaster className='toasterCSS' richColors position="bottom-center" />
       </div>
 
   );
