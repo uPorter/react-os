@@ -5,6 +5,7 @@ import './Layout.css';
 import Icon1 from './Icon1';
 import Icon2 from './Icon2';
 import Icon3 from './Icon3';
+import { Toaster, toast } from 'sonner'
 
 const CameraMode = (props) => {
   const { sendMessage } = props;
@@ -26,16 +27,19 @@ const CameraMode = (props) => {
   const autoRotate = () => {
     handleObjectSelect(1)
     sendMessage("CameraManager", "AutoOrbitVoid");
+    toast.success('Auto Rotate Activated!');
   }
 
   const dragController = () => {
     handleObjectSelect(2)
     sendMessage("CameraManager", "DragControllerVoid");
+    toast.success('Drag Controller Activated!');
   }
 
   const lockOn = () => {
     handleObjectSelect(3)
     sendMessage("CameraManager", "LockOnVoid");
+    toast.success('LockOn Activated!');
   }
 
 
@@ -77,6 +81,7 @@ const CameraMode = (props) => {
             {selectedObject === 3 && <Icon3 />}
           </div>
         )}
+      <Toaster className='toasterCSS' richColors position="bottom-center" />
       </div>
 
   );
