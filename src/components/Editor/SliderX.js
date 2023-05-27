@@ -38,10 +38,17 @@ const SliderX = (props) => {
   }, [addEventListener, removeEventListener, handleXCord]);
 
   useEffect(() => {
-    if (x.get() === 0) {
-      setIsUpdatingValue(true);
-      console.log("Thumb Value is:" + "0")
-    }
+    const checkXValue = () => {
+      if (x.get() === 0) {
+        setIsUpdatingValue(true);
+      }
+    };
+  
+    const interval = setInterval(checkXValue, 100); // Her 100ms'de bir kontrol et
+  
+    return () => {
+      clearInterval(interval); // Temizleme işlemi
+    };
   }, [x]);
 
   const handleDragEnd = useCallback(
