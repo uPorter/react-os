@@ -15,10 +15,10 @@ import Fade from '@mui/material/Fade';
 
 export class Dock extends Component {
     render() {
+        const { handleEditorMode } = this.props;
         return (<div style={{ display: "flex", justifyContent: "center" }}>
             <Box sx={{ transform: 'scale(0.9)', display: 'flex', gap: 2, flexWrap: 'wrap', alignItems: 'center', zIndex: '15' }}>
                 <Tooltip followCursor className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" endDecorator={<TuneRoundedIcon fontSize="small"></TuneRoundedIcon>} sx={{
-                    marginBottom: '10px',
                     fontStyle: 'bold',
                     fontWeight: 'Bold',
                     color: 'white',
@@ -38,7 +38,6 @@ export class Dock extends Component {
 
                 <Tooltip followCursor TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain"
                         sx={{
-                            marginBottom: '10px',
                             fontStyle: 'bold',
                             fontWeight: 'Bold',
                             color: 'white',
@@ -86,7 +85,6 @@ export class Dock extends Component {
                             },
                         }}>Take a Shot!</Button>
                         <Button size="sm" variant="plain" sx={{
-                            marginBottom: '10px',
                             fontStyle: 'bold',
                             padding: '20px',
                             borderTopLeftRadius: '0px',
@@ -112,7 +110,6 @@ export class Dock extends Component {
 
                 <Tooltip followCursor className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
                     fontStyle: 'bold',
-                    marginBottom: '10px',
                     fontWeight: 'Bold',
                     color: 'white',
                     backgroundColor: '#00000040',
@@ -130,7 +127,6 @@ export class Dock extends Component {
 
                 <Tooltip followCursor className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
                     fontStyle: 'bold',
-                    marginBottom: '10px',
                     fontWeight: 'Bold',
                     color: 'white',
                     backgroundColor: '#00000040',
@@ -138,7 +134,7 @@ export class Dock extends Component {
                         backgroundColor: '#00000040',
                     },
                 }}>Add Content</Button>}>
-                    <IconButton className='dockButtons' variant="solid" sx={{
+                    <IconButton onClick={handleEditorMode} className='dockButtons' variant="solid" sx={{
                         "--IconButton-size": "55px",
                         "--IconButton-radius": "50px",
                     }}>
