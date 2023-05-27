@@ -627,7 +627,7 @@ body {
 
 @keyframes showAnimation {
 	0% {
-		transform: translateX(250px);
+		transform: translateX(380px);
 	}
 
 	100% {
