@@ -52,26 +52,23 @@ const SliderRotate = (props) => {
     };
   }, [x]);
 
-  const handleDragEnd = async (_, { offset }) => {
+  const handleDragEnd = useCallback(async (_, { offset }) => {
     const increment = offset.x / 500;
     const newValue = sliderValue + increment;
+    const targetX = 500 / 100;
   
     setIsUpdatingValue(false); // Değer güncellemesini durdur
   
-    const targetX = 0; // Animasyonun başlangıç noktası
-  
     const handleAnimationComplete = () => {
-      x.set(targetX);
-      controls.set({ x: targetX, opacity: 1 });
+      x.set(0);
       setSliderValue(parseFloat(displayValue.get().toFixed(2)));
       sendMessage("Cube", "SendRotationToReact");
-      setIsUpdatingValue(true); // Değer güncellemesini yeniden başlat
+  
+      // İşlem tamamlandıktan sonra değeri tekrar güncelle
     };
   
-    await controls.start({ x: targetX, opacity: 1 });
-    handleAnimationComplete();
-  };
-  
+    await controls.start({ x: -targetX, opacity: 1 }).then(handleAnimationComplete);
+  }, [sliderValue, x, controls]);
   
 
   const displayValue = useTransform(
@@ -80,29 +77,15 @@ const SliderRotate = (props) => {
     [sliderValue - 1, sliderValue + 1]
   );
 
-  const handleAnimationFrame = useCallback(
-    (time) => {
-      if (previousTimeRef.current !== undefined) {
-        const deltaTime = time - previousTimeRef.current;
-        if (isUpdatingValue) {
-          setSliderValue((prevValue) => {
-            const delta = displayValue.get() - prevValue;
-            const increment = isNaN(delta) ? 0 : delta * 2;
-            return prevValue + increment;
-          });
-        }
-      }
-      previousTimeRef.current = time;
-      requestRef.current = requestAnimationFrame(handleAnimationFrame);
-    },
-    [isUpdatingValue]
-  );
-  
-  useEffect(() => {
-    requestRef.current = requestAnimationFrame(handleAnimationFrame);
-    return () => cancelAnimationFrame(requestRef.current);
-  }, [handleAnimationFrame]);
-  
+  useAnimationFrame((deltaTime) => {
+    if (isUpdatingValue) {
+      setSliderValue((prevValue) => {
+        const delta = displayValue.get() - prevValue;
+        const increment = isNaN(delta) ? 0 : delta * 2;
+        return prevValue + increment;
+      });
+    }
+  });
 
   return (
     <div
