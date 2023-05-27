@@ -20,20 +20,19 @@ const SliderRotate = ({}) => {
     } else {
       x.set(offset.x);
     }
-    console.log("Rotation: " + parseFloat(displayValue.get().toFixed(2)));
+    console.log("Rotate: " + parseFloat(displayValue.get().toFixed(2)));
   }, []);
 
   const handleDragEnd = useCallback(
     async (_, { offset }) => {
       const increment = offset.x / 500;
       const newValue = sliderValue + increment;
-      //const roundedValue = Math.round(newValue);
+      const roundedValue = Math.round(newValue);
       const targetX = 500 / 100;
 
       controls.start({ x: -targetX, opacity: 1 }).then(() => {
         x.set(0);
-        setSliderValue(parseFloat(displayValue.get().toFixed(2)));
-        //setSliderValue(roundedValue); // Değerin App bileşenine iletilmesi
+        setSliderValue(roundedValue); // Değerin App bileşenine iletilmesi
       });
     },
     [sliderValue, x, controls]
@@ -44,7 +43,7 @@ const SliderRotate = ({}) => {
     [-100, 100],
     [sliderValue - 1, sliderValue + 1]
   );
-    
+
   useAnimationFrame(() => {
     setSliderValue((prevValue) => {
       const delta = displayValue.get() - prevValue;
