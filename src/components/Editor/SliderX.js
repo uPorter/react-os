@@ -40,8 +40,8 @@ const SliderX = (props) => {
   useEffect(() => {
     const checkXValue = () => {
       if (x.get() === 0) {
-        setIsUpdatingValue(true);
-        console.log("Update Enabled")
+        if(setIsUpdatingValue === false){setIsUpdatingValue(true);}
+        sendMessage("Cube", "SendXCoordToReact");
       }
     };
   
