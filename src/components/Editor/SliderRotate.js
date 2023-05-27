@@ -83,14 +83,14 @@ const SliderRotate = (props) => {
   const displayValue = useTransform(
     x,
     [-100, 100],
-    [sliderValue - 3, sliderValue + 3]
+    [sliderValue - 1, sliderValue + 1]
   );
 
   useAnimationFrame((deltaTime) => {
     if (isUpdatingValue) {
       setSliderValue((prevValue) => {
         const delta = displayValue.get() - prevValue;
-        const increment = isNaN(delta) ? 0 : delta * 0.05;
+        const increment = isNaN(delta) ? 0 : delta * 1;
         return prevValue + increment;
       });
     }
