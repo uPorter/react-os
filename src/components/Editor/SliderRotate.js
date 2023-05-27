@@ -83,7 +83,7 @@ const SliderRotate = (props) => {
   const displayValue = useTransform(
     x,
     [-100, 100],
-    [sliderValue - 1, sliderValue + 1]
+    [sliderValue - 3, sliderValue + 3]
   );
 
   useAnimationFrame((deltaTime) => {
