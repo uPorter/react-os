@@ -25,13 +25,6 @@ const SliderX = (props) => {
     sendMessage("Cube", "ChangeXPosition", parseFloat(displayValue.get().toFixed(2)));
   }, []);
 
-  useEffect(() => {
-    if (x.get() === 0) {
-      // İstediğiniz kodu burada çalıştırın
-      sendMessage("Cube", "SendXCoordToReact");
-    }
-  }, [x]);
-
   const handleXCord = useCallback((setXCord) => {
     setSliderValue(parseFloat(setXCord));
   }, []);
@@ -44,12 +37,6 @@ const SliderX = (props) => {
     };
   }, [addEventListener, removeEventListener, handleXCord]);
 
-  useEffect(() => {
-    if (isUpdatingValue && x.get() !== 0) {
-      setIsUpdatingValue(false); // Değer güncellemesini durdur
-    }
-  }, [isUpdatingValue, x]);
-  
   const handleDragEnd = useCallback(
     async (_, { offset }) => {
       const increment = offset.x / 500;
