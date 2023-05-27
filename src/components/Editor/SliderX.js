@@ -116,7 +116,6 @@ const SliderX = (props) => {
       >
         <motion.div
           className="slider-thumb"
-          onClick={() => sendMessage("Cube", "SendXCoordToReact")}
           style={{
             transition:
               "box-shadow .2s cubic-bezier(0.46, 0.03, 0.52, 0.96) 0s",
