@@ -21,9 +21,15 @@ const SliderX = (props) => {
     } else {
       x.set(offset.x);
     }
-    console.log("X:" + parseFloat(displayValue.get().toFixed(2)));
     sendMessage("Cube", "ChangeXPosition", parseFloat(displayValue.get().toFixed(2)));
   }, []);
+
+  useEffect(() => {
+    if (x.get() === 0) {
+      // İstediğiniz kodu burada çalıştırın
+      sendMessage("Cube", "SendXCoordToReact");
+    }
+  }, [x]);
 
   const handleXCord = useCallback((setXCord) => {
     setSliderValue(parseFloat(setXCord));
@@ -47,7 +53,6 @@ const SliderX = (props) => {
       controls.start({ x: -targetX, opacity: 1 }).then(() => {
         x.set(0);
         setSliderValue(parseFloat(displayValue.get().toFixed(2)));
-        sendMessage("Cube", "SendXCoordToReact");
         //setSliderValue(roundedValue); // Değerin App bileşenine iletilmesi
       });
     },
