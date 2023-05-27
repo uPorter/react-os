@@ -11,7 +11,7 @@ import './style.css';
 
 const EditorPanel = (props) => {
   const [sliderValueX, setSliderValueX] = React.useState(0);
-  const { handleEditorMode } = props;
+  const { handleEditorMode, sendMessage } = props;
   const handleSliderChangeX = (value) => {
     setSliderValueX(value);
     console.log(sliderValueX);
@@ -94,7 +94,7 @@ const EditorPanel = (props) => {
             x
           </Typography>
         </div>
-        <SliderX />
+        <SliderX sendMessage={sendMessage}/>
 
         <div
           style={{

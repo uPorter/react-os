@@ -7,7 +7,8 @@ import {
 } from "framer-motion/dist/framer-motion";
 import Input from "@mui/joy/Input";
 
-const SliderX = ({}) => {
+const SliderX = (props) => {
+  const { sendMessage } = props;
   const [sliderValue, setSliderValue] = useState(0);
   const x = useMotionValue(0);
   const controls = useAnimation();
@@ -21,6 +22,7 @@ const SliderX = ({}) => {
       x.set(offset.x);
     }
     console.log("X:" + parseFloat(displayValue.get().toFixed(2)));
+    sendMessage("Cube", "ChangeXPosition", displayValue.get().toFixed(2));
   }, []);
 
   const handleDragEnd = useCallback(
