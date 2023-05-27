@@ -56,11 +56,11 @@ const SliderX = (props) => {
       // İstediğiniz kodu burada çalıştırın
   
       controls.start({ x: -targetX, opacity: 1 }).then(() => {
-        x.set(0);
+        await setIsUpdatingValue(true);
+        await x.set(0);
         setSliderValue(parseFloat(displayValue.get().toFixed(2)));
         sendMessage("Cube", "SendXCoordToReact");
         //setSliderValue(roundedValue); // Değerin App bileşenine iletilmesi
-        setIsUpdatingValue(true); // Değer güncellemesini tekrar başlat
       });
     },
     [sliderValue, x, controls]
@@ -122,6 +122,7 @@ const SliderX = (props) => {
       >
         <motion.div
           className="slider-thumb"
+          onClick={() => sendMessage("Cube", "SendXCoordToReact")}
           style={{
             transition:
               "box-shadow .2s cubic-bezier(0.46, 0.03, 0.52, 0.96) 0s",
