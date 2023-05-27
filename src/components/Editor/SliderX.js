@@ -44,6 +44,12 @@ const SliderX = (props) => {
     };
   }, [addEventListener, removeEventListener, handleXCord]);
 
+  useEffect(() => {
+    if (isUpdatingValue && x.get() !== 0) {
+      setIsUpdatingValue(false); // Değer güncellemesini durdur
+    }
+  }, [isUpdatingValue, x]);
+  
   const handleDragEnd = useCallback(
     async (_, { offset }) => {
       const increment = offset.x / 500;
