@@ -10,12 +10,7 @@ import Button from "@mui/joy/Button";
 import './style.css';
 
 const EditorPanel = (props) => {
-  const [sliderValueX, setSliderValueX] = React.useState(0);
   const { handleEditorMode, sendMessage, addEventListener, removeEventListener } = props;
-  const handleSliderChangeX = (value) => {
-    setSliderValueX(value);
-    console.log(sliderValueX);
-  };
 
   return (
     <div
@@ -94,7 +89,7 @@ const EditorPanel = (props) => {
             x
           </Typography>
         </div>
-        <SliderX sendMessage={sendMessage }/>
+        <SliderX sendMessage={sendMessage} addEventListener={addEventListener} removeEventListener={removeEventListener}/>
 
         <div
           style={{
