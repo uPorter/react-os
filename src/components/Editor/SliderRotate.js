@@ -53,7 +53,7 @@ const SliderRotate = (props) => {
   }, [x]);
 
   const handleDragEnd = useCallback(
-    (_, { offset }) => {
+    async (_, { offset }) => {
       const increment = offset.x / 500;
       const newValue = sliderValue + increment;
       console.log("DragEnd");
@@ -69,9 +69,8 @@ const SliderRotate = (props) => {
         // İşlem tamamlandıktan sonra değeri tekrar güncelle
       };
   
-      controls
-        .start({ x: -targetX, opacity: 1 })
-        .then(handleAnimationComplete);
+      await controls.start({ x: -targetX, opacity: 1 });
+      handleAnimationComplete();
   
       // handleAnimationComplete fonksiyonunu döndürerek
       // useEffect içinde async/await kullanımını engelleyelim
@@ -79,6 +78,7 @@ const SliderRotate = (props) => {
     },
     [sliderValue, x, controls]
   );
+  
 
   const displayValue = useTransform(
     x,
@@ -95,14 +95,6 @@ const SliderRotate = (props) => {
       });
     }
   });
-
-  useEffect(() => {
-    if (x.get() !== 0) {
-      controls.start({ opacity: 0 });
-    } else {
-      controls.start({ opacity: 1 });
-    }
-  }, [x, controls]);
 
   return (
     <div

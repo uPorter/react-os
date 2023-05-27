@@ -96,14 +96,6 @@ const SliderY = (props) => {
     }
   });
 
-  useEffect(() => {
-    if (x.get() !== 0) {
-      controls.start({ opacity: 0 });
-    } else {
-      controls.start({ opacity: 1 });
-    }
-  }, [x, controls]);
-
   return (
     <div
       style={{
