@@ -45,23 +45,30 @@ const SliderX = (props) => {
   }, [x]);
 
   const handleDragEnd = useCallback(
-
-    async (_, { offset }) => {
+    (_, { offset }) => {
       const increment = offset.x / 500;
       const newValue = sliderValue + increment;
-      //const roundedValue = Math.round(newValue);
       console.log("DragEnd");
       const targetX = 500 / 100;
   
       setIsUpdatingValue(false); // Değer güncellemesini durdur
   
-      // İstediğiniz kodu burada çalıştırın
+      const handleAnimationComplete = () => {
+        x.set(0);
+        setSliderValue(parseFloat(displayValue.get().toFixed(2)));
+        sendMessage("Cube", "SendXCoordToReact");
   
-      await controls.start({ x: -targetX, opacity: 1 });
-      x.set(0); 
-      setSliderValue(parseFloat(displayValue.get().toFixed(2)));
-      sendMessage("Cube", "SendXCoordToReact");
-      //setSliderValue(roundedValue); // Değerin App bileşenine iletilmesi
+        // İşlem tamamlandıktan sonra değeri tekrar güncelle
+        setIsUpdatingValue(true);
+      };
+  
+      controls
+        .start({ x: -targetX, opacity: 1 })
+        .then(handleAnimationComplete);
+  
+      // handleAnimationComplete fonksiyonunu döndürerek
+      // useEffect içinde async/await kullanımını engelleyelim
+      return handleAnimationComplete;
     },
     [sliderValue, x, controls]
   );
