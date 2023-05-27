@@ -61,23 +61,22 @@ const SliderRotate = (props) => {
   
       setIsUpdatingValue(false); // Değer güncellemesini durdur
   
-      const handleAnimationComplete = () => {
-        x.set(0);
-        setSliderValue(parseFloat(displayValue.get().toFixed(2)));
-        sendMessage("Cube", "SendRotationToReact");
+      const handleAnimationComplete = async () => {
+        await controls.start({ x: 0, opacity: 1 }).then(() => {
+          x.set(0);
+          setSliderValue(parseFloat(displayValue.get().toFixed(2)));
+          sendMessage("Cube", "SendRotationToReact");
+        });
   
         // İşlem tamamlandıktan sonra değeri tekrar güncelle
       };
   
       await controls.start({ x: -targetX, opacity: 1 });
-      handleAnimationComplete();
-  
-      // handleAnimationComplete fonksiyonunu döndürerek
-      // useEffect içinde async/await kullanımını engelleyelim
-      return handleAnimationComplete;
+      await handleAnimationComplete();
     },
     [sliderValue, x, controls]
   );
+  
   
 
   const displayValue = useTransform(
@@ -88,11 +87,14 @@ const SliderRotate = (props) => {
 
   useAnimationFrame((deltaTime) => {
     if (isUpdatingValue) {
+      controls.start({ x: -displayValue.get() });
       setSliderValue((prevValue) => {
         const delta = displayValue.get() - prevValue;
         const increment = isNaN(delta) ? 0 : delta * 2;
         return prevValue + increment;
       });
+    } else {
+      controls.start({ x: 0 });
     }
   });
 
