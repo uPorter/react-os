@@ -48,23 +48,38 @@ const SliderX = (props) => {
     async (_, { offset }) => {
       const increment = offset.x / 500;
       const newValue = sliderValue + increment;
-      //const roundedValue = Math.round(newValue);
       const targetX = 500 / 100;
   
       setIsUpdatingValue(false); // Değer güncellemesini durdur
   
-      // İstediğiniz kodu burada çalıştırın
+      const animationPromise = controls.start({
+        x: -targetX,
+        opacity: 1
+      });
   
-      controls.start({ x: -targetX, opacity: 1 }).then(() => {
-        setIsUpdatingValue(true);
+      animationPromise.then(() => {
         x.set(0);
         setSliderValue(parseFloat(displayValue.get().toFixed(2)));
         sendMessage("Cube", "SendXCoordToReact");
         //setSliderValue(roundedValue); // Değerin App bileşenine iletilmesi
+  
+        setIsUpdatingValue(true); // Değer güncellemesini tekrar başlat
       });
+  
+      // Eski konuma dönene kadar değeri güncellemeyi durdur
+      const checkIfAnimating = () => {
+        if (Math.abs(x.get()) > 0) {
+          requestAnimationFrame(checkIfAnimating);
+        } else {
+          setIsUpdatingValue(false);
+        }
+      };
+  
+      checkIfAnimating();
     },
     [sliderValue, x, controls]
   );
+  
 
   const displayValue = useTransform(
     x,
