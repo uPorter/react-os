@@ -10,6 +10,7 @@ import Input from "@mui/joy/Input";
 const SliderX = (props) => {
   const { sendMessage, addEventListener, removeEventListener } = props;
   const [sliderValue, setSliderValue] = useState(0);
+  const [isUpdatingValue, setIsUpdatingValue] = useState(true);
   const x = useMotionValue(0);
   const controls = useAnimation();
 
@@ -49,11 +50,17 @@ const SliderX = (props) => {
       const newValue = sliderValue + increment;
       //const roundedValue = Math.round(newValue);
       const targetX = 500 / 100;
-
+  
+      setIsUpdatingValue(false); // Değer güncellemesini durdur
+  
+      // İstediğiniz kodu burada çalıştırın
+  
       controls.start({ x: -targetX, opacity: 1 }).then(() => {
         x.set(0);
         setSliderValue(parseFloat(displayValue.get().toFixed(2)));
+        sendMessage("Cube", "SendXCoordToReact");
         //setSliderValue(roundedValue); // Değerin App bileşenine iletilmesi
+        setIsUpdatingValue(true); // Değer güncellemesini tekrar başlat
       });
     },
     [sliderValue, x, controls]
@@ -65,12 +72,14 @@ const SliderX = (props) => {
     [sliderValue - 1, sliderValue + 1]
   );
 
-  useAnimationFrame(() => {
-    setSliderValue((prevValue) => {
-      const delta = displayValue.get() - prevValue;
-      const increment = isNaN(delta) ? 0 : delta * 0.05;
-      return prevValue + increment;
-    });
+  useAnimationFrame((deltaTime) => {
+    if (isUpdatingValue) {
+      setSliderValue((prevValue) => {
+        const delta = displayValue.get() - prevValue;
+        const increment = isNaN(delta) ? 0 : delta * 0.05;
+        return prevValue + increment;
+      });
+    }
   });
 
   useEffect(() => {
@@ -131,8 +140,8 @@ const SliderX = (props) => {
             left: 0,
             right: 0,
           }}
-          dragElastic={1}
-          dragTransition={{ power: 0.1 }}
+          dragElastic={0.1}
+          dragTransition={{ bounceStiffness: 200, bounceDamping: 15 }}
           onDrag={handleDrag}
           onDragEnd={handleDragEnd}
         />
