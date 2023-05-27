@@ -335,7 +335,7 @@ const UnityLoader = () => {
                 <Button>Test</Button>
               </Grid>
               <Grid xs={6}>
-                <Dock></Dock>
+                <Dock handleEditorMode={handleEditorMode}></Dock>
               </Grid>
               <Grid style={{ opacity: 0 }} xs>
               </Grid>
