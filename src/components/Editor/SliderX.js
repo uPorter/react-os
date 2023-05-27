@@ -8,7 +8,7 @@ import {
 import Input from "@mui/joy/Input";
 
 const SliderX = (props) => {
-  const { sendMessage } = props;
+  const { sendMessage, addEventListener, removeEventListener } = props;
   const [sliderValue, setSliderValue] = useState(0);
   const x = useMotionValue(0);
   const controls = useAnimation();
@@ -25,6 +25,18 @@ const SliderX = (props) => {
     sendMessage("Cube", "ChangeXPosition", parseFloat(displayValue.get().toFixed(2)));
   }, []);
 
+  const handleXCord = useCallback((setXCord) => {
+    setSliderValue(parseFloat(setXCord));
+  }, []);
+
+
+  useEffect(() => {
+    addEventListener("setXCord", handleXCord);
+    return () => {
+      removeEventListener("setXCord", handleXCord);
+    };
+  }, [addEventListener, removeEventListener, handleXCord]);
+
   const handleDragEnd = useCallback(
     async (_, { offset }) => {
       const increment = offset.x / 500;
@@ -35,6 +47,7 @@ const SliderX = (props) => {
       controls.start({ x: -targetX, opacity: 1 }).then(() => {
         x.set(0);
         setSliderValue(parseFloat(displayValue.get().toFixed(2)));
+        sendMessage("Cube", "SendXCoordToReact");
         //setSliderValue(roundedValue); // Değerin App bileşenine iletilmesi
       });
     },

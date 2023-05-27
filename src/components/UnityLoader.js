@@ -341,7 +341,7 @@ const UnityLoader = () => {
               </Grid>
             </Grid>
             <ChatComponent userName={userName} showChat={showChat} sendMessage={sendMessage} userID={userID} userToken={userToken} userImage={userImage} />
-            {isEditorMode && <EditorPanel sendMessage={sendMessage} handleEditorMode={handleEditorMode}></EditorPanel>}
+            {isEditorMode && <EditorPanel sendMessage={sendMessage} handleEditorMode={handleEditorMode} addEventListener={addEventListener} removeEventListener={removeEventListener}></EditorPanel>}
             {/* <FileUpload style={{position: 'absolute', zIndex: '15'}}></FileUpload> */}
             {/* <Button style={{ position: 'absolute', zIndex: '15' }} onClick={ReactshowRPM} variant="soft">Edit Avatar - PreTest</Button>*/}
           </div>)}
