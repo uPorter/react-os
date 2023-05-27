@@ -614,3 +614,21 @@ body {
   color: white!important;
   margin-bottom: 65px!important;
 }
+
+[data-sonner-toast][data-mounted=true] {
+  --y: translateY(0);
+  opacity: 1;
+  margin-bottom: 65px!important;
+}
+
+@keyframes showAnimation {
+	0% {
+		opacity: 0;
+		transform: translateX(250px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}

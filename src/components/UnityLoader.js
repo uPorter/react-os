@@ -16,6 +16,7 @@ import ChatComponent from './ChatComponent';
 import { StreamChat } from 'stream-chat';
 import { Toaster, toast } from 'sonner'
 import 'stream-chat-react/dist/css/index.css';
+import EditorPanel from './Editor/EditorPanel';
 
 const chatClient = StreamChat.getInstance('d9m7j2mj5ju8');
 
@@ -39,7 +40,7 @@ const UnityLoader = () => {
   const [userToken, setUserToken] = useState(localStorage.getItem('userToken') || '');
   const [userImage, setUserImage] = useState(localStorage.getItem('userImage') || 'https://models.readyplayer.me/63d5148460d1b8cc82dca9db.png');
   const [userSigned, setUserSigned] = useState(JSON.parse(localStorage.getItem('userSigned')) || false)
-
+  const [isEditorMode, setIsEditorMode] = useState(false);
 
   function generateUID(length) {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -61,7 +62,9 @@ const UnityLoader = () => {
     }
   }, [userID]);
 
-  
+  const handleEditorMode = () => {
+    setIsEditorMode(!isEditorMode);
+  }
 
   useEffect(() => {
     localStorage.setItem('userID', userID);
@@ -338,6 +341,7 @@ const UnityLoader = () => {
               </Grid>
             </Grid>
             <ChatComponent userName={userName} showChat={showChat} sendMessage={sendMessage} userID={userID} userToken={userToken} userImage={userImage} />
+            {isEditorMode && <EditorPanel handleEditorMode={handleEditorMode}></EditorPanel>}
             {/* <FileUpload style={{position: 'absolute', zIndex: '15'}}></FileUpload> */}
             {/* <Button style={{ position: 'absolute', zIndex: '15' }} onClick={ReactshowRPM} variant="soft">Edit Avatar - PreTest</Button>*/}
           </div>)}

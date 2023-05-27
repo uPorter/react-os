@@ -27,19 +27,19 @@ const CameraMode = (props) => {
   const autoRotate = () => {
     handleObjectSelect(1)
     sendMessage("CameraManager", "AutoOrbitVoid");
-    toast.success('Auto Rotate Activated!');
+    toast('Auto Rotate');
   }
 
   const dragController = () => {
     handleObjectSelect(2)
     sendMessage("CameraManager", "DragControllerVoid");
-    toast.success('Drag Controller Activated!');
+    toast('Drag to rotate');
   }
 
   const lockOn = () => {
     handleObjectSelect(3)
     sendMessage("CameraManager", "LockOnVoid");
-    toast.success('LockOn Activated!');
+    toast('Pointer Lock');
   }
 
 
