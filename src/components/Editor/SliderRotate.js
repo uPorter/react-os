@@ -17,21 +17,13 @@ const SliderRotate = (props) => {
   const handleDrag = useCallback((_, { offset }) => {
     if (offset.x > 110) {
       x.set(110);
-      controls.set(110);
     } else if (offset.x < -110) {
       x.set(-110);
-      controls.set(-110);
     } else {
       x.set(offset.x);
-      controls.set(offset.x);
     }
-    sendMessage(
-      "Cube",
-      "ChangeRotation",
-      parseFloat(displayValue.get().toFixed(2))
-    );
+    sendMessage("Cube", "ChangeRotation", parseFloat(displayValue.get().toFixed(2)));
   }, []);
-  
 
   const handleRotate = useCallback((setRotateCord) => {
     setSliderValue(parseFloat(setRotateCord));
@@ -60,30 +52,25 @@ const SliderRotate = (props) => {
     };
   }, [x]);
 
-  const handleDragEnd = useCallback(
-    async (_, { offset }) => {
-      const increment = offset.x / 500;
-      const newValue = sliderValue + increment;
-      console.log("DragEnd");
-      const targetX = 500 / 100;
+  const handleDragEnd = async (_, { offset }) => {
+    const increment = offset.x / 500;
+    const newValue = sliderValue + increment;
   
-      setIsUpdatingValue(false); // Değer güncellemesini durdur
+    setIsUpdatingValue(false); // Değer güncellemesini durdur
   
-      const handleAnimationComplete = async () => {
-        await controls.start({ x: 0, opacity: 1 }).then(() => {
-          x.set(0);
-          setSliderValue(parseFloat(displayValue.get().toFixed(2)));
-          sendMessage("Cube", "SendRotationToReact");
-        });
+    const targetX = 0; // Animasyonun başlangıç noktası
   
-        // İşlem tamamlandıktan sonra değeri tekrar güncelle
-      };
+    const handleAnimationComplete = () => {
+      x.set(targetX);
+      controls.set({ x: targetX, opacity: 1 });
+      setSliderValue(parseFloat(displayValue.get().toFixed(2)));
+      sendMessage("Cube", "SendRotationToReact");
+      setIsUpdatingValue(true); // Değer güncellemesini yeniden başlat
+    };
   
-      await controls.start({ x: -targetX, opacity: 1 });
-      await handleAnimationComplete();
-    },
-    [sliderValue, x, controls]
-  );
+    await controls.start({ x: targetX, opacity: 1 });
+    handleAnimationComplete();
+  };
   
   
 
@@ -93,18 +80,29 @@ const SliderRotate = (props) => {
     [sliderValue - 1, sliderValue + 1]
   );
 
-  useAnimationFrame((deltaTime) => {
-    if (isUpdatingValue) {
-      controls.start({ x: -displayValue.get() });
-      setSliderValue((prevValue) => {
-        const delta = displayValue.get() - prevValue;
-        const increment = isNaN(delta) ? 0 : delta * 2;
-        return prevValue + increment;
-      });
-    } else {
-      controls.start({ x: 0 });
-    }
-  });
+  const handleAnimationFrame = useCallback(
+    (time) => {
+      if (previousTimeRef.current !== undefined) {
+        const deltaTime = time - previousTimeRef.current;
+        if (isUpdatingValue) {
+          setSliderValue((prevValue) => {
+            const delta = displayValue.get() - prevValue;
+            const increment = isNaN(delta) ? 0 : delta * 2;
+            return prevValue + increment;
+          });
+        }
+      }
+      previousTimeRef.current = time;
+      requestRef.current = requestAnimationFrame(handleAnimationFrame);
+    },
+    [isUpdatingValue]
+  );
+  
+  useEffect(() => {
+    requestRef.current = requestAnimationFrame(handleAnimationFrame);
+    return () => cancelAnimationFrame(requestRef.current);
+  }, [handleAnimationFrame]);
+  
 
   return (
     <div
@@ -139,7 +137,8 @@ const SliderRotate = (props) => {
         <motion.div
           className="slider-thumb"
           style={{
-            transition: "box-shadow .2s cubic-bezier(0.46, 0.03, 0.52, 0.96) 0s",
+            transition:
+              "box-shadow .2s cubic-bezier(0.46, 0.03, 0.52, 0.96) 0s",
             background: "#00000045",
             borderRadius: "50%",
             width: "20px",
@@ -147,10 +146,8 @@ const SliderRotate = (props) => {
             border: "2px solid #fff",
             position: "absolute",
             top: "-11px",
-          }}
-          animate={{
-            x: controls,
-            opacity: controls,
+            x,
+            opacity: controls.opacity,
           }}
           drag="x"
           dragConstraints={{
