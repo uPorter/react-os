@@ -22,7 +22,7 @@ const SliderX = (props) => {
       x.set(offset.x);
     }
     console.log("X:" + parseFloat(displayValue.get().toFixed(2)));
-    sendMessage("Cube", "ChangeXPosition", displayValue.get().toFixed(2));
+    sendMessage("Cube", "ChangeXPosition", parseFloat(displayValue.get().toFixed(2)));
   }, []);
 
   const handleDragEnd = useCallback(
