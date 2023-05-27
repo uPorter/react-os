@@ -41,6 +41,7 @@ const SliderX = (props) => {
     const checkXValue = () => {
       if (x.get() === 0) {
         setIsUpdatingValue(true);
+        console.log("Update Enabled")
       }
     };
   
@@ -66,7 +67,6 @@ const SliderX = (props) => {
         sendMessage("Cube", "SendXCoordToReact");
   
         // İşlem tamamlandıktan sonra değeri tekrar güncelle
-        setIsUpdatingValue(true);
       };
   
       controls
