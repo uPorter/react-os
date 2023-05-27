@@ -576,6 +576,7 @@ body {
 .MuiTooltip-tooltip{
   background-color: transparent!important;
   transform: scale(0.9)!important;
+  backdrop-filter: blur(10px);
 }
 
 .MuiTooltip-arrow{
