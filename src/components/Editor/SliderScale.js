@@ -7,8 +7,10 @@ import {
 } from "framer-motion/dist/framer-motion";
 import Input from "@mui/joy/Input";
 
-const SliderScale = ({}) => {
+const SliderScale = (props) => {
+  const { sendMessage, addEventListener, removeEventListener } = props;
   const [sliderValue, setSliderValue] = useState(0);
+  const [isUpdatingValue, setIsUpdatingValue] = useState(true);
   const x = useMotionValue(0);
   const controls = useAnimation();
 
@@ -20,20 +22,60 @@ const SliderScale = ({}) => {
     } else {
       x.set(offset.x);
     }
-    console.log("Scale: " + parseFloat(displayValue.get().toFixed(2)));
+    sendMessage("Cube", "ChangeScale", parseFloat(displayValue.get().toFixed(2)));
   }, []);
 
+  const handleScale = useCallback((setScaleCord) => {
+    setSliderValue(parseFloat(setScaleCord));
+  }, []);
+
+
+  useEffect(() => {
+    addEventListener("setScaleCord", handleScale);
+    return () => {
+      removeEventListener("setScaleCord", handleScale);
+    };
+  }, [addEventListener, removeEventListener, handleScale]);
+
+  useEffect(() => {
+    const checkScaleValue = () => {
+      if (x.get() === 0) {
+        setIsUpdatingValue(true);
+        sendMessage("Cube", "SendScaleToReact");
+      }
+    };
+  
+    const interval = setInterval(checkScaleValue, 100); // Her 100ms'de bir kontrol et
+  
+    return () => {
+      clearInterval(interval); // Temizleme işlemi
+    };
+  }, [x]);
+
   const handleDragEnd = useCallback(
-    async (_, { offset }) => {
+    (_, { offset }) => {
       const increment = offset.x / 500;
       const newValue = sliderValue + increment;
-      const roundedValue = Math.round(newValue);
+      console.log("DragEnd");
       const targetX = 500 / 100;
-
-      controls.start({ x: -targetX, opacity: 1 }).then(() => {
+  
+      setIsUpdatingValue(false); // Değer güncellemesini durdur
+  
+      const handleAnimationComplete = () => {
         x.set(0);
-        setSliderValue(roundedValue); // Değerin App bileşenine iletilmesi
-      });
+        setSliderValue(parseFloat(displayValue.get().toFixed(2)));
+        sendMessage("Cube", "SendScaleToReact");
+  
+        // İşlem tamamlandıktan sonra değeri tekrar güncelle
+      };
+  
+      controls
+        .start({ x: -targetX, opacity: 1 })
+        .then(handleAnimationComplete);
+  
+      // handleAnimationComplete fonksiyonunu döndürerek
+      // useEffect içinde async/await kullanımını engelleyelim
+      return handleAnimationComplete;
     },
     [sliderValue, x, controls]
   );
@@ -44,12 +86,14 @@ const SliderScale = ({}) => {
     [sliderValue - 1, sliderValue + 1]
   );
 
-  useAnimationFrame(() => {
-    setSliderValue((prevValue) => {
-      const delta = displayValue.get() - prevValue;
-      const increment = isNaN(delta) ? 0 : delta * 0.05;
-      return prevValue + increment;
-    });
+  useAnimationFrame((deltaTime) => {
+    if (isUpdatingValue) {
+      setSliderValue((prevValue) => {
+        const delta = displayValue.get() - prevValue;
+        const increment = isNaN(delta) ? 0 : delta * 0.05;
+        return prevValue + increment;
+      });
+    }
   });
 
   useEffect(() => {
@@ -92,8 +136,6 @@ const SliderScale = ({}) => {
       >
         <motion.div
           className="slider-thumb"
-          onClick={() => setSliderValue(displayValue.get().toFixed(2))}
-          onActive={() => setSliderValue(displayValue.get().toFixed(2))}
           style={{
             transition:
               "box-shadow .2s cubic-bezier(0.46, 0.03, 0.52, 0.96) 0s",
@@ -112,8 +154,8 @@ const SliderScale = ({}) => {
             left: 0,
             right: 0,
           }}
-          dragElastic={1}
-          dragTransition={{ power: 0.1 }}
+          dragElastic={0.1}
+          dragTransition={{ bounceStiffness: 200, bounceDamping: 15 }}
           onDrag={handleDrag}
           onDragEnd={handleDragEnd}
         />
