@@ -49,13 +49,12 @@ const SliderX = (props) => {
   
       // İstediğiniz kodu burada çalıştırın
   
-      controls.start({ x: -targetX, opacity: 1 }).then(() => {
-        setIsUpdatingValue(true);
-        x.set(0);
-        setSliderValue(parseFloat(displayValue.get().toFixed(2)));
-        sendMessage("Cube", "SendXCoordToReact");
-        //setSliderValue(roundedValue); // Değerin App bileşenine iletilmesi
-      });
+      await controls.start({ x: -targetX, opacity: 1 });
+      setIsUpdatingValue(true);
+      x.set(0);
+      setSliderValue(parseFloat(displayValue.get().toFixed(2)));
+      sendMessage("Cube", "SendXCoordToReact");
+      //setSliderValue(roundedValue); // Değerin App bileşenine iletilmesi
     },
     [sliderValue, x, controls]
   );
