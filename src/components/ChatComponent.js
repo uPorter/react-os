@@ -159,7 +159,7 @@ const ChatComponent = (props) => {
 
               <Tooltip onOpen={handleTooltipOpen} onClose={handleTooltipClose} sx={{ borderRadius: '0px', backgroundColor: '#ffffff' }} color="neutral" placement="top" variant="soft"
                 title={
-                  <div className='avatarProfile'>
+                  <div className='avatarProfile' style={{backdropFilter:"blur(12px)"}}>
                     <Stack className='avatarStack'>
                       <Avatar className='avatarProfileSection' style={{
                         width: '5.3rem', height: '5.3rem', zIndex: '999', background: '#2979FF',
