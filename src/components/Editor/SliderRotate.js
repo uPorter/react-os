@@ -146,7 +146,6 @@ const SliderRotate = (props) => {
       <Input
         className="editorInput"
         type="text"
-        type="number"
         value={displayValue.get().toFixed(2)}
         onChange={(e) => setSliderValue(parseFloat(e.target.value))}
         style={{
