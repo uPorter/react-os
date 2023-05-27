@@ -636,8 +636,6 @@ iframe{
   flex-wrap: nowrap;
   align-content: center;
   justify-content: center;
-  transition: .1s cubic-bezier(0.46, 0.03, 0.52, 0.96) 0s;
-  transition: backdrop-filter 1s;
 }
 
 @keyframes scale-up-br {
