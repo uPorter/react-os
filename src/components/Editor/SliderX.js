@@ -37,7 +37,15 @@ const SliderX = (props) => {
     };
   }, [addEventListener, removeEventListener, handleXCord]);
 
+  useEffect(() => {
+    if (x.get() === 0) {
+      setIsUpdatingValue(true);
+      console.log("Thumb Value is:" + "0")
+    }
+  }, [x]);
+
   const handleDragEnd = useCallback(
+
     async (_, { offset }) => {
       const increment = offset.x / 500;
       const newValue = sliderValue + increment;
