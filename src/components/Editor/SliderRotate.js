@@ -40,17 +40,17 @@ const SliderRotate = (props) => {
 
   useEffect(() => {
     const checkRotateValue = () => {
-      if (isEditing === false && x.get() === 0) {
+      if (!isEditing && x.get() === 0) { // isEditing değeri false ve x.get() değeri 0 ise
         setIsUpdatingValue(true);
         sendMessage("Cube", "SendRotationToReact");
-      }   
+      }
     };
     const interval = setInterval(checkRotateValue, 100); // Her 100ms'de bir kontrol et
   
     return () => {
       clearInterval(interval); // Temizleme işlemi
     };
-  }, [x]);
+  }, [x, isEditing]);
 
   const handleDragEnd = useCallback(async (_, { offset }) => {
     const increment = offset.x / 500;
