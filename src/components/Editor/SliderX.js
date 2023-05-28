@@ -95,7 +95,8 @@ const SliderX = (props) => {
 
   const handleInputChange = (e) => {
     const { value } = e.target;
-    const parsedValue = parseFloat(value);
+    const cleanedValue = value.trim().replace(/[^0-9.]/g, ""); // Boşluk ve gereksiz karakterleri temizle
+    const parsedValue = parseFloat(cleanedValue);
     
     if (!isNaN(parsedValue) && parsedValue !== null) {
       setSliderValue(parsedValue);
