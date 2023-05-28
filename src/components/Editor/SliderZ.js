@@ -94,7 +94,7 @@ const SliderZ = (props) => {
   }
 
   const handleInputChange = (e) => {
-    const { value } = e.target;
+    const { value, key } = e.target;
     setSliderValue(parseFloat(value));
     if (key === "Enter") { sendMessage("Cube", "ChangeZPosition", parseFloat(value)); }
    
