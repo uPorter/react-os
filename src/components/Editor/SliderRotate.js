@@ -82,6 +82,7 @@ const SliderRotate = (props) => {
     setIsEditing(false)
     const { value } = e.target;
     setSliderValue(parseFloat(value));
+    sendMessage("Cube", "SendRotationToReact");
 
   };
 
