@@ -95,8 +95,14 @@ const SliderX = (props) => {
 
   const handleInputChange = (e) => {
     const { value } = e.target;
-    const cleanedValue = value.trim().replace(/[^0-9.]/g, ""); // Boşluk ve gereksiz karakterleri temizle
-    const parsedValue = parseFloat(cleanedValue);
+    setSliderValue(parseFloat(value));
+    if (key === "Enter") { sendMessage("Cube", "ChangeXPosition", parseFloat(value)); }
+    
+  }
+
+  const handleInputChange = (e) => {
+    const { value } = e.target;
+    const parsedValue = parseFloat(value);
     
     if (!isNaN(parsedValue) && parsedValue !== null) {
       setSliderValue(parsedValue);

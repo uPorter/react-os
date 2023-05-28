@@ -95,21 +95,15 @@ const SliderScale = (props) => {
 
   const handleInputChange = (e) => {
     const { value } = e.target;
-    const cleanedValue = value.trim().replace(/[^0-9.]/g, ""); // Boşluk ve gereksiz karakterleri temizle
-    const parsedValue = parseFloat(cleanedValue);
-    
-    if (!isNaN(parsedValue) && parsedValue !== null) {
-      setSliderValue(parsedValue);
-      sendMessage("Cube", "ChangeScale", parsedValue);
-    }
-  };
-  
+    setSliderValue(parseFloat(value));
+    if (key === "Enter") { sendMessage("Cube", "ChangeScale", parseFloat(value)); }
+  }
 
   useAnimationFrame((deltaTime) => {
     if (isUpdatingValue) {
       setSliderValue((prevValue) => {
         const delta = displayValue.get() - prevValue;
-        const increment = isNaN(delta) ? 0 : delta * 0.03;
+        const increment = isNaN(delta) ? 0 : delta * 0.0;
         return prevValue + increment;
       });
     }
