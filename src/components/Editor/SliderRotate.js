@@ -11,6 +11,7 @@ const SliderRotate = (props) => {
   const { sendMessage, addEventListener, removeEventListener } = props;
   const [sliderValue, setSliderValue] = useState(0);
   const [isUpdatingValue, setIsUpdatingValue] = useState(true);
+  const [isEditing, setIsEditing] = useState(false);
   const x = useMotionValue(0);
   const controls = useAnimation();
 
@@ -41,7 +42,10 @@ const SliderRotate = (props) => {
     const checkRotateValue = () => {
       if (x.get() === 0) {
         setIsUpdatingValue(true);
-        sendMessage("Cube", "SendRotationToReact");
+        if(isEditing === false){
+          sendMessage("Cube", "SendRotationToReact");
+        }
+        
       }
     };
   
@@ -80,11 +84,13 @@ const SliderRotate = (props) => {
   const onBlur = () => {
     // onBlur event handling logic here
     sendMessage("AvatarNick", "enableInput");
+    setIsEditing(false)
   };
 
   const onFocus = () => {
     // onFocus event handling logic here
     sendMessage("AvatarNick", "Start");
+    setIsEditing(true)
   }
 
   useAnimationFrame((deltaTime) => {
