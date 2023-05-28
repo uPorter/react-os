@@ -40,15 +40,11 @@ const SliderRotate = (props) => {
 
   useEffect(() => {
     const checkRotateValue = () => {
-      if (x.get() === 0) {
+      if (!isEditing && x.get() === 0) {
         setIsUpdatingValue(true);
-      }
-
-      if(!isEditing){
         sendMessage("Cube", "SendRotationToReact");
-      }
+      }   
     };
-  
     const interval = setInterval(checkRotateValue, 100); // Her 100ms'de bir kontrol et
   
     return () => {
@@ -170,7 +166,7 @@ const SliderRotate = (props) => {
         onFocus={onFocus}
         onBlur={onBlur}
         value={sliderValue}
-        onChange={handleInputChange}
+        onChange={(e) => setSliderValue(parseFloat(e.target.value))}
         style={{
           width: "70px",
           marginLeft: "35px",
