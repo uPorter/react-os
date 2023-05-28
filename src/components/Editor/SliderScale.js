@@ -103,7 +103,7 @@ const SliderScale = (props) => {
     if (isUpdatingValue) {
       setSliderValue((prevValue) => {
         const delta = displayValue.get() - prevValue;
-        const increment = isNaN(delta) ? 0 : delta * 2;
+        const increment = isNaN(delta) ? 0 : delta * 0.03;
         return prevValue + increment;
       });
     }
