@@ -77,6 +77,16 @@ const SliderRotate = (props) => {
     [sliderValue - 1, sliderValue + 1]
   );
 
+  const onBlur = () => {
+    // onBlur event handling logic here
+    sendMessage("AvatarNick", "enableInput");
+  };
+
+  const onFocus = () => {
+    // onFocus event handling logic here
+    sendMessage("AvatarNick", "Start");
+  }
+
   useAnimationFrame((deltaTime) => {
     if (isUpdatingValue) {
       setSliderValue((prevValue) => {
@@ -146,6 +156,8 @@ const SliderRotate = (props) => {
       <Input
         className="editorInput"
         type="text"
+        onFocus={onFocus}
+        onBlur={onBlur}
         value={sliderValue}
         onChange={(e) => setSliderValue(parseFloat(e.target.value))}
         style={{
