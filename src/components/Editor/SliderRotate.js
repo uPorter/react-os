@@ -40,8 +40,9 @@ const SliderRotate = (props) => {
 
   useEffect(() => {
     const checkRotateValue = () => {
-      if (!isEditing && x.get() === 0) {
+      if (isEditing === false && x.get() === 0) {
         setIsUpdatingValue(true);
+        sendMessage("Cube", "SendRotationToReact");
       }   
     };
     const interval = setInterval(checkRotateValue, 100); // Her 100ms'de bir kontrol et
