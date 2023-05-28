@@ -168,6 +168,7 @@ const SliderRotate = (props) => {
         onFocus={onFocus}
         onBlur={onBlur}
         value={sliderValue.toString()}
+        onChange={(e) => setSliderValue(parseFloat(e.target.value))}
         style={{
           width: "70px",
           marginLeft: "35px",
