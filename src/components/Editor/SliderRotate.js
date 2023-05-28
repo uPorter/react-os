@@ -93,6 +93,11 @@ const SliderRotate = (props) => {
     setIsEditing(true)
   }
 
+  const handleInputChange = (e) => {
+    const { value } = e.target;
+    setSliderValue(parseFloat(value));
+  }
+
   useAnimationFrame((deltaTime) => {
     if (isUpdatingValue) {
       setSliderValue((prevValue) => {
@@ -165,7 +170,7 @@ const SliderRotate = (props) => {
         onFocus={onFocus}
         onBlur={onBlur}
         value={sliderValue}
-        onChange={(e) => setSliderValue(parseFloat(e.target.value))}
+        onChange={handleInputChange}
         style={{
           width: "70px",
           marginLeft: "35px",
