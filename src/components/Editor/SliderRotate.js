@@ -166,7 +166,7 @@ const SliderRotate = (props) => {
       </motion.div>
       <Input
         className="editorInput"
-        type="text"
+        type="number"
         onFocus={onFocus}
         onBlur={onBlur}
         value={sliderValue.toString()}
