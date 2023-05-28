@@ -77,10 +77,13 @@ const SliderRotate = (props) => {
     [sliderValue - 1, sliderValue + 1]
   );
 
-  const onBlur = () => {
+  const onBlur = (e) => {
     // onBlur event handling logic here
     sendMessage("AvatarNick", "enableInput");
     setIsEditing(false)
+    const { value } = e.target;
+    setSliderValue(parseFloat(value));
+
   };
 
   const onFocus = () => {
@@ -165,8 +168,7 @@ const SliderRotate = (props) => {
         type="text"
         onFocus={onFocus}
         onBlur={onBlur}
-        value={sliderValue}
-        onChange={(e) => setSliderValue(parseFloat(e.target.value))}
+        value={sliderValue.toString()}
         style={{
           width: "70px",
           marginLeft: "35px",
