@@ -11,6 +11,7 @@ const SliderY = (props) => {
   const { sendMessage, addEventListener, removeEventListener } = props;
   const [sliderValue, setSliderValue] = useState(0);
   const [isUpdatingValue, setIsUpdatingValue] = useState(true);
+  const [isEditing, setIsEditing] = useState(false);
   const x = useMotionValue(0);
   const controls = useAnimation();
 
@@ -39,46 +40,36 @@ const SliderY = (props) => {
 
   useEffect(() => {
     const checkYValue = () => {
-      if (x.get() === 0) {
+      if (!isEditing && x.get() === 0) { // isEditing değeri false ve x.get() değeri 0 ise
         setIsUpdatingValue(true);
         sendMessage("Cube", "SendYCoordToReact");
       }
     };
-  
     const interval = setInterval(checkYValue, 100); // Her 100ms'de bir kontrol et
   
     return () => {
       clearInterval(interval); // Temizleme işlemi
     };
-  }, [x]);
+  }, [x, isEditing]);
 
-  const handleDragEnd = useCallback(
-    (_, { offset }) => {
-      const increment = offset.x / 500;
-      const newValue = sliderValue + increment;
-      console.log("DragEnd");
-      const targetX = 500 / 100;
+  const handleDragEnd = useCallback(async (_, { offset }) => {
+    const increment = offset.x / 500;
+    const newValue = sliderValue + increment;
+    const targetX = 500 / 100;
   
-      setIsUpdatingValue(false); // Değer güncellemesini durdur
+    setIsUpdatingValue(false); // Değer güncellemesini durdur
   
-      const handleAnimationComplete = () => {
-        x.set(0);
-        setSliderValue(parseFloat(displayValue.get().toFixed(2)));
-        sendMessage("Cube", "SendYCoordToReact");
+    const handleAnimationComplete = () => {
+      x.set(0);
+      setSliderValue(parseFloat(displayValue.get().toFixed(2)));
+      sendMessage("Cube", "SendYCoordToReact");
   
-        // İşlem tamamlandıktan sonra değeri tekrar güncelle
-      };
+      // İşlem tamamlandıktan sonra değeri tekrar güncelle
+    };
   
-      controls
-        .start({ x: -targetX, opacity: 1 })
-        .then(handleAnimationComplete);
+    await controls.start({ x: -targetX, opacity: 1 }).then(handleAnimationComplete);
+  }, [sliderValue, x, controls]);
   
-      // handleAnimationComplete fonksiyonunu döndürerek
-      // useEffect içinde async/await kullanımını engelleyelim
-      return handleAnimationComplete;
-    },
-    [sliderValue, x, controls]
-  );
 
   const displayValue = useTransform(
     x,
@@ -86,11 +77,33 @@ const SliderY = (props) => {
     [sliderValue - 1, sliderValue + 1]
   );
 
+  const onBlur = (e) => {
+    // onBlur event handling logic here
+    sendMessage("AvatarNick", "enableInput");
+    setIsEditing(false)
+    const { value } = e.target;
+    setSliderValue(parseFloat(value));
+    sendMessage("Cube", "ChangeYPosition", parseFloat(value));
+
+  };
+
+  const onFocus = () => {
+    // onFocus event handling logic here
+    sendMessage("AvatarNick", "Start");
+    setIsEditing(true)
+  }
+
+  const handleInputChange = (e) => {
+    const { value } = e.target;
+    setSliderValue(parseFloat(value));
+    sendMessage("Cube", "ChangeYPosition", parseFloat(value));
+  }
+
   useAnimationFrame((deltaTime) => {
     if (isUpdatingValue) {
       setSliderValue((prevValue) => {
         const delta = displayValue.get() - prevValue;
-        const increment = isNaN(delta) ? 0 : delta * 0.05;
+        const increment = isNaN(delta) ? 0 : delta * 2;
         return prevValue + increment;
       });
     }
@@ -154,9 +167,11 @@ const SliderY = (props) => {
       </motion.div>
       <Input
         className="editorInput"
-        type="text"
-        value={displayValue.get().toFixed(2)}
-        onChange={(e) => setSliderValue(parseFloat(e.target.value))}
+        type="number"
+        onFocus={onFocus}
+        onBlur={onBlur}
+        value={sliderValue.toString()}
+        onChange={handleInputChange}
         style={{
           width: "70px",
           marginLeft: "35px",
