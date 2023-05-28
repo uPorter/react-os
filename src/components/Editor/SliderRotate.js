@@ -96,6 +96,7 @@ const SliderRotate = (props) => {
   const handleInputChange = (e) => {
     const { value } = e.target;
     setSliderValue(parseFloat(value));
+    sendMessage("Cube", "ChangeRotation", parseFloat(value));
   }
 
   useAnimationFrame((deltaTime) => {
@@ -170,7 +171,7 @@ const SliderRotate = (props) => {
         onFocus={onFocus}
         onBlur={onBlur}
         value={sliderValue.toString()}
-        onChange={(e) => setSliderValue(parseFloat(e.target.value))}
+        onChange={handleInputChange}
         style={{
           width: "70px",
           marginLeft: "35px",
