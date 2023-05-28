@@ -95,10 +95,11 @@ const SliderScale = (props) => {
 
   const handleInputChange = (e) => {
     const { value } = e.target;
+    const parsedValue = parseFloat(value);
     
-    if (!isNaN(value) && value !== null) {
-      setSliderValue(value);
-      sendMessage("Cube", "ChangeScale", value);
+    if (!isNaN(parsedValue) && parsedValue !== null) {
+      setSliderValue(parsedValue);
+      sendMessage("Cube", "ChangeScale", parsedValue);
     }
   };
   
