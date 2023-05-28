@@ -44,7 +44,7 @@ const SliderRotate = (props) => {
         setIsUpdatingValue(true);
       }
 
-      if(isEditing === false){
+      if(!isEditing){
         sendMessage("Cube", "SendRotationToReact");
       }
     };
