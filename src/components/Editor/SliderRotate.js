@@ -95,9 +95,14 @@ const SliderRotate = (props) => {
 
   const handleInputChange = (e) => {
     const { value } = e.target;
-    setSliderValue(parseFloat(value));
-    sendMessage("Cube", "ChangeRotation", parseFloat(value));
-  }
+    const parsedValue = parseFloat(value);
+    
+    if (!isNaN(parsedValue) && parsedValue !== null) {
+      setSliderValue(parsedValue);
+      sendMessage("Cube", "ChangeRotation", parsedValue);
+    }
+  };
+  
 
   useAnimationFrame((deltaTime) => {
     if (isUpdatingValue) {

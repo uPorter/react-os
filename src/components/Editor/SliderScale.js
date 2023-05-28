@@ -95,9 +95,14 @@ const SliderScale = (props) => {
 
   const handleInputChange = (e) => {
     const { value } = e.target;
-    setSliderValue(parseFloat(value));
-    sendMessage("Cube", "ChangeScale", parseFloat(value));
-  }
+    const parsedValue = parseFloat(value);
+    
+    if (!isNaN(parsedValue) && parsedValue !== null) {
+      setSliderValue(parsedValue);
+      sendMessage("Cube", "ChangeScale", parsedValue);
+    }
+  };
+  
 
   useAnimationFrame((deltaTime) => {
     if (isUpdatingValue) {

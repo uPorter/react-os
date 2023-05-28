@@ -95,9 +95,13 @@ const SliderX = (props) => {
 
   const handleInputChange = (e) => {
     const { value } = e.target;
-    setSliderValue(parseFloat(value));
-    sendMessage("Cube", "ChangeXPosition", parseFloat(value));
-  }
+    const parsedValue = parseFloat(value);
+    
+    if (!isNaN(parsedValue) && parsedValue !== null) {
+      setSliderValue(parsedValue);
+      sendMessage("Cube", "ChangeXPosition", parsedValue);
+    }
+  };
 
   useAnimationFrame((deltaTime) => {
     if (isUpdatingValue) {
