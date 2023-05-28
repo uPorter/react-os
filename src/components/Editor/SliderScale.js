@@ -96,7 +96,10 @@ const SliderScale = (props) => {
   const handleInputChange = (e) => {
     const { value, key } = e.target;
     setSliderValue(parseFloat(value));
-    if (key === "Enter") { sendMessage("Cube", "ChangeScale", parseFloat(value)); }
+    if (value.trim() !== "") { 
+      sendMessage("Cube", "ChangeScale", parseFloat(value)); 
+    
+      console.log(value);}
   }
 
   useAnimationFrame((deltaTime) => {

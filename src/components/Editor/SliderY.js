@@ -96,7 +96,10 @@ const SliderY = (props) => {
   const handleInputChange = (e) => {
     const { value, key } = e.target;
     setSliderValue(parseFloat(value));
-    if (key === "Enter") { sendMessage("Cube", "ChangeYPosition", parseFloat(value)); }
+    if (value.trim() !== "") { 
+      sendMessage("Cube", "ChangeYPosition", parseFloat(value)); 
+    }
+    console.log(value);
   }
 
   useAnimationFrame((deltaTime) => {
