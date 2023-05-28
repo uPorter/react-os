@@ -97,8 +97,8 @@ const SliderY = (props) => {
     const { value } = e.target;
     
     if (!isNaN(value) && value !== null) {
-      setSliderValue(parsedValue);
-      sendMessage("Cube", "ChangeYPosition", parsedValue);
+      setSliderValue(value);
+      sendMessage("Cube", "ChangeYPosition", value);
     }
   };
 

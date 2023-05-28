@@ -97,8 +97,8 @@ const SliderRotate = (props) => {
     const { value } = e.target;
     
     if (!isNaN(value) && value !== null) {
-      setSliderValue(parsedValue);
-      sendMessage("Cube", "ChangeRotation", parsedValue);
+      setSliderValue(value);
+      sendMessage("Cube", "ChangeRotation", value);
     }
   };
   

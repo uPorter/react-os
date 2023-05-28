@@ -95,10 +95,10 @@ const SliderX = (props) => {
 
   const handleInputChange = (e) => {
     const { value } = e.target;
-    
+  
     if (!isNaN(value) && value !== null) {
-      setSliderValue(parsedValue);
-      sendMessage("Cube", "ChangeXPosition", parsedValue);
+      setSliderValue(value);
+      sendMessage("Cube", "ChangeXPosition", value);
     }
   };
 

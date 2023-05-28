@@ -97,8 +97,8 @@ const SliderScale = (props) => {
     const { value } = e.target;
     
     if (!isNaN(value) && value !== null) {
-      setSliderValue(parsedValue);
-      sendMessage("Cube", "ChangeScale", parsedValue);
+      setSliderValue(value);
+      sendMessage("Cube", "ChangeScale", value);
     }
   };
   
