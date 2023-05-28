@@ -81,10 +81,6 @@ const SliderScale = (props) => {
     // onBlur event handling logic here
     sendMessage("AvatarNick", "enableInput");
     setIsEditing(false)
-    const { value } = e.target;
-    setSliderValue(parseFloat(value));
-    sendMessage("Cube", "ChangeScale", parseFloat(value));
-
   };
 
   const onFocus = () => {
@@ -94,12 +90,12 @@ const SliderScale = (props) => {
   }
 
   const handleInputChange = (e) => {
-    const { value, key } = e.target;
+    const { value } = e.target;
     setSliderValue(parseFloat(value));
-    if (value.trim() !== "") { 
+    if (value.trim() !== "") {
       sendMessage("Cube", "ChangeScale", parseFloat(value)); 
-    
-      console.log(value);}
+      console.log(value);
+    }
   }
 
   useAnimationFrame((deltaTime) => {

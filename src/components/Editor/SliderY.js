@@ -81,10 +81,6 @@ const SliderY = (props) => {
     // onBlur event handling logic here
     sendMessage("AvatarNick", "enableInput");
     setIsEditing(false)
-    const { value } = e.target;
-    setSliderValue(parseFloat(value));
-    sendMessage("Cube", "ChangeYPosition", parseFloat(value));
-
   };
 
   const onFocus = () => {

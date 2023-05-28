@@ -81,10 +81,6 @@ const SliderRotate = (props) => {
     // onBlur event handling logic here
     sendMessage("AvatarNick", "enableInput");
     setIsEditing(false)
-    const { value } = e.target;
-    setSliderValue(parseFloat(value));
-    sendMessage("Cube", "ChangeRotation", parseFloat(value));
-
   };
 
   const onFocus = () => {
