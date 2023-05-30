@@ -41,6 +41,7 @@ const UnityLoader = () => {
   const [userImage, setUserImage] = useState(localStorage.getItem('userImage') || 'https://models.readyplayer.me/63d5148460d1b8cc82dca9db.png');
   const [userSigned, setUserSigned] = useState(JSON.parse(localStorage.getItem('userSigned')) || false)
   const [isEditorMode, setIsEditorMode] = useState(false);
+  const [objectName, setObjectName] = useState('');
 
   function generateUID(length) {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -94,6 +95,18 @@ const UnityLoader = () => {
       sendMessage("AvatarNick", "enableInput");
     }
   }, [isStarted, userSigned]);
+
+  const handleObjectName = useCallback((setObjectName) => {
+    setObjectName(setObjectName);
+    console.log("Received Object Name" + objectName);
+  }, [])
+
+  useEffect(() => {
+    addEventListener("setObjectName", handleObjectName);
+    return () => {
+      removeEventListener("setObjectName", handleObjectName);
+    };
+  }, [addEventListener, removeEventListener, handleObjectName]);
 
   const handleChange = (e) => {
     const { value } = e.target;
