@@ -89,7 +89,7 @@ const EditorPanel = (props) => {
             x
           </Typography>
         </div>
-        <SliderX sendMessage={sendMessage} addEventListener={addEventListener} removeEventListener={removeEventListener}/>
+        {/* <SliderX sendMessage={sendMessage} addEventListener={addEventListener} removeEventListener={removeEventListener}/> */}
 
         <div
           style={{
@@ -123,7 +123,7 @@ const EditorPanel = (props) => {
             z
           </Typography>
         </div>
-        <SliderZ sendMessage={sendMessage} addEventListener={addEventListener} removeEventListener={removeEventListener}/>
+        {/* <SliderZ sendMessage={sendMessage} addEventListener={addEventListener} removeEventListener={removeEventListener}/> */}
 
         <div
           style={{
@@ -141,7 +141,7 @@ const EditorPanel = (props) => {
             Rotation
           </Typography>
         </div>
-        <SliderRotate sendMessage={sendMessage} addEventListener={addEventListener} removeEventListener={removeEventListener}/>
+        {/* <SliderRotate sendMessage={sendMessage} addEventListener={addEventListener} removeEventListener={removeEventListener}/> */}
 
         <div
           style={{
@@ -159,7 +159,7 @@ const EditorPanel = (props) => {
             Scale
           </Typography>
         </div>
-        <SliderScale sendMessage={sendMessage} addEventListener={addEventListener} removeEventListener={removeEventListener}/>
+        {/* <SliderScale sendMessage={sendMessage} addEventListener={addEventListener} removeEventListener={removeEventListener}/> */}
 
         <Button onClick={handleEditorMode} className="editorDoneButton">Done</Button>
       </Stack>
