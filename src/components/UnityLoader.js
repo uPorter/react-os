@@ -41,7 +41,7 @@ const UnityLoader = () => {
   const [userImage, setUserImage] = useState(localStorage.getItem('userImage') || 'https://models.readyplayer.me/63d5148460d1b8cc82dca9db.png');
   const [userSigned, setUserSigned] = useState(JSON.parse(localStorage.getItem('userSigned')) || false)
   const [isEditorMode, setIsEditorMode] = useState(false);
-  const [objectName, setObjectName] = useState('');
+  const [objectName, setObjectNameReact] = useState('');
 
   function generateUID(length) {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -97,7 +97,7 @@ const UnityLoader = () => {
   }, [isStarted, userSigned]);
 
   const handleObjectName = useCallback((setObjectName) => {
-    setObjectName(setObjectName);
+    setObjectNameReact(setObjectName);
     console.log("Received Object Name" + objectName);
   }, [])
 

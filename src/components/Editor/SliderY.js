@@ -12,7 +12,7 @@ const SliderY = (props) => {
   const [sliderValue, setSliderValue] = useState(0);
   const [isUpdatingValue, setIsUpdatingValue] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
-  const [objectName, setObjectName] = useState('');
+  const [objectName, setObjectNameReact] = useState('');
   const x = useMotionValue(0);
   const controls = useAnimation();
 
@@ -32,7 +32,7 @@ const SliderY = (props) => {
   }, []);
 
   const handleObjectName = useCallback((setObjectName) => {
-    setObjectName(setObjectName);
+    setObjectNameReact(setObjectName);
   }, [])
 
 
