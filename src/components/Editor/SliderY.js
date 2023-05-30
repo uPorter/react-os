@@ -12,6 +12,7 @@ const SliderY = (props) => {
   const [sliderValue, setSliderValue] = useState(0);
   const [isUpdatingValue, setIsUpdatingValue] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
+  const [objectName, setObjectName] = useState('');
   const x = useMotionValue(0);
   const controls = useAnimation();
 
@@ -23,12 +24,16 @@ const SliderY = (props) => {
     } else {
       x.set(offset.x);
     }
-    sendMessage("Cube", "ChangeYPosition", parseFloat(displayValue.get().toFixed(2)));
+    sendMessage(objectName, "ChangeYPosition", parseFloat(displayValue.get().toFixed(2)));
   }, []);
 
   const handleYCord = useCallback((setYCord) => {
     setSliderValue(parseFloat(setYCord));
   }, []);
+
+  const handleObjectName = useCallback((setObjectName) => {
+    setObjectName(setObjectName);
+  }, [])
 
 
   useEffect(() => {
@@ -39,10 +44,17 @@ const SliderY = (props) => {
   }, [addEventListener, removeEventListener, handleYCord]);
 
   useEffect(() => {
+    addEventListener("setObjectName", handleObjectName);
+    return () => {
+      removeEventListener("setObjectName", handleObjectName);
+    };
+  }, [addEventListener, removeEventListener, handleObjectName]);
+
+  useEffect(() => {
     const checkYValue = () => {
       if (!isEditing && x.get() === 0) { // isEditing değeri false ve x.get() değeri 0 ise
         setIsUpdatingValue(true);
-        sendMessage("Cube", "SendYCoordToReact");
+        sendMessage(objectName, "SendYCoordToReact");
       }
     };
     const interval = setInterval(checkYValue, 100); // Her 100ms'de bir kontrol et
@@ -62,7 +74,7 @@ const SliderY = (props) => {
     const handleAnimationComplete = () => {
       x.set(0);
       setSliderValue(parseFloat(displayValue.get().toFixed(2)));
-      sendMessage("Cube", "SendYCoordToReact");
+      sendMessage(objectName, "SendYCoordToReact");
   
       // İşlem tamamlandıktan sonra değeri tekrar güncelle
     };
@@ -93,7 +105,7 @@ const SliderY = (props) => {
     const { value, key } = e.target;
     setSliderValue(parseFloat(value));
     if (value.trim() !== "") { 
-      sendMessage("Cube", "ChangeYPosition", parseFloat(value)); 
+      sendMessage(objectName, "ChangeYPosition", parseFloat(value)); 
     }
     console.log(value);
   }
