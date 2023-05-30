@@ -99,7 +99,7 @@ const UnityLoader = () => {
   const handleObjectName = useCallback((setObjectName) => {
     setObjectNameReact(setObjectName);
     console.log("Received Object Name :" + objectName);
-  }, [objectName])
+  }, [])
 
   useEffect(() => {
     addEventListener("setObjectName", handleObjectName);
