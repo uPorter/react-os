@@ -134,7 +134,7 @@ export class Dock extends Component {
                         backgroundColor: '#00000040',
                     },
                 }}>Add Content</Button>}>
-                    <IconButton onClick={handleEditorMode} className='dockButtons' variant="solid" sx={{
+                    <IconButton className='dockButtons' variant="solid" sx={{
                         "--IconButton-size": "55px",
                         "--IconButton-radius": "50px",
                     }}>

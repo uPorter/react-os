@@ -43,6 +43,17 @@ const UnityLoader = () => {
   const [isEditorMode, setIsEditorMode] = useState(false);
   const [objectName, setObjectNameReact] = useState('');
 
+  useEffect(() => {
+    addEventListener("setObjectName", handleObjectName);
+    return () => {
+      removeEventListener("setObjectName", handleObjectName);
+    };
+  }, [addEventListener, removeEventListener, handleObjectName]);
+
+  const handleObjectName = useCallback((setObjectName) => {
+    setObjectNameReact(setObjectName);
+  }, []);
+
   function generateUID(length) {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     let uid = '';
@@ -179,6 +190,11 @@ const UnityLoader = () => {
     //sendMessage("AvatarEdit", "EditorON");
   }
 
+  const gameHandler = useCallback(() => {
+    setIsStarted(true)
+    console.log("Instance Started!");
+  }, []);
+
   useEffect(() => {
     addEventListener("Started", gameHandler);
 
@@ -186,6 +202,14 @@ const UnityLoader = () => {
       removeEventListener("Started", gameHandler);
     };
   }, [addEventListener, removeEventListener, gameHandler]);
+
+  useEffect(() => {
+    addEventListener("EditorActive", handleEditorMode);
+
+    return () => {
+      removeEventListener("EditorActive", handleEditorMode);
+    };
+  }, [addEventListener, removeEventListener, handleEditorMode]);
 
 
   const Item = styled(Sheet)(({ theme }) => ({
@@ -337,13 +361,13 @@ const UnityLoader = () => {
                 <Button>Test</Button>
               </Grid>
               <Grid xs={6}>
-                <Dock handleEditorMode={handleEditorMode}></Dock>
+                <Dock></Dock>
               </Grid>
               <Grid style={{ opacity: 0 }} xs>
               </Grid>
             </Grid>
             <ChatComponent userName={userName} showChat={showChat} sendMessage={sendMessage} userID={userID} userToken={userToken} userImage={userImage} />
-            {isEditorMode && <EditorPanel sendMessage={sendMessage} handleEditorMode={handleEditorMode} addEventListener={addEventListener} removeEventListener={removeEventListener}></EditorPanel>}
+            {isEditorMode && <EditorPanel objectName={objectName} sendMessage={sendMessage} handleEditorMode={handleEditorMode} addEventListener={addEventListener} removeEventListener={removeEventListener}></EditorPanel>}
             {/* <FileUpload style={{position: 'absolute', zIndex: '15'}}></FileUpload> */}
             {/* <Button style={{ position: 'absolute', zIndex: '15' }} onClick={ReactshowRPM} variant="soft">Edit Avatar - PreTest</Button>*/}
           </div>)}

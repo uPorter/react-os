@@ -10,19 +10,8 @@ import Button from "@mui/joy/Button";
 import './style.css';
 
 const EditorPanel = (props) => {
-  const { handleEditorMode, sendMessage, addEventListener, removeEventListener } = props;
-  const [objectName, setObjectNameReact] = useState('');
-
-  useEffect(() => {
-    addEventListener("setObjectName", handleObjectName);
-    return () => {
-      removeEventListener("setObjectName", handleObjectName);
-    };
-  }, [addEventListener, removeEventListener, handleObjectName]);
-
-  const handleObjectName = useCallback((setObjectName) => {
-    setObjectNameReact(setObjectName);
-  }, []);
+  const { handleEditorMode, sendMessage, addEventListener, removeEventListener, objectName } = props;
+  
 
   return (
     <div
