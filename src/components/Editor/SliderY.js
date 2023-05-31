@@ -31,10 +31,9 @@ const SliderY = (props) => {
     setSliderValue(parseFloat(setYCord));
   }, []);
 
-  const handleObjectName = useCallback((setObjectName) => {
-    setObjectNameReact(setObjectName);
-  }, [])
-
+  const handleYCord = useCallback((setObjectName) => {
+    setSliderValue(setObjectName);
+  }, []);
 
   useEffect(() => {
     addEventListener("setYCord", handleYCord);
