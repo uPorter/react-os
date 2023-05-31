@@ -16,6 +16,17 @@ const SliderY = (props) => {
   const x = useMotionValue(0);
   const controls = useAnimation();
 
+    useEffect(() => {
+    addEventListener("setObjectName", handleObjectName);
+    return () => {
+      removeEventListener("setObjectName", handleObjectName);
+    };
+  }, [addEventListener, removeEventListener, handleObjectName]);
+
+  const handleObjectName = useCallback((setObjectName) => {
+    setObjectNameReact(setObjectName);
+  }, []);
+
   const handleDrag = useCallback((_, { offset }) => {
     if (offset.x > 110) {
       x.set(110);
@@ -24,18 +35,15 @@ const SliderY = (props) => {
     } else {
       x.set(offset.x);
     }
+    console.log(objectName);
     sendMessage(objectName, "ChangeYPosition", parseFloat(displayValue.get().toFixed(2)));
-
-    
   }, []);
 
   const handleYCord = useCallback((setYCord) => {
     setSliderValue(parseFloat(setYCord));
   }, []);
 
-  const handleObjectName = useCallback((setObjectName) => {
-    setObjectNameReact(setObjectName);
-  }, []);
+
 
   useEffect(() => {
     addEventListener("setYCord", handleYCord);
@@ -44,12 +52,7 @@ const SliderY = (props) => {
     };
   }, [addEventListener, removeEventListener, handleYCord]);
 
-  useEffect(() => {
-    addEventListener("setObjectName", handleObjectName);
-    return () => {
-      removeEventListener("setObjectName", handleObjectName);
-    };
-  }, [addEventListener, removeEventListener, handleObjectName]);
+
 
   useEffect(() => {
     const checkYValue = () => {
