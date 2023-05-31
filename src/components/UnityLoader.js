@@ -75,7 +75,7 @@ const UnityLoader = () => {
   }, [userID]);
 
   const handleEditorMode = () => {
-    setIsEditorMode(!isEditorMode);
+    setIsEditorMode(ture);
   }
 
   useEffect(() => {
