@@ -10,7 +10,7 @@ import Button from "@mui/joy/Button";
 import './style.css';
 
 const EditorPanel = (props) => {
-  const { handleEditorMode, sendMessage, addEventListener, removeEventListener, objectName } = props;
+  const { sendMessage, addEventListener, removeEventListener, objectName, handleEditorOff } = props;
   
 
   return (
@@ -162,7 +162,7 @@ const EditorPanel = (props) => {
         </div>
         <SliderScale objectName={objectName} sendMessage={sendMessage} addEventListener={addEventListener} removeEventListener={removeEventListener}/>
 
-        <Button onClick={handleEditorMode} className="editorDoneButton">Done</Button>
+        <Button onClick={handleEditorOff} className="editorDoneButton">Done</Button>
       </Stack>
     </div>
   );
