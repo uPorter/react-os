@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Stack from "@mui/joy/Stack";
 import SliderX from "./SliderX";
 import SliderY from "./SliderY";
