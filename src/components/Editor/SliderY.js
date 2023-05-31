@@ -12,7 +12,7 @@ const SliderY = (props) => {
   const [sliderValue, setSliderValue] = useState(0);
   const [isUpdatingValue, setIsUpdatingValue] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
-  const [objectName, setObjectNameReact] = useState('mainObject');
+  const [objectName, setObjectNameReact] = useState('');
   const x = useMotionValue(0);
   const controls = useAnimation();
 
@@ -24,7 +24,10 @@ const SliderY = (props) => {
     } else {
       x.set(offset.x);
     }
-    sendMessage(objectName, "ChangeYPosition", parseFloat(displayValue.get().toFixed(2)));
+    if (objectName !== '') {
+      sendMessage(objectName, "ChangeYPosition", parseFloat(displayValue.get().toFixed(2)));
+    }
+    
   }, []);
 
   const handleYCord = useCallback((setYCord) => {
@@ -33,7 +36,6 @@ const SliderY = (props) => {
 
   const handleObjectName = useCallback((setObjectName) => {
     setObjectNameReact(setObjectName);
-    console.log(setObjectName);
   }, []);
 
   useEffect(() => {
@@ -54,7 +56,9 @@ const SliderY = (props) => {
     const checkYValue = () => {
       if (!isEditing && x.get() === 0) { // isEditing değeri false ve x.get() değeri 0 ise
         setIsUpdatingValue(true);
-        sendMessage(objectName, "SendYCoordToReact");
+        if (objectName !== '') { 
+          sendMessage(objectName, "SendYCoordToReact");
+        }
       }
     };
     const interval = setInterval(checkYValue, 100); // Her 100ms'de bir kontrol et
@@ -62,7 +66,7 @@ const SliderY = (props) => {
     return () => {
       clearInterval(interval); // Temizleme işlemi
     };
-  }, [x, isEditing]);
+  }, [x, isEditing, objectName]);
 
   const handleDragEnd = useCallback(async (_, { offset }) => {
     const increment = offset.x / 500;
@@ -74,7 +78,10 @@ const SliderY = (props) => {
     const handleAnimationComplete = () => {
       x.set(0);
       setSliderValue(parseFloat(displayValue.get().toFixed(2)));
-      sendMessage(objectName, "SendYCoordToReact");
+      
+      if (objectName !== '') { 
+        sendMessage(objectName, "SendYCoordToReact");
+      }
   
       // İşlem tamamlandıktan sonra değeri tekrar güncelle
     };
