@@ -16,7 +16,7 @@ const SliderY = (props) => {
   const x = useMotionValue(0);
   const controls = useAnimation();
 
-    useEffect(() => {
+  useEffect(() => {
     addEventListener("setObjectName", handleObjectName);
     return () => {
       removeEventListener("setObjectName", handleObjectName);
@@ -35,7 +35,6 @@ const SliderY = (props) => {
     } else {
       x.set(offset.x);
     }
-    console.log(objectName);
     sendMessage(objectName, "ChangeYPosition", parseFloat(displayValue.get().toFixed(2)));
   }, [objectName]);
 
@@ -54,11 +53,9 @@ const SliderY = (props) => {
 
   useEffect(() => {
     const checkYValue = () => {
-      if (!isEditing && x.get() === 0) { // isEditing değeri false ve x.get() değeri 0 ise
+      if (!isEditing && x.get() === 0 && objectName !== '') { // isEditing değeri false ve x.get() değeri 0 ise
         setIsUpdatingValue(true);
-        if (objectName !== '') { 
-          sendMessage(objectName, "SendYCoordToReact");
-        }
+        sendMessage(objectName, "SendYCoordToReact");
       }
     };
     const interval = setInterval(checkYValue, 100); // Her 100ms'de bir kontrol et

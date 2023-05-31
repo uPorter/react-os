@@ -12,8 +12,20 @@ const SliderX = (props) => {
   const [sliderValue, setSliderValue] = useState(0);
   const [isUpdatingValue, setIsUpdatingValue] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
+  const [objectName, setObjectNameReact] = useState('');
   const x = useMotionValue(0);
   const controls = useAnimation();
+
+  useEffect(() => {
+    addEventListener("setObjectName", handleObjectName);
+    return () => {
+      removeEventListener("setObjectName", handleObjectName);
+    };
+  }, [addEventListener, removeEventListener, handleObjectName]);
+
+  const handleObjectName = useCallback((setObjectName) => {
+    setObjectNameReact(setObjectName);
+  }, []);
 
   const handleDrag = useCallback((_, { offset }) => {
     if (offset.x > 110) {
@@ -23,8 +35,8 @@ const SliderX = (props) => {
     } else {
       x.set(offset.x);
     }
-    sendMessage("Cube", "ChangeXPosition", parseFloat(displayValue.get().toFixed(2)));
-  }, []);
+    sendMessage(objectName, "ChangeXPosition", parseFloat(displayValue.get().toFixed(2)));
+  }, [objectName]);
 
   const handleXCord = useCallback((setXCord) => {
     setSliderValue(parseFloat(setXCord));
@@ -40,9 +52,9 @@ const SliderX = (props) => {
 
   useEffect(() => {
     const checkXValue = () => {
-      if (!isEditing && x.get() === 0) { // isEditing değeri false ve x.get() değeri 0 ise
+      if (!isEditing && x.get() === 0 && objectName !== '') { // isEditing değeri false ve x.get() değeri 0 ise
         setIsUpdatingValue(true);
-        sendMessage("Cube", "SendXCoordToReact");
+        sendMessage(objectName, "SendXCoordToReact");
       }
     };
     const interval = setInterval(checkXValue, 100); // Her 100ms'de bir kontrol et
@@ -50,7 +62,7 @@ const SliderX = (props) => {
     return () => {
       clearInterval(interval); // Temizleme işlemi
     };
-  }, [x, isEditing]);
+  }, [x, isEditing,objectName]);
 
   const handleDragEnd = useCallback(async (_, { offset }) => {
     const increment = offset.x / 500;
@@ -62,7 +74,7 @@ const SliderX = (props) => {
     const handleAnimationComplete = () => {
       x.set(0);
       setSliderValue(parseFloat(displayValue.get().toFixed(2)));
-      sendMessage("Cube", "SendXCoordToReact");
+      sendMessage(objectName, "SendXCoordToReact");
   
       // İşlem tamamlandıktan sonra değeri tekrar güncelle
     };
@@ -93,7 +105,7 @@ const SliderX = (props) => {
     const { value } = e.target;
     setSliderValue(parseFloat(value));
     if (value.trim() !== "") { 
-      sendMessage("Cube", "ChangeXPosition", parseFloat(value));
+      sendMessage(objectName, "ChangeXPosition", parseFloat(value));
     }
     console.log(value);
   }
