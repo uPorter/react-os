@@ -24,9 +24,8 @@ const SliderY = (props) => {
     } else {
       x.set(offset.x);
     }
-    if (objectName !== '') {
-      sendMessage(objectName, "ChangeYPosition", parseFloat(displayValue.get().toFixed(2)));
-    }
+    sendMessage(objectName, "ChangeYPosition", parseFloat(displayValue.get().toFixed(2)));
+
     
   }, []);
 
@@ -78,10 +77,7 @@ const SliderY = (props) => {
     const handleAnimationComplete = () => {
       x.set(0);
       setSliderValue(parseFloat(displayValue.get().toFixed(2)));
-      
-      if (objectName !== '') { 
-        sendMessage(objectName, "SendYCoordToReact");
-      }
+      sendMessage(objectName, "SendYCoordToReact");
   
       // İşlem tamamlandıktan sonra değeri tekrar güncelle
     };
