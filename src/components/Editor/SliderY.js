@@ -12,7 +12,7 @@ const SliderY = (props) => {
   const [sliderValue, setSliderValue] = useState(0);
   const [isUpdatingValue, setIsUpdatingValue] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
-  const [objectName, setObjectNameReact] = useState('');
+  const [objectName, setObjectNameReact] = useState('mainObject');
   const x = useMotionValue(0);
   const controls = useAnimation();
 
@@ -31,8 +31,9 @@ const SliderY = (props) => {
     setSliderValue(parseFloat(setYCord));
   }, []);
 
-  const handleYCord = useCallback((setObjectName) => {
-    setSliderValue(setObjectName);
+  const handleObjectName = useCallback((setObjectName) => {
+    setObjectNameReact(setObjectName);
+    console.log(setObjectName);
   }, []);
 
   useEffect(() => {
