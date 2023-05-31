@@ -97,7 +97,7 @@ const UnityLoader = () => {
   }, [isStarted, userSigned]);
 
   const handleObjectName = useCallback((setObjectName) => {
-    console.log("Received Object Name :" + setObjectName);
+    console.log("Received Object Name :" + String(setObjectName));
   }, [])
 
   useEffect(() => {
