@@ -11,6 +11,18 @@ import './style.css';
 
 const EditorPanel = (props) => {
   const { handleEditorMode, sendMessage, addEventListener, removeEventListener } = props;
+  const [objectName, setObjectNameReact] = useState('');
+
+  useEffect(() => {
+    addEventListener("setObjectName", handleObjectName);
+    return () => {
+      removeEventListener("setObjectName", handleObjectName);
+    };
+  }, [addEventListener, removeEventListener, handleObjectName]);
+
+  const handleObjectName = useCallback((setObjectName) => {
+    setObjectNameReact(setObjectName);
+  }, []);
 
   return (
     <div
@@ -89,7 +101,7 @@ const EditorPanel = (props) => {
             x
           </Typography>
         </div>
-        <SliderX sendMessage={sendMessage} addEventListener={addEventListener} removeEventListener={removeEventListener}/>
+        <SliderX objectName={objectName} sendMessage={sendMessage} addEventListener={addEventListener} removeEventListener={removeEventListener}/>
 
         <div
           style={{
@@ -106,7 +118,7 @@ const EditorPanel = (props) => {
             y
           </Typography>
         </div>
-        <SliderY sendMessage={sendMessage} addEventListener={addEventListener} removeEventListener={removeEventListener}/>
+        <SliderY objectName={objectName} sendMessage={sendMessage} addEventListener={addEventListener} removeEventListener={removeEventListener}/>
 
         <div
           style={{
@@ -123,7 +135,7 @@ const EditorPanel = (props) => {
             z
           </Typography>
         </div>
-        <SliderZ sendMessage={sendMessage} addEventListener={addEventListener} removeEventListener={removeEventListener}/>
+        <SliderZ objectName={objectName} sendMessage={sendMessage} addEventListener={addEventListener} removeEventListener={removeEventListener}/>
 
         <div
           style={{
@@ -141,7 +153,7 @@ const EditorPanel = (props) => {
             Rotation
           </Typography>
         </div>
-        <SliderRotate sendMessage={sendMessage} addEventListener={addEventListener} removeEventListener={removeEventListener}/>
+        <SliderRotate objectName={objectName} sendMessage={sendMessage} addEventListener={addEventListener} removeEventListener={removeEventListener}/>
 
         <div
           style={{
@@ -159,7 +171,7 @@ const EditorPanel = (props) => {
             Scale
           </Typography>
         </div>
-        <SliderScale sendMessage={sendMessage} addEventListener={addEventListener} removeEventListener={removeEventListener}/>
+        <SliderScale objectName={objectName} sendMessage={sendMessage} addEventListener={addEventListener} removeEventListener={removeEventListener}/>
 
         <Button onClick={handleEditorMode} className="editorDoneButton">Done</Button>
       </Stack>

@@ -8,24 +8,12 @@ import {
 import Input from "@mui/joy/Input";
 
 const SliderX = (props) => {
-  const { sendMessage, addEventListener, removeEventListener } = props;
+  const { sendMessage, addEventListener, removeEventListener, objectName } = props;
   const [sliderValue, setSliderValue] = useState(0);
   const [isUpdatingValue, setIsUpdatingValue] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
-  const [objectName, setObjectNameReact] = useState('');
   const x = useMotionValue(0);
   const controls = useAnimation();
-
-  useEffect(() => {
-    addEventListener("setObjectName", handleObjectName);
-    return () => {
-      removeEventListener("setObjectName", handleObjectName);
-    };
-  }, [addEventListener, removeEventListener, handleObjectName]);
-
-  const handleObjectName = useCallback((setObjectName) => {
-    setObjectNameReact(setObjectName);
-  }, []);
 
   const handleDrag = useCallback((_, { offset }) => {
     if (offset.x > 110) {
