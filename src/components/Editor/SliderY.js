@@ -37,13 +37,11 @@ const SliderY = (props) => {
     }
     console.log(objectName);
     sendMessage(objectName, "ChangeYPosition", parseFloat(displayValue.get().toFixed(2)));
-  }, []);
+  }, [objectName]);
 
   const handleYCord = useCallback((setYCord) => {
     setSliderValue(parseFloat(setYCord));
   }, []);
-
-
 
   useEffect(() => {
     addEventListener("setYCord", handleYCord);
