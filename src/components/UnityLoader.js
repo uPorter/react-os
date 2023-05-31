@@ -79,9 +79,9 @@ const UnityLoader = () => {
   }
 
   const handleEditorOff = () => {
-    setIsEditorMode(true);
+    setIsEditorMode(false);
   }
-  
+
   useEffect(() => {
     localStorage.setItem('userID', userID);
   }, [userID]);
