@@ -190,11 +190,6 @@ const UnityLoader = () => {
     //sendMessage("AvatarEdit", "EditorON");
   }
 
-  const gameHandler = useCallback(() => {
-    setIsStarted(true)
-    console.log("Instance Started!");
-  }, []);
-
   useEffect(() => {
     addEventListener("Started", gameHandler);
 
