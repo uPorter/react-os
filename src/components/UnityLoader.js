@@ -18,7 +18,7 @@ import { Toaster, toast } from 'sonner'
 import 'stream-chat-react/dist/css/index.css';
 import EditorPanel from './Editor/EditorPanel';
 
-const chatClient = StreamChat.getInstance('d9m7j2mj5ju8');
+const chatClient = StreamChat.getInstance('zqwrbbhbxazj');
 
 const UnityLoader = () => {
 
@@ -162,8 +162,8 @@ const UnityLoader = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          apiKey: 'd9m7j2mj5ju8',
-          apiSecret: 'mnjmdkve6eunhm55wfz8t8qw9a47nx3vnmjatkm2cq8nnp93tzqj4tktfjterw7d',
+          apiKey: 'zqwrbbhbxazj',
+          apiSecret: 'ub2q487xfzcgn6jvngw76x36ru9ht4v94qhduvmh6awjhqqt7h7mmw7urhhqnhvs',
           userId: userID,
         }),
       });
