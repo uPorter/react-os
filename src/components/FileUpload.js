@@ -85,7 +85,7 @@ function FileUpload() {
           )}
         </Dropzone>
         {uploadProgress > 0 && <progress value={uploadProgress} max="100" />}
-        <Button onClick={() => {
+        <Button onClick={async () => {
           const [uploadProgressToast, setUploadProgressToast] = useState(0);
           const formData = new FormData();
           formData.append('file', file);
