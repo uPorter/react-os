@@ -6,14 +6,14 @@ import Button from '@mui/joy/Button';
 import { Toaster, toast } from "sonner";
 import Typography from "@mui/joy/Typography";
 
-function FileUpload() {
+function FileUpload(setUploadOpen) {
   const [file, setFile] = useState(null);
   const [uploadProgress, setUploadProgress] = useState(0);
 
   const onFileUpload = async () => {
     const formData = new FormData();
     formData.append('file', file);
-
+    setUploadOpen(false);
     try {
       const response = await axios.post('https://3ec8-152-32-192-31.ngrok-free.app/upload', formData, {
         headers: {
@@ -25,6 +25,7 @@ function FileUpload() {
         },
       });
       console.log(response.data);
+      
     } catch (error) {
       console.log(error);
     }
