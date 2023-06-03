@@ -77,7 +77,7 @@ function FileUpload() {
       />
       <Toaster position="top-center" richColors closeButton />
       <div className='fileUploaderHolder'>
-        <Dropzone className='fileDropZone' onDrop={(onFileUpload) => setFile(acceptedFiles[0])}>
+        <Dropzone className='fileDropZone' onDrop={(acceptedFiles) => setFile(acceptedFiles[0])}>
           {({ getRootProps, getInputProps }) => (
             <div {...getRootProps()} className='file-text-holder' style={{ width: 400, height: 200 }}>
               <input {...getInputProps()} />
