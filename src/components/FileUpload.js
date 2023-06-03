@@ -86,12 +86,20 @@ function FileUpload() {
           )}
         </Dropzone>
         {uploadProgress > 0 && <progress value={uploadProgress} max="100" />}
-        <Button onClick={() => {
-          onFileUpload();
-          toast.custom((t) => (
-            <ToastContent uploadProgress={uploadProgress} />
-          ));
-          
+        <Button onClick={async () => {
+          try {
+            const response = await toast.promise(
+              onFileUpload(),
+              {
+                pending: 'Uploading...',
+                success: 'Upload successful!',
+                error: 'Upload failed!',
+              }
+            );
+            console.log(response.data);
+          } catch (error) {
+            console.log(error);
+          }
         }}>Upload</Button>
       </div>
     </div>
