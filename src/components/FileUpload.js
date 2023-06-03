@@ -14,7 +14,6 @@ function FileUpload(setUploadOpen) {
     const formData = new FormData();
     formData.append('file', file);
     try {
-      setUploadOpen(false);
       const response = await axios.post('https://3ec8-152-32-192-31.ngrok-free.app/upload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
@@ -53,6 +52,7 @@ function FileUpload(setUploadOpen) {
               }
             );
             console.log(response.data);
+            setUploadOpen(false);
           } catch (error) {
             console.log(error);
           }
