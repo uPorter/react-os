@@ -30,8 +30,6 @@ function FileUpload() {
     }
   };
 
-
-
   return (
     <div className='fileUploadContainer'>
       <div className='fileUploaderHolder'>
@@ -49,7 +47,7 @@ function FileUpload() {
             const response = await toast.promise(
               onFileUpload(),
               {
-                pending: 'Uploading...',
+                loading: 'Uploading...',
                 success: 'Upload successful!',
                 error: 'Upload failed!',
               }
