@@ -13,6 +13,7 @@ import IconButton from "@mui/joy/IconButton";
 import Typography from "@mui/joy/Typography";
 import Close from "@mui/icons-material/Close";
 import WarningIcon from "@mui/icons-material/Warning";
+import ToastContent from './ToastComponent';
 
 function FileUpload() {
   const [file, setFile] = useState(null);
@@ -88,34 +89,7 @@ function FileUpload() {
         <Button onClick={() => {
           onFileUpload();
           toast.custom((t) => (
-            <Alert
-              variant="solid"
-              sx={{ background: 'rgba(255, 255, 255, 0)!important', width: "var(--width)", gap: 2, boxShadow: "md" }}
-              endDecorator={
-                <IconButton
-                  variant="soft"
-                  color="warning"
-                  onClick={() => toast.dismiss(t)}
-                >
-                  <Close />
-                </IconButton>
-              }
-            >
-              <Box sx={{ flexGrow: 1 }}>
-                Joy UI feat. Sonner is awesome!
-                <Box sx={{ display: "flex", alignItems: "center", mt: 1 }}>
-                  <LinearProgress
-                    value={uploadProgress}
-                    variant="soft"
-                    color="warning"
-                    determinate
-                  />
-                  <Typography ml={1} level="body3" textColor="inherit">
-                    {uploadProgress}%
-                  </Typography>
-                </Box>
-              </Box>
-            </Alert>
+            <ToastContent uploadProgress={uploadProgress} />
           ));
           
         }}>Upload</Button>
