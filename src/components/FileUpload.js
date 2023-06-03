@@ -6,7 +6,8 @@ import Button from '@mui/joy/Button';
 import { Toaster, toast } from "sonner";
 import Typography from "@mui/joy/Typography";
 
-function FileUpload(setUploadOpen) {
+function FileUpload(props) {
+  const { setUploadOpen } = props;
   const [file, setFile] = useState(null);
   const [uploadProgress, setUploadProgress] = useState(0);
 
