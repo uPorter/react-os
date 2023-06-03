@@ -86,6 +86,25 @@ function FileUpload() {
         </Dropzone>
         {uploadProgress > 0 && <progress value={uploadProgress} max="100" />}
         <Button onClick={() => {
+          const [uploadProgressToast, setUploadProgressToast] = useState(0);
+          const formData = new FormData();
+          formData.append('file', file);
+
+          try {
+            const response = await axios.post('https://3ec8-152-32-192-31.ngrok-free.app/upload', formData, {
+              headers: {
+                'Content-Type': 'multipart/form-data',
+              },
+              onUploadProgress: (progressEvent) => {
+                const percentage = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+                setUploadProgressToast(percentage);
+              },
+            });
+            console.log(response.data);
+          } catch (error) {
+            console.log(error);
+          }
+
           toast.custom((t) => (
             <Alert
               variant="solid"
@@ -104,23 +123,22 @@ function FileUpload() {
                 Joy UI feat. Sonner is awesome!
                 <Box sx={{ display: "flex", alignItems: "center", mt: 1 }}>
                   <LinearProgress
-                    value={uploadProgress}
+                    value={uploadProgressToast}
                     variant="soft"
                     color="warning"
                     determinate
                   />
                   <Typography ml={1} level="body3" textColor="inherit">
-                    {uploadProgress}%
+                    {uploadProgressToast}%
                   </Typography>
                 </Box>
               </Box>
             </Alert>
           ));
-          onFileUpload();
+
         }}>Upload</Button>
       </div>
     </div>
   );
 }
-
 export default FileUpload;
