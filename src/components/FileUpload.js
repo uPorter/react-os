@@ -16,7 +16,7 @@ function FileUpload() {
       formData.append('file', file);
   
       try {
-        const response = await axios.post('http://localhost:3000/upload', formData, {
+        const response = await axios.post('https://3ec8-152-32-192-31.ngrok-free.app/upload', formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },

@@ -41,6 +41,7 @@ const UnityLoader = () => {
   const [userImage, setUserImage] = useState(localStorage.getItem('userImage') || 'https://models.readyplayer.me/63d5148460d1b8cc82dca9db.png');
   const [userSigned, setUserSigned] = useState(JSON.parse(localStorage.getItem('userSigned')) || false)
   const [isEditorMode, setIsEditorMode] = useState(false);
+  const [uploadOpen, setUploadOpen] = useState(false);
   const [objectName, setObjectNameReact] = useState('');
 
   useEffect(() => {
@@ -53,6 +54,10 @@ const UnityLoader = () => {
   const handleObjectName = useCallback((setObjectName) => {
     setObjectNameReact(setObjectName);
   }, []);
+
+  const handleAddContent = () => {
+    setUploadOpen(!uploadOpen);
+  }
 
   function generateUID(length) {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -360,14 +365,14 @@ const UnityLoader = () => {
                 <Button>Test</Button>
               </Grid>
               <Grid xs={6}>
-                <Dock></Dock>
+                <Dock handleAddContent={handleAddContent}></Dock>
               </Grid>
               <Grid style={{ opacity: 0 }} xs>
               </Grid>
             </Grid>
             <ChatComponent userName={userName} showChat={showChat} sendMessage={sendMessage} userID={userID} userToken={userToken} userImage={userImage} />
             {isEditorMode && <EditorPanel objectName={objectName} sendMessage={sendMessage} handleEditorMode={handleEditorMode} handleEditorOff={handleEditorOff} addEventListener={addEventListener} removeEventListener={removeEventListener}></EditorPanel>}
-            {/* <FileUpload style={{position: 'absolute', zIndex: '15'}}></FileUpload> */}
+            {uploadOpen && <FileUpload style={{position: 'absolute', zIndex: '15'}}></FileUpload> }
             {/* <Button style={{ position: 'absolute', zIndex: '15' }} onClick={ReactshowRPM} variant="soft">Edit Avatar - PreTest</Button>*/}
           </div>)}
           <Toaster className='toasterCSS' richColors position="bottom-center" />
