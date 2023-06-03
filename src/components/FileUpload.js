@@ -75,7 +75,6 @@ function FileUpload() {
         }
       `}
       />
-      <Toaster position="top-center" richColors closeButton />
       <div className='fileUploaderHolder'>
         <Dropzone className='fileDropZone' onDrop={(acceptedFiles) => setFile(acceptedFiles[0])}>
           {({ getRootProps, getInputProps }) => (
@@ -86,12 +85,11 @@ function FileUpload() {
           )}
         </Dropzone>
         {uploadProgress > 0 && <progress value={uploadProgress} max="100" />}
-        <Button onClick={() =>
+        <Button onClick={() => {
           toast.custom((t) => (
             <Alert
               variant="solid"
-              color="warning"
-              sx={{ width: "var(--width)", gap: 2, boxShadow: "md" }}
+              sx={{ background: 'rgba(255, 255, 255, 0)!important', width: "var(--width)", gap: 2, boxShadow: "md" }}
               endDecorator={
                 <IconButton
                   variant="soft"
@@ -112,13 +110,14 @@ function FileUpload() {
                     determinate
                   />
                   <Typography ml={1} level="body3" textColor="inherit">
-                    40%
+                    {uploadProgress}%
                   </Typography>
                 </Box>
               </Box>
             </Alert>
-          ))
-        }>Upload</Button>
+          ));
+          onFileUpload();
+        }}>Upload</Button>
       </div>
     </div>
   );
