@@ -7,7 +7,7 @@ import { Toaster, toast } from "sonner";
 import Typography from "@mui/joy/Typography";
 
 function FileUpload(props) {
-  const { setUploadOpen } = props;
+  const { setUploadOpen, sendMessage } = props;
   const [file, setFile] = useState(null);
   const [uploadProgress, setUploadProgress] = useState(0);
 
@@ -25,6 +25,9 @@ function FileUpload(props) {
         },
       });
       console.log(response.data);
+      sendMessage("urlManager", "setURL", response.data);
+      sendMessage("urlManager", "SpawnObject");
+
     } catch (error) {
       console.log(error);
     }
