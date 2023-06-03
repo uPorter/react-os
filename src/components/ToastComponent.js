@@ -30,3 +30,4 @@ const ToastComponent = ({ uploadProgress }) => (
     </Box>
   </Alert>
 );
+export default ToastComponent;
