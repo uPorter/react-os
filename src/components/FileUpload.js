@@ -51,7 +51,7 @@ function FileUpload(props) {
               onFileUpload(),
               {
                 loading: 'Uploading...',
-                success: 'Upload successful!',
+                success: 'Proccesing...',
                 error: 'Upload failed!',
               }
             );
