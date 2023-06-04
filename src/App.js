@@ -7,6 +7,8 @@ import { Toaster, toast } from "sonner";
 function App() {
   const [isDragging, setIsDragging] = useState(false);
   const unityLoaderRef = useRef(null);
+  const [file, setFile] = useState(null);
+  const [uploadProgress, setUploadProgress] = useState(0);
 
   const handleDragEnter = (event) => {
     event.preventDefault();
