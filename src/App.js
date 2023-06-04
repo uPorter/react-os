@@ -42,8 +42,8 @@ function App() {
         }
       );
       console.log(response.data);
-      sendMessage("urlManager", "setURL", response.data);
-      sendMessage("urlManager", "SpawnObject");
+      unityLoaderRef.current.sendMessage("urlManager", "setURL", response.data);
+      unityLoaderRef.current.sendMessage("urlManager", "SpawnObject");
     } catch (error) {
       console.log(error);
     }
