@@ -41,10 +41,6 @@ const ChatComponent = (props) => {
         // onFocus event handling logic here
         sendMessage("AvatarNick", "Start");
         console.log('Focused');
-
-        const edittextarea = document.querySelector('.str-chat__edit-message-form textarea');
-        edittextarea.addEventListener('focus', onFocus);
-        edittextarea.addEventListener('blur', onBlur);
       };
 
       const onBlur = () => {
