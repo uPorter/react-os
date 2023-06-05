@@ -625,12 +625,3 @@ body {
   backdrop-filter: blur(5px);
 }
 
-@keyframes showAnimation {
-	0% {
-		transform: translateX(380px);
-	}
-
-	100% {
-		transform: translateX(0);
-	}
-}
