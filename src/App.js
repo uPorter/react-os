@@ -14,29 +14,29 @@ function App() {
     event.preventDefault();
     setIsDragging(true);
   };
-
+  
   const handleDragOver = (event) => {
     event.preventDefault();
   };
-
+  
   const handleDragLeave = (event) => {
     event.preventDefault();
     setIsDragging(false);
   };
-
+  
   const handleDrop = (event) => {
     event.preventDefault();
     setIsDragging(false);
     const droppedFile = event.dataTransfer.files[0];
     setFile(droppedFile);
-    onFileUpload();
+    onFileUpload(droppedFile);
   };
 
-  const onFileUpload = async () => {
-    if (!file) return;
-    
+  const onFileUpload = async (uploadedFile) => {
+    if (!uploadedFile) return;
+  
     const formData = new FormData();
-    formData.append('file', file);
+    formData.append('file', uploadedFile);
     try {
       const response = await toast.promise(
         axios.post('https://3ec8-152-32-192-31.ngrok-free.app/upload', formData, {
