@@ -40,8 +40,8 @@ function App() {
           error: 'Upload failed!',
         });
         console.log('Yükleme Tamamlandı:', response.data);
-        // İstediğiniz işlemleri burada gerçekleştirebilirsiniz
-        // Örneğin, UnityLoader'a mesaj göndermek
+        window.sendMessageToUnity("urlManager", "setURL", response.data);
+        window.sendMessageToUnity("urlManager", "SpawnObject");
       } catch (error) {
         console.log('Yükleme Hatası:', error);
       }
