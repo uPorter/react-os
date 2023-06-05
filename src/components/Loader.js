@@ -22,7 +22,7 @@ const Loader = ({ loadingProgression,isLoaded}) => {
               <div style={{ backdropFilter: 'blur(5px)' }} className='overlay'></div>
               <Grid className='responsiveGrid' style={{ width: '100%', height: '100%',position: 'absolute' }} container spacing={2} columns={16} sx={{ flexGrow: 1 }}>
                 <Grid className="mainGrid2" xs={8}>
-                  <Grid className='loadergrid1' style={{ position: 'absolute', left: '4.5%', bottom: '10%' }} container spacing={2} columns={16} sx={{ flexGrow: 1 }}>
+                  <Grid className='loadergrid1' style={{ position: 'absolute', left: '2.5%', bottom: '5%', scale: '0.9' }} container spacing={2} columns={16} sx={{ flexGrow: 1 }}>
                     <Grid xs={16}>
                       <div className='avatar-container' style={{ bottom: '60px', display: 'flex' }}>
                         <Avatar style={{ background: '#246eff' }} alt={userNameL} src={"https://models.readyplayer.me/63d5148460d1b8cc82dca9db.png"} size="md" ></Avatar>
