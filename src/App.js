@@ -43,7 +43,7 @@ function App() {
           },
         });
         console.log('Yükleme Tamamlandı:', response.data);
-        window.sendMessageToUnity("urlManager", "setURL", response.data);
+        window.sendMessageToUnity("urlManager", "SetURL", response.data);
         window.sendMessageToUnity("urlManager", "SpawnObject");
         // İstediğiniz işlemleri burada gerçekleştirebilirsiniz
         // Örneğin, UnityLoader'a mesaj göndermek

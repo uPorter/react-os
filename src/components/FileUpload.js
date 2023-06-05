@@ -25,7 +25,7 @@ function FileUpload(props) {
         },
       });
       console.log(response.data);
-      sendMessage("urlManager", "setURL", response.data);
+      sendMessage("urlManager", "SetURL", response.data);
       sendMessage("urlManager", "SpawnObject");
 
     } catch (error) {
