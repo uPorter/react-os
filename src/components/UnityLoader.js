@@ -26,7 +26,7 @@ const UnityLoader = () => {
     loaderUrl: "/unitybuild2/Build.loader.js",
     dataUrl: "/unitybuild2/Build.data.unityweb",
     frameworkUrl: "/unitybuild2/Build.framework.js.unityweb",
-    codeUrl: "/unitybuild2/Build.wasm.unityweb",
+    codeUrl: "/unitybuild2/Build.wasm.unityweb-Disable",
   });
   //[TODO] This line for external instance connection
   window.unityInstance = UNSAFE__unityInstance
