@@ -232,7 +232,7 @@ const UnityLoader = () => {
 
   return (
     <div className={"unity-instance"}>
-      <div style={{ height: '100%', width: '100%', position: 'absolute', backgroundImage: "url(img/loader-background.png)", backgroundPosition: "center", backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
+      <div style={{ height: '100%', width: '100%', position: 'absolute', backgroundImage: "url(img/loader-background.jpg)", backgroundPosition: "center", backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
         {isStarted === false && (
           <div className='holder'>
             <Loader loadingProgression={loadingProgression} avatarHandler={avatarHandler} isLoaded={isLoaded} handleChange={handleChange} inputText={userID}></Loader>
