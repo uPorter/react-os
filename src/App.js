@@ -1,65 +1,30 @@
 import styles from './App.css';
 import UnityLoader from './components/UnityLoader';
-import { useRef, useState } from 'react';
-import axios from 'axios';
-import { Toaster, toast } from "sonner";
+import { ChangeEvent, useState, useEffect, useCallback } from 'react';
 
 function App() {
   const [isDragging, setIsDragging] = useState(false);
-  const unityLoaderRef = useRef(null);
-  const [file, setFile] = useState(null);
-  const [uploadProgress, setUploadProgress] = useState(0);
 
   const handleDragEnter = (event) => {
     event.preventDefault();
     setIsDragging(true);
   };
-  
+
   const handleDragOver = (event) => {
     event.preventDefault();
   };
-  
-  const handleDragLeave = (event) => {
-    event.preventDefault();
+
+  const handleDragLeave = () => {
     setIsDragging(false);
   };
-  
+
   const handleDrop = (event) => {
     event.preventDefault();
     setIsDragging(false);
-    const droppedFile = event.dataTransfer.files[0];
-    setFile(droppedFile);
-    onFileUpload(droppedFile);
-  };
 
-  const onFileUpload = async (uploadedFile) => {
-    if (!uploadedFile) return;
-  
-    const formData = new FormData();
-    formData.append('file', uploadedFile);
-    try {
-      const response = await toast.promise(
-        axios.post('https://3ec8-152-32-192-31.ngrok-free.app/upload', formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-          onUploadProgress: (progressEvent) => {
-            const percentage = Math.round((progressEvent.loaded * 100) / progressEvent.total);
-            setUploadProgress(percentage);
-          },
-        }),
-        {
-          loading: 'Uploading...',
-          success: 'Processing...',
-          error: 'Upload failed!',
-        }
-      );
-      console.log(response.data);
-      window.sendMessageToUnity("urlManager", "setURL", response.data);
-      window.sendMessageToUnity("urlManager", "SpawnObject");
-    } catch (error) {
-      console.log(error);
-    }
+    // Sürüklenen dosyaların işlemlerini burada yapabilirsiniz
+    const files = event.dataTransfer.files;
+    console.log('Sürüklenen dosyalar:', files);
   };
 
   return (
@@ -67,11 +32,11 @@ function App() {
       onDragEnter={handleDragEnter}
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
-      onDrop={handleDrop}
-      style={{ backgroundColor: isDragging ? 'lightblue' : 'white' }}
-      className={styles.container}
-    >
-      <UnityLoader ref={unityLoaderRef}></UnityLoader>
+      onDrop={handleDrop} 
+      style={{backgroundColor: isDragging ? 'lightblue' : 'white' }}
+      className={styles.container}>
+      <UnityLoader></UnityLoader>
+
     </div>
   );
 }
