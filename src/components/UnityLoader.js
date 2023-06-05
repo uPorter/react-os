@@ -31,6 +31,12 @@ const UnityLoader = () => {
   //[TODO] This line for external instance connection
   window.unityInstance = UNSAFE__unityInstance
 
+  window.sendMessageToUnity = (objectName, methodName, parameter) => {
+    if (sendMessage) {
+      sendMessage(objectName, methodName, parameter);
+    }
+  };
+
   const [isAvatarSelected, setIsAvatarSelected] = useState(false);
   const [isStarted, setIsStarted] = useState(false);
   const [inputText, setInputText] = useState("");
