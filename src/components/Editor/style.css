@@ -46,9 +46,9 @@
   }
 
   .editorActive{
-    animation: showAnimation 0.5s ease-in-out 0s 1 normal forwards;
+    animation: showAnimation 0.3s ease-in-out 0s 1 normal forwards;
   }
 
   .editorDisabled{
-    animation: showAnimation 0.5s ease-in-out 0s 1 normal reverse;
+    animation: showAnimation 0.3s ease-in-out 0s 1 normal reverse;
   }

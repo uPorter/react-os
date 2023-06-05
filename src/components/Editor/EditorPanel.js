@@ -10,19 +10,27 @@ import Button from "@mui/joy/Button";
 import './style.css';
 
 const EditorPanel = (props) => {
-  const { isEditorMode, sendMessage, addEventListener, removeEventListener, objectName, handleEditorOff } = props;
+  const { sendMessage, addEventListener, removeEventListener, objectName, handleEditorOff } = props;
   const [animationClass, setAnimationClass] = useState('');
+  const [animationHandler, setAnimationHandler] = useState('true');
 
   useEffect(() => {
-    if (isEditorMode) {
+    if (animationHandler) {
       setAnimationClass('editorActive');
     } else {
       setAnimationClass('editorDisabled');
       setTimeout(() => {
         setAnimationClass('');
-      }, 500); // Animasyon süresine göre ayarlayın
+      }, 300); // Animasyon süresine göre ayarlayın
     }
-  }, [isEditorMode]);
+  }, [animationHandler]);
+
+  const closeEditor = () => {
+    setAnimationClass('editorDisabled');
+    setTimeout(() => {
+      handleEditorOff();
+    }, 300); // Animasyon süresine göre ayarlayın
+  };
 
 
   return (
@@ -174,7 +182,7 @@ const EditorPanel = (props) => {
         </div>
         <SliderScale objectName={objectName} sendMessage={sendMessage} addEventListener={addEventListener} removeEventListener={removeEventListener}/>
 
-        <Button onClick={handleEditorOff} className="editorDoneButton">Done</Button>
+        <Button onClick={closeEditor} className="editorDoneButton">Done</Button>
       </Stack>
     </div>
   );
