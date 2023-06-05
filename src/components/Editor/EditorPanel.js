@@ -10,11 +10,24 @@ import Button from "@mui/joy/Button";
 import './style.css';
 
 const EditorPanel = (props) => {
-  const { sendMessage, addEventListener, removeEventListener, objectName, handleEditorOff } = props;
-  
+  const { isEditorMode, sendMessage, addEventListener, removeEventListener, objectName, handleEditorOff } = props;
+  const [animationClass, setAnimationClass] = useState('');
+
+  useEffect(() => {
+    if (isEditorMode) {
+      setAnimationClass('editorActive');
+    } else {
+      setAnimationClass('editorDisabled');
+      setTimeout(() => {
+        setAnimationClass('');
+      }, 500); // Animasyon süresine göre ayarlayın
+    }
+  }, [isEditorMode]);
+
 
   return (
     <div
+      className={animationClass}
       style={{
         zIndex: "99",
         position: "absolute",
@@ -26,7 +39,6 @@ const EditorPanel = (props) => {
         borderTopLeftRadius: "10px",
         borderBottomLeftRadius: "10px",
         display: "flex",
-        animation: "showAnimation 0.5s ease-in-out 0s 1 normal forwards",
         transition: ".2s cubic-bezier(0.46, 0.03, 0.52, 0.96) 0s",
         justifyContent: "flex-end",
         alignItems: "center",
