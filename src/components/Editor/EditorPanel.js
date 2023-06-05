@@ -26,7 +26,7 @@ const EditorPanel = (props) => {
   }, [animationHandler]);
 
   const closeEditor = () => {
-    setAnimationClass('editorDisabled');
+    setAnimationHandler(false);
     setTimeout(() => {
       handleEditorOff();
     }, 300); // Animasyon süresine göre ayarlayın
