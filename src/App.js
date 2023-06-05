@@ -19,11 +19,30 @@ function App() {
     event.preventDefault();
   };
 
-  const handleDragLeave = () => {
+  const handleDragLeave = (event) => {
+    event.preventDefault();
     setIsDragging(false);
   };
 
+  const handleDrop = (event) => {
+    event.preventDefault();
+    setIsDragging(false);
+    const droppedFile = event.dataTransfer.files[0];
+    setFile(droppedFile);
+    onFileUpload();
+  };
+
   const onFileUpload = async () => {
+    if (!file) return;
+
+    const allowedFileTypes = ["model/gltf+json", "model/gltf-binary"]; // İzin verilen dosya tipleri
+    const fileType = file.type;
+
+    if (!allowedFileTypes.includes(fileType)) {
+      console.error("Geçersiz dosya türü!");
+      return;
+    }
+
     const formData = new FormData();
     formData.append('file', file);
     try {
@@ -56,7 +75,7 @@ function App() {
       onDragEnter={handleDragEnter}
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
-      onDrop={onFileUpload}
+      onDrop={handleDrop}
       style={{ backgroundColor: isDragging ? 'lightblue' : 'white' }}
       className={styles.container}
     >

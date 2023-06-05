@@ -361,13 +361,13 @@ const UnityLoader = () => {
         {isStarted && showChat && (
           <div className={"ui"}>
             <Grid className="unityLoaderGrid" style={{ position: "absolute", width: "100%", bottom: "20px" }} container spacing={3} sx={{ flexGrow: 1 }}>
-              <Grid xs style={{ opacity: 0 }}>
+              <Grid className="EmptyGrid" xs style={{ opacity: 0 }}>
                 <Button>Test</Button>
               </Grid>
               <Grid xs={6}>
                 <Dock handleAddContent={handleAddContent}></Dock>
               </Grid>
-              <Grid style={{ opacity: 0 }} xs>
+              <Grid className="EmptyGrid" style={{ opacity: 0 }} xs>
               </Grid>
             </Grid>
             <ChatComponent userName={userName} showChat={showChat} sendMessage={sendMessage} userID={userID} userToken={userToken} userImage={userImage} />
