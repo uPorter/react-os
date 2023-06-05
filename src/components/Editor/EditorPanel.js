@@ -18,10 +18,7 @@ const EditorPanel = (props) => {
     if (animationHandler) {
       setAnimationClass('editorActive');
     } else {
-      setAnimationClass('editorDisabled');
-      setTimeout(() => {
-        setAnimationClass('');
-      }, 300); // Animasyon süresine göre ayarlayın
+      setAnimationClass('editorDisabled'); // Animasyon süresine göre ayarlayın
     }
   }, [animationHandler]);
 
@@ -29,7 +26,7 @@ const EditorPanel = (props) => {
     setAnimationHandler(false);
     setTimeout(() => {
       handleEditorOff();
-    }, 300); // Animasyon süresine göre ayarlayın
+    }, 550); // Animasyon süresine göre ayarlayın
   };
 
 
