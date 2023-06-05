@@ -34,15 +34,7 @@ function App() {
 
   const onFileUpload = async () => {
     if (!file) return;
-
-    const allowedFileTypes = ["model/gltf+json", "model/gltf-binary"]; // İzin verilen dosya tipleri
-    const fileType = file.type;
-
-    if (!allowedFileTypes.includes(fileType)) {
-      console.error("Geçersiz dosya türü!");
-      return;
-    }
-
+    
     const formData = new FormData();
     formData.append('file', file);
     try {
