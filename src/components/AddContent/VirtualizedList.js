@@ -10,7 +10,7 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 
 const ListView = (props) => {
-    const { data } = props;
+    const { data, closeContent } = props;
     const [selectedItems, setSelectedItems] = useState([]);
     const [hoveredItem, setHoveredItem] = useState(null);
     const itemsPerPage = 9;
@@ -41,8 +41,13 @@ const ListView = (props) => {
 
     const handleBulkAction = () => {
         console.log("Toplu işlem: ", selectedItems);
-        selectedItems.forEach((item) => LoadModel(item.modelURL));
-    };
+        closeContent();
+        selectedItems.forEach((item, index) => {
+          setTimeout(() => {
+            LoadModel(item.modelURL);
+          }, index * 200);
+        });
+      };
 
     const handlePaperClick = (item) => {
   if (selectedItems.length > 0) {
@@ -57,6 +62,7 @@ const ListView = (props) => {
     }
   } else {
     LoadModel(item.modelURL);
+    closeContent();
   }
 };
 
