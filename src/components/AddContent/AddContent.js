@@ -27,13 +27,13 @@ const AddContent = () => {
 
   return (
     <div>
-      <div className="container">
-        <IconButton className="closeButton" onClick={handleClose}>
+      <div className="container-addcontent">
+        <IconButton className="closeButton-addcontent" onClick={handleClose}>
           <CloseIcon onClick={handleClose} />
         </IconButton>
 
         <Tabs
-          className="content"
+          className="content-addcontent"
           aria-label="Vertical tabs"
           orientation="vertical"
           sx={{ minWidth: 300, borderRadius: "lg" }}
