@@ -19,6 +19,7 @@ const AddContent = (props) => {
   const { setUploadOpen } = props;
   const [isClosed, setIsClosed] = React.useState(false);
   const [animationClass, setAnimationClass] = useState('');
+  const [backClass, setBackClass] = useState('');
   const [animationHandler, setAnimationHandler] = useState('true');
 
   const handleClose = () => {
@@ -28,8 +29,10 @@ const AddContent = (props) => {
   useEffect(() => {
     if (animationHandler) {
       setAnimationClass('container-addcontent addContentActive');
+      setBackClass('addContentActiveback');
     } else {
-      setAnimationClass('container-addcontent addContentDisabled'); // Animasyon süresine göre ayarlayın
+      setAnimationClass('container-addcontent addContentDisabled');
+      setBackClass('addContentDisabledback'); // Animasyon süresine göre ayarlayın
     }
   }, [animationHandler]);
 
@@ -37,12 +40,12 @@ const AddContent = (props) => {
     setAnimationHandler(false);
     setTimeout(() => {
       handleClose();
-    }, 550); // Animasyon süresine göre ayarlayın
+    }, 450); // Animasyon süresine göre ayarlayın
   };
 
   return (
     <div>
-      <div style={{zIndex: "51",background: "#0000003b",backdropFilter:"blur(19px)",position:"absolute",width:"100%",height:"100%"}}>
+      <div className={backClass} style={{zIndex: "51",background: "#0000003b",backdropFilter:"blur(19px)",position:"absolute",width:"100%",height:"100%"}}>
       </div>
       <div className={animationClass}>
         <IconButton className="closeButton-addcontent" onClick={closeContent}>
