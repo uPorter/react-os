@@ -63,8 +63,8 @@ const ListView = (props) => {
 
     const LoadModel = (modelURL) => {
         console.log(modelURL);
-        //sendMessage("urlManager", "SetURL", modelURL);
-        //sendMessage("urlManager", "SpawnObject");
+        sendMessage("urlManager", "SetURL", modelURL);
+        sendMessage("urlManager", "SpawnObject");
     };
 
     const handlePageChange = (event, page) => {

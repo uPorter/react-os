@@ -1,5 +1,6 @@
 .container-addcontent {
     position: fixed;
+    z-index: 99;
     top: 75px;
     bottom: 75px;
     left: 12.5%;

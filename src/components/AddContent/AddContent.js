@@ -14,7 +14,8 @@ import data from "./data";
 import data1 from "./data1.js";
 import data2 from "./data2";
 
-const AddContent = () => {
+const AddContent = (props) => {
+  const { data, sendMessage } = props;
   const [isClosed, setIsClosed] = React.useState(false);
 
   const handleClose = () => {
@@ -27,6 +28,8 @@ const AddContent = () => {
 
   return (
     <div>
+      <div style={{background: "#0000003b",backdropFilter:"blur(19px)",position:"absolute",width:"100%",height:"100%"}}>
+      </div>
       <div className="container-addcontent">
         <IconButton className="closeButton-addcontent" onClick={handleClose}>
           <CloseIcon onClick={handleClose} />
@@ -115,21 +118,21 @@ const AddContent = () => {
             orientation="vertical"
           ></Divider>
           <TabPanel className="tabPanel" sx={{ p: 2, minHeight: 200 }}>
-            <VirtualizedList data={data} />
+            <VirtualizedList sendMessage={sendMessage} data={data} />
           </TabPanel>
           <TabPanel
             className="tabPanel"
             value={1}
             sx={{ p: 2, minHeight: 200 }}
           >
-            <VirtualizedList data={data1} />
+            <VirtualizedList sendMessage={sendMessage} data={data1} />
           </TabPanel>
           <TabPanel
             className="tabPanel"
             value={2}
             sx={{ p: 2, minHeight: 200 }}
           >
-            <VirtualizedListFurt data={data2} />
+            <VirtualizedListFurt sendMessage={sendMessage} data={data2} />
            
           </TabPanel>
           <TabPanel
