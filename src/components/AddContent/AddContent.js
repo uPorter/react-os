@@ -20,7 +20,7 @@ const AddContent = (props) => {
   const [isClosed, setIsClosed] = React.useState(false);
 
   const handleClose = () => {
-    setIsClosed(true);
+    setUploadOpen(false);
   };
 
   if (isClosed) {
