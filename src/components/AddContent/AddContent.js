@@ -11,11 +11,10 @@ import Typography from "@mui/joy/Typography";
 import VirtualizedList from "./VirtualizedList";
 import VirtualizedListFurt from "./VirtualizedListFurt";
 import data from "./data";
-import data1 from "./data1.js";
+import data1 from "./data1";
 import data2 from "./data2";
 
-const AddContent = (props) => {
-  const { data } = props;
+const AddContent = () => {
   const [isClosed, setIsClosed] = React.useState(false);
 
   const handleClose = () => {
@@ -28,14 +27,13 @@ const AddContent = (props) => {
 
   return (
     <div>
-
-      <div className="container-addcontent">
-        <IconButton className="closeButton-addcontent" onClick={handleClose}>
+      <div className="container">
+        <IconButton className="closeButton" onClick={handleClose}>
           <CloseIcon onClick={handleClose} />
         </IconButton>
 
         <Tabs
-          className="content-addcontent"
+          className="content"
           aria-label="Vertical tabs"
           orientation="vertical"
           sx={{ minWidth: 300, borderRadius: "lg" }}
