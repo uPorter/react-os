@@ -27,7 +27,7 @@ const AddContent = () => {
 
   return (
     <div>
-      <div style={{background: "#0000003b",backdropFilter:"blur(19px)",position:"absolute",width:"100%",height:"100%"}}>
+      <div style={{zIndex: "51",background: "#0000003b",backdropFilter:"blur(19px)",position:"absolute",width:"100%",height:"100%"}}>
       </div>
       <div className="container-addcontent">
         <IconButton className="closeButton-addcontent" onClick={handleClose}>
