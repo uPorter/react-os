@@ -10,7 +10,7 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 
 const ListView = (props) => {
-    const { data } = props;
+    const { data, sendMessage } = props;
     const [selectedItems, setSelectedItems] = useState([]);
     const [hoveredItem, setHoveredItem] = useState(null);
     const itemsPerPage = 9;
