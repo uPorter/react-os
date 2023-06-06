@@ -38,6 +38,12 @@ const UnityLoader = () => {
     }
   };
 
+  window.sendMessageToUnityBasic = (objectName, methodName) => {
+    if (sendMessage) {
+      sendMessage(objectName, methodName);
+    }
+  };
+
   const [isAvatarSelected, setIsAvatarSelected] = useState(false);
   const [isStarted, setIsStarted] = useState(false);
   const [inputText, setInputText] = useState("");
@@ -382,7 +388,7 @@ const UnityLoader = () => {
             <ChatComponent userName={userName} showChat={showChat} sendMessage={sendMessage} userID={userID} userToken={userToken} userImage={userImage} />
             {isEditorMode && <EditorPanel objectName={objectName} sendMessage={sendMessage} handleEditorMode={handleEditorMode} handleEditorOff={handleEditorOff} addEventListener={addEventListener} removeEventListener={removeEventListener}></EditorPanel>}
             {/* {uploadOpen && <FileUpload setUploadOpen={setUploadOpen} sendMessage={sendMessage} style={{position: 'absolute', zIndex: '15'}}></FileUpload> } */}
-            {uploadOpen && <AddContent sendMessage={sendMessage}></AddContent> } 
+            {uploadOpen && <AddContent></AddContent> } 
             {/* <Button style={{ position: 'absolute', zIndex: '15' }} onClick={ReactshowRPM} variant="soft">Edit Avatar - PreTest</Button>*/}
           </div>)}
           <Toaster className='toasterCSS' richColors position="bottom-center" />

@@ -10,7 +10,7 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 
 const ListView = (props) => {
-    const { data, sendMessage } = props;
+    const { data } = props;
     const [selectedItems, setSelectedItems] = useState([]);
     const [hoveredItem, setHoveredItem] = useState(null);
     const itemsPerPage = 9;
@@ -63,8 +63,8 @@ const ListView = (props) => {
 
     const LoadModel = (modelURL) => {
         console.log(modelURL);
-        sendMessage("urlManager", "SetURL", modelURL);
-        sendMessage("urlManager", "SpawnObject");
+        window.sendMessageToUnityBasic("urlManager", "SetURL", modelURL);
+        window.sendMessageToUnityBasic("urlManager", "SpawnObject");
     };
 
     const handlePageChange = (event, page) => {

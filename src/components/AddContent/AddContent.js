@@ -15,7 +15,7 @@ import data1 from "./data1.js";
 import data2 from "./data2";
 
 const AddContent = (props) => {
-  const { data, sendMessage } = props;
+  const { data } = props;
   const [isClosed, setIsClosed] = React.useState(false);
 
   const handleClose = () => {
@@ -118,21 +118,21 @@ const AddContent = (props) => {
             orientation="vertical"
           ></Divider>
           <TabPanel className="tabPanel" sx={{ p: 2, minHeight: 200 }}>
-            <VirtualizedList sendMessage={sendMessage} data={data} />
+            <VirtualizedList data={data} />
           </TabPanel>
           <TabPanel
             className="tabPanel"
             value={1}
             sx={{ p: 2, minHeight: 200 }}
           >
-            <VirtualizedList sendMessage={sendMessage} data={data1} />
+            <VirtualizedList data={data1} />
           </TabPanel>
           <TabPanel
             className="tabPanel"
             value={2}
             sx={{ p: 2, minHeight: 200 }}
           >
-            <VirtualizedListFurt sendMessage={sendMessage} data={data2} />
+            <VirtualizedListFurt data={data2} />
            
           </TabPanel>
           <TabPanel
