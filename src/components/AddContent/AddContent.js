@@ -45,7 +45,7 @@ const AddContent = (props) => {
 
   return (
     <div>
-      <div className={backClass} style={{zIndex: "51",background: "#0000003b",backdropFilter:"blur(19px)",position:"absolute",width:"100%",height:"100%"}}>
+      <div className={backClass} style={{zIndex: "51",background: "rgb(0 0 0 / 33%)",backdropFilter:"blur(1px)",position:"absolute",width:"100%",height:"100%"}}>
       </div>
       <div className={animationClass}>
         <IconButton className="closeButton-addcontent" onClick={closeContent}>
