@@ -69,7 +69,7 @@ const UnityLoader = () => {
   }, []);
 
   const handleAddContent = () => {
-    setUploadOpen(!uploadOpen);
+    setUploadOpen(true);
   }
 
   function generateUID(length) {
