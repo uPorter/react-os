@@ -161,4 +161,37 @@
   .MuiPaginationItem-ellipsis {
     display: none !important;
   }
+
+  .addContentActive{
+    animation: scaleUP .5s ease-in-out 0s 1 normal forwards;
+  }
+
+  .addContentDisabled{
+    animation: scaleDOWN .5s ease-in-out 0s 1 normal forwards;
+  }
+  
+
+  @keyframes scaleUP {
+    0% {
+      opacity: 0;
+      transform: scale(0);
+    }
+  
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes scaleDOWN {
+    0% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  
+    100% {
+      opacity: 0;
+      transform: scale(0);
+    }
+  }
   
