@@ -15,7 +15,8 @@ import data1 from "./data1";
 import data2 from "./data2";
 import FileUpload from "../FileUpload";
 
-const AddContent = () => {
+const AddContent = (props) => {
+  const { setUploadOpen } = props;
   const [isClosed, setIsClosed] = React.useState(false);
 
   const handleClose = () => {
