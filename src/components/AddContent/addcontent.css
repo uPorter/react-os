@@ -163,19 +163,19 @@
   }
 
   .addContentActive{
-    animation: scaleUP .5s ease-in-out 0s 1 normal forwards;
+    animation: scaleUP .2s ease-in-out 0s 1 normal forwards;
   }
 
   .addContentDisabled{
-    animation: scaleDOWN .5s ease-in-out 0s 1 normal forwards;
+    animation: scaleDOWN .2s ease-in-out 0s 1 normal forwards;
   }
 
   .addContentActiveback{
-    animation: fade1 .5s ease-in-out 0s 1 normal forwards;
+    animation: fade1 .2s ease-in-out 0s 1 normal forwards;
   }
 
   .addContentDisabledback{
-    animation: fade2 .5s ease-in-out 0s 1 normal forwards;
+    animation: fade2 .2s ease-in-out 0s 1 normal forwards;
   }
   
 
