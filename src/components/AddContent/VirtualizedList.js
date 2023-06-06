@@ -63,7 +63,7 @@ const ListView = (props) => {
 
     const LoadModel = (modelURL) => {
         console.log(modelURL);
-        window.sendMessageToUnityBasic("urlManager", "SetURL", modelURL);
+        window.sendMessageToUnity("urlManager", "SetURL", modelURL);
         window.sendMessageToUnityBasic("urlManager", "SpawnObject");
     };
 
