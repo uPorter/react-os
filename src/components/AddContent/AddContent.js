@@ -13,6 +13,7 @@ import VirtualizedListFurt from "./VirtualizedListFurt";
 import data from "./data";
 import data1 from "./data1";
 import data2 from "./data2";
+import FileUpload from "../FileUpload";
 
 const AddContent = () => {
   const [isClosed, setIsClosed] = React.useState(false);
@@ -146,7 +147,7 @@ const AddContent = () => {
             value={4}
             sx={{ p: 2, minHeight: 200 }}
           >
-             <b className="TabContent">Upload Model...</b>
+             <FileUpload setUploadOpen={setUploadOpen}/>
           </TabPanel>
         </Tabs>
       </div>
