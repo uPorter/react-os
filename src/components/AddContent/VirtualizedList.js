@@ -152,11 +152,11 @@ const ListView = (props) => {
                     transition: "transform 0.3s",
                   }}
                 />
-                {item.imageLoading ? (
+                {item.contentImage ? (
                   <Skeleton
                     variant="rectangular"
                     width={140}
-                    height={110}
+                    height={140}
                     style={{ marginBottom: "10px" }}
                   />
                 ) : (
