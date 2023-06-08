@@ -150,7 +150,7 @@ const ListView = (props) => {
                                 <img
                                     src={item.contentImage}
                                     alt={item.name}
-                                    style={{ width: "140px", marginBottom: "10px",
+                                    style={{background:"black", borderRadius:"25px", width: "140px", marginBottom: "10px",
                                     filter:
                                         hoveredItem === item.id
                                             ? "drop-shadow(-3px 7px 12px #00000000)"
