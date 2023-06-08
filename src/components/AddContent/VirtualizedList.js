@@ -4,11 +4,10 @@ import Checkbox from "@mui/joy/Checkbox";
 import Typography from "@mui/joy/Typography";
 import IconButton from "@mui/joy/IconButton";
 import AddIcon from "@mui/icons-material/Add";
-import RemoveIcon from "@mui/icons-material/Remove";
+import RemoveIcon from '@mui/icons-material/Remove'; 
 import Pagination from "@mui/material/Pagination";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-import Skeleton from "@mui/material/Skeleton"; // Import the Skeleton component
 
 const ListView = (props) => {
     const { data, closeContent } = props;
@@ -23,7 +22,9 @@ const ListView = (props) => {
 
     const handleItemToggle = (event, item) => {
         event.stopPropagation();
-        if (selectedItems.find((selectedItem) => selectedItem.id === item.id)) {
+        if (
+            selectedItems.find((selectedItem) => selectedItem.id === item.id)
+        ) {
             setSelectedItems(
                 selectedItems.filter((selectedItem) => selectedItem.id !== item.id)
             );
@@ -36,26 +37,29 @@ const ListView = (props) => {
         console.log("Toplu işlem: ", selectedItems);
         closeContent();
         selectedItems.forEach((item, index) => {
-            setTimeout(() => {
-                LoadModel(item.modelURL);
-            }, index * 200);
+          setTimeout(() => {
+            LoadModel(item.modelURL);
+          }, index * 200);
         });
-    };
+      };
 
     const handlePaperClick = (item) => {
-        if (selectedItems.length > 0) {
-            if (selectedItems.find((selectedItem) => selectedItem.id === item.id)) {
-                setSelectedItems(
-                    selectedItems.filter((selectedItem) => selectedItem.id !== item.id)
-                );
-            } else {
-                setSelectedItems([...selectedItems, item]);
-            }
-        } else {
-            LoadModel(item.modelURL);
-            closeContent();
-        }
-    };
+  if (selectedItems.length > 0) {
+    if (
+      selectedItems.find((selectedItem) => selectedItem.id === item.id)
+    ) {
+      setSelectedItems(
+        selectedItems.filter((selectedItem) => selectedItem.id !== item.id)
+      );
+    } else {
+      setSelectedItems([...selectedItems, item]);
+    }
+  } else {
+    LoadModel(item.modelURL);
+    closeContent();
+  }
+};
+
 
     const LoadModel = (modelURL) => {
         console.log(modelURL);
@@ -75,7 +79,12 @@ const ListView = (props) => {
 
     return (
         <>
-            <Grid style={{ marginRight: "-2385px" }} container spacing={2} sx={{}}>
+            <Grid
+                style={{ marginRight: "-2385px" }}
+                container
+                spacing={2}
+                sx={{}}
+            >
                 {getCurrentItems().map((item, index) => (
                     <Grid key={item.id} item xs={12} sm={6} md={4} lg={4}>
                         <div
@@ -138,27 +147,17 @@ const ListView = (props) => {
                                         transition: "transform 0.3s",
                                     }}
                                 />
-                                {item.contentImage ? (
-                                    <img
-                                        src={item.contentImage}
-                                        alt={item.name}
-                                        style={{
-                                            width: "140px",
-                                            marginBottom: "10px",
-                                            filter:
-                                                hoveredItem === item.id
-                                                    ? "drop-shadow(-3px 7px 12px #00000000)"
-                                                    : "drop-shadow(-2px 5px 14px transparent)",
-                                        }}
-                                    />
-                                ) : (
-                                    <Skeleton
-                                        variant="rounded"
-                                        width={140}
-                                        height={120}
-                                        style={{ marginBottom: "10px" }}
-                                    />
-                                )}
+                                <img
+                                    src={item.contentImage}
+                                    alt={item.name}
+                                    style={{ width: "140px", marginBottom: "10px",
+                                    filter:
+                                        hoveredItem === item.id
+                                            ? "drop-shadow(-3px 7px 12px #00000000)"
+                                            : "drop-shadow(-2px 5px 14px transparent)",
+                                    
+                                     }}
+                                />
                             </Paper>
                             <Typography className="objectName" level="body2">
                                 {item.name}
@@ -214,7 +213,8 @@ const ListView = (props) => {
                                 transform: "scale(0.8)",
                                 position: "absolute",
                                 right: "-13px",
-                                top: "-14px",
+                                top: "-12px",
+                                backgroundColor: "rgb(0 0 0 / 44%)"
                             }}
                             onClick={handleClearSelection}
                             variant="solid"
@@ -228,13 +228,9 @@ const ListView = (props) => {
                 count={Math.ceil(data.length / itemsPerPage)}
                 page={currentPage + 1}
                 onChange={handlePageChange}
-                color="primary"
                 shape="rounded"
-                style={{
-                    marginTop: "24px",
-                    display: "flex",
-                    justifyContent: "center",
-                }}
+                variant="outlined"
+                style={{ position: "absolute", bottom: "15px", right: "10px", display: "flex", justifyContent: "center" }}
             />
         </>
     );
