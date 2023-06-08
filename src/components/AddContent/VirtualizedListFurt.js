@@ -16,12 +16,6 @@ const ListView = (props) => {
     const itemsPerPage = 9;
     const [currentPage, setCurrentPage] = useState(0);
 
-    const darkTheme = createTheme({
-        palette: {
-            mode: "dark",
-        },
-    });
-
     const handleClearSelection = () => {
         setSelectedItems([]);
     };
@@ -85,9 +79,6 @@ const ListView = (props) => {
 
     return (
         <>
-            <ThemeProvider theme={darkTheme}>
-                <CssBaseline />
-            </ThemeProvider>
             <Grid
                 style={{ marginRight: "-2385px" }}
                 container

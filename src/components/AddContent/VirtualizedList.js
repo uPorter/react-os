@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Grid, Paper, Skeleton } from "@mui/material";
+import { Grid, Paper } from "@mui/material";
 import Checkbox from "@mui/joy/Checkbox";
 import Typography from "@mui/joy/Typography";
 import IconButton from "@mui/joy/IconButton";
 import AddIcon from "@mui/icons-material/Add";
-import RemoveIcon from '@mui/icons-material/Remove';
+import RemoveIcon from '@mui/icons-material/Remove'; 
 import Pagination from "@mui/material/Pagination";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -15,12 +15,6 @@ const ListView = (props) => {
     const [hoveredItem, setHoveredItem] = useState(null);
     const itemsPerPage = 9;
     const [currentPage, setCurrentPage] = useState(0);
-
-    const darkTheme = createTheme({
-        palette: {
-            mode: "dark",
-        },
-    });
 
     const handleClearSelection = () => {
         setSelectedItems([]);
@@ -43,28 +37,28 @@ const ListView = (props) => {
         console.log("Toplu işlem: ", selectedItems);
         closeContent();
         selectedItems.forEach((item, index) => {
-            setTimeout(() => {
-                LoadModel(item.modelURL);
-            }, index * 200);
+          setTimeout(() => {
+            LoadModel(item.modelURL);
+          }, index * 200);
         });
-    };
+      };
 
     const handlePaperClick = (item) => {
-        if (selectedItems.length > 0) {
-            if (
-                selectedItems.find((selectedItem) => selectedItem.id === item.id)
-            ) {
-                setSelectedItems(
-                    selectedItems.filter((selectedItem) => selectedItem.id !== item.id)
-                );
-            } else {
-                setSelectedItems([...selectedItems, item]);
-            }
-        } else {
-            LoadModel(item.modelURL);
-            closeContent();
-        }
-    };
+  if (selectedItems.length > 0) {
+    if (
+      selectedItems.find((selectedItem) => selectedItem.id === item.id)
+    ) {
+      setSelectedItems(
+        selectedItems.filter((selectedItem) => selectedItem.id !== item.id)
+      );
+    } else {
+      setSelectedItems([...selectedItems, item]);
+    }
+  } else {
+    LoadModel(item.modelURL);
+    closeContent();
+  }
+};
 
 
     const LoadModel = (modelURL) => {
@@ -85,10 +79,12 @@ const ListView = (props) => {
 
     return (
         <>
-            <ThemeProvider theme={darkTheme}>
-                <CssBaseline />
-            </ThemeProvider>
-            <Grid style={{ marginRight: "-2385px" }} container spacing={2} sx={{}}>
+            <Grid
+                style={{ marginRight: "-2385px" }}
+                container
+                spacing={2}
+                sx={{}}
+            >
                 {getCurrentItems().map((item, index) => (
                     <Grid key={item.id} item xs={12} sm={6} md={4} lg={4}>
                         <div
@@ -151,27 +147,17 @@ const ListView = (props) => {
                                         transition: "transform 0.3s",
                                     }}
                                 />
-                                {item.contentImage ? (
-                                    <img
-                                        src={item.contentImage}
-                                        alt={item.name}
-                                        style={{
-                                            width: "140px",
-                                            marginBottom: "10px",
-                                            filter:
-                                                hoveredItem === item.id
-                                                    ? "drop-shadow(-3px 7px 12px #00000000)"
-                                                    : "drop-shadow(-2px 5px 14px transparent)",
-                                        }}
-                                    />
-                                ) : (
-                                    <Skeleton
-                                        variant="rectangular"
-                                        width={140}
-                                        height={180}
-                                        animation="wave"
-                                    />
-                                )}
+                                <img
+                                    src={item.contentImage}
+                                    alt={item.name}
+                                    style={{ width: "140px", marginBottom: "10px",
+                                    filter:
+                                        hoveredItem === item.id
+                                            ? "drop-shadow(-3px 7px 12px #00000000)"
+                                            : "drop-shadow(-2px 5px 14px transparent)",
+                                    
+                                     }}
+                                />
                             </Paper>
                             <Typography className="objectName" level="body2">
                                 {item.name}
