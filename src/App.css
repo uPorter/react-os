@@ -127,6 +127,15 @@
   box-shadow: 0 16px 48px 0 rgba(0, 0, 0, .24);
 }
 
+.dockButtonsEditor {
+  transition: 0.5s all cubic-bezier(0, 0.2, 0.2, 1);
+}
+
+.dockButtonsEditor:hover {
+  transform: scale(1.25);
+  box-shadow: 0 16px 48px 0 rgba(0, 0, 0, .24);
+}
+
 .css-i4bv87-MuiSvgIcon-root {
   font-size: 1.6rem;
 }
