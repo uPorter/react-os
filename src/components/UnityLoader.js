@@ -18,6 +18,7 @@ import { Toaster, toast } from 'sonner'
 import 'stream-chat-react/dist/css/index.css';
 import EditorPanel from './Editor/EditorPanel';
 import AddContent from './AddContent/AddContent';
+import EditDock from "./EditDock";
 
 const chatClient = StreamChat.getInstance('zqwrbbhbxazj');
 
@@ -380,7 +381,8 @@ const UnityLoader = () => {
                 <Button>Test</Button>
               </Grid>
               <Grid xs={6}>
-                <Dock handleAddContent={handleAddContent}></Dock>
+              {isEditorMode && <EditDock handleAddContent={handleAddContent}></EditDock>}
+              {!isEditorMode &&  <Dock handleAddContent={handleAddContent}></Dock>}
               </Grid>
               <Grid className="EmptyGrid" style={{ opacity: 0 }} xs>
               </Grid>
