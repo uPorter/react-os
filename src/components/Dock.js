@@ -12,9 +12,6 @@ export class Dock extends Component {
     return (
       <div
         style={{
-          position: "absolute",
-          left: "50%",
-          bottom: "0px",
           display: "flex",
           justifyContent: "center",
         }}
