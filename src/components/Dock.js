@@ -6,7 +6,7 @@ import CameraAltOutlinedIcon from "@mui/icons-material/CameraAltOutlined";
 import PresentToAllOutlinedIcon from "@mui/icons-material/PresentToAllOutlined";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 
-export class EditDock extends Component {
+export class Dock extends Component {
   render() {
     const { handleAddContent } = this.props;
     return (
@@ -132,4 +132,3 @@ export class EditDock extends Component {
   }
 }
 
-export default EditDock;
