@@ -10,7 +10,7 @@ import Button from "@mui/joy/Button";
 import './style.css';
 
 const EditorPanel = (props) => {
-  const { sendMessage, addEventListener, removeEventListener, objectName, handleEditorOff } = props;
+  const { sendMessage, addEventListener, removeEventListener, objectName, handleEditorOff, setIsDockEditorMode} = props;
   const [animationClass, setAnimationClass] = useState('');
   const [animationHandler, setAnimationHandler] = useState('true');
 
@@ -24,6 +24,7 @@ const EditorPanel = (props) => {
 
   const closeEditor = () => {
     setAnimationHandler(false);
+    setIsDockEditorMode(false);
     setTimeout(() => {
       handleEditorOff();
     }, 550); // Animasyon süresine göre ayarlayın
