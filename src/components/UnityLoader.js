@@ -57,6 +57,7 @@ const UnityLoader = () => {
   const [isEditorMode, setIsEditorMode] = useState(false);
   const [uploadOpen, setUploadOpen] = useState(false);
   const [objectName, setObjectNameReact] = useState('');
+  const [isDockEditorMode, setIsDockEditorMode] = useState(false);
 
   useEffect(() => {
     addEventListener("setObjectName", handleObjectName);
@@ -95,9 +96,11 @@ const UnityLoader = () => {
 
   const handleEditorMode = () => {
     setIsEditorMode(true);
+    setIsDockEditorMode(true);
   }
 
   const handleEditorOff = () => {
+    setIsDockEditorMode(false);
     setTimeout(() => {
       setIsEditorMode(false);
     }, 600); // 500 milisaniye (0.5 saniye) bekleme süresi
@@ -381,8 +384,8 @@ const UnityLoader = () => {
                 <Button>Test</Button>
               </Grid>
               <Grid xs={6}>
-              {isEditorMode && <EditDock handleAddContent={handleAddContent}></EditDock>}
-              {!isEditorMode &&  <Dock handleAddContent={handleAddContent}></Dock>}
+              {isDockEditorMode && <EditDock handleAddContent={handleAddContent}></EditDock>}
+              {!isDockEditorMode &&  <Dock handleAddContent={handleAddContent}></Dock>}
               </Grid>
               <Grid className="EmptyGrid" style={{ opacity: 0 }} xs>
               </Grid>
