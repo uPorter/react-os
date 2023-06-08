@@ -29,7 +29,7 @@ export class EditDock extends Component {
         >
           <IconButton
             id="dockButtonID"
-            className="dockButtons"
+            className="dockButtonsEditor"
             variant="solid"
             sx={{
               "--IconButton-size": "55px",
@@ -41,7 +41,7 @@ export class EditDock extends Component {
 
           <IconButton
             id="dockButtonID"
-            className="dockButtons"
+            className="dockButtonsEditor"
             variant="solid"
             sx={{
               "--IconButton-size": "55px",
@@ -53,7 +53,7 @@ export class EditDock extends Component {
 
           <IconButton
             id="dockButtonID"
-            className="dockButtons"
+            className="dockButtonsEditor"
             variant="solid"
             sx={{
               "--IconButton-size": "55px",
@@ -65,7 +65,7 @@ export class EditDock extends Component {
 
           <IconButton
             id="dockButtonID"
-            className="dockButtons"
+            className="dockButtonsEditor"
             variant="solid"
             sx={{
               "--IconButton-size": "55px",
@@ -77,7 +77,7 @@ export class EditDock extends Component {
 
           <IconButton
             id="dockButtonID"
-            className="dockButtons"
+            className="dockButtonsEditor"
             variant="solid"
             sx={{
               "--IconButton-size": "55px",
@@ -99,7 +99,7 @@ export class EditDock extends Component {
 
           <IconButton
             id="dockButtonID"
-            className="dockButtons"
+            className="dockButtonsEditor"
             variant="solid"
             sx={{
               "--IconButton-size": "55px",
@@ -121,7 +121,7 @@ export class EditDock extends Component {
 
           <IconButton
             id="dockButtonID"
-            className="dockButtons"
+            className="dockButtonsEditor"
             variant="solid"
             sx={{
               "--IconButton-size": "55px",
