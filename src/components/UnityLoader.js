@@ -45,6 +45,23 @@ const UnityLoader = () => {
     }
   };
 
+  const handleResize = () => {
+    const firstGridElement = document.querySelector('.unityLoaderGrid .EmptyGrid');
+    if (window.innerWidth < 600) {
+      firstGridElement.style.opacity = 0;
+    } else {
+      firstGridElement.style.opacity = 1;
+    }
+  };
+
+  // Attach the resize event listener
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   const [isAvatarSelected, setIsAvatarSelected] = useState(false);
   const [isStarted, setIsStarted] = useState(false);
   const [inputText, setInputText] = useState("");
@@ -386,7 +403,7 @@ const UnityLoader = () => {
               {isDockEditorMode && <EditDock handleAddContent={handleAddContent}></EditDock>}
               {!isDockEditorMode &&  <Dock handleAddContent={handleAddContent}></Dock>}
               </Grid>
-              <Grid className="EmptyGrid" style={{ opacity: 1 }} xs>
+              <Grid style={{ opacity: 1 }} xs>
                 <ChatComponent userName={userName} showChat={showChat} sendMessage={sendMessage} userID={userID} userToken={userToken} userImage={userImage} />
               </Grid>
             </Grid>
