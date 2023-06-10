@@ -8,6 +8,7 @@
     background-color: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(20px);
     border-radius: 10px;
+    transition: transform .17s cubic-bezier(0,.01,.35,.99),opacity .14s cubic-bezier(0,.01,.35,.99);
   }
   
   .content-addcontent {
@@ -164,19 +165,19 @@
   }
 
   .addContentActive{
-    animation: scaleUP .2s ease-in-out 0s 1 normal forwards;
+    animation: scaleUP .2s ;
   }
 
   .addContentDisabled{
-    animation: scaleDOWN .2s ease-in-out 0s 1 normal forwards;
+    animation: scaleDOWN .2s ;
   }
 
   .addContentActiveback{
-    animation: fade1 .2s ease-in-out 0s 1 normal forwards;
+    animation: fade1 .2s ;
   }
 
   .addContentDisabledback{
-    animation: fade2 .2s ease-in-out 0s 1 normal forwards;
+    animation: fade2 .2s ;
   }
   
 

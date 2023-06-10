@@ -386,10 +386,11 @@ const UnityLoader = () => {
               {isDockEditorMode && <EditDock handleAddContent={handleAddContent}></EditDock>}
               {!isDockEditorMode &&  <Dock handleAddContent={handleAddContent}></Dock>}
               </Grid>
-              <Grid className="EmptyGrid" style={{ opacity: 0 }} xs>
+              <Grid className="EmptyGrid" style={{ opacity: 1 }} xs>
+                <ChatComponent userName={userName} showChat={showChat} sendMessage={sendMessage} userID={userID} userToken={userToken} userImage={userImage} />
               </Grid>
             </Grid>
-            <ChatComponent userName={userName} showChat={showChat} sendMessage={sendMessage} userID={userID} userToken={userToken} userImage={userImage} />
+            
             {isEditorMode && <EditorPanel objectName={objectName} sendMessage={sendMessage} setIsDockEditorMode={setIsDockEditorMode} handleEditorMode={handleEditorMode} handleEditorOff={handleEditorOff} addEventListener={addEventListener} removeEventListener={removeEventListener}></EditorPanel>}
             {/* {uploadOpen && <FileUpload setUploadOpen={setUploadOpen} sendMessage={sendMessage} style={{position: 'absolute', zIndex: '15'}}></FileUpload> } */}
             {uploadOpen && <AddContent setUploadOpen={setUploadOpen}></AddContent> } 
