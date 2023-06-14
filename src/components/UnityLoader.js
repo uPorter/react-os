@@ -101,13 +101,13 @@ const UnityLoader = () => {
   }
 
   const handleEditorInMode = () => {
-    handleEditorOff();
+    window.closeEditorPanel();
     setIsDockEditorMode(false);
   }
 
   const handleEditorOff = () => {
     setTimeout(() => {
-      setIsEditorMode(false);
+    setIsEditorMode(false);
     }, 600); // 500 milisaniye (0.5 saniye) bekleme süresi
   }
 

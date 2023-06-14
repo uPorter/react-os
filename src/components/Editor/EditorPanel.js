@@ -30,6 +30,14 @@ const EditorPanel = (props) => {
     }, 550); // Animasyon süresine göre ayarlayın
   };
 
+  window.closeEditorPanel = () => {
+    setAnimationHandler(false);
+    setIsDockEditorMode(false);
+    setTimeout(() => {
+      handleEditorOff();
+    }, 550); // Animasyon süresine göre ayarlayın
+  };
+
 
   return (
     <div
