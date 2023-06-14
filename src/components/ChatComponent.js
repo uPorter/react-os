@@ -118,10 +118,10 @@ const ChatComponent = (props) => {
     document.querySelector('.avatarProfile').classList.add('avatarProfileonClose');
   };
 
-
   const testClick = () => {
     console.log('Hello Guys');
   }
+
   return (
     <>
       <div className='chatProfileSection' style={{ width: '400px', height: 'fit-content', position: 'absolute', right: '8px', bottom: '-41px', transform: 'scale(0.9)', zIndex: '50', userSelect: 'none' }} >
