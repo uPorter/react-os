@@ -100,6 +100,11 @@ const UnityLoader = () => {
     setIsDockEditorMode(true);
   }
 
+  const handleEditorInMode = () => {
+    handleEditorOff();
+    setIsDockEditorMode(false);
+  }
+
   const handleEditorOff = () => {
     setTimeout(() => {
       setIsEditorMode(false);
@@ -233,6 +238,14 @@ const UnityLoader = () => {
       removeEventListener("EditorActive", handleEditorMode);
     };
   }, [addEventListener, removeEventListener, handleEditorMode]);
+
+  useEffect(() => {
+    addEventListener("EditorInActive", handleEditorInMode);
+
+    return () => {
+      removeEventListener("EditorInActive", handleEditorInMode);
+    };
+  }, [addEventListener, removeEventListener, handleEditorInMode]);
 
 
   const Item = styled(Sheet)(({ theme }) => ({
