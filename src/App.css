@@ -125,8 +125,7 @@
   border-radius: var(--IconButton-radius, var(--joy-radius-sm, 50px));
   transform: scale(1.25);
   box-shadow: 0px 0px 20px 0px rgb(0 0 0);
-  outline-offset: 2px;
-  outline: 2px solid var(--joy-palette-focusVisible, #096BDE);
+  outline: 2px solid #096BDE;
 }
 
 .dockButtonsEditor {
