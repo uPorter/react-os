@@ -25,7 +25,6 @@ const chatClient = StreamChat.getInstance('zqwrbbhbxazj');
 
 const UnityLoader = () => {
   const { spaceName } = useParams();
-  console.log(spaceName);
 
   const { unityProvider, UNSAFE__unityInstance, isLoaded, loadingProgression, sendMessage, addEventListener, removeEventListener } = useUnityContext({
     loaderUrl: "/unitybuild2/Build.loader.js",
