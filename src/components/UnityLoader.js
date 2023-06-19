@@ -19,10 +19,13 @@ import 'stream-chat-react/dist/css/index.css';
 import EditorPanel from './Editor/EditorPanel';
 import AddContent from './AddContent/AddContent';
 import EditDock from "./EditDock";
+import { useParams } from 'react-router-dom';
 
 const chatClient = StreamChat.getInstance('zqwrbbhbxazj');
 
 const UnityLoader = () => {
+  const { spaceName } = useParams();
+  console.log(spaceName);
 
   const { unityProvider, UNSAFE__unityInstance, isLoaded, loadingProgression, sendMessage, addEventListener, removeEventListener } = useUnityContext({
     loaderUrl: "/unitybuild2/Build.loader.js",
@@ -137,6 +140,7 @@ const UnityLoader = () => {
       handleClick();
       console.clear();
       sendMessage("AvatarNick", "enableInput");
+      sendMessage("SaveManager", "LoadSystem", spaceName);
     }
   }, [isStarted, userSigned]);
 
@@ -393,8 +397,9 @@ const UnityLoader = () => {
         {isStarted && showChat && (
           <div className={"ui"}>
             <Grid className="unityLoaderGrid" style={{ position: "absolute", width: "100%", bottom: "20px" }} container spacing={3} sx={{ flexGrow: 1 }}>
-              <Grid className="EmptyGrid" xs style={{ opacity: 0 }}>
-                <Button>Test</Button>
+              <Grid className="EmptyGrid" xs style={{ opacity: 1 }}>
+                <Button onClick={() => sendMessage("SaveManager", "SaveFile", spaceName)}>Save</Button>
+                <Button onClick={() => sendMessage("SaveManager", "LoadSystem", spaceName)}>Load</Button>
               </Grid>
               <Grid xs={6}>
               {isDockEditorMode && <EditDock handleAddContent={handleAddContent}></EditDock>}

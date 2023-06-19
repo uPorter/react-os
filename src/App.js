@@ -2,9 +2,15 @@ import styles from './App.css';
 import UnityLoader from './components/UnityLoader';
 import { useState } from 'react';
 import axios from 'axios';
+import queryString from 'query-string';
+import { BrowserRouter as Router, Route, Routes, useParams } from 'react-router-dom';
+
 
 function App() {
   const [isDragging, setIsDragging] = useState(false);
+  const { spaceName } = useParams();
+
+  console.log(spaceName);
 
   const handleDragEnter = (event) => {
     event.preventDefault();
@@ -31,7 +37,7 @@ function App() {
       const file = files[0];
       const formData = new FormData();
       formData.append('file', file);
-      
+
       try {
         const response = await axios.post('https://3ec8-152-32-192-31.ngrok-free.app/upload', formData, {
           headers: {
@@ -62,7 +68,12 @@ function App() {
       style={{ backgroundColor: isDragging ? 'lightblue' : 'white' }}
       className={styles.container}
     >
-      <UnityLoader></UnityLoader>
+      <Router>
+        <Routes>
+          <Route path='/' element={<UnityLoader/>} />
+          <Route path="/space/:spaceName" element={<UnityLoader />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
