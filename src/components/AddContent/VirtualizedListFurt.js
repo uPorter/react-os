@@ -153,8 +153,8 @@ const ListView = (props) => {
                                     style={{ width: "220px", marginBottom: "10px",
                                     filter:
                                         hoveredItem === item.id
-                                            ? "drop-shadow(-3px 7px 12px #00000000)"
-                                            : "drop-shadow(-2px 5px 14px transparent)",
+                                            ? "drop-shadow(black -3px 10px 14px)"
+                                            : "drop-shadow(black -3px 10px 14px)",
                                     
                                      }}
                                 />
