@@ -396,7 +396,7 @@ const UnityLoader = () => {
         {isStarted && showChat && (
           <div className={"ui"}>
             <Grid className="unityLoaderGrid" style={{ position: "absolute", width: "100%", bottom: "20px" }} container spacing={3} sx={{ flexGrow: 1 }}>
-              <Grid className="EmptyGrid" xs style={{ opacity: 1 }}>
+              <Grid className="EmptyGrid" xs style={{ opacity: 0 }}>
                 <Button onClick={() => sendMessage("SaveManager", "SaveFile", spaceName)}>Save</Button>
                 <Button onClick={() => sendMessage("SaveManager", "LoadSystem", spaceName)}>Load</Button>
               </Grid>
