@@ -16,7 +16,7 @@ function FileUpload(props) {
     const formData = new FormData();
     formData.append('file', file);
     try {
-      const response = await axios.post('https://04d1-103-133-178-51.ngrok-free.app//upload', formData, {
+      const response = await axios.post('https://04d1-103-133-178-51.ngrok-free.app/upload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -26,7 +26,7 @@ function FileUpload(props) {
         },
       });
       console.log(response.data);
-      const url = response.data.replace('https://react-os-three.vercel.app', 'https://04d1-103-133-178-51.ngrok-free.app/');
+      const url = response.data.replace('https://react-os-three.vercel.app', 'https://04d1-103-133-178-51.ngrok-free.app');
       console.log(url);
       window.sendMessageToUnity("urlManager", "SetURL", url);
       window.sendMessageToUnityBasic("urlManager", "SpawnObject");
