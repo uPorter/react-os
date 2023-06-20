@@ -26,10 +26,7 @@ function FileUpload(props) {
         },
       });
       console.log(response.data);
-      await setFileURL(response.data);
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      console.log(fileURL);
-      window.sendMessageToUnity("urlManager", "SetURL", fileURL);
+      window.sendMessageToUnity("urlManager", "SetURL", response.data);
       window.sendMessageToUnityBasic("urlManager", "SpawnObject");
 
     } catch (error) {
