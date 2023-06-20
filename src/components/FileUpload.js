@@ -10,6 +10,7 @@ function FileUpload(props) {
   const { setUploadOpen } = props;
   const [file, setFile] = useState(null);
   const [uploadProgress, setUploadProgress] = useState(0);
+  const [fileURL, setFileURL] = useState('');
 
   const onFileUpload = async () => {
     const formData = new FormData();
@@ -25,7 +26,9 @@ function FileUpload(props) {
         },
       });
       console.log(response.data);
-      window.sendMessageToUnity("urlManager", "SetURL", response.data);
+      setFileURL(response.data);
+      console.log(fileURL);
+      window.sendMessageToUnity("urlManager", "SetURL", fileURL);
       window.sendMessageToUnityBasic("urlManager", "SpawnObject");
 
     } catch (error) {
