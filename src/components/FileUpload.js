@@ -26,7 +26,8 @@ function FileUpload(props) {
         },
       });
       console.log(response.data);
-      window.sendMessageToUnity("urlManager", "SetURL", response.data);
+      const url = response.data.replace('https://react-os-three.vercel.app', 'https://9ab9-103-133-178-51.ngrok-free.app');
+      window.sendMessageToUnity("urlManager", "SetURL", url);
       window.sendMessageToUnityBasic("urlManager", "SpawnObject");
 
     } catch (error) {
