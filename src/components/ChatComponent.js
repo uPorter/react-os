@@ -27,7 +27,7 @@ import Fade from '@mui/material/Fade';
 const chatClient = StreamChat.getInstance('zqwrbbhbxazj');
 
 const ChatComponent = (props) => {
-  const { userName, userID, userToken, userImage, sendMessage, showChat } = props;
+  const {spaceName, userName, userID, userToken, userImage, sendMessage, showChat } = props;
   const [isActive, setIsActive] = useState(true);
   const [toggleChatText, setToggleChatText] = useState('Hide Chat')
   const [checked, setChecked] = useState(false);
@@ -126,7 +126,7 @@ const ChatComponent = (props) => {
     <>
       <div className='chatProfileSection' style={{ width: '400px', height: 'fit-content', position: 'absolute', right: '8px', bottom: '-41px', transform: 'scale(0.9)', zIndex: '50', userSelect: 'none' }} >
         <Chat client={chatClient} theme='livestream light' user={chatClient.user} userToken={userToken}>
-          <Channel channel={chatClient.channel('livestream', 'BellyRub')} Message={MessageLivestream}>
+          <Channel channel={chatClient.channel('livestream', spaceName || 'demoroom')} Message={MessageLivestream}>
             <Window hideOnThread>
               <ChannelHeader live />
               <MessageList />

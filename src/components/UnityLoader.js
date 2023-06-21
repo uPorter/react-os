@@ -224,11 +224,12 @@ const UnityLoader = () => {
   useEffect(() => {
     if (isLoaded) {
       const timer = setTimeout(() => {
-        sendMessage("AvatarNick", "RoomSetmethod", spaceName);
+        const roomName = spaceName || "demoroom";
+        sendMessage("AvatarNick", "RoomSetmethod", roomName);
       }, 1000);
       return () => clearTimeout(timer);
     }
-  }, [isLoaded]);
+  }, [isLoaded, spaceName]);
 
 
   const ReactshowRPM = () => {
@@ -424,7 +425,7 @@ const UnityLoader = () => {
               {!isDockEditorMode &&  <Dock handleAddContent={handleAddContent}></Dock>}
               </Grid>
               <Grid style={{ opacity: 1 }} xs>
-                <ChatComponent userName={userName} showChat={showChat} sendMessage={sendMessage} userID={userID} userToken={userToken} userImage={userImage} />
+                <ChatComponent spaceName={spaceName} userName={userName} showChat={showChat} sendMessage={sendMessage} userID={userID} userToken={userToken} userImage={userImage} />
               </Grid>
             </Grid>
             
