@@ -210,7 +210,7 @@ const UnityLoader = () => {
   const gameHandler = useCallback(() => {
     setIsStarted(true)
     console.log("Instance Started!");
-    sendMessage("AvatarNick", "RoomSetmethod", spaceName);
+    
   }, []);
 
   const avatarHandler = () => {
@@ -221,12 +221,29 @@ const UnityLoader = () => {
     }
   }
 
+  useEffect(() => {
+    if (isLoaded) {
+      const timer = setTimeout(() => {
+        sendMessage("AvatarNick", "RoomSetmethod", spaceName);
+      }, 1000);
+      return () => clearTimeout(timer);
+    }
+  }, [isLoaded]);
+
 
   const ReactshowRPM = () => {
     window.setupRpmFrame();
     window.showRpm();
     //sendMessage("AvatarEdit", "EditorON");
   }
+
+  useEffect(() => {
+    addEventListener("Started", gameHandler);
+
+    return () => {
+      removeEventListener("Started", gameHandler);
+    };
+  }, [addEventListener, removeEventListener, gameHandler]);
 
   useEffect(() => {
     addEventListener("Started", gameHandler);
