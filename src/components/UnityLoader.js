@@ -140,6 +140,7 @@ const UnityLoader = () => {
       console.clear();
       sendMessage("AvatarNick", "enableInput");
       sendMessage("SaveManager", "LoadSystem", spaceName);
+      sendMessage("AvatarNick", "TestSetMethod", userName);
     }
   }, [isStarted, userSigned]);
 
