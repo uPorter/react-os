@@ -210,6 +210,7 @@ const UnityLoader = () => {
   const gameHandler = useCallback(() => {
     setIsStarted(true)
     console.log("Instance Started!");
+    sendMessage("AvatarNick", "RoomSetmethod", spaceName);
   }, []);
 
   const avatarHandler = () => {
