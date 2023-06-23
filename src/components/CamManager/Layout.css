@@ -10,6 +10,7 @@
   justify-content: center;
   align-items: center;
   transition: transform 0.4s ease, width 0.4s ease, all 0.4s ease;
+  pointer-events: all;
 }
 
 .layout-container.expanded {

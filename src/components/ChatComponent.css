@@ -313,6 +313,11 @@
   font-weight: 700;
 }
 
+.livestream.str-chat .str-chat__li--single{
+  margin: 0;
+  pointer-events: all;
+}
+
 .rta__textarea.str-chat__textarea__textarea::-webkit-scrollbar{
   display: none;
 }
@@ -326,6 +331,7 @@
   z-index: 1000;
   right: 80px;
   bottom: 0px;
+  pointer-events: all;
 }
 
 .str-chat__small-message-input textarea {
@@ -458,6 +464,7 @@
   position: absolute!important;
   transition: .2s cubic-bezier(.46,.03,.52,.96) 0s;
   right: 80px;
+  pointer-events: all;
 }
 
 .toggle-chat:hover{
@@ -472,6 +479,7 @@
   height: 4rem;
   z-index: 999;
   transition: .2s cubic-bezier(0.46, 0.03, 0.52, 0.96) 0s;
+  pointer-events: all;
 }
 
 .str-chat__send-button {

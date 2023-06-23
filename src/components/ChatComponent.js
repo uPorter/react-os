@@ -124,7 +124,7 @@ const ChatComponent = (props) => {
 
   return (
     <>
-      <div className='chatProfileSection' style={{ width: '400px', height: 'fit-content', position: 'absolute', right: '8px', bottom: '-41px', transform: 'scale(0.9)', zIndex: '50', userSelect: 'none' }} >
+      <div className='chatProfileSection' style={{pointerEvents: 'none', width: '400px', height: 'fit-content', position: 'absolute', right: '8px', bottom: '-41px', transform: 'scale(0.9)', zIndex: '50', userSelect: 'none' }} >
         <Chat client={chatClient} theme='livestream light' user={chatClient.user} userToken={userToken}>
           <Channel channel={chatClient.channel('livestream', spaceName || 'demoroom')} Message={MessageLivestream}>
             <Window hideOnThread>
