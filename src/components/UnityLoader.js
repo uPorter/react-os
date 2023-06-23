@@ -48,34 +48,6 @@ const UnityLoader = () => {
   };
 
 
-  useEffect(() => {
-    // Component yüklendiğinde ve güncellendiğinde çalışacak kodu buraya yerleştirin
-    const container = document.querySelector('.container');
-    
-    // Container'ın varsayılan imleç değerini "grab" olarak ayarla
-    container.style.cursor = 'grab';
-  
-    // Mousedown olayını dinle
-    container.addEventListener('mousedown', function() {
-      // Mousedown olduğunda imleç değerini "grabbing" olarak ayarla
-      container.style.cursor = 'grabbing';
-    });
-  
-    // Mouseup olayını dinle
-    container.addEventListener('mouseup', function() {
-      // Mouseup olduğunda imleç değerini tekrar "grab" olarak ayarla
-      container.style.cursor = 'grab';
-    });
-
-    // Component'in temizleme işlevi
-    return () => {
-      // Component kaldırıldığında olay dinleyicilerini kaldır
-      container.removeEventListener('mousedown');
-      container.removeEventListener('mouseup');
-    };
-  }, []); // Boş bağımlılık dizisi, yalnızca bileşen yüklendiğinde çalışmasını sağlar
-
-
   const [isAvatarSelected, setIsAvatarSelected] = useState(false);
   const [isStarted, setIsStarted] = useState(false);
   const [inputText, setInputText] = useState("");
