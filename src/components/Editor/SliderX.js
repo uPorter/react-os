@@ -169,6 +169,7 @@ const SliderX = (props) => {
         type="number"
         onFocus={onFocus}
         onBlur={onBlur}
+        step="0.10"
         value={sliderValue.toString()}
         onChange={handleInputChange}
         style={{

@@ -168,6 +168,7 @@ const SliderScale = (props) => {
         className="editorInput"
         type="number"
         onFocus={onFocus}
+        step="0.10"
         onBlur={onBlur}
         value={sliderValue.toString()}
         onChange={handleInputChange}
