@@ -81,21 +81,3 @@ function showRpm() {
 function hideRpm() {
     rpmContainer.style.display = "none";
 }
-
-// Container elementini seç
-var container = document.querySelector('.container');
-
-// Container'ın varsayılan imleç değerini "grab" olarak ayarla
-container.style.cursor = 'grab';
-
-// Mousedown olayını dinle
-container.addEventListener('mousedown', function() {
-  // Mousedown olduğunda imleç değerini "grabbing" olarak ayarla
-  container.style.cursor = 'grabbing';
-});
-
-// Mouseup olayını dinle
-container.addEventListener('mouseup', function() {
-  // Mouseup olduğunda imleç değerini tekrar "grab" olarak ayarla
-  container.style.cursor = 'grab';
-});

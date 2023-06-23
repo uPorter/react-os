@@ -50,32 +50,28 @@ const UnityLoader = () => {
 
   useEffect(() => {
     // Component yüklendiğinde ve güncellendiğinde çalışacak kodu buraya yerleştirin
-    const body = document.body;
+    const container = document.querySelector('.container');
     
-    // body'nin varsayılan imleç değerini "grab" olarak ayarla
-    body.style.cursor = 'grab';
+    // Container'ın varsayılan imleç değerini "grab" olarak ayarla
+    container.style.cursor = 'grab';
   
     // Mousedown olayını dinle
-    const handleMouseDown = () => {
+    container.addEventListener('mousedown', function() {
       // Mousedown olduğunda imleç değerini "grabbing" olarak ayarla
-      body.style.cursor = 'grabbing';
-    };
+      container.style.cursor = 'grabbing';
+    });
   
     // Mouseup olayını dinle
-    const handleMouseUp = () => {
+    container.addEventListener('mouseup', function() {
       // Mouseup olduğunda imleç değerini tekrar "grab" olarak ayarla
-      body.style.cursor = 'grab';
-    };
-  
-    // Event dinleyicilerini ekle
-    body.addEventListener('mousedown', handleMouseDown);
-    body.addEventListener('mouseup', handleMouseUp);
-  
+      container.style.cursor = 'grab';
+    });
+
     // Component'in temizleme işlevi
     return () => {
       // Component kaldırıldığında olay dinleyicilerini kaldır
-      body.removeEventListener('mousedown', handleMouseDown);
-      body.removeEventListener('mouseup', handleMouseUp);
+      container.removeEventListener('mousedown');
+      container.removeEventListener('mouseup');
     };
   }, []); // Boş bağımlılık dizisi, yalnızca bileşen yüklendiğinde çalışmasını sağlar
 
@@ -273,8 +269,8 @@ const UnityLoader = () => {
   }
 
   const handleObjectHoverEnter = () => {
-    const body = document.body;
-    body.style.cursor = 'move';
+    const container = document.querySelector('.container');
+    container.style.cursor = 'move';
   }
 
   useEffect(() => {
@@ -286,8 +282,8 @@ const UnityLoader = () => {
   }, [addEventListener, removeEventListener, handleObjectHoverEnter]);
 
   const handleObjectHoverExit = () => {
-    const body = document.body;
-    body.style.cursor = 'grab';
+    const container = document.querySelector('.container');
+    container.style.cursor = 'grab';
   }
 
   useEffect(() => {
@@ -497,7 +493,7 @@ const UnityLoader = () => {
             {/* <Button style={{ position: 'absolute', zIndex: '15' }} onClick={ReactshowRPM} variant="soft">Edit Avatar - PreTest</Button>*/}
           </div>)}
           <Toaster className='toasterCSS' richColors position="bottom-center" />
-        <Unity className='container' unityProvider={unityProvider} style={{ display: isLoaded ? "block" : "none" }} />
+        <Unity className='container' unityProvider={unityProvider} style={{cursor: 'grab', display: isLoaded ? "block" : "none" }} />
       </div>
     </div>
     // JSX ile bileşeninizi render edebilirsiniz
