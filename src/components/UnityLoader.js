@@ -50,28 +50,32 @@ const UnityLoader = () => {
 
   useEffect(() => {
     // Component yüklendiğinde ve güncellendiğinde çalışacak kodu buraya yerleştirin
-    const container = document.querySelector('.container');
+    const body = document.body;
     
-    // Container'ın varsayılan imleç değerini "grab" olarak ayarla
-    container.style.cursor = 'grab';
+    // body'nin varsayılan imleç değerini "grab" olarak ayarla
+    body.style.cursor = 'grab';
   
     // Mousedown olayını dinle
-    container.addEventListener('mousedown', function() {
+    const handleMouseDown = () => {
       // Mousedown olduğunda imleç değerini "grabbing" olarak ayarla
-      container.style.cursor = 'grabbing';
-    });
+      body.style.cursor = 'grabbing';
+    };
   
     // Mouseup olayını dinle
-    container.addEventListener('mouseup', function() {
+    const handleMouseUp = () => {
       // Mouseup olduğunda imleç değerini tekrar "grab" olarak ayarla
-      container.style.cursor = 'grab';
-    });
-
+      body.style.cursor = 'grab';
+    };
+  
+    // Event dinleyicilerini ekle
+    body.addEventListener('mousedown', handleMouseDown);
+    body.addEventListener('mouseup', handleMouseUp);
+  
     // Component'in temizleme işlevi
     return () => {
       // Component kaldırıldığında olay dinleyicilerini kaldır
-      container.removeEventListener('mousedown');
-      container.removeEventListener('mouseup');
+      body.removeEventListener('mousedown', handleMouseDown);
+      body.removeEventListener('mouseup', handleMouseUp);
     };
   }, []); // Boş bağımlılık dizisi, yalnızca bileşen yüklendiğinde çalışmasını sağlar
 
@@ -269,8 +273,8 @@ const UnityLoader = () => {
   }
 
   const handleObjectHoverEnter = () => {
-    const container = document.querySelector('.container');
-    container.style.cursor = 'move';
+    const body = document.body;
+    body.style.cursor = 'move';
   }
 
   useEffect(() => {
@@ -282,8 +286,8 @@ const UnityLoader = () => {
   }, [addEventListener, removeEventListener, handleObjectHoverEnter]);
 
   const handleObjectHoverExit = () => {
-    const container = document.querySelector('.container');
-    container.style.cursor = 'grab';
+    const body = document.body;
+    body.style.cursor = 'grab';
   }
 
   useEffect(() => {

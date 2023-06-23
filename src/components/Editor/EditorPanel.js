@@ -24,7 +24,6 @@ const EditorPanel = (props) => {
 
   const closeEditor = () => {
     setAnimationHandler(false);
-    setIsDockEditorMode(false);
     setTimeout(() => {
       handleEditorOff();
     }, 550); // Animasyon süresine göre ayarlayın
@@ -32,7 +31,6 @@ const EditorPanel = (props) => {
 
   window.closeEditorPanel = () => {
     setAnimationHandler(false);
-    setIsDockEditorMode(false);
     setTimeout(() => {
       handleEditorOff();
     }, 550); // Animasyon süresine göre ayarlayın
