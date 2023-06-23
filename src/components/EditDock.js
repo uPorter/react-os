@@ -9,7 +9,7 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 
 export class EditDock extends Component {
   render() {
-    //const { handleAddContent } = this.props;
+    const { handleEditBar } = this.props;
     return (
       <div
         style={{
@@ -53,6 +53,7 @@ export class EditDock extends Component {
 
           <IconButton
             id="dockButtonID"
+            onClick={handleEditBar}
             className="dockButtonsEditor"
             variant="solid"
             sx={{

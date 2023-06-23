@@ -48,6 +48,34 @@ const UnityLoader = () => {
   };
 
 
+  useEffect(() => {
+    // Component yüklendiğinde ve güncellendiğinde çalışacak kodu buraya yerleştirin
+    const container = document.querySelector('.container');
+    
+    // Container'ın varsayılan imleç değerini "grab" olarak ayarla
+    container.style.cursor = 'grab';
+  
+    // Mousedown olayını dinle
+    container.addEventListener('mousedown', function() {
+      // Mousedown olduğunda imleç değerini "grabbing" olarak ayarla
+      container.style.cursor = 'grabbing';
+    });
+  
+    // Mouseup olayını dinle
+    container.addEventListener('mouseup', function() {
+      // Mouseup olduğunda imleç değerini tekrar "grab" olarak ayarla
+      container.style.cursor = 'grab';
+    });
+
+    // Component'in temizleme işlevi
+    return () => {
+      // Component kaldırıldığında olay dinleyicilerini kaldır
+      container.removeEventListener('mousedown');
+      container.removeEventListener('mouseup');
+    };
+  }, []); // Boş bağımlılık dizisi, yalnızca bileşen yüklendiğinde çalışmasını sağlar
+
+
   const [isAvatarSelected, setIsAvatarSelected] = useState(false);
   const [isStarted, setIsStarted] = useState(false);
   const [inputText, setInputText] = useState("");
@@ -98,12 +126,14 @@ const UnityLoader = () => {
   }, [userID]);
 
   const handleEditorMode = () => {
-    setIsEditorMode(true);
     setIsDockEditorMode(true);
   }
 
+  const handleEditBar = () => {
+    setIsEditorMode(true);
+  }
+
   const handleEditorInMode = () => {
-    window.closeEditorPanel();
     setIsDockEditorMode(false);
   }
 
@@ -237,6 +267,34 @@ const UnityLoader = () => {
     window.showRpm();
     //sendMessage("AvatarEdit", "EditorON");
   }
+
+  const handleObjectHoverEnter = () => {
+    const container = document.querySelector('.container');
+    container.style.cursor = 'move';
+  }
+
+  useEffect(() => {
+    addEventListener("ObjectHoverEnter", handleObjectHoverEnter);
+
+    return () => {
+      removeEventListener("ObjectHoverEnter", handleObjectHoverEnter);
+    };
+  }, [addEventListener, removeEventListener, handleObjectHoverEnter]);
+
+  const handleObjectHoverExit = () => {
+    const container = document.querySelector('.container');
+    container.style.cursor = 'grab';
+  }
+
+  useEffect(() => {
+    addEventListener("ObjectHoverExit", handleObjectHoverExit);
+
+    return () => {
+      removeEventListener("ObjectHoverExit", handleObjectHoverExit);
+    };
+  }, [addEventListener, removeEventListener, handleObjectHoverExit]);
+
+
 
   useEffect(() => {
     addEventListener("Started", gameHandler);
@@ -421,8 +479,8 @@ const UnityLoader = () => {
                 <Button onClick={() => sendMessage("SaveManager", "LoadSystem", spaceName)}>Load</Button>
               </Grid>
               <Grid xs={6}>
-              {isDockEditorMode && <EditDock handleAddContent={handleAddContent}></EditDock>}
-              {!isDockEditorMode &&  <Dock handleAddContent={handleAddContent}></Dock>}
+              {isDockEditorMode && <EditDock handleEditBar={handleEditBar} handleAddContent={handleAddContent}></EditDock>}
+              {!isDockEditorMode &&  <Dock  handleAddContent={handleAddContent}></Dock>}
               </Grid>
               <Grid style={{ opacity: 1 }} xs>
                 <ChatComponent spaceName={spaceName} userName={userName} showChat={showChat} sendMessage={sendMessage} userID={userID} userToken={userToken} userImage={userImage} />
