@@ -61,7 +61,7 @@ function FileUpload(props) {
         window.sendMessageToUnity('videoUrlManager', 'SetURL', response.data);
         window.sendMessageToUnityBasic('videoUrlManager', 'SpawnObject');
         console.log(response.data);
-      } else {
+      } else if (fileType === 'glb') {
         response = await axios.post('https://04d1-103-133-178-51.ngrok-free.app/upload', formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
@@ -71,11 +71,18 @@ function FileUpload(props) {
             setUploadProgress(percentage);
           },
         });
+
         window.sendMessageToUnity('urlManager', 'SetURL', response.data);
         window.sendMessageToUnityBasic('urlManager', 'SpawnObject');
         console.log(response.data);
-        // Diğer dosya türleri için yapılacak işlemler buraya eklenir.
+      } else {
+        console.log("Hello Guys");
       }
+
+        
+        console.log(response.data);
+        // Diğer dosya türleri için yapılacak işlemler buraya eklenir.
+      
     } catch (error) {
       console.log(error);
     }
