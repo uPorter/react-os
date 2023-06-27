@@ -47,6 +47,20 @@ function FileUpload(props) {
         window.sendMessageToUnity('imageUrlManager', 'SetURL', response.data);
         window.sendMessageToUnityBasic('imageUrlManager', 'SpawnObject');
         console.log(response.data);
+      } else if (fileType === 'mp4') {
+        response = await axios.post('https://04d1-103-133-178-51.ngrok-free.app/upload', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+          onUploadProgress: (progressEvent) => {
+            const percentage = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+            setUploadProgress(percentage);
+          },
+        });
+
+        window.sendMessageToUnity('videoUrlManager', 'SetURL', response.data);
+        window.sendMessageToUnityBasic('videoUrlManager', 'SpawnObject');
+        console.log(response.data);
       } else {
         response = await axios.post('https://04d1-103-133-178-51.ngrok-free.app/upload', formData, {
           headers: {
