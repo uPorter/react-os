@@ -31,6 +31,9 @@ function FileUpload(props) {
             setUploadProgress(percentage);
           },
         });
+  
+        console.log(response.data);
+        console.log(response.data);
       } else {
         response = await axios.post('https://04d1-103-133-178-51.ngrok-free.app/upload', formData, {
           headers: {
@@ -41,17 +44,16 @@ function FileUpload(props) {
             setUploadProgress(percentage);
           },
         });
+        window.sendMessageToUnity('urlManager', 'SetURL', response.data);
+        window.sendMessageToUnityBasic('urlManager', 'SpawnObject');
+        console.log(response.data);
+        // Diğer dosya türleri için yapılacak işlemler buraya eklenir.
       }
-      
-      console.log(response.data);
-      const url = response.data;
-      console.log(url);
-      window.sendMessageToUnity('urlManager', 'SetURL', url);
-      window.sendMessageToUnityBasic('urlManager', 'SpawnObject');
     } catch (error) {
       console.log(error);
     }
   };
+  
 
   return (
     <div className='fileUploadContainer'>
