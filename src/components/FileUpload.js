@@ -76,7 +76,7 @@ function FileUpload(props) {
         window.sendMessageToUnityBasic('urlManager', 'SpawnObject');
         console.log(response.data);
       } else {
-        toast.error('Unsupported File Type..')
+        toast.error('Unsupported File Type...')
       }
 
       
