@@ -15,22 +15,39 @@ function FileUpload(props) {
   const onFileUpload = async () => {
     const formData = new FormData();
     formData.append('file', file);
+    
+    const fileType = file.name.split('.').pop().toLowerCase();
+    
     try {
-      const response = await axios.post('https://04d1-103-133-178-51.ngrok-free.app/upload', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-        onUploadProgress: (progressEvent) => {
-          const percentage = Math.round((progressEvent.loaded * 100) / progressEvent.total);
-          setUploadProgress(percentage);
-        },
-      });
+      let response;
+      
+      if (fileType === 'pdf') {
+        response = await axios.post('https://04d1-103-133-178-51.ngrok-free.app/convert', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+          onUploadProgress: (progressEvent) => {
+            const percentage = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+            setUploadProgress(percentage);
+          },
+        });
+      } else {
+        response = await axios.post('https://04d1-103-133-178-51.ngrok-free.app/upload', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+          onUploadProgress: (progressEvent) => {
+            const percentage = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+            setUploadProgress(percentage);
+          },
+        });
+      }
+      
       console.log(response.data);
-      const url = response.data.replace('https://react-os-three.vercel.app', 'https://04d1-103-133-178-51.ngrok-free.app');
+      const url = response.data;
       console.log(url);
-      window.sendMessageToUnity("urlManager", "SetURL", url);
-      window.sendMessageToUnityBasic("urlManager", "SpawnObject");
-
+      window.sendMessageToUnity('urlManager', 'SetURL', url);
+      window.sendMessageToUnityBasic('urlManager', 'SpawnObject');
     } catch (error) {
       console.log(error);
     }
