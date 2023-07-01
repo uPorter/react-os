@@ -21,7 +21,7 @@ const ListView = (props) => {
   const fetchModels = async () => {
     try {
       const response = await fetch(
-        "https://api.sketchfab.com/v3/search?type=models&staffpicked=true&sort_by=-popularity"
+        "https://api.sketchfab.com/v3/search?type=models&staffpicked=true&sort_by=-relevance"
       );
       const data = await response.json();
       setModels(data.results);
