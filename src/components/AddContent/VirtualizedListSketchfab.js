@@ -189,7 +189,7 @@ const ListView = (props) => {
                   }}
                 />
               </Paper>
-              <Typography className="objectName" level="body2">
+              <Typography style={{marginTop: "22px"}} className="objectName" level="body2">
                 {item.name}
               </Typography>
             </div>
