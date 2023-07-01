@@ -31,7 +31,7 @@ const AddContent = (props) => {
       const { scrollTop, scrollHeight, clientHeight } = panel;
 
       if (scrollTop + clientHeight >= scrollHeight) {
-        window.loadNextPage;
+        window.loadNextPage();
       }
     };
 

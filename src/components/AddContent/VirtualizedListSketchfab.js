@@ -31,6 +31,20 @@ const ListView = (props) => {
     }
   };
 
+  const loadNextPage = async () => {
+    if (nextPageUrl) {
+      try {
+        const response = await fetch(nextPageUrl);
+        const data = await response.json();
+        setModels((prevModels) => [...prevModels, ...data.results]);
+        setNextPageUrl(data.next);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  };
+
+
   window.loadNextPage = async () => {
     if (nextPageUrl) {
       try {
@@ -43,6 +57,7 @@ const ListView = (props) => {
       }
     }
   };
+  
 
   useEffect(() => {
     fetchModels();
