@@ -63,30 +63,6 @@ const ListView = (props) => {
     fetchModels();
   }, []);
 
-  useEffect(() => {
-    const options = {
-      root: null,
-      rootMargin: "0px",
-      threshold: 1.0
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
-        loadNextPage();
-      }
-    }, options);
-
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
-    }
-
-    return () => {
-      if (containerRef.current) {
-        observer.unobserve(containerRef.current);
-      }
-    };
-  }, []);
-
   const handleClearSelection = () => {
     setSelectedItems([]);
   };
@@ -259,7 +235,6 @@ const ListView = (props) => {
           </div>
         )}
       </Grid>
-      <div ref={containerRef} style={{ marginTop: "24px" }} />
     </>
   );
 };
