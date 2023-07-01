@@ -22,6 +22,25 @@ const AddContent = (props) => {
   const [animationClass, setAnimationClass] = useState('');
   const [backClass, setBackClass] = useState('');
   const [animationHandler, setAnimationHandler] = useState('true');
+  const panelRef = useRef(null);
+
+  useEffect(() => {
+    const panel = panelRef.current;
+
+    const scrollHandler = () => {
+      const { scrollTop, scrollHeight, clientHeight } = panel;
+
+      if (scrollTop + clientHeight >= scrollHeight) {
+        console.log('Kaydırma tamamlandı');
+      }
+    };
+
+    panel.addEventListener('scroll', scrollHandler);
+
+    return () => {
+      panel.removeEventListener('scroll', scrollHandler);
+    };
+  }, []);
 
   const handleClose = () => {
     setUploadOpen(false);
@@ -157,6 +176,7 @@ const AddContent = (props) => {
             className="tabPanel"
             value={3}
             sx={{width: "50%", p: 2, minHeight: 200 }}
+            ref={panelRef}
           >
              <VirtualizedListSketchfab closeContent={closeContent} />
           </TabPanel>
