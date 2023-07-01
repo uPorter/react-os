@@ -12,7 +12,7 @@ const ListView = (props) => {
   const { data, closeContent } = props;
   const [selectedItems, setSelectedItems] = useState([]);
   const [hoveredItem, setHoveredItem] = useState(null);
-  const itemsPerPage = 24;
+  const [itemsPerPage, setItemsPerPage] = useState(24);
   const [currentPage, setCurrentPage] = useState(0);
   const [models, setModels] = useState([]);
   const [nextPageUrl, setNextPageUrl] = useState("");
@@ -50,7 +50,8 @@ const ListView = (props) => {
         const response = await fetch(nextPageUrl);
         const data = await response.json();
         setModels((prevModels) => [...prevModels, ...data.results]);
-        setNextPageUrl(data.next);
+        setNextPageUrl(data.next); 
+        setItemsPerPage(itemsPerPage + 24);
       } catch (error) {
         console.error(error);
       }
