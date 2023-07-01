@@ -31,7 +31,7 @@ const ListView = (props) => {
     }
   };
 
-  const loadNextPage = async () => {
+  window.loadNextPage = async () => {
     if (nextPageUrl) {
       try {
         const response = await fetch(nextPageUrl);
