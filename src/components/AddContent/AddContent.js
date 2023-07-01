@@ -156,7 +156,7 @@ const AddContent = (props) => {
           <TabPanel
             className="tabPanel"
             value={3}
-            sx={{ p: 2, minHeight: 200 }}
+            sx={{width: "50%", p: 2, minHeight: 200 }}
           >
              <VirtualizedListSketchfab closeContent={closeContent} />
           </TabPanel>
