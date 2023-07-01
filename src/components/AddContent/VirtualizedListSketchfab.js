@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Grid, Paper } from "@mui/material";
 import Checkbox from "@mui/joy/Checkbox";
 import Typography from "@mui/joy/Typography";
 import IconButton from "@mui/joy/IconButton";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
-import Pagination from "@mui/material/Pagination";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 
@@ -13,14 +12,11 @@ const ListView = (props) => {
   const { data, closeContent } = props;
   const [selectedItems, setSelectedItems] = useState([]);
   const [hoveredItem, setHoveredItem] = useState(null);
-  const itemsPerPage = 9;
+  const itemsPerPage = 24;
   const [currentPage, setCurrentPage] = useState(0);
   const [models, setModels] = useState([]);
   const [nextPageUrl, setNextPageUrl] = useState("");
-
-  useEffect(() => {
-    fetchModels();
-  }, []);
+  const containerRef = useRef(null);
 
   const fetchModels = async () => {
     try {
@@ -34,6 +30,47 @@ const ListView = (props) => {
       console.error(error);
     }
   };
+
+  const loadNextPage = async () => {
+    if (nextPageUrl) {
+      try {
+        const response = await fetch(nextPageUrl);
+        const data = await response.json();
+        setModels((prevModels) => [...prevModels, ...data.results]);
+        setNextPageUrl(data.next);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  };
+
+  useEffect(() => {
+    fetchModels();
+  }, []);
+
+  useEffect(() => {
+    const options = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 1.0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        loadNextPage();
+      }
+    }, options);
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current);
+      }
+    };
+  }, []);
 
   const handleClearSelection = () => {
     setSelectedItems([]);
@@ -52,7 +89,7 @@ const ListView = (props) => {
 
   const handleBulkAction = () => {
     console.log("Toplu işlem: ", selectedItems);
-    closeContent();
+    //closeContent();
     selectedItems.forEach((item, index) => {
       setTimeout(() => {
         LoadModel(item.modelURL);
@@ -71,7 +108,7 @@ const ListView = (props) => {
       }
     } else {
       LoadModel(item.modelURL);
-      closeContent();
+      //closeContent();
     }
     console.log("Clicked item UID:", item.uid);
   };
@@ -180,57 +217,34 @@ const ListView = (props) => {
             }}
           >
             <div>
-              <Typography
-                style={{ color: "white", fontWeight: "600" }}
-                level="body2"
-              >
-                {selectedItems.length} object selected
+              <Typography className="counter" variant="h6">
+                {selectedItems.length}
               </Typography>
             </div>
-            <div style={{ width: "13px" }} />
             <IconButton
-              style={{
-                color: "black",
-                borderRadius: "25px",
-                backgroundColor: "white"
-              }}
-              onClick={handleBulkAction}
-              variant="solid"
-            >
-              <AddIcon />
-            </IconButton>
-            <IconButton
+              aria-label="clear selection"
+              onClick={handleClearSelection}
               style={{
                 color: "white",
-                borderRadius: "279px",
-                transform: "scale(0.8)",
-                position: "absolute",
-                right: "-13px",
-                top: "-12px",
-                backgroundColor: "rgb(0 0 0 / 44%)"
+                marginLeft: "10px"
               }}
-              onClick={handleClearSelection}
-              variant="solid"
             >
               <RemoveIcon />
+            </IconButton>
+            <IconButton
+              aria-label="add to scene"
+              onClick={handleBulkAction}
+              style={{
+                color: "white",
+                marginLeft: "10px"
+              }}
+            >
+              <AddIcon />
             </IconButton>
           </div>
         )}
       </Grid>
-      <Pagination
-        count={Math.ceil(models.length / itemsPerPage)}
-        page={currentPage + 1}
-        onChange={handlePageChange}
-        shape="rounded"
-        variant="outlined"
-        style={{
-          position: "absolute",
-          bottom: "15px",
-          right: "10px",
-          display: "flex",
-          justifyContent: "center"
-        }}
-      />
+      <div ref={containerRef} style={{ marginTop: "24px" }} />
     </>
   );
 };
