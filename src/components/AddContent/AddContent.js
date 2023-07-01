@@ -10,6 +10,7 @@ import Divider from "@mui/joy/Divider";
 import Typography from "@mui/joy/Typography";
 import VirtualizedList from "./VirtualizedList";
 import VirtualizedListFurt from "./VirtualizedListFurt";
+import VirtualizedListSketchfab from "./VirtualizedListSketchfab";
 import data from "./data";
 import data1 from "./data1";
 import data2 from "./data2";
@@ -157,7 +158,7 @@ const AddContent = (props) => {
             value={3}
             sx={{ p: 2, minHeight: 200 }}
           >
-             <b className="TabContent">Work in progress...</b>
+             <VirtualizedListSketchfab closeContent={closeContent} />
           </TabPanel>
           <TabPanel
             className="tabPanel"
