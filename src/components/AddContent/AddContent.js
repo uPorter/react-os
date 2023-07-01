@@ -32,6 +32,7 @@ const AddContent = (props) => {
 
       if (scrollTop + clientHeight >= scrollHeight) {
         window.loadNextPage();
+        console.log("scroll done");
       }
     };
 
