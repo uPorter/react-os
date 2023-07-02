@@ -143,8 +143,16 @@ const UnityLoader = () => {
       sendMessage("AvatarNick", "enableInput");
       sendMessage("SaveManager", "LoadSystem", spaceName);
       sendMessage("AvatarNick", "TestSetMethod", userName);
+      const damn = setTimeout(() => {
+        sendMessage("SkyboxManager", "Start");
+      }, 1000); // 1000 milisaniye (1 saniye) gecikme
+  
+      // useEffect kancası temizlendiğinde timeout'u iptal etmek için return işlevini kullanın
+      return () => clearTimeout(damn);
     }
   }, [isStarted, userSigned]);
+
+
 
 
   const handleChange = (e) => {
