@@ -21,7 +21,7 @@ import AddContent from './AddContent/AddContent';
 import EditDock from "./EditDock";
 import { useParams } from 'react-router-dom';
 
-const chatClient = StreamChat.getInstance('zqwrbbhbxazj');
+const chatClient = StreamChat.getInstance('tj5s8c5z6vg3');
 
 const UnityLoader = () => {
   const { spaceName } = useParams();
@@ -197,8 +197,8 @@ const UnityLoader = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          apiKey: 'zqwrbbhbxazj',
-          apiSecret: 'ub2q487xfzcgn6jvngw76x36ru9ht4v94qhduvmh6awjhqqt7h7mmw7urhhqnhvs',
+          apiKey: 'tj5s8c5z6vg3',
+          apiSecret: '5pbyrg6c9jfyx6uc2p2h382x9t7k6mce7vjtz3xp6n9smxqd97tfsg2c4u5j3cmf',
           userId: userID,
         }),
       });
