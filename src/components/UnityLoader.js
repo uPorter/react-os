@@ -54,7 +54,7 @@ const UnityLoader = () => {
   const [showChat, setShowChat] = useState(false);
   const [userID, setUserID] = useState(id);
   const [userName, setUserName] = useState(name);
-  const [userToken, setUserToken] = useState(localStorage.getItem('userToken') || '');
+  const [userToken, setUserToken] = useState('');
   const [userImage, setUserImage] = useState(localStorage.getItem('userImage') || 'https://models.readyplayer.me/63d5148460d1b8cc82dca9db.png');
   const [userSigned, setUserSigned] = useState(JSON.parse(localStorage.getItem('userSigned')) || true)
   const [isEditorMode, setIsEditorMode] = useState(false);
@@ -177,6 +177,7 @@ const UnityLoader = () => {
   const tokenGenerator = async () => {
     const data = await getUserToken();
     setUserToken(data.token);
+    console.log(userToken);
   }
 
   const handleClick = async () => {
