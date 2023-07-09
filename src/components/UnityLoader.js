@@ -171,9 +171,13 @@ const UnityLoader = () => {
   useEffect(() => {
     console.log(userName);
     console.log(userID);
+    tokenGenerator();
+  }, []);
+
+  const tokenGenerator = async () => {
     const data = await getUserToken();
     setUserToken(data.token);
-  }, []);
+  }
 
   const handleClick = async () => {
     if (!userToken) {
