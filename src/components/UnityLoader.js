@@ -52,11 +52,11 @@ const UnityLoader = () => {
   const [isStarted, setIsStarted] = useState(false);
   const [inputText, setInputText] = useState("");
   const [showChat, setShowChat] = useState(false);
-  const [userID, setUserID] = useState(localStorage.getItem('userID') || '');
-  const [userName, setUserName] = useState(localStorage.getItem('userName') || '');
+  const [userID, setUserID] = useState(localStorage.getItem('userID') || id);
+  const [userName, setUserName] = useState(localStorage.getItem('userName') || name);
   const [userToken, setUserToken] = useState(localStorage.getItem('userToken') || '');
   const [userImage, setUserImage] = useState(localStorage.getItem('userImage') || 'https://models.readyplayer.me/63d5148460d1b8cc82dca9db.png');
-  const [userSigned, setUserSigned] = useState(JSON.parse(localStorage.getItem('userSigned')) || false)
+  const [userSigned, setUserSigned] = useState(JSON.parse(localStorage.getItem('userSigned')) || true)
   const [isEditorMode, setIsEditorMode] = useState(false);
   const [uploadOpen, setUploadOpen] = useState(false);
   const [objectName, setObjectNameReact] = useState('');
