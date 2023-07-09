@@ -135,6 +135,9 @@ const UnityLoader = () => {
     localStorage.setItem('userSigned', userSigned);
   }, [userSigned]);
 
+
+
+
   useEffect(() => {
     if (isStarted && userSigned) {
       // belirli bir kodu buraya yazabilirsiniz
@@ -147,7 +150,7 @@ const UnityLoader = () => {
       console.log(id);
       const damn = setTimeout(() => {
         sendMessage("SkyboxManager", "Start");
-      }, 1000); // 1000 milisaniye (1 saniye) gecikme
+      }, 3000); // 1000 milisaniye (1 saniye) gecikme
   
       // useEffect kancası temizlendiğinde timeout'u iptal etmek için return işlevini kullanın
       return () => clearTimeout(damn);
@@ -164,6 +167,13 @@ const UnityLoader = () => {
     setUserName(value);
     console.log(userID);
   };
+
+  useEffect(() => {
+    console.log(userName);
+    console.log(userID);
+    const data = await getUserToken();
+    setUserToken(data.token);
+  }, []);
 
   const handleClick = async () => {
     if (!userToken) {
