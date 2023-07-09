@@ -24,7 +24,7 @@ import { useParams } from 'react-router-dom';
 const chatClient = StreamChat.getInstance('tj5s8c5z6vg3');
 
 const UnityLoader = () => {
-  const { spaceName } = useParams();
+  const { spaceName,name,id } = useParams();
 
   const { unityProvider, UNSAFE__unityInstance, isLoaded, loadingProgression, sendMessage, addEventListener, removeEventListener } = useUnityContext({
     loaderUrl: "/unitybuild2/Build.loader.js",
@@ -143,6 +143,8 @@ const UnityLoader = () => {
       sendMessage("AvatarNick", "enableInput");
       sendMessage("SaveManager", "LoadSystem", spaceName);
       sendMessage("AvatarNick", "TestSetMethod", userName);
+      console.log(name);
+      console.log(id);
       const damn = setTimeout(() => {
         sendMessage("SkyboxManager", "Start");
       }, 1000); // 1000 milisaniye (1 saniye) gecikme
