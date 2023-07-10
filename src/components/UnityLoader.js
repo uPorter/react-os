@@ -24,7 +24,7 @@ import { useParams } from 'react-router-dom';
 const chatClient = StreamChat.getInstance('tj5s8c5z6vg3');
 
 const UnityLoader = () => {
-  const { spaceName,name,id } = useParams();
+  const { spaceName,name,id,admin } = useParams();
 
   const { unityProvider, UNSAFE__unityInstance, isLoaded, loadingProgression, sendMessage, addEventListener, removeEventListener } = useUnityContext({
     loaderUrl: "/unitybuild2/Build.loader.js",
@@ -172,6 +172,15 @@ const UnityLoader = () => {
     console.log(userName);
     console.log(userID);
     tokenGenerator();
+  }, []);
+
+
+  useEffect(() => {
+    if(admin === "true"){
+      sendMessage("adminManager", "setAdminTrue");
+    }else{
+      sendMessage("adminManager", "setAdminFalse");
+    }
   }, []);
 
   const tokenGenerator = async () => {
