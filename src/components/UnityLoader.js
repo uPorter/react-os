@@ -175,13 +175,6 @@ const UnityLoader = () => {
   }, []);
 
 
-  useEffect(() => {
-    if(admin === "true"){
-      sendMessage("adminManager", "setAdminTrue");
-    }else{
-      sendMessage("adminManager", "setAdminFalse");
-    }
-  }, []);
 
   const tokenGenerator = async () => {
     const data = await getUserToken();
@@ -252,6 +245,12 @@ const UnityLoader = () => {
   const avatarHandler = () => {
     if (isLoaded === true) {
       sendMessage("AvatarNick", "TestSetMethod", userName);
+      //admin place
+      if(admin === "true"){
+        sendMessage("adminManager", "setAdminTrue");
+      }else{
+        sendMessage("adminManager", "setAdminFalse");
+      }
       //sendMessage("AvatarNick", "enableInput");
       window.setupRpmFrame();
     }
