@@ -104,3 +104,5 @@ export class GuestDock extends Component {
   }
 }
 
+export default GuestDock;
+
