@@ -19,6 +19,7 @@ import 'stream-chat-react/dist/css/index.css';
 import EditorPanel from './Editor/EditorPanel';
 import AddContent from './AddContent/AddContent';
 import EditDock from "./EditDock";
+import GuestDock from "./GuestDock";
 import { useParams } from 'react-router-dom';
 
 const chatClient = StreamChat.getInstance('tj5s8c5z6vg3');
@@ -61,6 +62,7 @@ const UnityLoader = () => {
   const [uploadOpen, setUploadOpen] = useState(false);
   const [objectName, setObjectNameReact] = useState('');
   const [isDockEditorMode, setIsDockEditorMode] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     addEventListener("setObjectName", handleObjectName);
@@ -172,6 +174,14 @@ const UnityLoader = () => {
     console.log(userName);
     console.log(userID);
     tokenGenerator();
+  }, []);
+
+  useEffect(() => {
+    if(admin === "true"){
+      setIsAdmin(true);
+    }else {
+      setIsAdmin(false);
+    }
   }, []);
 
 
@@ -485,7 +495,8 @@ const UnityLoader = () => {
               </Grid>
               <Grid xs={6}>
               {isDockEditorMode && <EditDock handleEditBar={handleEditBar} handleAddContent={handleAddContent}></EditDock>}
-              {!isDockEditorMode &&  <Dock  handleAddContent={handleAddContent}></Dock>}
+              {!isDockEditorMode && isAdmin && <Dock  handleAddContent={handleAddContent}></Dock>}
+              {!isAdmin && <GuestDock  handleAddContent={handleAddContent}></GuestDock>}
               </Grid>
               <Grid style={{ opacity: 1 }} xs>
                 <ChatComponent spaceName={spaceName} userName={userName} showChat={showChat} sendMessage={sendMessage} userID={userID} userToken={userToken} userImage={userImage} />
