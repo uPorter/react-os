@@ -355,6 +355,7 @@ const UnityLoader = () => {
     const data = await getUserToken();
     setUserToken(data.token);
     console.log(data.token);
+    sendMessage("AvatarNick", "enableInput")
   }
 
 
@@ -371,7 +372,7 @@ const UnityLoader = () => {
             <div className="box">
               <Stack sty spacing={2} sx={{ borderRadius: '25px', width: '100%' }}>
                 <Typography style={{ width: '100%', position: 'relative', }} className='avatarSelectorTitle' textColor="common.black" level="body2">Choose your look</Typography>
-                <Input placeholder="Take a good one" className='avatarInput' onBlur={onBlurSet} onChange={handleChange} value={userName} style={{ zIndex: '15' }} />
+                <Input placeholder="Take a good one" className='avatarInput' onFocus={() => sendMessage("AvatarNick", "Start")} onBlur={onBlurSet} onChange={handleChange} value={userName} style={{ zIndex: '15' }} />
                 <Container className='avatarIcons' style={{}} maxWidth="sm">
                   <Grid className='avatarGrid' container spacing={0} columns={16} sx={{ flexGrow: 1 }}>
                     <Grid className='avatarGridAlt' xs={4}>
