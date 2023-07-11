@@ -264,9 +264,12 @@ const UnityLoader = () => {
       const timer = setTimeout(() => {
         const roomName = spaceName || "demoroom";
         sendMessage("AvatarNick", "RoomSetmethod", roomName);
-        sendMessage("SaveManager", "LoadSystem", spaceName);
       }, 1000);
       return () => clearTimeout(timer);
+      const timer2 = setTimeout(() => {
+        sendMessage("SaveManager", "LoadSystem", spaceName);
+      }, 2000);
+      return () => clearTimeout(timer2);
     }
   }, [isLoaded, spaceName]);
 
