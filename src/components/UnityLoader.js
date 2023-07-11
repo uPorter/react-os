@@ -25,7 +25,7 @@ import { useParams } from 'react-router-dom';
 const chatClient = StreamChat.getInstance('tj5s8c5z6vg3');
 
 const UnityLoader = () => {
-  const { spaceName,name,id,admin } = useParams();
+  const { spaceName, name, id, admin } = useParams();
 
   const { unityProvider, UNSAFE__unityInstance, isLoaded, loadingProgression, sendMessage, addEventListener, removeEventListener } = useUnityContext({
     loaderUrl: "/unitybuild2/Build.loader.js",
@@ -83,12 +83,12 @@ const UnityLoader = () => {
   function generateUID(length) {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     let uid = '';
-    
+
     for (let i = 0; i < length; i++) {
       const randomIndex = Math.floor(Math.random() * characters.length);
       uid += characters[randomIndex];
     }
-    
+
     return uid;
   }
 
@@ -114,7 +114,7 @@ const UnityLoader = () => {
 
   const handleEditorOff = () => {
     setTimeout(() => {
-    setIsEditorMode(false);
+      setIsEditorMode(false);
     }, 600); // 500 milisaniye (0.5 saniye) bekleme süresi
   }
 
@@ -150,7 +150,7 @@ const UnityLoader = () => {
       sendMessage("AvatarNick", "TestSetMethod", userName);
       console.log(name);
       console.log(id);
-      
+
     }
   }, [isStarted, userSigned]);
 
@@ -170,9 +170,9 @@ const UnityLoader = () => {
   }, []);
 
   useEffect(() => {
-    if(admin === "true"){
+    if (admin === "true") {
       setIsAdmin(true);
-    }else {
+    } else {
       setIsAdmin(false);
     }
   }, []);
@@ -242,16 +242,16 @@ const UnityLoader = () => {
   const gameHandler = useCallback(() => {
     setIsStarted(true)
     console.log("Instance Started!");
-    
+
   }, []);
 
   const avatarHandler = () => {
     if (isLoaded === true) {
       sendMessage("AvatarNick", "TestSetMethod", userName);
       //admin place
-      if(admin === "true"){
+      if (admin === "true") {
         sendMessage("adminManager", "setAdminTrue");
-      }else{
+      } else {
         sendMessage("adminManager", "setAdminFalse");
       }
       //sendMessage("AvatarNick", "enableInput");
@@ -260,17 +260,25 @@ const UnityLoader = () => {
   }
 
   useEffect(() => {
+    let timer1;
+    let timer2;
+
     if (isLoaded) {
-      const timer = setTimeout(() => {
+      timer1 = setTimeout(() => {
         const roomName = spaceName || "demoroom";
         sendMessage("AvatarNick", "RoomSetmethod", roomName);
+        
       }, 1000);
-      return () => clearTimeout(timer);
-      const timer2 = setTimeout(() => {
+
+      timer2 = setTimeout(() => {
         sendMessage("SaveManager", "LoadSystem", spaceName);
       }, 2000);
-      return () => clearTimeout(timer2);
     }
+
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+    };
   }, [isLoaded, spaceName]);
 
 
@@ -492,22 +500,22 @@ const UnityLoader = () => {
                 <Button onClick={() => sendMessage("SaveManager", "LoadSystem", spaceName)}>Load</Button>
               </Grid>
               <Grid xs={6}>
-              {isDockEditorMode && <EditDock handleEditBar={handleEditBar} handleAddContent={handleAddContent}></EditDock>}
-              {!isDockEditorMode && isAdmin && <Dock  handleAddContent={handleAddContent}></Dock>}
-              {!isAdmin && <GuestDock  handleAddContent={handleAddContent}></GuestDock>}
+                {isDockEditorMode && <EditDock handleEditBar={handleEditBar} handleAddContent={handleAddContent}></EditDock>}
+                {!isDockEditorMode && isAdmin && <Dock handleAddContent={handleAddContent}></Dock>}
+                {!isAdmin && <GuestDock handleAddContent={handleAddContent}></GuestDock>}
               </Grid>
               <Grid style={{ opacity: 1 }} xs>
                 <ChatComponent spaceName={spaceName} userName={userName} showChat={showChat} sendMessage={sendMessage} userID={userID} userToken={userToken} userImage={userImage} />
               </Grid>
             </Grid>
-            
+
             {isEditorMode && <EditorPanel objectName={objectName} sendMessage={sendMessage} setIsDockEditorMode={setIsDockEditorMode} handleEditorMode={handleEditorMode} handleEditorOff={handleEditorOff} addEventListener={addEventListener} removeEventListener={removeEventListener}></EditorPanel>}
             {/* {uploadOpen && <FileUpload setUploadOpen={setUploadOpen} sendMessage={sendMessage} style={{position: 'absolute', zIndex: '15'}}></FileUpload> } */}
-            {uploadOpen && <AddContent setUploadOpen={setUploadOpen}></AddContent> } 
+            {uploadOpen && <AddContent setUploadOpen={setUploadOpen}></AddContent>}
             {/* <Button style={{ position: 'absolute', zIndex: '15' }} onClick={ReactshowRPM} variant="soft">Edit Avatar - PreTest</Button>*/}
           </div>)}
-          <Toaster className='toasterCSS' richColors position="bottom-center" />
-        <Unity className='container' unityProvider={unityProvider} style={{cursor: 'grab', display: isLoaded ? "block" : "none" }} />
+        <Toaster className='toasterCSS' richColors position="bottom-center" />
+        <Unity className='container' unityProvider={unityProvider} style={{ cursor: 'grab', display: isLoaded ? "block" : "none" }} />
       </div>
     </div>
     // JSX ile bileşeninizi render edebilirsiniz
