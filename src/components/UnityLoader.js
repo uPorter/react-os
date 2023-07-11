@@ -50,6 +50,7 @@ const UnityLoader = () => {
 
 
   const [isAvatarSelected, setIsAvatarSelected] = useState(false);
+  const [isSaveLoaded, setIsSaveLoaded] = useState(false);
   const [isStarted, setIsStarted] = useState(false);
   const [inputText, setInputText] = useState("");
   const [showChat, setShowChat] = useState(false);
@@ -146,20 +147,12 @@ const UnityLoader = () => {
       handleClick();
       console.clear();
       sendMessage("AvatarNick", "enableInput");
-      sendMessage("SaveManager", "LoadSystem", spaceName);
       sendMessage("AvatarNick", "TestSetMethod", userName);
       console.log(name);
       console.log(id);
-      const damn = setTimeout(() => {
-        sendMessage("SkyboxManager", "Start");
-      }, 3000); // 1000 milisaniye (1 saniye) gecikme
-  
-      // useEffect kancası temizlendiğinde timeout'u iptal etmek için return işlevini kullanın
-      return () => clearTimeout(damn);
+      
     }
   }, [isStarted, userSigned]);
-
-
 
 
   const handleChange = (e) => {
@@ -271,6 +264,7 @@ const UnityLoader = () => {
       const timer = setTimeout(() => {
         const roomName = spaceName || "demoroom";
         sendMessage("AvatarNick", "RoomSetmethod", roomName);
+        sendMessage("SaveManager", "LoadSystem", spaceName);
       }, 1000);
       return () => clearTimeout(timer);
     }
