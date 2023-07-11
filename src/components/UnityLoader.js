@@ -265,13 +265,13 @@ const UnityLoader = () => {
 
     if (isLoaded) {
       timer1 = setTimeout(() => {
-        const roomName = spaceName || "demoroom";
-        sendMessage("AvatarNick", "RoomSetmethod", roomName);
-        
+        sendMessage("SaveManager", "LoadSystem", spaceName);
       }, 1000);
 
       timer2 = setTimeout(() => {
-        sendMessage("SaveManager", "LoadSystem", spaceName);
+        const roomName = spaceName || "demoroom";
+        sendMessage("AvatarNick", "RoomSetmethod", roomName);
+        
       }, 2000);
     }
 
