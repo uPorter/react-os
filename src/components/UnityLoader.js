@@ -498,12 +498,13 @@ const UnityLoader = () => {
         {isStarted && showChat && (
           <div className={"ui"}>
             <Grid className="unityLoaderGrid" style={{ position: "absolute", width: "100%", bottom: "20px" }} container spacing={3} sx={{ flexGrow: 1 }}>
-              <Grid className="EmptyGrid" xs style={{ opacity: 1 }}>
+              <Grid className="EmptyGrid" xs style={{ opacity: 1,display:"flex",gap:"7px" }}>
                 <IconButton
                   id="dockButtonID"
-                  className="dockButtons"
+                  className="dockButtonsBase"
                   variant="solid"
                   onClick={() => sendMessage("SaveManager", "SaveFile", spaceName)}
+                  style={{marginLeft:"30px"}}
                   sx={{
                     "--IconButton-size": "55px",
                     "--IconButton-radius": "50px",
@@ -514,7 +515,7 @@ const UnityLoader = () => {
 
                 <IconButton
                   id="dockButtonID"
-                  className="dockButtons"
+                  className="dockButtonsBase"
                   variant="solid"
                   onClick={() => sendMessage("SaveManager", "LoadSystem", spaceName)}
                   sx={{
