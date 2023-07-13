@@ -5,6 +5,7 @@ import Sheet from '@mui/joy/Sheet';
 import Grid from '@mui/joy/Grid';
 import { styled } from '@mui/joy/styles';
 import { Button } from "@mui/joy";
+import IconButton from '@mui/joy/IconButton';
 import Loader from './Loader';
 import Input from '@mui/joy/Input';
 import Stack from '@mui/joy/Stack';
@@ -510,7 +511,7 @@ const UnityLoader = () => {
                 >
                   <SyncIcon />
                 </IconButton>
-                
+
                 <IconButton
                   id="dockButtonID"
                   className="dockButtons"
