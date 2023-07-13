@@ -22,8 +22,7 @@ import AddContent from './AddContent/AddContent';
 import EditDock from "./EditDock";
 import GuestDock from "./GuestDock";
 import { useParams } from 'react-router-dom';
-import SyncIcon from '@mui/icons-material/Sync';
-import SaveIcon from '@mui/icons-material/Save';
+import CloudQueueIcon from '@mui/icons-material/CloudQueue';
 import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
 
 const chatClient = StreamChat.getInstance('tj5s8c5z6vg3');
@@ -513,9 +512,9 @@ const UnityLoader = () => {
                         "--IconButton-radius": "50px",
                       }}
                     >
-                      <SaveIcon />
+                      <CloudQueueIcon />
                     </IconButton>
-
+                    
                     <IconButton
                       id="dockButtonID"
                       className="dockButtonsBase"
