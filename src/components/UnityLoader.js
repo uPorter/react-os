@@ -500,7 +500,7 @@ const UnityLoader = () => {
                 <Button onClick={() => sendMessage("SaveManager", "LoadSystem", spaceName)}>Load</Button>
               </Grid>
               <Grid xs={6}>
-                {isDockEditorMode && <EditDock handleEditBar={handleEditBar} handleAddContent={handleAddContent}></EditDock>}
+                {isDockEditorMode && <EditDock objectName={objectName} handleEditBar={handleEditBar} handleAddContent={handleAddContent}></EditDock>}
                 {!isDockEditorMode && isAdmin && <Dock handleAddContent={handleAddContent}></Dock>}
                 {!isAdmin && <GuestDock handleAddContent={handleAddContent}></GuestDock>}
               </Grid>

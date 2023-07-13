@@ -9,7 +9,10 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 
 export class EditDock extends Component {
   render() {
-    const { handleEditBar } = this.props;
+    const { handleEditBar,objectName } = this.props;
+    const SetEnvironmentModel = () =>{
+      window.sendMessageToUnityBasic(objectName, "SetEnvironmentModel");
+    }
     return (
       <div
         style={{
@@ -101,6 +104,7 @@ export class EditDock extends Component {
           <IconButton
             id="dockButtonID"
             className="dockButtonsEditor"
+            onClick={SetEnvironmentModel}
             variant="solid"
             sx={{
               "--IconButton-size": "55px",
