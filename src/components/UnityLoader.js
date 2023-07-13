@@ -499,7 +499,7 @@ const UnityLoader = () => {
           <div className={"ui"}>
             <Grid className="unityLoaderGrid" style={{ position: "absolute", width: "100%", bottom: "20px" }} container spacing={3} sx={{ flexGrow: 1 }}>
               <Grid className="EmptyGrid" xs style={{ opacity: 1,display:"flex",gap:"7px" }}>
-                <IconButton
+                {isAdmin && <IconButton
                   id="dockButtonID"
                   className="dockButtonsBase"
                   variant="solid"
@@ -511,9 +511,9 @@ const UnityLoader = () => {
                   }}
                 >
                   <SyncIcon />
-                </IconButton>
+                </IconButton>}
 
-                <IconButton
+                {isAdmin && <IconButton
                   id="dockButtonID"
                   className="dockButtonsBase"
                   variant="solid"
@@ -524,7 +524,7 @@ const UnityLoader = () => {
                   }}
                 >
                   <RotateLeftIcon />
-                </IconButton>
+                </IconButton>}
               </Grid>
               <Grid xs={6}>
                 {isDockEditorMode && <EditDock objectName={objectName} handleEditBar={handleEditBar} handleAddContent={handleAddContent}></EditDock>}
