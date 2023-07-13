@@ -498,33 +498,53 @@ const UnityLoader = () => {
         {isStarted && showChat && (
           <div className={"ui"}>
             <Grid className="unityLoaderGrid" style={{ position: "absolute", width: "100%", bottom: "20px" }} container spacing={3} sx={{ flexGrow: 1 }}>
-              <Grid className="EmptyGrid" xs style={{ opacity: 1,display:"flex",gap:"7px" }}>
-                {isAdmin && <IconButton
-                  id="dockButtonID"
-                  className="dockButtonsBase"
-                  variant="solid"
-                  onClick={() => sendMessage("SaveManager", "SaveFile", spaceName)}
-                  style={{marginLeft:"30px"}}
-                  sx={{
-                    "--IconButton-size": "55px",
-                    "--IconButton-radius": "50px",
-                  }}
-                >
-                  <SyncIcon />
-                </IconButton>}
+              <Grid className="EmptyGrid" xs style={{ opacity: 1, display: "flex", gap: "7px" }}>
+                {isAdmin && (
+                  <div className='syncDock'>
+                    <IconButton
+                      id="dockButtonID"
+                      className="dockButtonsBase"
+                      variant="solid"
+                      onClick={() => sendMessage("SaveManager", "SaveFile", spaceName)}
+                      style={{ marginLeft: "30px",background:"#00000000" }}
+                      sx={{
+                        "--IconButton-size": "55px",
+                        "--IconButton-radius": "50px",
+                      }}
+                    >
+                      <SyncIcon />
+                    </IconButton>
 
-                {isAdmin && <IconButton
-                  id="dockButtonID"
-                  className="dockButtonsBase"
-                  variant="solid"
-                  onClick={() => sendMessage("SaveManager", "LoadSystem", spaceName)}
-                  sx={{
-                    "--IconButton-size": "55px",
-                    "--IconButton-radius": "50px",
-                  }}
-                >
-                  <RotateLeftIcon />
-                </IconButton>}
+                    <IconButton
+                      id="dockButtonID"
+                      className="dockButtonsBase"
+                      variant="solid"
+                      onClick={() => sendMessage("SaveManager", "LoadSystem", spaceName)}
+                      style={{background:"#00000000" }}
+
+                      sx={{
+                        "--IconButton-size": "55px",
+                        "--IconButton-radius": "50px",
+                      }}
+                    >
+                      <RotateLeftIcon />
+                    </IconButton>
+
+                    <IconButton
+                      id="dockButtonID"
+                      className="dockButtonsBase"
+                      variant="solid"
+                      onClick={() => sendMessage("SaveManager", "LoadSystem", spaceName)}
+                      style={{background:"#00000000" }}
+                      sx={{
+                        "--IconButton-size": "55px",
+                        "--IconButton-radius": "50px",
+                      }}
+                    >
+                      <RotateLeftIcon />
+                    </IconButton>
+
+                  </div>)}
               </Grid>
               <Grid xs={6}>
                 {isDockEditorMode && <EditDock objectName={objectName} handleEditBar={handleEditBar} handleAddContent={handleAddContent}></EditDock>}
