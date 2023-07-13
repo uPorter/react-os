@@ -22,7 +22,7 @@ import AddContent from './AddContent/AddContent';
 import EditDock from "./EditDock";
 import GuestDock from "./GuestDock";
 import { useParams } from 'react-router-dom';
-import CloudSyncIcon from '@mui/icons-material/CloudSync';
+import CloudSyncOutlinedIcon from '@mui/icons-material/CloudSyncOutlined';
 import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
 
 const chatClient = StreamChat.getInstance('tj5s8c5z6vg3');
@@ -512,7 +512,7 @@ const UnityLoader = () => {
                         "--IconButton-radius": "50px",
                       }}
                     >
-                      <CloudSyncIcon />
+                      <CloudSyncOutlinedIcon />
                     </IconButton>
                     
                     <IconButton
