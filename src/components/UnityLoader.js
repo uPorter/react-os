@@ -23,7 +23,7 @@ import EditDock from "./EditDock";
 import GuestDock from "./GuestDock";
 import { useParams } from 'react-router-dom';
 import SyncIcon from '@mui/icons-material/Sync';
-import RotateLeftIcon from '@mui/icons-material/RotateLeft';
+import SaveIcon from '@mui/icons-material/Save';
 import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
 
 const chatClient = StreamChat.getInstance('tj5s8c5z6vg3');
@@ -513,7 +513,7 @@ const UnityLoader = () => {
                         "--IconButton-radius": "50px",
                       }}
                     >
-                      <SyncIcon />
+                      <SaveIcon />
                     </IconButton>
 
                     <IconButton
