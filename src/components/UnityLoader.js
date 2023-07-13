@@ -507,7 +507,7 @@ const UnityLoader = () => {
                       className="dockButtonsBase"
                       variant="solid"
                       onClick={() => sendMessage("SaveManager", "SaveFile", spaceName)}
-                      style={{ marginLeft: "30px",background:"#00000000" }}
+                      style={{ background:"#00000000important" }}
                       sx={{
                         "--IconButton-size": "55px",
                         "--IconButton-radius": "50px",
@@ -521,7 +521,7 @@ const UnityLoader = () => {
                       className="dockButtonsBase"
                       variant="solid"
                       onClick={() => sendMessage("SaveManager", "LoadSystem", spaceName)}
-                      style={{background:"#00000000" }}
+                      style={{background:"#00000000important" }}
 
                       sx={{
                         "--IconButton-size": "55px",
@@ -536,7 +536,7 @@ const UnityLoader = () => {
                       className="dockButtonsBase"
                       variant="solid"
                       onClick={() => sendMessage("SaveManager", "LoadSystem", spaceName)}
-                      style={{background:"#00000000" }}
+                      style={{background:"#00000000!important" }}
                       sx={{
                         "--IconButton-size": "55px",
                         "--IconButton-radius": "50px",

@@ -136,11 +136,18 @@
 }
 
 .dockButtonsBase:hover {
-  background-color: rgba(0, 0, 0, 0.250) !important;
   border-radius: var(--IconButton-radius, var(--joy-radius-sm, 50px));
   transform: scale(1.25);
-  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.171);
 }
+.syncDock{
+  margin-left: 30px;
+  background: rgba(0,0,0,.25)!important;
+  border-radius: 50px;
+  transform: scale(0.94);
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
 
 .dockButtonsEditor {
   transition: 0.5s all cubic-bezier(0, 0.2, 0.2, 1);
