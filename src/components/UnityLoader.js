@@ -21,6 +21,8 @@ import AddContent from './AddContent/AddContent';
 import EditDock from "./EditDock";
 import GuestDock from "./GuestDock";
 import { useParams } from 'react-router-dom';
+import SyncIcon from '@mui/icons-material/Sync';
+import RotateLeftIcon from '@mui/icons-material/RotateLeft';
 
 const chatClient = StreamChat.getInstance('tj5s8c5z6vg3');
 
@@ -271,7 +273,7 @@ const UnityLoader = () => {
       timer2 = setTimeout(() => {
         const roomName = spaceName || "demoroom";
         sendMessage("AvatarNick", "RoomSetmethod", roomName);
-        
+
       }, 2000);
     }
 
@@ -495,9 +497,32 @@ const UnityLoader = () => {
         {isStarted && showChat && (
           <div className={"ui"}>
             <Grid className="unityLoaderGrid" style={{ position: "absolute", width: "100%", bottom: "20px" }} container spacing={3} sx={{ flexGrow: 1 }}>
-              <Grid className="EmptyGrid" xs style={{ opacity: 0 }}>
-                <Button onClick={() => sendMessage("SaveManager", "SaveFile", spaceName)}>Save</Button>
-                <Button onClick={() => sendMessage("SaveManager", "LoadSystem", spaceName)}>Load</Button>
+              <Grid className="EmptyGrid" xs style={{ opacity: 1 }}>
+                <IconButton
+                  id="dockButtonID"
+                  className="dockButtons"
+                  variant="solid"
+                  onClick={() => sendMessage("SaveManager", "SaveFile", spaceName)}
+                  sx={{
+                    "--IconButton-size": "55px",
+                    "--IconButton-radius": "50px",
+                  }}
+                >
+                  <SyncIcon />
+                </IconButton>
+                
+                <IconButton
+                  id="dockButtonID"
+                  className="dockButtons"
+                  variant="solid"
+                  onClick={() => sendMessage("SaveManager", "LoadSystem", spaceName)}
+                  sx={{
+                    "--IconButton-size": "55px",
+                    "--IconButton-radius": "50px",
+                  }}
+                >
+                  <RotateLeftIcon />
+                </IconButton>
               </Grid>
               <Grid xs={6}>
                 {isDockEditorMode && <EditDock objectName={objectName} handleEditBar={handleEditBar} handleAddContent={handleAddContent}></EditDock>}
