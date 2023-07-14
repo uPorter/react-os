@@ -519,7 +519,7 @@ const UnityLoader = () => {
                       id="dockButtonID"
                       className="dockButtonsBase"
                       variant="solid"
-                      onClick={() => sendMessage("SaveManager", "LoadSystem", spaceName)}
+                      onClick={() => sendMessage("EnvironmentManager", "setSpawnPointVoid")}
                       style={{background:"#00000000!important" }}
                       sx={{
                         "--IconButton-size": "55px",
