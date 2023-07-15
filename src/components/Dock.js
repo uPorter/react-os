@@ -7,6 +7,7 @@ import PresentToAllOutlinedIcon from "@mui/icons-material/PresentToAllOutlined";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import Tooltip from '@mui/material/Tooltip';
 import { Button } from "@mui/joy";
+import Zoom from '@mui/material/Zoom';
 
 export class Dock extends Component {
   render() {
@@ -29,7 +30,7 @@ export class Dock extends Component {
           }}
         >
 
-          <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
+          <Tooltip TransitionComponent={Zoom} className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
             fontStyle: 'bold',
             fontWeight: 'Bold',
             color: 'white',
@@ -55,7 +56,7 @@ export class Dock extends Component {
             </div>
           </Tooltip>
 
-          <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
+          <Tooltip TransitionComponent={Zoom} className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
             fontStyle: 'bold',
             fontWeight: 'Bold',
             color: 'white',
@@ -175,7 +176,7 @@ export class Dock extends Component {
             </div>
           </Tooltip>
 
-          <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
+          <Tooltip TransitionComponent={Zoom} className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
             fontStyle: 'bold',
             fontWeight: 'Bold',
             color: 'white',
@@ -201,7 +202,7 @@ export class Dock extends Component {
             </div>
           </Tooltip>
 
-          <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
+          <Tooltip TransitionComponent={Zoom} className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
             fontStyle: 'bold',
             fontWeight: 'Bold',
             color: 'white',

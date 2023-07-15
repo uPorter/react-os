@@ -25,6 +25,7 @@ import { useParams } from 'react-router-dom';
 import CloudSyncOutlinedIcon from '@mui/icons-material/CloudSyncOutlined';
 import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
 import Tooltip from '@mui/material/Tooltip';
+import Zoom from '@mui/material/Zoom';
 
 const chatClient = StreamChat.getInstance('tj5s8c5z6vg3');
 
@@ -502,7 +503,7 @@ const UnityLoader = () => {
               <Grid className="EmptyGrid" xs style={{ opacity: 1, display: "flex", gap: "7px" }}>
                 {isAdmin && (
                   <div className='syncDock'>
-                    <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
+                    <Tooltip TransitionComponent={Zoom} className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
                       fontStyle: 'bold',
                       fontWeight: 'Bold',
                       color: 'white',
@@ -530,7 +531,7 @@ const UnityLoader = () => {
                       </div>
                     </Tooltip>
 
-                    <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
+                    <Tooltip TransitionComponent={Zoom} className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
                       fontStyle: 'bold',
                       fontWeight: 'Bold',
                       color: 'white',
