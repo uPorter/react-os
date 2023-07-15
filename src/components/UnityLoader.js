@@ -369,6 +369,19 @@ const UnityLoader = () => {
     sendMessage("AvatarNick", "enableInput")
   }
 
+  const saveSystem = () => {
+    sendMessage("SaveManager", "SaveFile", spaceName);
+    const promise = () => new Promise((resolve) => setTimeout(resolve, 2000));
+
+    toast.promise(promise, {
+      loading: 'Loading...',
+      success: (data) => {
+        return `${data.name} toast has been added`;
+      },
+      error: 'Error',
+    });
+  }
+
 
   return (
     <div className={"unity-instance"}>
@@ -504,7 +517,7 @@ const UnityLoader = () => {
               <Grid className="EmptyGrid" xs style={{ opacity: 1, display: "flex", gap: "7px" }}>
                 {isAdmin && (
                   <div className='syncDock'>
-                    <Tooltip TransitionComponent={Fade}  className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
+                    <Tooltip TransitionComponent={Fade} className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button className='tooltipButtonBase' onClick={saveSystem} size="sm" variant="plain" sx={{
                       fontStyle: 'bold',
                       fontWeight: 'Bold',
                       color: 'white',
@@ -520,7 +533,7 @@ const UnityLoader = () => {
                           id="dockButtonID"
                           className="dockButtonsBase"
                           variant="solid"
-                          onClick={() => sendMessage("SaveManager", "SaveFile", spaceName)}
+                          onClick={saveSystem}
                           style={{ background: "#00000000important" }}
                           sx={{
                             "--IconButton-size": "55px",
@@ -532,7 +545,7 @@ const UnityLoader = () => {
                       </div>
                     </Tooltip>
 
-                    <Tooltip TransitionComponent={Fade}  className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
+                    <Tooltip TransitionComponent={Fade} className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button className='tooltipButtonBase' onClick={() => sendMessage("EnvironmentManager", "setSpawnPointVoid")} size="sm" variant="plain" sx={{
                       fontStyle: 'bold',
                       fontWeight: 'Bold',
                       color: 'white',

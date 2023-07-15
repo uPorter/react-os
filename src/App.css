@@ -148,6 +148,10 @@
   transform: scale(1.25);
 }
 
+.tooltipButtonBase:hover .dockButtonsBase{
+  transform: scale(1.25);
+}
+
 .tooltipHover2{
   transform: scale(1);
   transition: 0.5s all cubic-bezier(0, 0.2, 0.2, 1);
