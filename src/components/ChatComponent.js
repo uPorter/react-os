@@ -107,6 +107,7 @@ const ChatComponent = (props) => {
     window.setupRpmFrame();
     window.showRpm();
     //sendMessage("AvatarEdit", "EditorON");
+    handleTooltipClose();
   }
 
   const handleTooltipOpen = () => {
