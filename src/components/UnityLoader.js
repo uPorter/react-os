@@ -24,7 +24,7 @@ import GuestDock from "./GuestDock";
 import { useParams } from 'react-router-dom';
 import CloudSyncOutlinedIcon from '@mui/icons-material/CloudSyncOutlined';
 import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
-import Tooltip from "@mui/joy/Tooltip";
+import Tooltip from '@mui/material/Tooltip';
 
 const chatClient = StreamChat.getInstance('tj5s8c5z6vg3');
 
@@ -502,38 +502,58 @@ const UnityLoader = () => {
               <Grid className="EmptyGrid" xs style={{ opacity: 1, display: "flex", gap: "7px" }}>
                 {isAdmin && (
                   <div className='syncDock'>
-                    <Tooltip title="Save to cloud" size="sm">
-                    <IconButton
-                      id="dockButtonID"
-                      className="dockButtonsBase"
-                      variant="solid"
-                      onClick={() => sendMessage("SaveManager", "SaveFile", spaceName)}
-                      style={{ background:"#00000000important" }}
-                      sx={{
-                        "--IconButton-size": "55px",
-                        "--IconButton-radius": "50px",
-                      }}
-                    >
-                      <CloudSyncOutlinedIcon />
-                    </IconButton>
+                    <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
+                      fontStyle: 'bold',
+                      fontWeight: 'Bold',
+                      color: 'white',
+                      padding: '10px',
+                      marginBottom: '-4px',
+                      backgroundColor: '#00000040',
+                      '&:hover': {
+                        backgroundColor: '#00000040',
+                      },
+                    }}>{toggleChatText}</Button>}>
+                      <IconButton
+                        id="dockButtonID"
+                        className="dockButtonsBase"
+                        variant="solid"
+                        onClick={() => sendMessage("SaveManager", "SaveFile", spaceName)}
+                        style={{ background: "#00000000important" }}
+                        sx={{
+                          "--IconButton-size": "55px",
+                          "--IconButton-radius": "50px",
+                        }}
+                      >
+                        <CloudSyncOutlinedIcon />
+                      </IconButton>
                     </Tooltip>
-                    
-                    <Tooltip title="Set Enterance" size="sm">
-                    <IconButton
-                      id="dockButtonID"
-                      className="dockButtonsBase"
-                      variant="solid"
-                      onClick={() => sendMessage("EnvironmentManager", "setSpawnPointVoid")}
-                      style={{background:"#00000000!important" }}
-                      sx={{
-                        "--IconButton-size": "55px",
-                        "--IconButton-radius": "50px",
-                      }}
-                    >
-                      <EmojiPeopleIcon />
-                    </IconButton>
+
+                    <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
+                      fontStyle: 'bold',
+                      fontWeight: 'Bold',
+                      color: 'white',
+                      padding: '10px',
+                      marginBottom: '-4px',
+                      backgroundColor: '#00000040',
+                      '&:hover': {
+                        backgroundColor: '#00000040',
+                      },
+                    }}>{toggleChatText}</Button>}>
+                      <IconButton
+                        id="dockButtonID"
+                        className="dockButtonsBase"
+                        variant="solid"
+                        onClick={() => sendMessage("EnvironmentManager", "setSpawnPointVoid")}
+                        style={{ background: "#00000000!important" }}
+                        sx={{
+                          "--IconButton-size": "55px",
+                          "--IconButton-radius": "50px",
+                        }}
+                      >
+                        <EmojiPeopleIcon />
+                      </IconButton>
                     </Tooltip>
-                    
+
 
                   </div>)}
               </Grid>
