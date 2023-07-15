@@ -5,6 +5,8 @@ import MicOffOutlinedIcon from "@mui/icons-material/MicOffOutlined";
 import CameraAltOutlinedIcon from "@mui/icons-material/CameraAltOutlined";
 import PresentToAllOutlinedIcon from "@mui/icons-material/PresentToAllOutlined";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
+import Tooltip from '@mui/material/Tooltip';
+import { Button } from "@mui/joy";
 
 export class Dock extends Component {
   render() {
@@ -126,7 +128,7 @@ export class Dock extends Component {
             '&:hover': {
               backgroundColor: '#00000040',
             },
-          }}>Turn on mic</Button>}>
+          }}>Take Screenshot</Button>}>
             <div style={{ width: 'fit-content', height: 'fit-content' }} className='tooltipHover2'>
               <IconButton
                 id="dockButtonID"
@@ -152,7 +154,7 @@ export class Dock extends Component {
             '&:hover': {
               backgroundColor: '#00000040',
             },
-          }}>Turn on mic</Button>}>
+          }}>Share Screen</Button>}>
             <div style={{ width: 'fit-content', height: 'fit-content' }} className='tooltipHover2'>
               <IconButton
                 id="dockButtonID"
@@ -178,7 +180,7 @@ export class Dock extends Component {
             '&:hover': {
               backgroundColor: '#00000040',
             },
-          }}>Turn on mic</Button>}>
+          }}>Add Content</Button>}>
             <div style={{ width: 'fit-content', height: 'fit-content' }} className='tooltipHover2'>
               <IconButton
                 id="dockButtonID"
