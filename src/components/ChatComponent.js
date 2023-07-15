@@ -132,7 +132,7 @@ const ChatComponent = (props) => {
               <MessageList />
               <MessageInput Input={MessageInputSmall} onSubmit={testClick} focus />
               <CameraMode sendMessage={sendMessage}/>
-              <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
+              <Tooltip TransitionComponent={Fade} className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
                 fontStyle: 'bold',
                 fontWeight: 'Bold',
                 color: 'white',
@@ -153,7 +153,7 @@ const ChatComponent = (props) => {
               </Tooltip>
 
 
-              <Tooltip onOpen={handleTooltipOpen} onClose={handleTooltipClose} sx={{ borderRadius: '0px', backgroundColor: '#ffffff' }} color="neutral" placement="top" variant="soft"
+              <Tooltip TransitionComponent={Fade} onOpen={handleTooltipOpen} onClose={handleTooltipClose} sx={{ borderRadius: '0px', backgroundColor: '#ffffff' }} color="neutral" placement="top" variant="soft"
                 title={
                   <div className='avatarProfile' style={{backdropFilter:"blur(12px)"}}>
                     <Stack className='avatarStack'>
