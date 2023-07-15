@@ -118,7 +118,9 @@ export class Dock extends Component {
             </div>
           </Tooltip>
 
-          <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
+          <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={
+          <div className="photoDockHolder">
+            <Button size="sm" variant="plain" sx={{
             fontStyle: 'bold',
             fontWeight: 'Bold',
             color: 'white',
@@ -128,7 +130,31 @@ export class Dock extends Component {
             '&:hover': {
               backgroundColor: '#00000040',
             },
-          }}>Take Screenshot</Button>}>
+          }}>Take a photo </Button>
+          <Button size="sm" variant="plain" sx={{
+            fontStyle: 'bold',
+            fontWeight: 'Bold',
+            color: 'white',
+            padding: '10px',
+            marginBottom: '-4px',
+            backgroundColor: '#00000040',
+            '&:hover': {
+              backgroundColor: '#00000040',
+            },
+          }}>Record a video</Button>
+          <Button size="sm" variant="plain" sx={{
+            fontStyle: 'bold',
+            fontWeight: 'Bold',
+            color: 'white',
+            padding: '10px',
+            marginBottom: '-4px',
+            backgroundColor: '#00000040',
+            '&:hover': {
+              backgroundColor: '#00000040',
+            },
+          }}>Filming mode</Button>
+          </div>
+          }>
             <div style={{ width: 'fit-content', height: 'fit-content' }} className='tooltipHover2'>
               <IconButton
                 id="dockButtonID"
