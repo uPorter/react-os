@@ -502,7 +502,7 @@ const UnityLoader = () => {
               <Grid className="EmptyGrid" xs style={{ opacity: 1, display: "flex", gap: "7px" }}>
                 {isAdmin && (
                   <div className='syncDock'>
-                    <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
+                    <Tooltip arrow className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
                       fontStyle: 'bold',
                       fontWeight: 'Bold',
                       color: 'white',
@@ -528,7 +528,7 @@ const UnityLoader = () => {
                       </IconButton>
                     </Tooltip>
 
-                    <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
+                    <Tooltip arrow className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
                       fontStyle: 'bold',
                       fontWeight: 'Bold',
                       color: 'white',
