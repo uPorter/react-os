@@ -126,6 +126,7 @@ export class Dock extends Component {
             color: 'white',
             transition: "0.5s all cubic-bezier(0, 0.2, 0.2, 1)",
             width: "100%",
+            marginTop: "3px",
             padding: '10px',
             marginBottom: '-4px',
             backgroundColor: '#00000000',
@@ -153,7 +154,7 @@ export class Dock extends Component {
             transition: "0.5s all cubic-bezier(0, 0.2, 0.2, 1)",
             width: "100%",
             padding: '10px',
-            marginBottom: '-4px',
+            marginBottom: '3px',
             backgroundColor: '#00000000',
             '&:hover': {
               backgroundColor: '#00000040',
