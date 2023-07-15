@@ -640,7 +640,7 @@ iframe{
   display: flex;
   width: 315px;
   height: 395px;
-  right: 55px;
+  right: 50px;
   flex-direction: row;
   flex-wrap: nowrap;
   align-content: center;
