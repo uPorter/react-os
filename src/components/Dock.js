@@ -126,7 +126,7 @@ export class Dock extends Component {
             color: 'white',
             padding: '10px',
             marginBottom: '-4px',
-            backgroundColor: '#00000040',
+            backgroundColor: '#00000000',
             '&:hover': {
               backgroundColor: '#00000040',
             },
@@ -137,7 +137,7 @@ export class Dock extends Component {
             color: 'white',
             padding: '10px',
             marginBottom: '-4px',
-            backgroundColor: '#00000040',
+            backgroundColor: '#00000000',
             '&:hover': {
               backgroundColor: '#00000040',
             },
@@ -148,7 +148,7 @@ export class Dock extends Component {
             color: 'white',
             padding: '10px',
             marginBottom: '-4px',
-            backgroundColor: '#00000040',
+            backgroundColor: '#00000000',
             '&:hover': {
               backgroundColor: '#00000040',
             },
