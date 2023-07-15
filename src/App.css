@@ -638,8 +638,7 @@ body {
 
 .MuiTooltip-tooltip{
   background-color: transparent!important;
-  transform: scale(0.9)!important;
-  padding: 0px!important;
+
 }
 
 .MuiTooltip-arrow{
