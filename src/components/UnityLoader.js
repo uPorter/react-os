@@ -524,7 +524,7 @@ const UnityLoader = () => {
                           "--IconButton-radius": "50px",
                         }}
                       >
-                        <CloudSyncOutlinedIcon />
+                        <CloudSyncOutlinedIcon className='iconHover' />
                       </IconButton>
                     </Tooltip>
 
