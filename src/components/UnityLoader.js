@@ -512,7 +512,7 @@ const UnityLoader = () => {
                       '&:hover': {
                         backgroundColor: '#00000040',
                       },
-                    }}>{toggleChatText}</Button>}>
+                    }}>Save</Button>}>
                       <IconButton
                         id="dockButtonID"
                         className="dockButtonsBase"
@@ -538,7 +538,7 @@ const UnityLoader = () => {
                       '&:hover': {
                         backgroundColor: '#00000040',
                       },
-                    }}>{toggleChatText}</Button>}>
+                    }}>Spawnpoint</Button>}>
                       <IconButton
                         id="dockButtonID"
                         className="dockButtonsBase"
