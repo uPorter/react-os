@@ -24,6 +24,7 @@ import GuestDock from "./GuestDock";
 import { useParams } from 'react-router-dom';
 import CloudSyncOutlinedIcon from '@mui/icons-material/CloudSyncOutlined';
 import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
+import Tooltip from "@mui/joy/Tooltip";
 
 const chatClient = StreamChat.getInstance('tj5s8c5z6vg3');
 
@@ -501,6 +502,7 @@ const UnityLoader = () => {
               <Grid className="EmptyGrid" xs style={{ opacity: 1, display: "flex", gap: "7px" }}>
                 {isAdmin && (
                   <div className='syncDock'>
+                    <Tooltip title="Save to cloud" size="sm">
                     <IconButton
                       id="dockButtonID"
                       className="dockButtonsBase"
@@ -514,7 +516,9 @@ const UnityLoader = () => {
                     >
                       <CloudSyncOutlinedIcon />
                     </IconButton>
+                    </Tooltip>
                     
+                    <Tooltip title="Set Enterance" size="sm">
                     <IconButton
                       id="dockButtonID"
                       className="dockButtonsBase"
@@ -528,6 +532,8 @@ const UnityLoader = () => {
                     >
                       <EmojiPeopleIcon />
                     </IconButton>
+                    </Tooltip>
+                    
 
                   </div>)}
               </Grid>
