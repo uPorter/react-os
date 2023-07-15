@@ -372,7 +372,12 @@ const UnityLoader = () => {
   const saveSystem = () => {
     sendMessage("SaveManager", "SaveFile", spaceName);
     
-    toast.success('Save Complated!')
+    toast.promise(promise, {
+      loading: 'Saving...',
+      success: 'Save Complated',
+      error: 'Error',
+    })
+
   }
 
 
