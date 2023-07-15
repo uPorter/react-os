@@ -513,19 +513,21 @@ const UnityLoader = () => {
                         backgroundColor: '#00000040',
                       },
                     }}>Save</Button>}>
-                      <IconButton
-                        id="dockButtonID"
-                        className="dockButtonsBase"
-                        variant="solid"
-                        onClick={() => sendMessage("SaveManager", "SaveFile", spaceName)}
-                        style={{ background: "#00000000important" }}
-                        sx={{
-                          "--IconButton-size": "55px",
-                          "--IconButton-radius": "50px",
-                        }}
-                      >
-                        <CloudSyncOutlinedIcon className='iconHover' />
-                      </IconButton>
+                      <div style={{ width: 'fit-content', height: 'fit-content' }} className='tooltipHover'>
+                        <IconButton
+                          id="dockButtonID"
+                          className="dockButtonsBase"
+                          variant="solid"
+                          onClick={() => sendMessage("SaveManager", "SaveFile", spaceName)}
+                          style={{ background: "#00000000important" }}
+                          sx={{
+                            "--IconButton-size": "55px",
+                            "--IconButton-radius": "50px",
+                          }}
+                        >
+                          <CloudSyncOutlinedIcon />
+                        </IconButton>
+                      </div>
                     </Tooltip>
 
                     <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
@@ -539,19 +541,22 @@ const UnityLoader = () => {
                         backgroundColor: '#00000040',
                       },
                     }}>Spawnpoint</Button>}>
-                      <IconButton
-                        id="dockButtonID"
-                        className="dockButtonsBase"
-                        variant="solid"
-                        onClick={() => sendMessage("EnvironmentManager", "setSpawnPointVoid")}
-                        style={{ background: "#00000000!important" }}
-                        sx={{
-                          "--IconButton-size": "55px",
-                          "--IconButton-radius": "50px",
-                        }}
-                      >
-                        <EmojiPeopleIcon />
-                      </IconButton>
+                      <div style={{ width: 'fit-content', height: 'fit-content' }} className='tooltipHover'>
+                        <IconButton
+                          id="dockButtonID"
+                          className="dockButtonsBase"
+                          variant="solid"
+                          onClick={() => sendMessage("EnvironmentManager", "setSpawnPointVoid")}
+                          style={{ background: "#00000000!important" }}
+                          sx={{
+                            "--IconButton-size": "55px",
+                            "--IconButton-radius": "50px",
+                          }}
+                        >
+                          <EmojiPeopleIcon />
+                        </IconButton>
+                      </div>
+
                     </Tooltip>
 
 

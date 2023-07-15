@@ -139,11 +139,12 @@
   border-radius: var(--IconButton-radius, var(--joy-radius-sm, 50px));
   transform: scale(1.25);
 } */
-.iconHover{
+.tooltipHover{
+  transform: scale(1);
   transition: 0.5s all cubic-bezier(0, 0.2, 0.2, 1);
 }
 
-.iconHover:hover{
+.tooltipHover:hover{
   transform: scale(1.25);
 }
 .syncDock{
