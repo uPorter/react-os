@@ -148,6 +148,17 @@
   transform: scale(1.25);
 }
 
+.tooltipHover2{
+  transform: scale(1);
+  transition: 0.5s all cubic-bezier(0, 0.2, 0.2, 1);
+}
+
+.tooltipHover2:hover .dockButtons{
+  transform: scale(1.25);
+}
+
+
+
 .syncDock{
   margin-left: 30px;
   background: rgba(0,0,0,.25)!important;
