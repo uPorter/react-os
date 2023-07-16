@@ -112,11 +112,13 @@ const ChatComponent = (props) => {
 
   const handleTooltipOpen = () => {
     document.querySelector('.avatarProfile').classList.add('avatarProfileonOpen');
+    toggleChat();
   };
 
   const handleTooltipClose = () => {
     document.querySelector('.avatarProfile').classList.remove('avatarProfileonOpen');
     document.querySelector('.avatarProfile').classList.add('avatarProfileonClose');
+    toggleChat();
   };
 
   const testClick = () => {
@@ -156,7 +158,7 @@ const ChatComponent = (props) => {
 
               <Tooltip TransitionComponent={Fade} onOpen={handleTooltipOpen} onClose={handleTooltipClose} sx={{ borderRadius: '0px', backgroundColor: '#ffffff' }} color="neutral" placement="top" variant="soft"
                 title={
-                  <div className='avatarProfile' style={{backdropFilter:"blur(12px)"}}>
+                  <div className='avatarProfile' style={{backdropFilter:"blur(0px)"}}>
                     <Stack className='avatarStack'>
                       <Avatar className='avatarProfileSection' style={{
                         width: '5.3rem', height: '5.3rem', zIndex: '999', background: '#2979FF',

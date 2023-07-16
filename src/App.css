@@ -703,3 +703,14 @@ body {
   transform: scale(1);
 }
 
+.sonner-loading-bar {
+  animation: sonner-spin 1.2s linear infinite;
+  background: hsl(0deg 0% 100%)!important;
+  border-radius: 6px;
+  height: 8%;
+  left: -10%;
+  position: absolute;
+  top: -3.9%;
+  width: 24%;
+}
+
