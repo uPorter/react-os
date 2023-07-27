@@ -8,8 +8,11 @@ var fullscreenButton = document.querySelector("#unity-fullscreen-button");
 var warningBanner = document.querySelector("#unity-warning");
 var rpmHideButton = document.getElementById("rpm-hide-button");
 var canvasWrapper = document.getElementById("canvas-wrap");
+
 var mainCanvas = document.getElementById("myCanvas");
 var mainContext = mainCanvas.getContext('2d');
 var inMemCanvas = document.getElementById("inMem_Canvas");
 var inMemContext = inMemCanvas.getContext('2d');
+
+var angle = 0;
 var unitygame;
