@@ -13,6 +13,15 @@ export class EditDock extends Component {
     const SetEnvironmentModel = () =>{
       window.sendMessageToUnityBasic(objectName, "SetEnvironmentModel");
     }
+
+    const duplicateModel = () =>{
+      window.sendMessageToUnityBasic(objectName + "_parent","DuplicateSelf");
+    }
+
+    const destroyModel = () =>{
+      window.sendMessageToUnityBasic(objectName + "_parent","DestroySelf");
+    }
+
     return (
       <div
         style={{
@@ -81,6 +90,7 @@ export class EditDock extends Component {
 
           <IconButton
             id="dockButtonID"
+            onClick={duplicateModel}
             className="dockButtonsEditor"
             variant="solid"
             sx={{
@@ -126,6 +136,7 @@ export class EditDock extends Component {
 
           <IconButton
             id="dockButtonID"
+            onClick={destroyModel}
             className="dockButtonsEditor"
             variant="solid"
             sx={{
