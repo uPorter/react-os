@@ -27,23 +27,33 @@ import Fade from '@mui/material/Fade';
 const chatClient = StreamChat.getInstance('tj5s8c5z6vg3');
 
 const ChatComponent = (props) => {
-  const {spaceName, userName, userID, userToken, userImage, sendMessage, showChat } = props;
+  const { spaceName, userName, userID, userToken, userImage, sendMessage, showChat,isStarted } = props;
   const [isActive, setIsActive] = useState(true);
   const [toggleChatText, setToggleChatText] = useState('Hide Chat')
   const [checked, setChecked] = useState(false);
-  const [isCameraOn, setIsCameraOn] = useState(false);
+  const [isCameraOn, setIsCameraOn] = useState(localStorage.getItem('isCameraOn') === 'true' ? true : false);
 
   const handleChange = (event) => {
     setIsCameraOn(event.target.checked);
+    localStorage.setItem('isCameraOn', newValue.toString());
   };
 
-  useEffect(() => {
+  const handleIsStartedChange = () => {
     if (isCameraOn) {
       sendMessage("VideoHolder", "StartVideoPlayer");
     } else {
       sendMessage("VideoHolder", "DestroyVideoPlayer");
     }
+  };
+
+  // useEffect ile isCameraOn değiştiğinde handleIsStartedChange fonksiyonunun çalışmasını sağlıyoruz.
+  useEffect(() => {
+    handleIsStartedChange();
   }, [isCameraOn]);
+
+  useEffect(() => {
+    handleIsStartedChange();
+  }, [isStarted]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -140,21 +150,21 @@ const ChatComponent = (props) => {
 
   return (
     <>
-      <div className='chatProfileSection' style={{pointerEvents: 'none', width: '400px', height: 'fit-content', position: 'absolute', right: '8px', bottom: '-41px', transform: 'scale(0.9)', zIndex: '50', userSelect: 'none' }} >
+      <div className='chatProfileSection' style={{ pointerEvents: 'none', width: '400px', height: 'fit-content', position: 'absolute', right: '8px', bottom: '-41px', transform: 'scale(0.9)', zIndex: '50', userSelect: 'none' }} >
         <Chat client={chatClient} theme='livestream light' user={chatClient.user} userToken={userToken}>
           <Channel channel={chatClient.channel('livestream', spaceName || 'demoroom')} Message={MessageLivestream}>
             <Window hideOnThread>
               <ChannelHeader live />
               <MessageList />
               <MessageInput Input={MessageInputSmall} onSubmit={testClick} focus />
-              <CameraMode sendMessage={sendMessage}/>
+              <CameraMode sendMessage={sendMessage} />
               <Tooltip TransitionComponent={Fade} className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
                 fontStyle: 'bold',
                 fontWeight: 'Bold',
                 color: 'white',
                 padding: '10px',
                 marginBottom: '-4px',
-                backgroundColor:'#00000040',
+                backgroundColor: '#00000040',
                 '&:hover': {
                   backgroundColor: '#00000040',
                 },
@@ -171,7 +181,7 @@ const ChatComponent = (props) => {
 
               <Tooltip TransitionComponent={Fade} onOpen={handleTooltipOpen} onClose={handleTooltipClose} sx={{ borderRadius: '0px', backgroundColor: '#ffffff' }} color="neutral" placement="top" variant="soft"
                 title={
-                  <div className='avatarProfile' style={{backdropFilter:"blur(0px)"}}>
+                  <div className='avatarProfile' style={{ backdropFilter: "blur(0px)" }}>
                     <Stack className='avatarStack'>
                       <Avatar className='avatarProfileSection' style={{
                         width: '5.3rem', height: '5.3rem', zIndex: '999', background: '#2979FF',
@@ -181,23 +191,23 @@ const ChatComponent = (props) => {
                         }
                       }}
                         size="lg" src={userImage} />
-                      <Typography style={{color: 'white', fontSize:'27px'}} level="h2">{userName}</Typography>
+                      <Typography style={{ color: 'white', fontSize: '27px' }} level="h2">{userName}</Typography>
                       <Stack className='avatarButtonContainer'>
                         <div onClick={() => console.log('View Profile')} style={{ marginTop: '7px' }} className='editavatarContainerV'>
                           <ManageAccountsOutlinedIcon style={{ marginLeft: '25px', color: 'white' }} />
-                          <Button style={{position:'static', background: 'transparent', color: 'white' }} >View Profile</Button>
+                          <Button style={{ position: 'static', background: 'transparent', color: 'white' }} >View Profile</Button>
                           <ArrowForwardIosOutlinedIcon className='hoverArrow' style={{ marginLeft: '75px', color: 'white', transform: 'scale(0.8)' }}></ArrowForwardIosOutlinedIcon>
                         </div>
                         <Divider style={{ height: '2px', marginTop: '7px', marginBottom: '0px', backgroundColor: '#ffffff26' }} orientation="horizontal" />
                         <div onClick={ReactshowRPM} style={{ marginTop: '7px' }} className='editavatarContainerV'>
                           <AccessibilityNewOutlinedIcon style={{ marginLeft: '25px', color: 'white' }} />
-                          <Button onClick={ReactshowRPM} style={{position:'static', background: 'transparent', color: 'white' }} >Edit Avatar</Button>
+                          <Button onClick={ReactshowRPM} style={{ position: 'static', background: 'transparent', color: 'white' }} >Edit Avatar</Button>
                           <ArrowForwardIosOutlinedIcon style={{ marginLeft: '80px', color: 'white', transform: 'scale(0.8)' }}></ArrowForwardIosOutlinedIcon>
                         </div>
                         <Divider style={{ height: '2px', marginTop: '7px', marginBottom: '0px', backgroundColor: '#ffffff26' }} orientation="horizontal" />
                         <div style={{ marginTop: '7px', marginBottom: '7px' }} className='editavatarContainer'>
                           <VideocamOutlinedIcon style={{ marginLeft: '25px', color: 'white' }} />
-                          <Button style={{position:'static', background: 'transparent', color: 'white' }} >Toggle Webcam</Button>
+                          <Button style={{ position: 'static', background: 'transparent', color: 'white' }} >Toggle Webcam</Button>
                           <Switch style={{
                             marginLeft: '25px',
                             borderStyle: "solid",
@@ -208,8 +218,8 @@ const ChatComponent = (props) => {
                             transform: 'scale(0.85)',
                             position: 'static'
                           }} variant="soft" color="neutral" className="mainSwitch"
-                          checked={isCameraOn}
-                          onChange={handleChange}
+                            checked={isCameraOn}
+                            onChange={handleChange}
                           />
                           {/* <ArrowForwardIosOutlinedIcon style={{ marginLeft: '18px', color: 'black', transform: 'scale(0.8)' }}></ArrowForwardIosOutlinedIcon> */}
                         </div>
@@ -218,7 +228,7 @@ const ChatComponent = (props) => {
                   </div>
                 }>
                 <Avatar className='toggle-chat2' style={{
-                  bottom: '9px', right: '0px', position: 'absolute', width: '3.8rem', height: '3.8rem', zIndex: '999', background: '#2979FF',borderRadius:'25px',
+                  bottom: '9px', right: '0px', position: 'absolute', width: '3.8rem', height: '3.8rem', zIndex: '999', background: '#2979FF', borderRadius: '25px',
                   '&:hover': {
                     transform: 'scale(1.1)',
                     background: '#2979FF'
