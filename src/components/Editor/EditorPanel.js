@@ -46,7 +46,7 @@ const EditorPanel = (props) => {
         right: "0px",
         width: "380px",
         height: "100%",
-        background: "linear-gradient(90deg,transparent,rgba(0,0,0,.2) 4rem,rgba(0,0,0,.5))",
+        background: "linear-gradient(270deg,rgb(0 0 0 / 62%) 8.06%,transparent)",
         backdropFilter: "blur(8px)",
         borderTopLeftRadius: "10px",
         borderBottomLeftRadius: "10px",
