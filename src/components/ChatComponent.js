@@ -31,6 +31,19 @@ const ChatComponent = (props) => {
   const [isActive, setIsActive] = useState(true);
   const [toggleChatText, setToggleChatText] = useState('Hide Chat')
   const [checked, setChecked] = useState(false);
+  const [isCameraOn, setIsCameraOn] = useState(false);
+
+  const handleChange = (event) => {
+    setIsCameraOn(event.target.checked);
+  };
+
+  useEffect(() => {
+    if (isCameraOn) {
+      sendMessage("VideoHolder", "StartVideoPlayer");
+    } else {
+      sendMessage("VideoHolder", "DestroyVideoPlayer");
+    }
+  }, [isCameraOn]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -195,8 +208,8 @@ const ChatComponent = (props) => {
                             transform: 'scale(0.85)',
                             position: 'static'
                           }} variant="soft" color="neutral" className="mainSwitch"
-                            checked={checked}
-                            onChange={(event) => setChecked(event.target.checked)}
+                          checked={isCameraOn}
+                          onChange={handleChange}
                           />
                           {/* <ArrowForwardIosOutlinedIcon style={{ marginLeft: '18px', color: 'black', transform: 'scale(0.8)' }}></ArrowForwardIosOutlinedIcon> */}
                         </div>
