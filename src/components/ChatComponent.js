@@ -34,7 +34,8 @@ const ChatComponent = (props) => {
   const [isCameraOn, setIsCameraOn] = useState(localStorage.getItem('isCameraOn') === 'true' ? true : false);
 
   const handleChange = (event) => {
-    setIsCameraOn(event.target.checked);
+    const newValue = event.target.checked;
+    setIsCameraOn(newValue);
     localStorage.setItem('isCameraOn', newValue.toString());
   };
 
