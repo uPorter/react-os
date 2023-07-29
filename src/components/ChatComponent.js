@@ -40,7 +40,7 @@ const ChatComponent = (props) => {
     sendMessage("VideoHolder", "ToggleObjectState");
   };
 
-  
+
   useEffect(() => {
     const timer = setTimeout(() => {
       const textarea = document.querySelector('.str-chat__small-message-input textarea');
@@ -71,7 +71,7 @@ const ChatComponent = (props) => {
 
     return () => clearTimeout(timer);
   }, []);
-
+//Refresh System Done And working well i will pass to the 2nd secenary
 
 
 
