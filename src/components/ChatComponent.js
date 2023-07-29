@@ -37,24 +37,9 @@ const ChatComponent = (props) => {
     const newValue = event.target.checked;
     setIsCameraOn(newValue);
     // Kameranın durumunu değiştirdiğimizde handleIsStartedChange fonksiyonunu çağırıyoruz
-    handleIsStartedChange(newValue);
+    sendMessage("VideoHolder", "ToggleObjectState");
   };
 
-  const handleIsStartedChange = (cameraOn) => {
-    if (cameraOn) {
-      sendMessage("VideoHolder", "ToggleObjectState");
-    } else {
-      // Kamerayı kapatmak istediğimizde başka bir işlem yapabiliriz.
-      // Bu blok şu an için aynı işlemi yapıyor, ancak ileride farklı davranışlar ekleyebilirsiniz.
-      sendMessage("VideoHolder", "ToggleObjectState");
-    }
-  };
-
-  // İlk renderda çalışmasını istemiyorsak useEffect'in ikinci argümanını boş bir dizi yaparız.
-  // Bu durumda useEffect sadece component yüklendiğinde çalışır.
-  useEffect(() => {
-    handleIsStartedChange(isCameraOn);
-  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
