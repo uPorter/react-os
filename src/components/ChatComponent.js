@@ -40,7 +40,7 @@ const ChatComponent = (props) => {
     sendMessage("VideoHolder", "ToggleObjectState");
   };
 
-
+  
   useEffect(() => {
     const timer = setTimeout(() => {
       const textarea = document.querySelector('.str-chat__small-message-input textarea');
