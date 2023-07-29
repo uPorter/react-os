@@ -31,30 +31,24 @@ const ChatComponent = (props) => {
   const [isActive, setIsActive] = useState(true);
   const [toggleChatText, setToggleChatText] = useState('Hide Chat')
   const [checked, setChecked] = useState(false);
-  const [isCameraOn, setIsCameraOn] = useState(localStorage.getItem('isCameraOn') === 'true' ? true : false);
+  const [isCameraOn, setIsCameraOn] = useState(false);
 
   const handleChange = (event) => {
     const newValue = event.target.checked;
     setIsCameraOn(newValue);
-    localStorage.setItem('isCameraOn', newValue.toString());
   };
 
   const handleIsStartedChange = () => {
     if (isCameraOn) {
       sendMessage("VideoHolder", "StartVideoPlayer");
     } else {
-      sendMessage("VideoHolder", "DestroyVideoPlayer");
+      sendMessage("VideoHolder", "StartVideoPlayer");
     }
   };
-
   // useEffect ile isCameraOn değiştiğinde handleIsStartedChange fonksiyonunun çalışmasını sağlıyoruz.
   useEffect(() => {
     handleIsStartedChange();
   }, [isCameraOn]);
-
-  useEffect(() => {
-    handleIsStartedChange();
-  }, [isStarted]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
