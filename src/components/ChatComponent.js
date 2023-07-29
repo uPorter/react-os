@@ -27,7 +27,7 @@ import Fade from '@mui/material/Fade';
 const chatClient = StreamChat.getInstance('tj5s8c5z6vg3');
 
 const ChatComponent = (props) => {
-  const { spaceName, userName, userID, userToken, userImage, sendMessage, showChat,isStarted } = props;
+  const { spaceName, userName, userID, userToken, userImage, sendMessage, showChat, isStarted } = props;
   const [isActive, setIsActive] = useState(true);
   const [toggleChatText, setToggleChatText] = useState('Hide Chat')
   const [checked, setChecked] = useState(false);
@@ -36,19 +36,25 @@ const ChatComponent = (props) => {
   const handleChange = (event) => {
     const newValue = event.target.checked;
     setIsCameraOn(newValue);
+    // Kameranın durumunu değiştirdiğimizde handleIsStartedChange fonksiyonunu çağırıyoruz
+    handleIsStartedChange(newValue);
   };
 
-  const handleIsStartedChange = () => {
-    if (isCameraOn) {
+  const handleIsStartedChange = (cameraOn) => {
+    if (cameraOn) {
       sendMessage("VideoHolder", "ToggleObjectState");
     } else {
+      // Kamerayı kapatmak istediğimizde başka bir işlem yapabiliriz.
+      // Bu blok şu an için aynı işlemi yapıyor, ancak ileride farklı davranışlar ekleyebilirsiniz.
       sendMessage("VideoHolder", "ToggleObjectState");
     }
   };
-  // useEffect ile isCameraOn değiştiğinde handleIsStartedChange fonksiyonunun çalışmasını sağlıyoruz.
+
+  // İlk renderda çalışmasını istemiyorsak useEffect'in ikinci argümanını boş bir dizi yaparız.
+  // Bu durumda useEffect sadece component yüklendiğinde çalışır.
   useEffect(() => {
-    handleIsStartedChange();
-  }, [isCameraOn]);
+    handleIsStartedChange(isCameraOn);
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
