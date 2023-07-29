@@ -12,6 +12,10 @@ import Fade from '@mui/material/Fade';
 export class Dock extends Component {
   render() {
     const { handleAddContent } = this.props;
+
+    const toggleScreenShare = () =>{
+      window.sendMessageToUnityBasic("VideoHolder", "reactStartScreenShare");
+    }
     return (
       <div
         style={{
@@ -189,6 +193,7 @@ export class Dock extends Component {
           }}>Share Screen</Button>}>
             <div style={{ width: 'fit-content', height: 'fit-content' }} className='tooltipHover2'>
               <IconButton
+                onClick={toggleScreenShare}
                 id="dockButtonID"
                 className="dockButtons"
                 variant="solid"

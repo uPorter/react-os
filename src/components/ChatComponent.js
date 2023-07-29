@@ -39,7 +39,11 @@ const ChatComponent = (props) => {
   };
 
   const handleIsStartedChange = () => {
-    console.log("hehe");
+    if (isCameraOn) {
+      sendMessage("VideoHolder", "ToggleObjectState");
+    } else {
+      sendMessage("VideoHolder", "ToggleObjectState");
+    }
   };
   // useEffect ile isCameraOn değiştiğinde handleIsStartedChange fonksiyonunun çalışmasını sağlıyoruz.
   useEffect(() => {
