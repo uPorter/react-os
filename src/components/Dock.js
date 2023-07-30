@@ -12,9 +12,17 @@ import Fade from '@mui/material/Fade';
 export class Dock extends Component {
   render() {
     const { handleAddContent } = this.props;
+    const [isScreenShareOn, setIsScreenShareOn] = useState(false);
 
     const toggleScreenShare = () =>{
-      window.sendMessageToUnityBasic("VideoHolder", "reactStartScreenShare");
+      if(!isScreenShareOn){
+        window.sendMessageToUnityBasic("VideoHolder", "reactStartScreenShare");
+        setIsScreenShareOn(true);
+      }else{
+        window.sendMessageToUnityBasic("VideoHolder", "reactStopScreenShare");
+        setIsScreenShareOn(false);
+      }
+      
     }
     return (
       <div
