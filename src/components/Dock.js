@@ -8,6 +8,7 @@ import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import Tooltip from '@mui/material/Tooltip';
 import { Button } from "@mui/joy";
 import Fade from '@mui/material/Fade';
+import { useState } from 'react';
 
 export class Dock extends Component {
   render() {
