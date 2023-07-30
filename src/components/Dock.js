@@ -25,8 +25,9 @@ function Dock({ handleAddContent }) {
         setIsScreenShareOn(false);
         localStorage.setItem('isScreenShareOn', 'false');
       }
-      
     }
+
+    const buttonText = isScreenShareOn ? 'Stop Screen Share' : 'Share Screen';
     return (
       <div
         style={{
@@ -191,7 +192,7 @@ function Dock({ handleAddContent }) {
             </div>
           </Tooltip>
 
-          <Tooltip TransitionComponent={Fade}  className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button onClick={toggleScreenShare} size="sm" variant="plain" sx={{
+          <Tooltip TransitionComponent={Fade}  className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={ <Button onClick={toggleScreenShare} size="sm" variant="plain" sx={{
             fontStyle: 'bold',
             fontWeight: 'Bold',
             color: 'white',
@@ -201,7 +202,7 @@ function Dock({ handleAddContent }) {
             '&:hover': {
               backgroundColor: '#00000040',
             },
-          }}>Share Screen</Button>}>
+          }}>{buttonText}</Button>}>
             <div style={{ width: 'fit-content', height: 'fit-content' }} className='tooltipHover2'>
               <IconButton
                 onClick={toggleScreenShare}
