@@ -188,7 +188,7 @@ function Dock({ handleAddContent }) {
             </div>
           </Tooltip>
 
-          <Tooltip TransitionComponent={Fade}  className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
+          <Tooltip TransitionComponent={Fade}  className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button onClick={toggleScreenShare} size="sm" variant="plain" sx={{
             fontStyle: 'bold',
             fontWeight: 'Bold',
             color: 'white',
@@ -205,12 +205,16 @@ function Dock({ handleAddContent }) {
                 id="dockButtonID"
                 className="dockButtons"
                 variant="solid"
+                style={{
+                  background: isScreenShareOn ? 'white!important' : 'rgba(0, 0, 0, 0.250)!important',
+                  color: isScreenShareOn ? 'black' : 'white'
+                }}
                 sx={{
                   "--IconButton-size": "55px",
                   "--IconButton-radius": "50px",
                 }}
               >
-                <PresentToAllOutlinedIcon />
+                <PresentToAllOutlinedIcon style={{}} />
               </IconButton>
             </div>
           </Tooltip>
