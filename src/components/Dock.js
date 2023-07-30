@@ -206,8 +206,9 @@ function Dock({ handleAddContent }) {
                 className="dockButtons"
                 variant="solid"
                 style={{
-                  background: isScreenShareOn ? 'white!important' : 'rgba(0, 0, 0, 0.250)!important',
-                  color: isScreenShareOn ? 'black' : 'white'
+                  backgroundColor: isScreenShareOn ? 'white!important' : 'rgba(0, 0, 0, 0.250)!important',
+                  color: isScreenShareOn ? 'black' : 'white',
+                  boxShadow: isScreenShareOn ? '0px 0px 20px 5px rgb(0 0 0 / 34%)' : '0px 0px 0px 0px rgb(0 0 0 / 34%)'
                 }}
                 sx={{
                   "--IconButton-size": "55px",
