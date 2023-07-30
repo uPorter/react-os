@@ -121,12 +121,14 @@ const ChatComponent = (props) => {
 
   const handleTooltipOpen = () => {
     document.querySelector('.avatarProfile').classList.add('avatarProfileonOpen');
+    setIsActive(true);
     toggleChat();
   };
 
   const handleTooltipClose = () => {
     document.querySelector('.avatarProfile').classList.remove('avatarProfileonOpen');
     document.querySelector('.avatarProfile').classList.add('avatarProfileonClose');
+    setIsActive(false);
     toggleChat();
   };
 
@@ -214,7 +216,7 @@ const ChatComponent = (props) => {
                   </div>
                 }>
                 <Avatar className='toggle-chat2' style={{
-                  bottom: '9px', right: '0px', position: 'absolute', width: '3.8rem', height: '3.8rem', zIndex: '999', background: '#2979FF', borderRadius: '25px',
+                  bottom: '7.5px', right: '0px', position: 'absolute', width: '3.8rem', height: '3.8rem', zIndex: '999', background: '#2979FF', borderRadius: '250px',
                   '&:hover': {
                     transform: 'scale(1.1)',
                     background: '#2979FF'
