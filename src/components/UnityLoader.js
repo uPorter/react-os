@@ -156,7 +156,7 @@ const UnityLoader = () => {
       sendMessage("AvatarNick", "TestSetMethod", userName);
       console.log(name);
       console.log(id);
-
+      localStorage.setItem('isScreenShareOn', 'false');
     }
   }, [isStarted, userSigned]);
 
