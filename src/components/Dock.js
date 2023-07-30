@@ -208,7 +208,8 @@ function Dock({ handleAddContent }) {
                 style={{ 
                   color: isScreenShareOn ? 'black' : 'white',
                   boxShadow: isScreenShareOn ? '0px 0px 20px 5px rgb(0 0 0 / 34%)' : '0px 0px 0px 0px rgb(0 0 0 / 34%)',
-                  backgroundColor: isScreenShareOn ? 'white!important' : 'rgba(0, 0, 0, 0.250)'
+                  backgroundColor: isScreenShareOn ? 'white!important' : 'rgba(0, 0, 0, 0.250)',
+                  background: isScreenShareOn ? 'white!important' : 'rgba(0, 0, 0, 0.250)!important'
                 }}
                 sx={{
                   "--IconButton-size": "55px",
