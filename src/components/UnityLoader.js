@@ -1,6 +1,6 @@
 import { ChangeEvent, useState, useEffect, useCallback } from 'react';
 import { Unity, useUnityContext } from "react-unity-webgl";
-import { Dock } from './Dock';
+import Dock from './Dock';
 import Sheet from '@mui/joy/Sheet';
 import Grid from '@mui/joy/Grid';
 import { styled } from '@mui/joy/styles';

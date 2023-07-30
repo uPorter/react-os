@@ -10,9 +10,8 @@ import { Button } from "@mui/joy";
 import Fade from '@mui/material/Fade';
 import { useState } from 'react';
 
-export class Dock extends Component {
-  render() {
-    const { handleAddContent } = this.props;
+function Dock({ handleAddContent }) {
+    //const { handleAddContent } = this.props;
     const [isScreenShareOn, setIsScreenShareOn] = useState(false);
 
     const toggleScreenShare = () =>{
@@ -245,6 +244,7 @@ export class Dock extends Component {
         </Box>
       </div>
     );
-  }
 }
+
+export default Dock;
 
