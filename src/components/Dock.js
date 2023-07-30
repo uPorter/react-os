@@ -191,12 +191,12 @@ function Dock({ handleAddContent }) {
           <Tooltip TransitionComponent={Fade}  className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button onClick={toggleScreenShare} size="sm" variant="plain" sx={{
             fontStyle: 'bold',
             fontWeight: 'Bold',
-            color: isScreenShareOn ? 'black' : 'white',
+            color: 'white',
             padding: '10px',
             marginBottom: '-4px',
-            backgroundColor: isScreenShareOn ? '##ffffff8c' : '#00000040',
+            backgroundColor: '#00000040',
             '&:hover': {
-              backgroundColor: isScreenShareOn ? '##ffffff8c' : '#00000040',
+              backgroundColor: '#00000040',
             },
           }}>Share Screen</Button>}>
             <div style={{ width: 'fit-content', height: 'fit-content' }} className='tooltipHover2'>
@@ -206,7 +206,7 @@ function Dock({ handleAddContent }) {
                 className="dockButtons"
                 variant="solid"
                 style={{
-                  backgroundColor: isScreenShareOn ? 'white' : 'rgba(0, 0, 0, 0.250)',
+                  backgroundColor: isScreenShareOn ? 'white!important' : 'rgba(0, 0, 0, 0.250)',
                   color: isScreenShareOn ? 'black' : 'white',
                   boxShadow: isScreenShareOn ? '0px 0px 20px 5px rgb(0 0 0 / 34%)' : '0px 0px 0px 0px rgb(0 0 0 / 34%)'
                 }}
