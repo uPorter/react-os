@@ -212,6 +212,10 @@ function Dock({ handleAddContent }) {
                   background: isScreenShareOn ? 'white!important' : 'rgba(0, 0, 0, 0.250)',
                   "--IconButton-size": "55px",
                   "--IconButton-radius": "50px",
+                  '&:hover': {
+                    backgroundColor: isScreenShareOn ? 'white!important' : 'rgba(0, 0, 0, 0.250)',
+                    background: isScreenShareOn ? 'white!important' : 'rgba(0, 0, 0, 0.250)',
+                  }
                 }}
               >
                 <PresentToAllOutlinedIcon style={{}} />
