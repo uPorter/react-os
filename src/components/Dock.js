@@ -12,22 +12,18 @@ import { useState } from 'react';
 
 function Dock({ handleAddContent }) {
     //const { handleAddContent } = this.props;
-    const [isScreenShareOn, setIsScreenShareOn] = useState(() => {
-      const storedValue = localStorage.getItem('isScreenShareOn');
-      return storedValue ? JSON.parse(storedValue) : false;
-    });
-
-    window.setIsScreenShareOn = (value) => {
-      localStorage.setItem('isScreenShareOn', JSON.stringify(value));
-    };
+    const initialIsScreenShareOn = localStorage.getItem('isScreenShareOn') === 'true' ? true : false;
+    const [isScreenShareOn, setIsScreenShareOn] = useState(initialIsScreenShareOn);
 
     const toggleScreenShare = () =>{
       if(!isScreenShareOn){
         window.sendMessageToUnityBasic("VideoHolder", "reactStartScreenShare");
-        window.setIsScreenShareOn(true);
+        setIsScreenShareOn(true);
+        localStorage.setItem('isScreenShareOn', 'true');
       }else{
         window.sendMessageToUnityBasic("VideoHolder", "reactStopScreenShare");
-        window.setIsScreenShareOn(false);
+        setIsScreenShareOn(false);
+        localStorage.setItem('isScreenShareOn', 'false');
       }
       
     }
