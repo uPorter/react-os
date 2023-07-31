@@ -12,6 +12,7 @@ import { useState,useEffect } from 'react';
 import MicOutlinedIcon from '@mui/icons-material/MicOutlined';
 import VideocamOffOutlinedIcon from '@mui/icons-material/VideocamOffOutlined';
 import VideocamOutlinedIcon from '@mui/icons-material/VideocamOutlined';
+import { Toaster, toast } from 'sonner'
 
 function Dock({ handleAddContent }) {
   //const { handleAddContent } = this.props;
@@ -59,6 +60,19 @@ function Dock({ handleAddContent }) {
       window.sendMessageToUnityBasic("AgoraConnect", "muteLocalAudio");
       setIsMicOn(false);
       localStorage.setItem('isMicOn', 'false');
+    }
+  }
+
+  const toggleCam = () => {
+    if (!isBaseCameraOn) {
+      window.sendMessageToUnityBasic("AgoraConnect", "muteLocalVideo");
+      setIsBaseCameraOn(true);
+      toast.success('Local video stream enabled')
+      toa
+    } else {
+      window.sendMessageToUnityBasic("AgoraConnect", "muteLocalVideo");
+      setIsBaseCameraOn(false);
+      toast.success('Local video stream disabled')
     }
   }
 
@@ -134,7 +148,7 @@ function Dock({ handleAddContent }) {
             <IconButton
               id="dockButtonID"
               className="dockButtons"
-              onClick={toggleMic}
+              onClick={toggleCam}
               variant="solid"
               sx={{
                 color: isMicOn ? 'black' : 'white',
