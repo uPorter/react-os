@@ -137,6 +137,7 @@ function Dock({ handleAddContent }) {
               onClick={toggleMic}
               variant="solid"
               sx={{
+                animation: 'myAnim 1s ease 0s 1 normal forwards',
                 color: isMicOn ? 'black' : 'white',
                 boxShadow: isMicOn ? '0px 0px 20px 5px rgb(0 0 0 / 34%)' : '0px 0px 0px 0px rgb(0 0 0 / 34%)',
                 backgroundColor: isMicOn ? 'white!important' : 'rgba(0, 0, 0, 0.250)',

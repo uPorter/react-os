@@ -208,6 +208,17 @@
   pointer-events: all;
 }
 
+@keyframes videoIcon {
+	0% {
+		transform: scale(0);
+	}
+
+	100% {
+		transform: scale(1);
+	}
+}
+
+
 .str-chat__message-livestream-actions {
   background: rgb(0, 0, 0);
   border: 1px solid rgb(0, 0, 0);
