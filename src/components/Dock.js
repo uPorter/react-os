@@ -145,6 +145,19 @@ function Dock({ handleAddContent }) {
         {isDockCameraOn && <Tooltip TransitionComponent={Fade} className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={
         
         <div className="photoDockHolder">
+          <Button size="sm" variant="plain" sx={{
+              fontStyle: 'bold',
+              fontWeight: 'Bold',
+              color: 'white',
+              transition: "0.5s all cubic-bezier(0, 0.2, 0.2, 1)",
+              width: "100%",
+              padding: '10px',
+              marginBottom: '-4px',
+              backgroundColor: '#00000000',
+              '&:hover': {
+                backgroundColor: '#00000000',
+              },
+            }}>Toggle</Button>
             <Button onClick={toggleCam} size="sm" variant="plain" sx={{
               fontStyle: 'bold',
               fontWeight: 'Bold',
@@ -157,7 +170,7 @@ function Dock({ handleAddContent }) {
               '&:hover': {
                 backgroundColor: '#00000040',
               },
-            }}>Toggle Local Video</Button>
+            }}>Local Video</Button>
             <Button onClick={toggleRemoteCam} size="sm" variant="plain" sx={{
               fontStyle: 'bold',
               fontWeight: 'Bold',
@@ -165,12 +178,11 @@ function Dock({ handleAddContent }) {
               width: "100%",
               color: 'white',
               padding: '10px',
-              marginBottom: '-4px',
               backgroundColor: '#00000000',
               '&:hover': {
                 backgroundColor: '#00000040',
               },
-            }}>Toggle Remote Video</Button>
+            }}>Remote Video</Button>
           </div>
         
         }>
