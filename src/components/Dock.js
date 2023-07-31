@@ -77,12 +77,10 @@ function Dock({ handleAddContent }) {
   }
   const toggleRemoteCam = () => {
     if (!isBaseCameraOn) {
-      window.sendMessageToUnityBasic("AgoraConnect", "muteLocalVideo");
-      setIsBaseCameraOn(true);
+      window.sendMessageToUnityBasic("AgoraConnect", "muteRemoteVideo");
       toast("Participants' videos have been enabled.");
     } else {
-      window.sendMessageToUnityBasic("AgoraConnect", "muteLocalVideo");
-      setIsBaseCameraOn(false);
+      window.sendMessageToUnityBasic("AgoraConnect", "muteRemoteVideo");
       toast("Participants' videos have been disabled.");
     }
   }
@@ -172,7 +170,7 @@ function Dock({ handleAddContent }) {
               '&:hover': {
                 backgroundColor: '#00000040',
               },
-            }}>Toggle Participants Video</Button>
+            }}>Toggle Remote Video</Button>
           </div>
         
         }>
