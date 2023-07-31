@@ -159,7 +159,7 @@ function Dock({ handleAddContent }) {
                 backgroundColor: '#00000000',
               },
             }}>Toggle</Button>
-            <Divider style={{ height: '2px', marginTop: '7px', marginBottom: '0px', backgroundColor: '#ffffff26' }} orientation="horizontal" />
+            <Divider style={{ height: '2px', marginTop: '1px', marginBottom: '0px', backgroundColor: '#ffffff26' }} orientation="horizontal" />
             <Button onClick={toggleCam} size="sm" variant="plain" sx={{
               fontStyle: 'bold',
               fontWeight: 'Bold',
