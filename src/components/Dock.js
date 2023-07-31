@@ -130,7 +130,7 @@ function Dock({ handleAddContent }) {
             backgroundColor: '#00000040',
           },
         }}>{buttonTextMic}</Button>}>
-          <div style={{ width: 'fit-content', height: 'fit-content',animation: 'myAnim 1s ease 0s 1 normal forwards' }} className='tooltipHover2'>
+          <div style={{ width: 'fit-content', height: 'fit-content', animation: 'videoIcon 1s ease 0s 1 normal forwards' }} className='tooltipHover2'>
             <IconButton
               id="dockButtonID"
               className="dockButtons"
