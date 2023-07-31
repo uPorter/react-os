@@ -9,11 +9,14 @@ import Tooltip from '@mui/material/Tooltip';
 import { Button } from "@mui/joy";
 import Fade from '@mui/material/Fade';
 import { useState } from 'react';
+import MicNoneOutlinedIcon from '@mui/icons-material/MicNoneOutlined';
 
 function Dock({ handleAddContent }) {
     //const { handleAddContent } = this.props;
     const initialIsScreenShareOn = localStorage.getItem('isScreenShareOn') === 'true' ? true : false;
     const [isScreenShareOn, setIsScreenShareOn] = useState(initialIsScreenShareOn);
+    const initialIsMicOn = localStorage.getItem('isMicOn') === 'true' ? true : false;
+    const [isMicOn, setIsMicOn] = useState(initialIsMicOn);
 
     const toggleScreenShare = () =>{
       if(!isScreenShareOn){
@@ -27,7 +30,20 @@ function Dock({ handleAddContent }) {
       }
     }
 
+    const toggleMic = () =>{
+      if(!isMicOn){
+        window.sendMessageToUnityBasic("AgoraConnect", "muteLocalAudio");
+        setIsMicOn(true);
+        localStorage.setItem('isMicOn', 'true');
+      }else{
+        window.sendMessageToUnityBasic("AgoraConnect", "muteLocalAudio");
+        setIsMicOn(false);
+        localStorage.setItem('isMicOn', 'false');
+      }
+    }
+
     const buttonText = isScreenShareOn ? 'Stop Screen Share' : 'Share Screen';
+    const buttonTextMic = isMicOn ? 'Mute' : 'Unmute';
     return (
       <div
         style={{
@@ -56,18 +72,28 @@ function Dock({ handleAddContent }) {
             '&:hover': {
               backgroundColor: '#00000040',
             },
-          }}>Turn on mic</Button>}>
+          }}>{buttonTextMic}</Button>}>
             <div style={{ width: 'fit-content', height: 'fit-content' }} className='tooltipHover2'>
               <IconButton
                 id="dockButtonID"
                 className="dockButtons"
+                onClick={toggleMic}
                 variant="solid"
                 sx={{
+                  color: isMicOn ? 'black' : 'white',
+                  boxShadow: isMicOn ? '0px 0px 20px 5px rgb(0 0 0 / 34%)' : '0px 0px 0px 0px rgb(0 0 0 / 34%)',
+                  backgroundColor: isMicOn ? 'white!important' : 'rgba(0, 0, 0, 0.250)',
+                  background: isMicOn ? 'white!important' : 'rgba(0, 0, 0, 0.250)',
                   "--IconButton-size": "55px",
                   "--IconButton-radius": "50px",
+                  '&:hover': {
+                    backgroundColor: isMicOn ? 'white!important' : 'rgba(0, 0, 0, 0.250)',
+                    background: isMicOn ? 'white!important' : 'rgba(0, 0, 0, 0.250)',
+                  }
                 }}
               >
-                <MicOffOutlinedIcon />
+                {!isMicOn && <MicOffOutlinedIcon />}
+                {isMicOn && <MicNoneOutlinedIcon />}
               </IconButton>
             </div>
           </Tooltip>
