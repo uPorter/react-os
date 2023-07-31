@@ -14,13 +14,14 @@ import VideocamOffOutlinedIcon from '@mui/icons-material/VideocamOffOutlined';
 import VideocamOutlinedIcon from '@mui/icons-material/VideocamOutlined';
 import { Toaster, toast } from 'sonner'
 import Divider from "@mui/joy/Divider";
+import VideocamIcon from '@mui/icons-material/Videocam';
 
 function Dock({ handleAddContent }) {
   //const { handleAddContent } = this.props;
   const initialIsScreenShareOn = localStorage.getItem('isScreenShareOn') === 'true' ? true : false;
   const [isScreenShareOn, setIsScreenShareOn] = useState(initialIsScreenShareOn);
   const initialIsMicOn = localStorage.getItem('isMicOn') === 'true' ? true : false;
-  const initialIsBaseCameraOn = localStorage.getItem('isBaseCameraOn') === 'true' ? false : true;
+  const initialIsBaseCameraOn = localStorage.getItem('isBaseCameraOn') === 'true' ? true : false;
   const [isMicOn, setIsMicOn] = useState(initialIsMicOn);
   const [isDockCameraOn, setIsDockCameraOn] = useState(false);
   const [isBaseCameraOn, setIsBaseCameraOn] = useState(initialIsBaseCameraOn);
@@ -208,7 +209,7 @@ function Dock({ handleAddContent }) {
               }}
             >
               {!isBaseCameraOn && <VideocamOffOutlinedIcon />}
-              {isBaseCameraOn && <VideocamOutlinedIcon />}
+              {isBaseCameraOn && <VideocamIcon />}
             </IconButton>
           </div>
         </Tooltip>}
