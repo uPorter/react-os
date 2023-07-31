@@ -43,6 +43,7 @@ function Dock({ handleAddContent }) {
 
       if (storedIsCameraOn !== isDockCameraOn) {
         setIsDockCameraOn(storedIsCameraOn);
+        setIsBaseCameraOn(storedIsCameraOn);
       }
     }, 100); // 1 saniye aralıkla kontrol ediyoruz
 
@@ -67,11 +68,22 @@ function Dock({ handleAddContent }) {
     if (!isBaseCameraOn) {
       window.sendMessageToUnityBasic("AgoraConnect", "muteLocalVideo");
       setIsBaseCameraOn(true);
-      toast('Local video stream enabled');
+      
     } else {
       window.sendMessageToUnityBasic("AgoraConnect", "muteLocalVideo");
       setIsBaseCameraOn(false);
-      toast('Local video stream disabled');
+      
+    }
+  }
+  const toggleRemoteCam = () => {
+    if (!isBaseCameraOn) {
+      window.sendMessageToUnityBasic("AgoraConnect", "muteLocalVideo");
+      setIsBaseCameraOn(true);
+      toast("Participants' videos have been enabled.");
+    } else {
+      window.sendMessageToUnityBasic("AgoraConnect", "muteLocalVideo");
+      setIsBaseCameraOn(false);
+      toast("Participants' videos have been disabled.");
     }
   }
 
@@ -132,17 +144,38 @@ function Dock({ handleAddContent }) {
         </Tooltip>
 
 
-        {isDockCameraOn && <Tooltip TransitionComponent={Fade} className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
-          fontStyle: 'bold',
-          fontWeight: 'Bold',
-          color: 'white',
-          padding: '10px',
-          marginBottom: '-4px',
-          backgroundColor: '#00000040',
-          '&:hover': {
-            backgroundColor: '#00000040',
-          },
-        }}>{buttonTextMic}</Button>}>
+        {isDockCameraOn && <Tooltip TransitionComponent={Fade} className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={
+        
+        <div className="photoDockHolder">
+            <Button onClick={toggleCam} size="sm" variant="plain" sx={{
+              fontStyle: 'bold',
+              fontWeight: 'Bold',
+              color: 'white',
+              transition: "0.5s all cubic-bezier(0, 0.2, 0.2, 1)",
+              width: "100%",
+              padding: '10px',
+              marginBottom: '-4px',
+              backgroundColor: '#00000000',
+              '&:hover': {
+                backgroundColor: '#00000040',
+              },
+            }}>Toggle Local Video</Button>
+            <Button onClick={toggleRemoteCam} size="sm" variant="plain" sx={{
+              fontStyle: 'bold',
+              fontWeight: 'Bold',
+              transition: "0.5s all cubic-bezier(0, 0.2, 0.2, 1)",
+              width: "100%",
+              color: 'white',
+              padding: '10px',
+              marginBottom: '-4px',
+              backgroundColor: '#00000000',
+              '&:hover': {
+                backgroundColor: '#00000040',
+              },
+            }}>Toggle Participants Video</Button>
+          </div>
+        
+        }>
           <div style={{ width: 'fit-content', height: 'fit-content', animation: 'videoIcon 0.3s ease 0s 1 normal forwards' }} className='tooltipHover2'>
             <IconButton
               id="dockButtonID"
