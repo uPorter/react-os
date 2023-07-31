@@ -9,7 +9,7 @@ import Tooltip from '@mui/material/Tooltip';
 import { Button } from "@mui/joy";
 import Fade from '@mui/material/Fade';
 import { useState } from 'react';
-import MicNoneOutlinedIcon from '@mui/icons-material/MicNoneOutlined';
+import MicOutlinedIcon from '@mui/icons-material/MicOutlined';
 
 function Dock({ handleAddContent }) {
     //const { handleAddContent } = this.props;
@@ -93,7 +93,7 @@ function Dock({ handleAddContent }) {
                 }}
               >
                 {!isMicOn && <MicOffOutlinedIcon />}
-                {isMicOn && <MicNoneOutlinedIcon />}
+                {isMicOn && <MicOutlinedIcon />}
               </IconButton>
             </div>
           </Tooltip>
