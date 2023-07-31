@@ -20,9 +20,10 @@ function Dock({ handleAddContent }) {
   const initialIsScreenShareOn = localStorage.getItem('isScreenShareOn') === 'true' ? true : false;
   const [isScreenShareOn, setIsScreenShareOn] = useState(initialIsScreenShareOn);
   const initialIsMicOn = localStorage.getItem('isMicOn') === 'true' ? true : false;
+  const initialIsBaseCameraOn = localStorage.getItem('isBaseCameraOn') === 'true' ? true : false;
   const [isMicOn, setIsMicOn] = useState(initialIsMicOn);
   const [isDockCameraOn, setIsDockCameraOn] = useState(false);
-  const [isBaseCameraOn, setIsBaseCameraOn] = useState(false);
+  const [isBaseCameraOn, setIsBaseCameraOn] = useState(initialIsBaseCameraOn);
 
 
 
@@ -44,7 +45,8 @@ function Dock({ handleAddContent }) {
 
       if (storedIsCameraOn !== isDockCameraOn) {
         setIsDockCameraOn(storedIsCameraOn);
-        setIsBaseCameraOn(storedIsCameraOn);
+        isBaseCameraOn(true);
+        localStorage.setItem('isBaseCameraOn', 'true');
       }
     }, 100); // 1 saniye aralıkla kontrol ediyoruz
 
@@ -69,11 +71,11 @@ function Dock({ handleAddContent }) {
     if (!isBaseCameraOn) {
       window.sendMessageToUnityBasic("AgoraConnect", "muteLocalVideo");
       setIsBaseCameraOn(true);
-      
+      localStorage.setItem('isBaseCameraOn', 'true');
     } else {
       window.sendMessageToUnityBasic("AgoraConnect", "muteLocalVideo");
       setIsBaseCameraOn(false);
-      
+      localStorage.setItem('isBaseCameraOn', 'false');
     }
   }
   const toggleRemoteCam = () => {
