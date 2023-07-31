@@ -43,7 +43,7 @@ function Dock({ handleAddContent }) {
       if (storedIsCameraOn !== isDockCameraOn) {
         setIsDockCameraOn(storedIsCameraOn);
       }
-    }, 500); // 1 saniye aralıkla kontrol ediyoruz
+    }, 100); // 1 saniye aralıkla kontrol ediyoruz
 
     return () => {
       clearInterval(intervalId); // Component çözüldüğünde interval'i temizliyoruz
