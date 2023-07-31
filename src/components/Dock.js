@@ -20,7 +20,7 @@ function Dock({ handleAddContent }) {
   const initialIsScreenShareOn = localStorage.getItem('isScreenShareOn') === 'true' ? true : false;
   const [isScreenShareOn, setIsScreenShareOn] = useState(initialIsScreenShareOn);
   const initialIsMicOn = localStorage.getItem('isMicOn') === 'true' ? true : false;
-  const initialIsBaseCameraOn = localStorage.getItem('isBaseCameraOn') === 'true' ? true : false;
+  const initialIsBaseCameraOn = localStorage.getItem('isBaseCameraOn') === 'true' ? false : true;
   const [isMicOn, setIsMicOn] = useState(initialIsMicOn);
   const [isDockCameraOn, setIsDockCameraOn] = useState(false);
   const [isBaseCameraOn, setIsBaseCameraOn] = useState(initialIsBaseCameraOn);
@@ -45,8 +45,6 @@ function Dock({ handleAddContent }) {
 
       if (storedIsCameraOn !== isDockCameraOn) {
         setIsDockCameraOn(storedIsCameraOn);
-        setIsBaseCameraOn(true);
-        localStorage.setItem('isBaseCameraOn', 'true');
       }
     }, 100); // 1 saniye aralıkla kontrol ediyoruz
 
