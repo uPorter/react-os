@@ -150,7 +150,7 @@ const ChatComponent = (props) => {
             <Window hideOnThread>
               <ChannelHeader live />
               <MessageList />
-              <MessageInput Input={MessageInputSmall} onSubmit={testClick} focus />
+              <MessageInput Input={MessageInputSmall} onSubmit={testClick}/>
               <CameraMode sendMessage={sendMessage} />
               <Tooltip TransitionComponent={Fade} className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
                 fontStyle: 'bold',
