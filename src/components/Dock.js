@@ -45,7 +45,7 @@ function Dock({ handleAddContent }) {
 
       if (storedIsCameraOn !== isDockCameraOn) {
         setIsDockCameraOn(storedIsCameraOn);
-        isBaseCameraOn(true);
+        setIsBaseCameraOn(true);
         localStorage.setItem('isBaseCameraOn', 'true');
       }
     }, 100); // 1 saniye aralıkla kontrol ediyoruz
