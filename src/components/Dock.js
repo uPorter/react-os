@@ -67,11 +67,11 @@ function Dock({ handleAddContent }) {
     if (!isBaseCameraOn) {
       window.sendMessageToUnityBasic("AgoraConnect", "muteLocalVideo");
       setIsBaseCameraOn(true);
-      toast.success('Local video stream enabled')
+      toast('Local video stream enabled');
     } else {
       window.sendMessageToUnityBasic("AgoraConnect", "muteLocalVideo");
       setIsBaseCameraOn(false);
-      toast.success('Local video stream disabled')
+      toast('Local video stream disabled');
     }
   }
 
@@ -150,20 +150,20 @@ function Dock({ handleAddContent }) {
               onClick={toggleCam}
               variant="solid"
               sx={{
-                color: isMicOn ? 'black' : 'white',
-                boxShadow: isMicOn ? '0px 0px 20px 5px rgb(0 0 0 / 34%)' : '0px 0px 0px 0px rgb(0 0 0 / 34%)',
-                backgroundColor: isMicOn ? 'white!important' : 'rgba(0, 0, 0, 0.250)',
-                background: isMicOn ? 'white!important' : 'rgba(0, 0, 0, 0.250)',
+                color: isBaseCameraOn ? 'black' : 'white',
+                boxShadow: isBaseCameraOn ? '0px 0px 20px 5px rgb(0 0 0 / 34%)' : '0px 0px 0px 0px rgb(0 0 0 / 34%)',
+                backgroundColor: isBaseCameraOn ? 'white!important' : 'rgba(0, 0, 0, 0.250)',
+                background: isBaseCameraOn ? 'white!important' : 'rgba(0, 0, 0, 0.250)',
                 "--IconButton-size": "55px",
                 "--IconButton-radius": "50px",
                 '&:hover': {
-                  backgroundColor: isMicOn ? 'white!important' : 'rgba(0, 0, 0, 0.250)',
-                  background: isMicOn ? 'white!important' : 'rgba(0, 0, 0, 0.250)',
+                  backgroundColor: isBaseCameraOn ? 'white!important' : 'rgba(0, 0, 0, 0.250)',
+                  background: isBaseCameraOn ? 'white!important' : 'rgba(0, 0, 0, 0.250)',
                 }
               }}
             >
-              {!isMicOn && <VideocamOffOutlinedIcon />}
-              {isMicOn && <VideocamOutlinedIcon />}
+              {!isBaseCameraOn && <VideocamOffOutlinedIcon />}
+              {isBaseCameraOn && <VideocamOutlinedIcon />}
             </IconButton>
           </div>
         </Tooltip>}
