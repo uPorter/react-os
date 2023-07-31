@@ -68,7 +68,6 @@ function Dock({ handleAddContent }) {
       window.sendMessageToUnityBasic("AgoraConnect", "muteLocalVideo");
       setIsBaseCameraOn(true);
       toast.success('Local video stream enabled')
-      toa
     } else {
       window.sendMessageToUnityBasic("AgoraConnect", "muteLocalVideo");
       setIsBaseCameraOn(false);
