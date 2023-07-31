@@ -98,6 +98,21 @@
 	<canvas id="myCanvas" height="450" width="450" style="display: none;"></canvas>
   <script src="/external-scripts/ReadyPlayerMeFrame.js"></script>
   <script src="/external-scripts/Global.js"></script>
+  <script>
+    function gecenSureyiYazdir() {
+        let saniye = 0;
+
+        function sayacArttir() {
+            saniye++;
+            console.log("Geçen süre: " + saniye + " saniye");
+        }
+
+        setInterval(sayacArttir, 1000); // Her saniye sayacArttir fonksiyonunu çağıracak
+    }
+
+    // Fonksiyonu çağırmak için:
+    gecenSureyiYazdir();
+</script>
 </body>
 
 </html>
