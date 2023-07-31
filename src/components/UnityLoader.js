@@ -156,6 +156,7 @@ const UnityLoader = () => {
       sendMessage("AvatarNick", "TestSetMethod", userName);
       sendMessage("AgoraConnect", "muteLocalAudio");
       localStorage.setItem('isMicOn', 'false');
+      localStorage.setItem('isCameraOn', 'false');
       console.log(name);
       console.log(id);
       localStorage.setItem('isScreenShareOn', 'false');

@@ -31,13 +31,15 @@ const ChatComponent = (props) => {
   const [isActive, setIsActive] = useState(true);
   const [toggleChatText, setToggleChatText] = useState('Hide Chat')
   const [checked, setChecked] = useState(false);
-  const [isCameraOn, setIsCameraOn] = useState(false);
+  const initialIsCameraOn = localStorage.getItem('isCameraOn') === 'true' ? true : false;
+  const [isCameraOn, setIsCameraOn] = useState(initialIsCameraOn);
 
   const handleChange = (event) => {
     const newValue = event.target.checked;
     setIsCameraOn(newValue);
     // Kameranın durumunu değiştirdiğimizde handleIsStartedChange fonksiyonunu çağırıyoruz
     sendMessage("VideoHolder", "ToggleObjectState");
+    localStorage.setItem('isCameraOn', newValue.toString());
   };
 
 
@@ -122,14 +124,18 @@ const ChatComponent = (props) => {
   const handleTooltipOpen = () => {
     document.querySelector('.avatarProfile').classList.add('avatarProfileonOpen');
     setIsActive(true);
-    toggleChat();
+    if(isActive){
+      toggleChat();
+    }
   };
 
   const handleTooltipClose = () => {
     document.querySelector('.avatarProfile').classList.remove('avatarProfileonOpen');
     document.querySelector('.avatarProfile').classList.add('avatarProfileonClose');
     setIsActive(false);
-    toggleChat();
+    if(!isActive){
+      toggleChat();
+    }
   };
 
   const testClick = () => {
