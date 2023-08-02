@@ -69,22 +69,22 @@ function Dock({ handleAddContent }) {
 
   const toggleCam = () => {
     if (!isBaseCameraOn) {
-      window.sendMessageToUnity("AgoraConnect", "muteLocalVideo", "true");
+      window.sendMessageToUnity("AgoraConnect", "muteLocalVideo", "false");
       setIsBaseCameraOn(true);
       localStorage.setItem('isBaseCameraOn', 'true');
     } else {
-      window.sendMessageToUnity("AgoraConnect", "muteLocalVideo", "false");
+      window.sendMessageToUnity("AgoraConnect", "muteLocalVideo", "true");
       setIsBaseCameraOn(false);
       localStorage.setItem('isBaseCameraOn', 'false');
     }
   }
   const toggleRemoteCam = () => {
     if (!isRemoteVideoOn) {
-      window.sendMessageToUnity("AgoraConnect", "muteRemoteVideo", "true");
+      window.sendMessageToUnity("AgoraConnect", "muteRemoteVideo", "false");
       toast("Remote Video Stream Enabled");
       setIsRemoteVideoOn(true);
     } else {
-      window.sendMessageToUnity("AgoraConnect", "muteRemoteVideo", "false");
+      window.sendMessageToUnity("AgoraConnect", "muteRemoteVideo", "true");
       toast("Remote Video Stream Disabled");
       setIsRemoteVideoOn(false);
     }
