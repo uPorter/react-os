@@ -28,7 +28,7 @@ import Tooltip from '@mui/material/Tooltip';
 import Fade from '@mui/material/Fade';
 
 
-const chatClient = StreamChat.getInstance('tj5s8c5z6vg3');
+const chatClient = StreamChat.getInstance('7q2yg6eutsf9');
 
 const UnityLoader = () => {
   const { spaceName, name, id, admin } = useParams();
@@ -239,8 +239,8 @@ const UnityLoader = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          apiKey: 'tj5s8c5z6vg3',
-          apiSecret: '5pbyrg6c9jfyx6uc2p2h382x9t7k6mce7vjtz3xp6n9smxqd97tfsg2c4u5j3cmf',
+          apiKey: '7q2yg6eutsf9',
+          apiSecret: 'uy8xbg6m4b7r28amk7vm83a5fzqsy37hyn4zjuykzqyzrjx4jtet892msmy476tq',
           userId: userID,
         }),
       });
