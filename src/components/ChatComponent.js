@@ -18,7 +18,7 @@ import AccessibilityNewOutlinedIcon from '@mui/icons-material/AccessibilityNewOu
 import VideocamOutlinedIcon from '@mui/icons-material/VideocamOutlined';
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
 import Divider from '@mui/joy/Divider';
-import Switch from '@mui/joy/Switch';
+import Switch, { switchClasses } from '@mui/joy/Switch';
 import Typography from '@mui/joy/Typography';
 import ManageAccountsOutlinedIcon from '@mui/icons-material/ManageAccountsOutlined';
 import CameraMode from './CamManager/CameraMode';
