@@ -58,12 +58,12 @@ function Dock({ handleAddContent }) {
   const toggleMic = () => {
     if (!isMicOn) {
       window.sendMessageToUnity("AgoraConnect", "muteLocalAudio" , "false");
-      setIsMicOn(false);
-      localStorage.setItem('isMicOn', 'false');
-    } else {
-      window.sendMessageToUnity("AgoraConnect", "muteLocalAudio", "true");
       setIsMicOn(true);
       localStorage.setItem('isMicOn', 'true');
+    } else {
+      window.sendMessageToUnity("AgoraConnect", "muteLocalAudio", "true");
+      setIsMicOn(false);
+      localStorage.setItem('isMicOn', 'false');
     }
   }
 
