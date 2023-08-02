@@ -82,6 +82,8 @@ const UnityLoader = () => {
     setObjectNameReact(setObjectName);
   }, []);
 
+  
+
   const handleAddContent = () => {
     setUploadOpen(true);
   }
@@ -357,6 +359,8 @@ const UnityLoader = () => {
       removeEventListener("EditorInActive", handleEditorInMode);
     };
   }, [addEventListener, removeEventListener, handleEditorInMode]);
+
+
 
 
   const Item = styled(Sheet)(({ theme }) => ({

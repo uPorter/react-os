@@ -25,7 +25,8 @@ function Dock({ handleAddContent }) {
   const [isMicOn, setIsMicOn] = useState(initialIsMicOn);
   const [isDockCameraOn, setIsDockCameraOn] = useState(false);
   const [isBaseCameraOn, setIsBaseCameraOn] = useState(initialIsBaseCameraOn);
-
+  const initalIsRemoteVideoOn = localStorage.getItem('isRemoteVideoOn') === 'true' ? true : false;
+  const [isRemoteVideoOn, setIsRemoteVideoOn] = useState(initalIsRemoteVideoOn);
 
 
   const toggleScreenShare = () => {
@@ -56,11 +57,11 @@ function Dock({ handleAddContent }) {
 
   const toggleMic = () => {
     if (!isMicOn) {
-      window.sendMessageToUnityBasic("AgoraConnect", "muteLocalAudio");
+      window.sendMessageToUnity("AgoraConnect", "muteLocalAudio", "true");
       setIsMicOn(true);
       localStorage.setItem('isMicOn', 'true');
     } else {
-      window.sendMessageToUnityBasic("AgoraConnect", "muteLocalAudio");
+      window.sendMessageToUnity("AgoraConnect", "muteLocalAudio" , "false");
       setIsMicOn(false);
       localStorage.setItem('isMicOn', 'false');
     }
@@ -68,22 +69,24 @@ function Dock({ handleAddContent }) {
 
   const toggleCam = () => {
     if (!isBaseCameraOn) {
-      window.sendMessageToUnityBasic("AgoraConnect", "muteLocalVideo");
+      window.sendMessageToUnity("AgoraConnect", "muteLocalVideo", "true");
       setIsBaseCameraOn(true);
       localStorage.setItem('isBaseCameraOn', 'true');
     } else {
-      window.sendMessageToUnityBasic("AgoraConnect", "muteLocalVideo");
+      window.sendMessageToUnity("AgoraConnect", "muteLocalVideo", "false");
       setIsBaseCameraOn(false);
       localStorage.setItem('isBaseCameraOn', 'false');
     }
   }
   const toggleRemoteCam = () => {
-    if (!isBaseCameraOn) {
-      window.sendMessageToUnityBasic("AgoraConnect", "muteRemoteVideo");
-      toast("Participants' videos have been enabled.");
+    if (!isRemoteVideoOn) {
+      window.sendMessageToUnity("AgoraConnect", "muteRemoteVideo", "true");
+      toast("Remote Video Stream Enabled");
+      setIsRemoteVideoOn(true);
     } else {
-      window.sendMessageToUnityBasic("AgoraConnect", "muteRemoteVideo");
-      toast("Participants' videos have been disabled.");
+      window.sendMessageToUnity("AgoraConnect", "muteRemoteVideo", "false");
+      toast("Remote Video Stream Disabled");
+      setIsRemoteVideoOn(false);
     }
   }
 

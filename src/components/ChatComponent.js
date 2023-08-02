@@ -202,7 +202,11 @@ const ChatComponent = (props) => {
                         <div style={{ marginTop: '7px', marginBottom: '7px' }} className='editavatarContainer'>
                           <VideocamOutlinedIcon style={{ marginLeft: '25px', color: 'white' }} />
                           <Button style={{ position: 'static', background: 'transparent', color: 'white' }} >Toggle Webcam</Button>
-                          <Switch style={{
+                          <Switch sx={{
+                            [`& .${switchClasses.thumb}`]: {
+                              transition: 'width 0.2s, left 0.2s',
+                            }
+                          }} style={{
                             marginLeft: '25px',
                             borderStyle: "solid",
                             borderColor: "#ffffff80",
