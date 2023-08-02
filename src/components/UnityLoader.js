@@ -156,7 +156,7 @@ const UnityLoader = () => {
       console.clear();
       sendMessage("AvatarNick", "enableInput");
       sendMessage("AvatarNick", "TestSetMethod", userName);
-      sendMessage("AgoraConnect", "muteLocalAudio");
+      sendMessage("AgoraConnect", "muteLocalAudio", "true");
       localStorage.setItem('isMicOn', 'false');
       localStorage.setItem('isCameraOn', 'false');
       localStorage.setItem('isBaseCameraOn', 'true');
