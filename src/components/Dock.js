@@ -56,7 +56,7 @@ function Dock({ handleAddContent }) {
   }, [isDockCameraOn]);
 
   const toggleMic = () => {
-    if (!isMicOn) {
+    if (isMicOn) {
       window.sendMessageToUnity("AgoraConnect", "muteLocalAudio", "true");
       setIsMicOn(true);
       localStorage.setItem('isMicOn', 'true');
