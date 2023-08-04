@@ -41,7 +41,7 @@ export class EditDock extends Component {
             zIndex: "15",
           }}
         >
-          <EditTooltip TransitionComponent={Fade} className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
+          <EditTooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
             fontStyle: 'bold',
             fontWeight: 'Bold',
             color: 'white',
@@ -51,27 +51,18 @@ export class EditDock extends Component {
             '&:hover': {
               backgroundColor: '#00000040',
             },
-          }}>{buttonTextMic}</Button>}>
+          }}>Hello</Button>}>
             <div style={{ width: 'fit-content', height: 'fit-content' }} className='tooltipHover2'>
               <IconButton
                 id="dockButtonID"
-                className="dockButtons"
+                className="dockButtonsEditor"
                 variant="solid"
                 sx={{
-                  color: isMicOn ? 'black' : 'white',
-                  boxShadow: isMicOn ? '0px 0px 20px 5px rgb(0 0 0 / 34%)' : '0px 0px 0px 0px rgb(0 0 0 / 34%)',
-                  backgroundColor: isMicOn ? 'white!important' : 'rgba(0, 0, 0, 0.250)',
-                  background: isMicOn ? 'white!important' : 'rgba(0, 0, 0, 0.250)',
                   "--IconButton-size": "55px",
                   "--IconButton-radius": "50px",
-                  '&:hover': {
-                    backgroundColor: isMicOn ? 'white!important' : 'rgba(0, 0, 0, 0.250)',
-                    background: isMicOn ? 'white!important' : 'rgba(0, 0, 0, 0.250)',
-                  }
                 }}
               >
-                {!isMicOn && <MicOffOutlinedIcon />}
-                {isMicOn && <MicOutlinedIcon />}
+                <DownloadIcon />
               </IconButton>
             </div>
           </EditTooltip>
