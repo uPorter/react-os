@@ -12,7 +12,7 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 
 export class EditDock extends Component {
   render() {
-    const { handleEditBar, objectName,isLocked,setIsLocked } = this.props;
+    const { handleEditBar, objectName, isLocked, setIsLocked } = this.props;
     const SetEnvironmentModel = () => {
       window.sendMessageToUnityBasic(objectName, "SetEnvironmentModel");
     }
@@ -27,7 +27,10 @@ export class EditDock extends Component {
 
     const lockedStateManager = () => {
       window.sendMessageToUnityBasic(objectName, "setLocked");
+      setIsLocked(!isLocked);
     }
+
+    const buttonTextLock = isLocked ? 'Lock' : 'Unlock';
 
     return (
       <div
@@ -46,7 +49,7 @@ export class EditDock extends Component {
             zIndex: "15",
           }}
         >
-          <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
+          {!isLocked && <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
             fontStyle: 'bold',
             fontWeight: 'Bold',
             color: 'white',
@@ -70,105 +73,153 @@ export class EditDock extends Component {
                 <DownloadIcon />
               </IconButton>
             </div>
+          </Tooltip>}
+
+          <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
+            fontStyle: 'bold',
+            fontWeight: 'Bold',
+            color: 'white',
+            padding: '10px',
+            marginBottom: '-4px',
+            backgroundColor: '#0046ff40',
+            '&:hover': {
+              backgroundColor: '#0046ff40',
+            },
+          }}>{buttonTextLock}</Button>}>
+            <div style={{ width: 'fit-content', height: 'fit-content' }} className='tooltipHover2'>
+              <IconButton
+                id="dockButtonID"
+                onClick={lockedStateManager}
+                className="dockButtonsEditor"
+                variant="solid"
+                sx={{
+                  "--IconButton-size": "55px",
+                  "--IconButton-radius": "50px",
+                }}
+              >
+                {isLocked && <LockIcon />}
+                {!isLocked && <LockOpenIcon />}
+              </IconButton>
+            </div>
           </Tooltip>
 
-          <IconButton
-            id="dockButtonID"
-            onClick={lockedStateManager}
-            className="dockButtonsEditor"
-            variant="solid"
-            sx={{
-              "--IconButton-size": "55px",
-              "--IconButton-radius": "50px",
-            }}
-          >
-            {isLocked && <LockIcon/>}
-            {!isLocked && <LockOpenIcon/>}
-          </IconButton>
+          {!isLocked && <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
+            fontStyle: 'bold',
+            fontWeight: 'Bold',
+            color: 'white',
+            padding: '10px',
+            marginBottom: '-4px',
+            backgroundColor: '#0046ff40',
+            '&:hover': {
+              backgroundColor: '#0046ff40',
+            },
+          }}>Edit</Button>}>
+            <div style={{ width: 'fit-content', height: 'fit-content' }} className='tooltipHover2'>
+              <IconButton
+                id="dockButtonID"
+                onClick={handleEditBar}
+                className="dockButtonsEditor"
+                variant="solid"
+                sx={{
+                  "--IconButton-size": "55px",
+                  "--IconButton-radius": "50px",
+                }}
+              >
+                <ModeEditIcon />
+              </IconButton>
+            </div>
+          </Tooltip>}
 
-          <IconButton
-            id="dockButtonID"
-            onClick={handleEditBar}
-            className="dockButtonsEditor"
-            variant="solid"
-            sx={{
-              "--IconButton-size": "55px",
-              "--IconButton-radius": "50px",
-            }}
-          >
-            <ModeEditIcon />
-          </IconButton>
 
-          <IconButton
-            id="dockButtonID"
-            className="dockButtonsEditor"
-            variant="solid"
-            sx={{
-              "--IconButton-size": "55px",
-              "--IconButton-radius": "50px",
-            }}
-          >
-            <InfoIcon />
-          </IconButton>
+          {!isLocked && <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
+            fontStyle: 'bold',
+            fontWeight: 'Bold',
+            color: 'white',
+            padding: '10px',
+            marginBottom: '-4px',
+            backgroundColor: '#0046ff40',
+            '&:hover': {
+              backgroundColor: '#0046ff40',
+            },
+          }}>Info</Button>}>
+            <div style={{ width: 'fit-content', height: 'fit-content' }} className='tooltipHover2'>
+              <IconButton
+                id="dockButtonID"
+                className="dockButtonsEditor"
+                variant="solid"
+                sx={{
+                  "--IconButton-size": "55px",
+                  "--IconButton-radius": "50px",
+                }}
+              >
+                <InfoIcon />
+              </IconButton>
+            </div>
+          </Tooltip>}
 
-          <IconButton
-            id="dockButtonID"
-            onClick={duplicateModel}
-            className="dockButtonsEditor"
-            variant="solid"
-            sx={{
-              "--IconButton-size": "55px",
-              "--IconButton-radius": "50px",
-            }}
-          >
-            <img
-              style={{
-                width: "27px",
-                height: "27px",
-                verticalAlign: "middle",
-                marginBottom: "1px",
-              }}
-              alt="Duplicate"
-              src="https://www.spatial.io/_next/static/media/duplicate@2x.089e3183.png"
-              className="selected-object-buttons_icon__vNK_0"
-            />
-          </IconButton>
+          <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
+            fontStyle: 'bold',
+            fontWeight: 'Bold',
+            color: 'white',
+            padding: '10px',
+            marginBottom: '-4px',
+            backgroundColor: '#0046ff40',
+            '&:hover': {
+              backgroundColor: '#0046ff40',
+            },
+          }}>Duplicate</Button>}>
+            <div style={{ width: 'fit-content', height: 'fit-content' }} className='tooltipHover2'>
+              <IconButton
+                id="dockButtonID"
+                onClick={duplicateModel}
+                className="dockButtonsEditor"
+                variant="solid"
+                sx={{
+                  "--IconButton-size": "55px",
+                  "--IconButton-radius": "50px",
+                }}
+              >
+                <img
+                  style={{
+                    width: "27px",
+                    height: "27px",
+                    verticalAlign: "middle",
+                    marginBottom: "1px",
+                  }}
+                  alt="Duplicate"
+                  src="https://www.spatial.io/_next/static/media/duplicate@2x.089e3183.png"
+                  className="selected-object-buttons_icon__vNK_0"
+                />
+              </IconButton>
+            </div>
+          </Tooltip>
 
-          <IconButton
-            id="dockButtonID"
-            className="dockButtonsEditor"
-            onClick={SetEnvironmentModel}
-            variant="solid"
-            sx={{
-              "--IconButton-size": "55px",
-              "--IconButton-radius": "50px",
-            }}
-          >
-            <img
-              style={{
-                width: "27px",
-                height: "27px",
-                verticalAlign: "middle",
-                marginBottom: "1px",
-              }}
-              alt="Duplicate"
-              src="https://www.spatial.io/_next/static/media/custom-environment@2x.03b69899.png"
-              className="selected-object-buttons_icon__vNK_0"
-            />
-          </IconButton>
-
-          <IconButton
-            id="dockButtonID"
-            onClick={destroyModel}
-            className="dockButtonsEditor"
-            variant="solid"
-            sx={{
-              "--IconButton-size": "55px",
-              "--IconButton-radius": "50px",
-            }}
-          >
-            <DeleteOutlineIcon style={{ width: "27px", height: "27px" }} />
-          </IconButton>
+          <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
+            fontStyle: 'bold',
+            fontWeight: 'Bold',
+            color: 'white',
+            padding: '10px',
+            marginBottom: '-4px',
+            backgroundColor: '#0046ff40',
+            '&:hover': {
+              backgroundColor: '#0046ff40',
+            },
+          }}>Duplicate</Button>}>
+            <div style={{ width: 'fit-content', height: 'fit-content' }} className='tooltipHover2'>
+              <IconButton
+                id="dockButtonID"
+                onClick={destroyModel}
+                className="dockButtonsEditor"
+                variant="solid"
+                sx={{
+                  "--IconButton-size": "55px",
+                  "--IconButton-radius": "50px",
+                }}
+              >
+                <DeleteOutlineIcon style={{ width: "27px", height: "27px" }} />
+              </IconButton>
+            </div>
+          </Tooltip>
         </Box>
       </div>
     );
