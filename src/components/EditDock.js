@@ -3,6 +3,7 @@ import Box from "@mui/joy/Box";
 import IconButton from "@mui/joy/IconButton";
 import DownloadIcon from "@mui/icons-material/Download";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
+import LockIcon from '@mui/icons-material/Lock';
 import Tooltip from '@mui/material/Tooltip';
 import { Button } from "@mui/joy";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
@@ -11,7 +12,7 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 
 export class EditDock extends Component {
   render() {
-    const { handleEditBar, objectName } = this.props;
+    const { handleEditBar, objectName,isLocked,setIsLocked } = this.props;
     const SetEnvironmentModel = () => {
       window.sendMessageToUnityBasic(objectName, "SetEnvironmentModel");
     }
@@ -22,6 +23,10 @@ export class EditDock extends Component {
 
     const destroyModel = () => {
       window.sendMessageToUnityBasic(objectName + "_parent", "DestroySelf");
+    }
+
+    const lockedStateManager = () => {
+      window.sendMessageToUnityBasic(objectName, "setLocked");
     }
 
     return (
@@ -69,6 +74,7 @@ export class EditDock extends Component {
 
           <IconButton
             id="dockButtonID"
+            onClick={lockedStateManager}
             className="dockButtonsEditor"
             variant="solid"
             sx={{
@@ -76,7 +82,8 @@ export class EditDock extends Component {
               "--IconButton-radius": "50px",
             }}
           >
-            <LockOpenIcon />
+            {isLocked && <LockIcon/>}
+            {!isLocked && <LockOpenIcon/>}
           </IconButton>
 
           <IconButton

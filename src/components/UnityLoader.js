@@ -70,6 +70,7 @@ const UnityLoader = () => {
   const [objectName, setObjectNameReact] = useState('');
   const [isDockEditorMode, setIsDockEditorMode] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [isLocked, setIsLocked] = useState(false);
 
   useEffect(() => {
     addEventListener("setObjectName", handleObjectName);
@@ -361,6 +362,31 @@ const UnityLoader = () => {
   }, [addEventListener, removeEventListener, handleEditorInMode]);
 
 
+  useEffect(() => {
+    addEventListener("isLockedTrue", handleisLockedTrue);
+
+    return () => {
+      removeEventListener("isLockedTrue", handleisLockedTrue);
+    };
+  }, [addEventListener, removeEventListener, handleisLockedTrue]);
+
+  const handleisLockedTrue = () => {
+    setIsLocked(true);
+  }
+
+  useEffect(() => {
+    addEventListener("isLockedFalse", handleisLockedFalse);
+
+    return () => {
+      removeEventListener("isLockedFalse", handleisLockedFalse);
+    };
+  }, [addEventListener, removeEventListener, handleisLockedFalse]);
+
+  const handleisLockedFalse = () => {
+    setIsLocked(false);
+  }
+
+
 
 
   const Item = styled(Sheet)(({ theme }) => ({
@@ -588,7 +614,7 @@ const UnityLoader = () => {
                   </div>)}
               </Grid>
               <Grid xs={6}>
-                {isDockEditorMode && <EditDock objectName={objectName} handleEditBar={handleEditBar} handleAddContent={handleAddContent}></EditDock>}
+                {isDockEditorMode && <EditDock isLocked={isLocked} setIsLocked={setIsLocked} objectName={objectName} handleEditBar={handleEditBar} handleAddContent={handleAddContent}></EditDock>}
                 {!isDockEditorMode && isAdmin && <Dock handleAddContent={handleAddContent}></Dock>}
                 {!isAdmin && <GuestDock handleAddContent={handleAddContent}></GuestDock>}
               </Grid>
