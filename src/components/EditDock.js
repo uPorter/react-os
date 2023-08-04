@@ -30,7 +30,7 @@ export class EditDock extends Component {
       setIsLocked(!isLocked);
     }
 
-    const buttonTextLock = isLocked ? 'Lock' : 'Unlock';
+    const buttonTextLock = isLocked ? 'Unlock' : 'Lock';
 
     return (
       <div
@@ -204,7 +204,7 @@ export class EditDock extends Component {
             '&:hover': {
               backgroundColor: '#0046ff40',
             },
-          }}>Duplicate</Button>}>
+          }}>Delete</Button>}>
             <div style={{ width: 'fit-content', height: 'fit-content' }} className='tooltipHover2'>
               <IconButton
                 id="dockButtonID"
