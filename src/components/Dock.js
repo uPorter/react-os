@@ -7,7 +7,6 @@ import PresentToAllOutlinedIcon from "@mui/icons-material/PresentToAllOutlined";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import Tooltip from '@mui/material/Tooltip';
 import { Button } from "@mui/joy";
-import Fade from '@mui/material/Fade';
 import { useState,useEffect } from 'react';
 import MicOutlinedIcon from '@mui/icons-material/MicOutlined';
 import VideocamOffOutlinedIcon from '@mui/icons-material/VideocamOffOutlined';
@@ -110,7 +109,7 @@ function Dock({ handleAddContent }) {
         }}
       >
 
-        <Tooltip TransitionComponent={Fade} className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
+        <Tooltip   className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
           fontStyle: 'bold',
           fontWeight: 'Bold',
           color: 'white',
@@ -147,7 +146,7 @@ function Dock({ handleAddContent }) {
         </Tooltip>
 
 
-        {isDockCameraOn && <Tooltip TransitionComponent={Fade} className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={
+        {isDockCameraOn && <Tooltip   className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={
         
         <div className="photoDockHolder">
           <Button size="sm" variant="plain" sx={{
@@ -217,7 +216,7 @@ function Dock({ handleAddContent }) {
           </div>
         </Tooltip>}
 
-        <Tooltip TransitionComponent={Fade} className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
+        <Tooltip   className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
           fontStyle: 'bold',
           fontWeight: 'Bold',
           color: 'white',
@@ -280,7 +279,7 @@ function Dock({ handleAddContent }) {
           </div>
         </Tooltip>
 
-        <Tooltip TransitionComponent={Fade} className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={
+        <Tooltip   className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={
           <div className="photoDockHolder">
             <Button size="sm" variant="plain" sx={{
               fontStyle: 'bold',
@@ -337,7 +336,7 @@ function Dock({ handleAddContent }) {
           </div>
         </Tooltip>
 
-        <Tooltip TransitionComponent={Fade} className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button onClick={toggleScreenShare} size="sm" variant="plain" sx={{
+        <Tooltip   className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button onClick={toggleScreenShare} size="sm" variant="plain" sx={{
           fontStyle: 'bold',
           fontWeight: 'Bold',
           color: 'white',
@@ -372,7 +371,7 @@ function Dock({ handleAddContent }) {
           </div>
         </Tooltip>
 
-        <Tooltip TransitionComponent={Fade} className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
+        <Tooltip   className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
           fontStyle: 'bold',
           fontWeight: 'Bold',
           color: 'white',

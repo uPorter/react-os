@@ -3,7 +3,7 @@ import Box from "@mui/joy/Box";
 import IconButton from "@mui/joy/IconButton";
 import DownloadIcon from "@mui/icons-material/Download";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
-import EditTooltip from "./EditTooltip";
+import Tooltip from "./mui/material/Tooltip";
 import { Button } from "@mui/joy";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import InfoIcon from "@mui/icons-material/Info";
@@ -41,17 +41,17 @@ export class EditDock extends Component {
             zIndex: "15",
           }}
         >
-          <EditTooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
+          <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
             fontStyle: 'bold',
             fontWeight: 'Bold',
             color: 'white',
             padding: '10px',
             marginBottom: '-4px',
-            backgroundColor: '#00000040',
+            backgroundColor: '#0046ff40',
             '&:hover': {
-              backgroundColor: '#00000040',
+              backgroundColor: '#0046ff40',
             },
-          }}>Hello</Button>}>
+          }}>Download Model</Button>}>
             <div style={{ width: 'fit-content', height: 'fit-content' }} className='tooltipHover2'>
               <IconButton
                 id="dockButtonID"
@@ -65,19 +65,7 @@ export class EditDock extends Component {
                 <DownloadIcon />
               </IconButton>
             </div>
-          </EditTooltip>
-
-          <IconButton
-            id="dockButtonID"
-            className="dockButtonsEditor"
-            variant="solid"
-            sx={{
-              "--IconButton-size": "55px",
-              "--IconButton-radius": "50px",
-            }}
-          >
-            <DownloadIcon />
-          </IconButton>
+          </Tooltip>
 
           <IconButton
             id="dockButtonID"
