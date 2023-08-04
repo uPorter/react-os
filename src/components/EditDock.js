@@ -3,7 +3,7 @@ import Box from "@mui/joy/Box";
 import IconButton from "@mui/joy/IconButton";
 import DownloadIcon from "@mui/icons-material/Download";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
-import Tooltip from "./mui/material/Tooltip";
+import Tooltip from '@mui/material/Tooltip';
 import { Button } from "@mui/joy";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import InfoIcon from "@mui/icons-material/Info";
