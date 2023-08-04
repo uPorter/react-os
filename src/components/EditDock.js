@@ -3,23 +3,25 @@ import Box from "@mui/joy/Box";
 import IconButton from "@mui/joy/IconButton";
 import DownloadIcon from "@mui/icons-material/Download";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
+import EditTooltip from "./EditTooltip";
+import { Button } from "@mui/joy";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import InfoIcon from "@mui/icons-material/Info";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 
 export class EditDock extends Component {
   render() {
-    const { handleEditBar,objectName } = this.props;
-    const SetEnvironmentModel = () =>{
+    const { handleEditBar, objectName } = this.props;
+    const SetEnvironmentModel = () => {
       window.sendMessageToUnityBasic(objectName, "SetEnvironmentModel");
     }
 
-    const duplicateModel = () =>{
-      window.sendMessageToUnityBasic(objectName + "_parent","DuplicateSelf");
+    const duplicateModel = () => {
+      window.sendMessageToUnityBasic(objectName + "_parent", "DuplicateSelf");
     }
 
-    const destroyModel = () =>{
-      window.sendMessageToUnityBasic(objectName + "_parent","DestroySelf");
+    const destroyModel = () => {
+      window.sendMessageToUnityBasic(objectName + "_parent", "DestroySelf");
     }
 
     return (
@@ -39,6 +41,41 @@ export class EditDock extends Component {
             zIndex: "15",
           }}
         >
+          <EditTooltip TransitionComponent={Fade} className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
+            fontStyle: 'bold',
+            fontWeight: 'Bold',
+            color: 'white',
+            padding: '10px',
+            marginBottom: '-4px',
+            backgroundColor: '#00000040',
+            '&:hover': {
+              backgroundColor: '#00000040',
+            },
+          }}>{buttonTextMic}</Button>}>
+            <div style={{ width: 'fit-content', height: 'fit-content' }} className='tooltipHover2'>
+              <IconButton
+                id="dockButtonID"
+                className="dockButtons"
+                variant="solid"
+                sx={{
+                  color: isMicOn ? 'black' : 'white',
+                  boxShadow: isMicOn ? '0px 0px 20px 5px rgb(0 0 0 / 34%)' : '0px 0px 0px 0px rgb(0 0 0 / 34%)',
+                  backgroundColor: isMicOn ? 'white!important' : 'rgba(0, 0, 0, 0.250)',
+                  background: isMicOn ? 'white!important' : 'rgba(0, 0, 0, 0.250)',
+                  "--IconButton-size": "55px",
+                  "--IconButton-radius": "50px",
+                  '&:hover': {
+                    backgroundColor: isMicOn ? 'white!important' : 'rgba(0, 0, 0, 0.250)',
+                    background: isMicOn ? 'white!important' : 'rgba(0, 0, 0, 0.250)',
+                  }
+                }}
+              >
+                {!isMicOn && <MicOffOutlinedIcon />}
+                {isMicOn && <MicOutlinedIcon />}
+              </IconButton>
+            </div>
+          </EditTooltip>
+
           <IconButton
             id="dockButtonID"
             className="dockButtonsEditor"
