@@ -205,6 +205,43 @@ export class EditDock extends Component {
             '&:hover': {
               backgroundColor: '#0046ff40',
             },
+          }}>Set Custom Environment</Button>}>
+            <div style={{ width: 'fit-content', height: 'fit-content' }} className='tooltipHover2'>
+              <IconButton
+                id="dockButtonID"
+                onClick={SetEnvironmentModel}
+                className="dockButtonsEditor"
+                variant="solid"
+                sx={{
+                  "--IconButton-size": "55px",
+                  "--IconButton-radius": "50px",
+                }}
+              >
+                <img
+                  style={{
+                    width: "27px",
+                    height: "27px",
+                    verticalAlign: "middle",
+                    marginBottom: "1px",
+                  }}
+                  alt="Duplicate"
+                  src="https://www.spatial.io/_next/static/media/custom-environment@2x.03b69899.png"
+                  className="selected-object-buttons_icon__vNK_0"
+                />
+              </IconButton>
+            </div>
+          </Tooltip>
+
+          <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
+            fontStyle: 'bold',
+            fontWeight: 'Bold',
+            color: 'white',
+            padding: '10px',
+            marginBottom: '-4px',
+            backgroundColor: '#0046ff40',
+            '&:hover': {
+              backgroundColor: '#0046ff40',
+            },
           }}>Delete</Button>}>
             <div style={{ width: 'fit-content', height: 'fit-content' }} className='tooltipHover2'>
               <IconButton
