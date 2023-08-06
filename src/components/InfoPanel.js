@@ -22,9 +22,7 @@ const { sendMessage, addEventListener, removeEventListener, objectName, handleEd
 
   const remainingChars = CHARACTER_LIMIT - text.length;
   const spanStyle = {
-    fontSize: ".625rem",
-    alignSelf: "flex-end",
-    color: remainingChars >= 0 ? 'rgb(255 255 255 / 30%)' : 'white',
+    
   };
 
   const handleChange = (event) => {
@@ -150,7 +148,11 @@ const { sendMessage, addEventListener, removeEventListener, objectName, handleEd
               ></input>
             </label>
             <span
-              style={spanStyle}
+              style={{
+                fontSize: ".625rem",
+                alignSelf: "flex-end",
+                color: text.length === CHARACTER_LIMIT ? 'white' :'rgb(255 255 255 / 30%)',
+              }}
             >
               {text.length}/{CHARACTER_LIMIT}
             </span>
