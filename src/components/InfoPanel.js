@@ -4,9 +4,30 @@ import Typography from "@mui/joy/Typography";
 import Button from "@mui/joy/Button";
 import Switch, { switchClasses } from "@mui/joy/Switch";
 import "./Editor/style.css";
+
+const CHARACTER_LIMIT = 100;
+const CHARACTER_LIMIT_DESC = 280;
+
 const InfoPanel = (props) => {
 const { sendMessage, addEventListener, removeEventListener, objectName, handleEditorOff, setIsDockEditorMode} = props;
   const [isActive, setIsActive] = useState(false);
+  const [text, setText] = useState('');
+
+  const handleInputChange = (event) => {
+    const inputText = event.target.value;
+    if (inputText.length <= CHARACTER_LIMIT) {
+      setText(inputText);
+    }
+  };
+
+  const remainingChars = CHARACTER_LIMIT - text.length;
+  const spanStyle = {
+    fontSize: ".625rem",
+    color: "rgb(255 255 255 / 30%)",
+    alignSelf: "flex-end",
+    color: remainingChars >= 0 ? 'rgb(255 255 255 / 30%)' : 'red',
+  };
+
   const handleChange = (event) => {
     const newValue = event.target.checked;
     setIsActive(newValue);
@@ -115,6 +136,8 @@ const { sendMessage, addEventListener, removeEventListener, objectName, handleEd
               <input
                 className="infoInput"
                 placeholder="Cool Art Piece"
+                value={text}
+                onChange={handleInputChange}
                 style={{
                   textAlign: "right",
                   borderWidth: "0",
@@ -128,13 +151,9 @@ const { sendMessage, addEventListener, removeEventListener, objectName, handleEd
               ></input>
             </label>
             <span
-              style={{
-                fontSize: ".625rem",
-                color: "rgb(255 255 255 / 30%)",
-                alignSelf: "flex-end",
-              }}
+              style={spanStyle}
             >
-              0/100
+              {text.length}/{CHARACTER_LIMIT}
             </span>
           </div>
           <hr
