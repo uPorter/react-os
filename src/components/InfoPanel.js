@@ -10,12 +10,9 @@ const CHARACTER_LIMIT = 100;
 const CHARACTER_LIMIT_DESC = 280;
 
 const InfoPanel = (props) => {
-    const { sendMessage, addEventListener, removeEventListener, objectName, handleEditorOff, setIsDockEditorMode } = props;
+    const { sendMessage, addEventListener, removeEventListener, objectName, handleEditorOff, setIsDockEditorMode,infoName, setInfoName,infoArtist, setInfoArtist,infoDesc, setInfoDesc,infoURL, setInfoURL } = props;
     const [isActive, setIsActive] = useState(false);
-    const [infoName, setInfoName] = useState('');
-    const [infoArtist, setInfoArtist] = useState('');
-    const [infoDesc, setInfoDesc] = useState('');
-    const [infoURL, setInfoURL] = useState('');
+
 
     const handleInputChange = (event) => {
         const inputText = event.target.value;
@@ -62,51 +59,6 @@ const InfoPanel = (props) => {
         const newValue = event.target.checked;
         setIsActive(newValue);
     };
-
-    useEffect(() => {
-        addEventListener("setInfoName", handleInfoName);
-        return () => {
-            removeEventListener("setInfoName", handleInfoName);
-        };
-    }, [addEventListener, removeEventListener, handleInfoName]);
-
-    const handleInfoName = useCallback((setInfoName) => {
-        setInfoName(setInfoName);
-    }, []);
-
-    useEffect(() => {
-        addEventListener("setInfoArtist", handleInfoArtist);
-        return () => {
-            removeEventListener("setInfoArtist", handleInfoArtist);
-        };
-    }, [addEventListener, removeEventListener, handleInfoArtist]);
-
-    const handleInfoArtist = useCallback((setInfoArtist) => {
-        setInfoArtist(setInfoArtist);
-    }, []);
-
-    useEffect(() => {
-        addEventListener("setInfoDesc", handleInfoDesc);
-        return () => {
-            removeEventListener("setInfoDesc", handleInfoDesc);
-        };
-    }, [addEventListener, removeEventListener, handleInfoDesc]);
-
-    const handleInfoDesc = useCallback((setInfoDesc) => {
-        setInfoDesc(setInfoDesc);
-    }, []);
-
-    useEffect(() => {
-        addEventListener("setInfoURL", handleInfoUrl);
-        return () => {
-            removeEventListener("setInfoURL", handleInfoUrl);
-        };
-    }, [addEventListener, removeEventListener, handleInfoUrl]);
-
-    const handleInfoUrl = useCallback((setInfoURL) => {
-        setInfoURL(setInfoURL);
-    }, []);
-
 
     const [animationClass, setAnimationClass] = useState("");
     const [animationHandler, setAnimationHandler] = useState("true");
