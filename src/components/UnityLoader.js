@@ -26,6 +26,7 @@ import CloudSyncOutlinedIcon from '@mui/icons-material/CloudSyncOutlined';
 import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
 import Tooltip from '@mui/material/Tooltip';
 import Fade from '@mui/material/Fade';
+import InfoPanel from './InfoPanel';
 
 
 const chatClient = StreamChat.getInstance('7q2yg6eutsf9');
@@ -66,6 +67,7 @@ const UnityLoader = () => {
   const [userImage, setUserImage] = useState(localStorage.getItem('userImage') || 'https://models.readyplayer.me/63d5148460d1b8cc82dca9db.png');
   const [userSigned, setUserSigned] = useState(JSON.parse(localStorage.getItem('userSigned')) || true)
   const [isEditorMode, setIsEditorMode] = useState(false);
+  const [isInfoMode, setIsInfoMode] = useState(false);
   const [uploadOpen, setUploadOpen] = useState(false);
   const [objectName, setObjectNameReact] = useState('');
   const [isDockEditorMode, setIsDockEditorMode] = useState(false);
@@ -124,6 +126,12 @@ const UnityLoader = () => {
   const handleEditorOff = () => {
     setTimeout(() => {
       setIsEditorMode(false);
+    }, 600); // 500 milisaniye (0.5 saniye) bekleme süresi
+  }
+
+  const handleEditorOffInfo = () => {
+    setTimeout(() => {
+      setIsInfoMode(false);
     }, 600); // 500 milisaniye (0.5 saniye) bekleme süresi
   }
 
@@ -624,6 +632,7 @@ const UnityLoader = () => {
             </Grid>
 
             {isEditorMode && <EditorPanel objectName={objectName} sendMessage={sendMessage} setIsDockEditorMode={setIsDockEditorMode} handleEditorMode={handleEditorMode} handleEditorOff={handleEditorOff} addEventListener={addEventListener} removeEventListener={removeEventListener}></EditorPanel>}
+            {isInfoMode && <InfoPanel objectName={objectName} sendMessage={sendMessage} setIsDockEditorMode={setIsDockEditorMode} handleEditorMode={handleEditorMode} handleEditorOff={handleEditorOffInfo} addEventListener={addEventListener} removeEventListener={removeEventListener}></InfoPanel>}
             {/* {uploadOpen && <FileUpload setUploadOpen={setUploadOpen} sendMessage={sendMessage} style={{position: 'absolute', zIndex: '15'}}></FileUpload> } */}
             {uploadOpen && <AddContent setUploadOpen={setUploadOpen}></AddContent>}
             {/* <Button style={{ position: 'absolute', zIndex: '15' }} onClick={ReactshowRPM} variant="soft">Edit Avatar - PreTest</Button>*/}
