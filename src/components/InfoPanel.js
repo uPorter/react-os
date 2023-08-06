@@ -3,7 +3,7 @@ import Stack from "@mui/joy/Stack";
 import Typography from "@mui/joy/Typography";
 import Button from "@mui/joy/Button";
 import Switch, { switchClasses } from "@mui/joy/Switch";
-import "./styles.css";
+import "./Editor/style.css";
 const InfoPanel = (props) => {
 const { sendMessage, addEventListener, removeEventListener, objectName, handleEditorOff, setIsDockEditorMode} = props;
   const [isActive, setIsActive] = useState(false);
