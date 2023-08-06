@@ -115,6 +115,10 @@ const UnityLoader = () => {
     setIsDockEditorMode(true);
   }
 
+  const handleInfoMode = () => {
+    setIsInfoMode(true);
+  }
+
   const handleEditBar = () => {
     setIsEditorMode(true);
   }
@@ -622,7 +626,7 @@ const UnityLoader = () => {
                   </div>)}
               </Grid>
               <Grid xs={6}>
-                {isDockEditorMode && <EditDock isLocked={isLocked} setIsLocked={setIsLocked} objectName={objectName} handleEditBar={handleEditBar} handleAddContent={handleAddContent}></EditDock>}
+                {isDockEditorMode && <EditDock isLocked={isLocked} setIsLocked={setIsLocked} objectName={objectName} handleInfoMode={handleInfoMode} handleEditBar={handleEditBar} handleAddContent={handleAddContent}></EditDock>}
                 {!isDockEditorMode && isAdmin && <Dock handleAddContent={handleAddContent}></Dock>}
                 {!isAdmin && <GuestDock handleAddContent={handleAddContent}></GuestDock>}
               </Grid>

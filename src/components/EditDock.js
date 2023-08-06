@@ -12,7 +12,7 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 
 export class EditDock extends Component {
   render() {
-    const { handleEditBar, objectName, isLocked, setIsLocked } = this.props;
+    const { handleEditBar, objectName, isLocked, setIsLocked,handleInfoMode } = this.props;
     const SetEnvironmentModel = () => {
       window.sendMessageToUnityBasic(objectName, "SetEnvironmentModel");
     }
@@ -144,6 +144,7 @@ export class EditDock extends Component {
           }}>Info</Button>}>
             <div style={{ width: 'fit-content', height: 'fit-content' }} className='tooltipHover2'>
               <IconButton
+              onClick={handleInfoMode}
                 id="dockButtonID"
                 className="dockButtonsEditor"
                 variant="solid"
