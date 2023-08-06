@@ -11,24 +11,44 @@ const CHARACTER_LIMIT_DESC = 280;
 const InfoPanel = (props) => {
 const { sendMessage, addEventListener, removeEventListener, objectName, handleEditorOff, setIsDockEditorMode} = props;
   const [isActive, setIsActive] = useState(false);
-  const [text, setText] = useState('');
+  const [infoName, setInfoName] = useState('');
+  const [infoArtist, setInfoArtist] = useState('');
+  const [infoDesc, setInfoDesc] = useState('');
+  const [infoURL, setInfoURL] = useState('');
 
   const handleInputChange = (event) => {
     const inputText = event.target.value;
     if (inputText.length <= CHARACTER_LIMIT) {
-      setText(inputText);
+        setInfoName(inputText);
     }
   };
 
-  const remainingChars = CHARACTER_LIMIT - text.length;
-  const spanStyle = {
-    
+  const handleInputChangeArtist = (event) => {
+    const inputText = event.target.value;
+    if (inputText.length <= CHARACTER_LIMIT) {
+        setInfoArtist(inputText);
+    }
   };
+
+  const handleInputChangeDesc = (event) => {
+    const inputText = event.target.value;
+    if (inputText.length <= CHARACTER_LIMIT_DESC) {
+        setInfoDesc(inputText);
+    }
+  };
+
+  const handleInputChangeUrl = (event) => {
+    const inputText = event.target.value;
+    setInfoURL(inputText);
+  };
+
 
   const handleChange = (event) => {
     const newValue = event.target.checked;
     setIsActive(newValue);
   };
+
+
   const [animationClass, setAnimationClass] = useState("");
   const [animationHandler, setAnimationHandler] = useState("true");
 
@@ -133,7 +153,7 @@ const { sendMessage, addEventListener, removeEventListener, objectName, handleEd
               <input
                 className="infoInput"
                 placeholder="Cool Art Piece"
-                value={text}
+                value={infoName}
                 onChange={handleInputChange}
                 style={{
                   textAlign: "right",
@@ -151,10 +171,10 @@ const { sendMessage, addEventListener, removeEventListener, objectName, handleEd
               style={{
                 fontSize: ".625rem",
                 alignSelf: "flex-end",
-                color: text.length === CHARACTER_LIMIT ? 'white' :'rgb(255 255 255 / 30%)',
+                color: infoName.length === CHARACTER_LIMIT ? 'white' :'rgb(255 255 255 / 30%)',
               }}
             >
-              {text.length}/{CHARACTER_LIMIT}
+              {infoName.length}/{CHARACTER_LIMIT}
             </span>
           </div>
           <hr
@@ -188,6 +208,8 @@ const { sendMessage, addEventListener, removeEventListener, objectName, handleEd
               <input
                 className="infoInput"
                 placeholder="Artist"
+                value={infoArtist}
+                onChange={handleInputChangeArtist}
                 style={{
                   textAlign: "right",
                   borderWidth: "0",
@@ -203,11 +225,11 @@ const { sendMessage, addEventListener, removeEventListener, objectName, handleEd
             <span
               style={{
                 fontSize: ".625rem",
-                color: "rgb(255 255 255 / 30%)",
                 alignSelf: "flex-end",
+                color: infoArtist.length === CHARACTER_LIMIT ? 'white' :'rgb(255 255 255 / 30%)',
               }}
             >
-              0/100
+              {infoArtist.length}/{CHARACTER_LIMIT}
             </span>
           </div>
           <hr
@@ -242,6 +264,8 @@ const { sendMessage, addEventListener, removeEventListener, objectName, handleEd
               <textarea
                 className="infoInput"
                 placeholder="This piece is cool because..."
+                value={infoDesc}
+                onChange={handleInputChangeDesc}
                 style={{
                   textAlign: "left",
                   borderWidth: "0",
@@ -264,9 +288,10 @@ const { sendMessage, addEventListener, removeEventListener, objectName, handleEd
                 fontSize: ".625rem",
                 color: "rgb(255 255 255 / 30%)",
                 alignSelf: "flex-end",
+                color: infoDesc.length === CHARACTER_LIMIT_DESC ? 'white' :'rgb(255 255 255 / 30%)',
               }}
             >
-              0/280
+              {infoDesc.length}/{CHARACTER_LIMIT_DESC}
             </span>
           </div>
           <hr
