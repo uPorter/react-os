@@ -118,3 +118,7 @@
   .editorDoneButtonWhite:hover {
     text-decoration: underline;
   }
+
+  .infoInput::placeholder {
+    color: #ffffff85;
+}

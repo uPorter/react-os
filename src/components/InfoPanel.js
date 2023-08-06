@@ -55,7 +55,7 @@ const { sendMessage, addEventListener, removeEventListener, objectName, handleEd
     >
       <Stack
         style={{
-          transform: "scale(0.85)",
+          transform: "scale(0.9)",
           width: "100%",
           height: "fit-content",
           display: "flex",
