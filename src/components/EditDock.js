@@ -195,7 +195,7 @@ export class EditDock extends Component {
             </div>
           </Tooltip>
 
-          <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
+          {!isLocked <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
             fontStyle: 'bold',
             fontWeight: 'Bold',
             color: 'white',
@@ -230,7 +230,7 @@ export class EditDock extends Component {
                 />
               </IconButton>
             </div>
-          </Tooltip>
+          </Tooltip>}
 
           <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
             fontStyle: 'bold',
