@@ -23,9 +23,8 @@ const { sendMessage, addEventListener, removeEventListener, objectName, handleEd
   const remainingChars = CHARACTER_LIMIT - text.length;
   const spanStyle = {
     fontSize: ".625rem",
-    color: "rgb(255 255 255 / 30%)",
     alignSelf: "flex-end",
-    color: remainingChars >= 0 ? 'rgb(255 255 255 / 30%)' : 'red',
+    color: remainingChars >= 0 ? 'rgb(255 255 255 / 30%)' : 'white',
   };
 
   const handleChange = (event) => {
