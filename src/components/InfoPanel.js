@@ -18,7 +18,7 @@ const InfoPanel = (props) => {
         const inputText = event.target.value;
         if (inputText.length <= CHARACTER_LIMIT) {
             setInfoName(inputText);
-            sendMessage(objectName, "setInfoNameVoid", infoName);
+            sendMessage(objectName, "setInfoNameVoid", inputText);
         }
     };
 
@@ -26,7 +26,7 @@ const InfoPanel = (props) => {
         const inputText = event.target.value;
         if (inputText.length <= CHARACTER_LIMIT) {
             setInfoArtist(inputText);
-            sendMessage(objectName, "setInfoArtistVoid", infoArtist);
+            sendMessage(objectName, "setInfoArtistVoid", inputText);
         }
     };
 
@@ -34,14 +34,14 @@ const InfoPanel = (props) => {
         const inputText = event.target.value;
         if (inputText.length <= CHARACTER_LIMIT_DESC) {
             setInfoDesc(inputText);
-            sendMessage(objectName, "setInfoDescVoid", infoDesc);
+            sendMessage(objectName, "setInfoDescVoid", inputText);
         }
     };
 
     const handleInputChangeUrl = (event) => {
         const inputText = event.target.value;
         setInfoURL(inputText);
-        sendMessage(objectName, "setInfoURLVoid", infoURL);
+        sendMessage(objectName, "setInfoURLVoid", inputText);
     };
 
     const onFocus = () => {
