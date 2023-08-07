@@ -210,16 +210,6 @@ const handleInfoUrl = useCallback((setInfoURL) => {
     setInfoURLReact(setInfoURL);
 }, []);
 
-useEffect(() => {
-  addEventListener("setInfoURL", handleInfoUrl);
-  return () => {
-      removeEventListener("setInfoURL", handleInfoUrl);
-  };
-}, [addEventListener, removeEventListener, handleInfoUrl]);
-
-const handleInfoUrl = useCallback((setInfoURL) => {
-  setInfoURLReact(setInfoURL);
-}, []);
 
 
 
