@@ -10,10 +10,15 @@ const CHARACTER_LIMIT = 100;
 const CHARACTER_LIMIT_DESC = 280;
 
 const InfoPanel = (props) => {
-    const { sendMessage, addEventListener, removeEventListener, objectName, handleEditorOff, setIsDockEditorMode,infoName, setInfoName,infoArtist, setInfoArtist,infoDesc, setInfoDesc,infoURL, setInfoURL } = props;
+    const { sendMessage, addEventListener, removeEventListener, objectName, handleEditorOff, setIsDockEditorMode, infoName, setInfoName, infoArtist, setInfoArtist, infoDesc, setInfoDesc, infoURL, setInfoURL } = props;
     const [isActive, setIsActive] = useState(false);
+    const [isManual, setIsManual] = useState(false);
 
-
+    const handleChangeManual = (event) => {
+        const newValue = event.target.checked;
+        setIsManual(newValue);
+      };
+      
     const handleInputChange = (event) => {
         const inputText = event.target.value;
         if (inputText.length <= CHARACTER_LIMIT) {
@@ -415,6 +420,50 @@ const InfoPanel = (props) => {
                                 className="mainSwitch"
                                 checked={isActive}
                                 onChange={handleChange}
+                            />
+                        </label>
+                        <hr
+                            style={{
+                                boxSizing: "border-box",
+                                border: "0 solid #ffffff63",
+                                height: "0px",
+                                color: "inherit",
+                                width: "100%",
+                                borderTopWidth: "1px",
+                                marginTop: "20px",
+                            }}
+                        ></hr>
+                        <label
+                            style={{
+                                marginTop: "10px",
+                                fontFamily: '"Segoe UI"',
+                                color: "white",
+                                display: "grid",
+                                gridAutoFlow: "column",
+                                gap: "160px",
+                                fontSize: "1rem",
+                                fontWeight: "600",
+                                "&:hover": {
+                                    color: "#00000040",
+                                },
+                            }}
+                        >
+                            Manual Mode
+                            <Switch
+                                sx={{
+                                    [`& .${switchClasses.thumb}`]: {
+                                        transition: "width 0.2s, left 0.2s",
+                                    },
+                                }}
+                                style={{
+                                    position: "relative",
+                                    right: "-5px",
+                                }}
+                                variant="soft"
+                                color="neutral"
+                                className="mainSwitch"
+                                checked={isManual}
+                                onChange={handleChangeManual}
                             />
                         </label>
                     </div>
