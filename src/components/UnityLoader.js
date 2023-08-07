@@ -473,6 +473,30 @@ const handleInfoUrl = useCallback((setInfoURL) => {
     setIsActive(false);
   }
 
+  useEffect(() => {
+    addEventListener("isManualModeOn", handleisManualModeOn);
+
+    return () => {
+      removeEventListener("isManualModeOn", handleisManualModeOn);
+    };
+  }, [addEventListener, removeEventListener, handleisManualModeOn]);
+
+  const handleisManualModeOn = () => {
+    setIsManual(true);
+  }
+
+  useEffect(() => {
+    addEventListener("isManualModeOff", handleisManualModeOff);
+
+    return () => {
+      removeEventListener("isManualModeOff", handleisManualModeOff);
+    };
+  }, [addEventListener, removeEventListener, handleisManualModeOff]);
+
+  const handleisManualModeOff = () => {
+    setIsManual(false);
+  }
+
 
 
 

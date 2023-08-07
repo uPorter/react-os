@@ -16,6 +16,11 @@ const InfoPanel = (props) => {
     const handleChangeManual = (event) => {
         const newValue = event.target.checked;
         setIsManual(newValue);
+        if(newValue){
+            sendMessage(objectName, "enableManualMode");
+        }else{
+            sendMessage(objectName, "disableManualMode");
+        }
       };
 
     const handleInputChange = (event) => {
