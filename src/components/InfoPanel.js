@@ -62,6 +62,11 @@ const InfoPanel = (props) => {
     const handleChange = (event) => {
         const newValue = event.target.checked;
         setIsActive(newValue);
+        if(newValue){
+            sendMessage(objectName, "activeInfoPanel");
+        }else{
+            sendMessage(objectName, "disableInfoPanel");
+        }
     };
 
     const [animationClass, setAnimationClass] = useState("");
