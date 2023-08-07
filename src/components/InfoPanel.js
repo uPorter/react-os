@@ -10,15 +10,14 @@ const CHARACTER_LIMIT = 100;
 const CHARACTER_LIMIT_DESC = 280;
 
 const InfoPanel = (props) => {
-    const { sendMessage, addEventListener, removeEventListener, objectName, handleEditorOff, setIsDockEditorMode, infoName, setInfoName, infoArtist, setInfoArtist, infoDesc, setInfoDesc, infoURL, setInfoURL } = props;
-    const [isActive, setIsActive] = useState(false);
-    const [isManual, setIsManual] = useState(false);
+    const { isActive, setIsActive, isManual, setIsManual, sendMessage, addEventListener, removeEventListener, objectName, handleEditorOff, setIsDockEditorMode, infoName, setInfoName, infoArtist, setInfoArtist, infoDesc, setInfoDesc, infoURL, setInfoURL } = props;
+    
 
     const handleChangeManual = (event) => {
         const newValue = event.target.checked;
         setIsManual(newValue);
       };
-      
+
     const handleInputChange = (event) => {
         const inputText = event.target.value;
         if (inputText.length <= CHARACTER_LIMIT) {

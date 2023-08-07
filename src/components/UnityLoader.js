@@ -77,6 +77,8 @@ const UnityLoader = () => {
   const [infoArtist, setInfoArtistReact] = useState('');
   const [infoDesc, setInfoDescReact] = useState('');
   const [infoURL, setInfoURLReact] = useState('');
+  const [isActive, setIsActive] = useState(false);
+  const [isManual, setIsManual] = useState(false);
 
   useEffect(() => {
     addEventListener("setObjectName", handleObjectName);
@@ -206,6 +208,17 @@ useEffect(() => {
 
 const handleInfoUrl = useCallback((setInfoURL) => {
     setInfoURLReact(setInfoURL);
+}, []);
+
+useEffect(() => {
+  addEventListener("setInfoURL", handleInfoUrl);
+  return () => {
+      removeEventListener("setInfoURL", handleInfoUrl);
+  };
+}, [addEventListener, removeEventListener, handleInfoUrl]);
+
+const handleInfoUrl = useCallback((setInfoURL) => {
+  setInfoURLReact(setInfoURL);
 }, []);
 
 
@@ -446,6 +459,30 @@ const handleInfoUrl = useCallback((setInfoURL) => {
     setIsLocked(false);
   }
 
+  useEffect(() => {
+    addEventListener("infoViewOn", handleinfoViewOn);
+
+    return () => {
+      removeEventListener("infoViewOn", handleinfoViewOn);
+    };
+  }, [addEventListener, removeEventListener, handleinfoViewOn]);
+
+  const handleinfoViewOn = () => {
+    setIsActive(true);
+  }
+
+  useEffect(() => {
+    addEventListener("infoViewOff", handleinfoViewOff);
+
+    return () => {
+      removeEventListener("infoViewOff", handleinfoViewOff);
+    };
+  }, [addEventListener, removeEventListener, handleinfoViewOff]);
+
+  const handleinfoViewOff = () => {
+    setIsActive(false);
+  }
+
 
 
 
@@ -684,7 +721,7 @@ const handleInfoUrl = useCallback((setInfoURL) => {
             </Grid>
 
             {isEditorMode && <EditorPanel objectName={objectName} sendMessage={sendMessage} setIsDockEditorMode={setIsDockEditorMode} handleEditorMode={handleEditorMode} handleEditorOff={handleEditorOff} addEventListener={addEventListener} removeEventListener={removeEventListener}></EditorPanel>}
-            {isInfoMode && <InfoPanel infoName={infoName} setInfoName={setInfoNameReact} infoArtist={infoArtist} setInfoArtist={setInfoArtistReact} infoDesc={infoDesc} setInfoDesc={setInfoDescReact} infoURL={infoURL} setInfoURL={setInfoURLReact} objectName={objectName} sendMessage={sendMessage} setIsDockEditorMode={setIsDockEditorMode} handleEditorMode={handleEditorMode} handleEditorOff={handleEditorOffInfo} addEventListener={addEventListener} removeEventListener={removeEventListener}></InfoPanel>}
+            {isInfoMode && <InfoPanel isActive={isActive} setIsActive={setIsActive} isManual={isManual} setIsManual={setIsManual} infoName={infoName} setInfoName={setInfoNameReact} infoArtist={infoArtist} setInfoArtist={setInfoArtistReact} infoDesc={infoDesc} setInfoDesc={setInfoDescReact} infoURL={infoURL} setInfoURL={setInfoURLReact} objectName={objectName} sendMessage={sendMessage} setIsDockEditorMode={setIsDockEditorMode} handleEditorMode={handleEditorMode} handleEditorOff={handleEditorOffInfo} addEventListener={addEventListener} removeEventListener={removeEventListener}></InfoPanel>}
             {/* {uploadOpen && <FileUpload setUploadOpen={setUploadOpen} sendMessage={sendMessage} style={{position: 'absolute', zIndex: '15'}}></FileUpload> } */}
             {uploadOpen && <AddContent setUploadOpen={setUploadOpen}></AddContent>}
             {/* <Button style={{ position: 'absolute', zIndex: '15' }} onClick={ReactshowRPM} variant="soft">Edit Avatar - PreTest</Button>*/}
