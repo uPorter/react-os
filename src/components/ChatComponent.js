@@ -40,6 +40,11 @@ const ChatComponent = (props) => {
     // Kameranın durumunu değiştirdiğimizde handleIsStartedChange fonksiyonunu çağırıyoruz
     sendMessage("VideoHolder", "ToggleObjectState");
     localStorage.setItem('isCameraOn', newValue.toString());
+    if(newValue){
+      sendMessage("VideoHolder", "enableVideoStream");
+    }else{
+      sendMessage("VideoHolder", "disableVideoStream");
+    }
   };
 
 
@@ -173,7 +178,7 @@ const ChatComponent = (props) => {
               </Tooltip>
 
 
-              <Tooltip TransitionComponent={Fade} onOpen={handleTooltipOpen} onClose={handleTooltipClose} sx={{ borderRadius: '0px', backgroundColor: '#ffffff' }} color="neutral" placement="top" variant="soft"
+              <Tooltip open={true} TransitionComponent={Fade} onOpen={handleTooltipOpen} onClose={handleTooltipClose} sx={{ borderRadius: '0px', backgroundColor: '#ffffff' }} color="neutral" placement="top" variant="soft"
                 title={
                   <div className='avatarProfile' style={{ backdropFilter: "blur(0px)" }}>
                     <Stack className='avatarStack'>
