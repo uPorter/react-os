@@ -173,7 +173,7 @@ const ChatComponent = (props) => {
               </Tooltip>
 
 
-              <Tooltip open={true} TransitionComponent={Fade} onOpen={handleTooltipOpen} onClose={handleTooltipClose} sx={{ borderRadius: '0px', backgroundColor: '#ffffff' }} color="neutral" placement="top" variant="soft"
+              <Tooltip TransitionComponent={Fade} onOpen={handleTooltipOpen} onClose={handleTooltipClose} sx={{ borderRadius: '0px', backgroundColor: '#ffffff' }} color="neutral" placement="top" variant="soft"
                 title={
                   <div className='avatarProfile' style={{ backdropFilter: "blur(0px)" }}>
                     <Stack className='avatarStack'>
