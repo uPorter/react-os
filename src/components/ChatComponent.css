@@ -651,7 +651,7 @@ iframe{
   display: flex;
   width: 315px;
   height: 395px;
-  right: 50px;
+  right: 60px;
   flex-direction: row;
   flex-wrap: nowrap;
   align-content: center;

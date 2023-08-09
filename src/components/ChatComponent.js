@@ -40,11 +40,6 @@ const ChatComponent = (props) => {
     // Kameranın durumunu değiştirdiğimizde handleIsStartedChange fonksiyonunu çağırıyoruz
     sendMessage("VideoHolder", "ToggleObjectState");
     localStorage.setItem('isCameraOn', newValue.toString());
-    if(newValue){
-      sendMessage("VideoHolder", "enableVideoStream");
-    }else{
-      sendMessage("VideoHolder", "disableVideoStream");
-    }
   };
 
 
