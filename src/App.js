@@ -39,7 +39,7 @@ function App() {
       formData.append('file', file);
 
       try {
-        const response = await axios.post('https://04d1-103-133-178-51.ngrok-free.app/upload', formData, {
+        const response = await axios.post('https://api.hahaverse.com/upload', formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
