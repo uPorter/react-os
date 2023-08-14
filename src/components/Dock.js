@@ -226,7 +226,7 @@ function Dock({ handleAddContent }) {
           '&:hover': {
             backgroundColor: '#00000040',
           },
-        }}>Emotes</Button>}>
+        }}>Reactions</Button>}>
           <div style={{ width: 'fit-content', height: 'fit-content' }} className='tooltipHover2'>
             <IconButton
               className="dockButtons"
