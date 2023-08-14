@@ -14,6 +14,7 @@ import VideocamOutlinedIcon from '@mui/icons-material/VideocamOutlined';
 import { Toaster, toast } from 'sonner'
 import Divider from "@mui/joy/Divider";
 import VideocamIcon from '@mui/icons-material/Videocam';
+import Reactions from "./Reactions";
 
 function Dock({ handleAddContent }) {
   //const { handleAddContent } = this.props;
@@ -98,6 +99,7 @@ function Dock({ handleAddContent }) {
         justifyContent: "center",
       }}
     >
+      <Reactions/>
       <Box
         sx={{
           transform: "scale(0.9)",

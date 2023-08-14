@@ -728,8 +728,8 @@ const UnityLoader = () => {
               <Grid xs={6}>
                 
                 {isDockEditorMode && <EditDock isLocked={isLocked} setIsLocked={setIsLocked} objectName={objectName} handleInfoMode={handleInfoMode} handleEditBar={handleEditBar} handleAddContent={handleAddContent}></EditDock>}
-                {!isDockEditorMode && isAdmin && <Dock handleAddContent={handleAddContent}><Reactions/></Dock>}
-                {!isAdmin && <GuestDock handleAddContent={handleAddContent}><Reactions/></GuestDock>}
+                {!isDockEditorMode && isAdmin && <Dock handleAddContent={handleAddContent}></Dock>}
+                {!isAdmin && <GuestDock handleAddContent={handleAddContent}></GuestDock>}
               </Grid>
               <Grid style={{ opacity: 1 }} xs>
                 <ChatComponent spaceName={spaceName} userName={userName} showChat={showChat} sendMessage={sendMessage} userID={userID} userToken={userToken} userImage={userImage} />
