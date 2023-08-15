@@ -55,7 +55,7 @@ const Reactions = ({ isReactionsOn, setIsReactionsOn,reactionClass }) => {
 
   return (
     <div
-      className={`reactionIn ${reactionClass}`}
+      className={`${reactionClass}`}
       style={{
         position: "absolute",
         bottom:"74px",
