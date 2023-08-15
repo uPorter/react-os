@@ -54,10 +54,9 @@ const Reactions = () => {
   return (
     <div
       style={{
-        position: "relative",
-        marginTop: "25%",
-        marginLeft: "25%",
-        backgroundColor: "rgba(0,0,0,.3)",
+        position: "absolute",
+        bottom:"74px",
+        backgroundColor: "rgba(0,0,0,.25)",
         borderRadius: "100px",
         padding: "8px 16px",
         width: "390px",
