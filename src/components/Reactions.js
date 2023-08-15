@@ -80,7 +80,15 @@ const Reactions = ({ isReactionsOn, setIsReactionsOn,reactionClass }) => {
       }}
     >
       <div style={{ display: "flex" }} className="emoteGrid">
-      <Tooltip   className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
+      
+          <button
+          style={{ width: "48px", height: "48px" }}
+          className="video-container"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          onClick={() => emotePlayer('emoji5')}
+        >
+          <Tooltip   className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
           fontStyle: 'bold',
           fontWeight: 'Bold',
           color: 'white',
@@ -93,13 +101,6 @@ const Reactions = ({ isReactionsOn, setIsReactionsOn,reactionClass }) => {
             backgroundColor: '#00000040',
           },
         }}>Pop And Lock</Button>}>
-          <button
-          style={{ width: "48px", height: "48px" }}
-          className="video-container"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-          onClick={() => emotePlayer('emoji5')}
-        >
           <video
             style={{ filter: "invert(1)", width: "inherit" }}
             ref={videoRef}
@@ -112,10 +113,9 @@ const Reactions = ({ isReactionsOn, setIsReactionsOn,reactionClass }) => {
               type="video/webm"
             />
           </video>
-        </button>
         </Tooltip>
+        </button>
         
-
         <button
           style={{ width: "48px", height: "48px" }}
           className="video-container"
