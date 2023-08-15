@@ -53,6 +53,12 @@ const Reactions = ({ isReactionsOn, setIsReactionsOn,reactionClass }) => {
     videoRef5.current.pause();
   };
 
+
+  const emotePlayer = (datainput) => {
+    window.sendMessageToUnity("EmoteHandler", "emoteHandler", datainput);
+  };
+  
+
   return (
     <div
       className={`${reactionClass ? 'reactionIn' : 'reactionOut'}`}
@@ -77,6 +83,7 @@ const Reactions = ({ isReactionsOn, setIsReactionsOn,reactionClass }) => {
           className="video-container"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
+          onClick={emotePlayer(emoji1)}
         >
           <video
             style={{ filter: "invert(1)", width: "inherit" }}
@@ -97,6 +104,7 @@ const Reactions = ({ isReactionsOn, setIsReactionsOn,reactionClass }) => {
           className="video-container"
           onMouseEnter={handleMouseEnter2}
           onMouseLeave={handleMouseLeave2}
+          onClick={emotePlayer(emoji6)}
         >
           <video
             style={{ filter: "invert(1)", width: "inherit" }}
@@ -117,6 +125,7 @@ const Reactions = ({ isReactionsOn, setIsReactionsOn,reactionClass }) => {
           className="video-container"
           onMouseEnter={handleMouseEnter3}
           onMouseLeave={handleMouseLeave3}
+          onClick={emotePlayer(emoji3)}
         >
           <video
             style={{ filter: "invert(1)", width: "inherit" }}
@@ -137,6 +146,7 @@ const Reactions = ({ isReactionsOn, setIsReactionsOn,reactionClass }) => {
           className="video-container"
           onMouseEnter={handleMouseEnter4}
           onMouseLeave={handleMouseLeave4}
+          onClick={emotePlayer(emoji2)}
         >
           <video
             style={{
