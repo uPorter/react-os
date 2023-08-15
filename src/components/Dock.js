@@ -165,7 +165,7 @@ function Dock({ handleAddContent }) {
 
         {isDockCameraOn && <Tooltip   className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={
         
-        <div style={{display: !isReactionsOn ? 'block!important' : 'none!important'}} className="photoDockHolder">
+        <div sx={{display: !isReactionsOn ? 'flex!important' : 'none!important'}} className="photoDockHolder">
           <Button size="sm" variant="plain" sx={{
               fontStyle: 'bold',
               fontWeight: 'Bold',
@@ -299,7 +299,7 @@ function Dock({ handleAddContent }) {
         </Tooltip>
 
         <Tooltip   className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={
-          <div style={{display: !isReactionsOn ? 'block!important' : 'none!important',}} className="photoDockHolder">
+          <div sx={{display: !isReactionsOn ? 'flex!important' : 'none!important'}} className="photoDockHolder">
             <Button size="sm" variant="plain" sx={{
               fontStyle: 'bold',
               fontWeight: 'Bold',
