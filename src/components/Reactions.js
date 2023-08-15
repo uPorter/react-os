@@ -84,7 +84,6 @@ const Reactions = ({ isReactionsOn, setIsReactionsOn, reactionClass }) => {
           fontStyle: 'bold',
           fontWeight: 'Bold',
           color: 'white',
-          display: !isReactionsOn ? 'block!important' : 'none!important',
           padding: '10px',
           marginBottom: '-4px',
           transform: 'scale(0.7)',
