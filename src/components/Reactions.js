@@ -83,7 +83,7 @@ const Reactions = ({ isReactionsOn, setIsReactionsOn,reactionClass }) => {
           className="video-container"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
-          onClick={emotePlayer(emoji1)}
+          onClick={emotePlayer('emoji1')}
         >
           <video
             style={{ filter: "invert(1)", width: "inherit" }}
@@ -104,7 +104,7 @@ const Reactions = ({ isReactionsOn, setIsReactionsOn,reactionClass }) => {
           className="video-container"
           onMouseEnter={handleMouseEnter2}
           onMouseLeave={handleMouseLeave2}
-          onClick={emotePlayer(emoji6)}
+          onClick={emotePlayer('emoji6')}
         >
           <video
             style={{ filter: "invert(1)", width: "inherit" }}
@@ -125,7 +125,7 @@ const Reactions = ({ isReactionsOn, setIsReactionsOn,reactionClass }) => {
           className="video-container"
           onMouseEnter={handleMouseEnter3}
           onMouseLeave={handleMouseLeave3}
-          onClick={emotePlayer(emoji3)}
+          onClick={emotePlayer('emoji3')}
         >
           <video
             style={{ filter: "invert(1)", width: "inherit" }}
@@ -146,7 +146,7 @@ const Reactions = ({ isReactionsOn, setIsReactionsOn,reactionClass }) => {
           className="video-container"
           onMouseEnter={handleMouseEnter4}
           onMouseLeave={handleMouseLeave4}
-          onClick={emotePlayer(emoji2)}
+          onClick={emotePlayer('emoji2')}
         >
           <video
             style={{
