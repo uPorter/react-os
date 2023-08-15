@@ -234,7 +234,7 @@ function Dock({ handleAddContent }) {
 
         <Tooltip  className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
           fontStyle: 'bold',
-          visiblity: !isReactionsOn ? 'visible!important' : 'hidden!important',
+          display: !isReactionsOn ? 'block!important' : 'none!important',
           fontWeight: 'Bold',
           color: 'white',
           padding: '10px',
