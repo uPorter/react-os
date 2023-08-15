@@ -299,7 +299,7 @@ function Dock({ handleAddContent }) {
         </Tooltip>
 
         <Tooltip   className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={
-          <div className="photoDockHolder" sx={{display: !isReactionsOn ? 'block!important' : 'none!important'}}>
+          <div className="photoDockHolder" style={{ display: !isReactionsOn ? 'block' : 'none' }}>
             <Button size="sm" variant="plain" sx={{
               fontStyle: 'bold',
               fontWeight: 'Bold',
