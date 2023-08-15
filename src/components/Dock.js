@@ -45,6 +45,7 @@ function Dock({ handleAddContent }) {
   }
 
   const reactionHandler = () => {
+    setIsReactionsOn(!isReactionsOn);
     if (isReactionsOn) {
       setReactionClass('reactionIn');
     } else {
