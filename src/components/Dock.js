@@ -45,11 +45,8 @@ function Dock({ handleAddContent }) {
   }
 
   const reactionHandler = () => {
-    setIsReactionsOn(!isReactionsOn);
-  }
-
-  useEffect(() => {
-    if (isReactionsOn) {
+    if (!isReactionsOn) {
+      setIsReactionsOn(true);
       setReactionClass('reactionIn');
     } else {
       setReactionClass('reactionOut');
@@ -58,14 +55,8 @@ function Dock({ handleAddContent }) {
       }, 400);
       return () => clearTimeout(timeout); // Temizleme fonksiyonu, bileşen güncellendiğinde bu timeout'u temizler.
     }
-  }, [isReactionsOn]);
-
-  const reactionHandlerVisiblity = () => {
-    if(isReactionsOn){
-      setIsReactionsOn(false);
-    }
   }
-  
+
 
 
   useEffect(() => {
