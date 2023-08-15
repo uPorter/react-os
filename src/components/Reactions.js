@@ -85,8 +85,8 @@ const Reactions = ({ isReactionsOn, setIsReactionsOn, reactionClass }) => {
           fontWeight: 'Bold',
           color: 'white',
           padding: '10px',
-          marginBottom: '-4px',
-          transform: 'scale(0.7)',
+          marginBottom: '-10px',
+          transform: 'scale(0.85)',
           backgroundColor: '#00000040',
           '&:hover': {
             backgroundColor: '#00000040',
