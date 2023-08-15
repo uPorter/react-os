@@ -46,6 +46,14 @@ function Dock({ handleAddContent }) {
   setIsReactionsOn(!isReactionsOn);
   }
 
+  const reactionHandlerVisiblity = () => {
+    if(isReactionsOn){
+      setIsReactionsOn(false);
+    }
+  }
+  
+
+
   useEffect(() => {
     const intervalId = setInterval(() => {
       const storedIsCameraOn = localStorage.getItem('isCameraOn') === 'true';
@@ -97,6 +105,7 @@ function Dock({ handleAddContent }) {
 
   const buttonText = isScreenShareOn ? 'Stop Screen Share' : 'Share Screen';
   const buttonTextMic = isMicOn ? 'Mute' : 'Unmute';
+  const reactionText = isReactionsOn ? '' : 'Reactions';
   return (
     <div
       style={{
@@ -127,7 +136,7 @@ function Dock({ handleAddContent }) {
             backgroundColor: '#00000040',
           },
         }}>{buttonTextMic}</Button>}>
-          <div style={{ width: 'fit-content', height: 'fit-content' }} className='tooltipHover2'>
+          <div style={{ width: 'fit-content', height: 'fit-content' }} onMouseEnter={reactionHandlerVisiblity} className='tooltipHover2'>
             <IconButton
               id="dockButtonID"
               className="dockButtons"
@@ -198,7 +207,7 @@ function Dock({ handleAddContent }) {
           </div>
         
         }>
-          <div style={{ width: 'fit-content', height: 'fit-content', animation: 'videoIcon 0.3s ease 0s 1 normal forwards' }} className='tooltipHover2'>
+          <div style={{ width: 'fit-content', height: 'fit-content', animation: 'videoIcon 0.3s ease 0s 1 normal forwards' }} onMouseEnter={reactionHandlerVisiblity} className='tooltipHover2'>
             <IconButton
               id="dockButtonID"
               className="dockButtons"
@@ -223,8 +232,9 @@ function Dock({ handleAddContent }) {
           </div>
         </Tooltip>}
 
-        <Tooltip   className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
+        <Tooltip  className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
           fontStyle: 'bold',
+          visiblity: isReactionsOn ? 'hidden': 'visible',
           fontWeight: 'Bold',
           color: 'white',
           padding: '10px',
@@ -233,8 +243,8 @@ function Dock({ handleAddContent }) {
           '&:hover': {
             backgroundColor: '#00000040',
           },
-        }}>Reactions</Button>}>
-          <div style={{ width: 'fit-content', height: 'fit-content' }} className='tooltipHover2'>
+        }}>{reactionText}</Button>}>
+          <div  style={{ width: 'fit-content', height: 'fit-content' }} onMouseEnter={reactionHandlerVisiblity} className='tooltipHover2'>
             <IconButton
               onClick={reactionHandler}
               className="dockButtons"
@@ -329,7 +339,7 @@ function Dock({ handleAddContent }) {
             }}>Filming mode</Button>
           </div>
         }>
-          <div style={{ width: 'fit-content', height: 'fit-content' }} className='tooltipHover2'>
+          <div style={{ width: 'fit-content', height: 'fit-content' }} onMouseEnter={reactionHandlerVisiblity} className='tooltipHover2'>
             <IconButton
               id="dockButtonID"
               className="dockButtons"
@@ -355,7 +365,7 @@ function Dock({ handleAddContent }) {
             backgroundColor: '#00000040',
           },
         }}>{buttonText}</Button>}>
-          <div style={{ width: 'fit-content', height: 'fit-content' }} className='tooltipHover2'>
+          <div style={{ width: 'fit-content', height: 'fit-content' }} onMouseEnter={reactionHandlerVisiblity} className='tooltipHover2'>
             <IconButton
               onClick={toggleScreenShare}
               id="dockButtonID"
@@ -390,7 +400,7 @@ function Dock({ handleAddContent }) {
             backgroundColor: '#00000040',
           },
         }}>Add Content</Button>}>
-          <div style={{ width: 'fit-content', height: 'fit-content' }} className='tooltipHover2'>
+          <div style={{ width: 'fit-content', height: 'fit-content' }} onMouseEnter={reactionHandlerVisiblity} className='tooltipHover2'>
             <IconButton
               id="dockButtonID"
               onClick={handleAddContent}
