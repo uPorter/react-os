@@ -83,7 +83,7 @@ const Reactions = ({ isReactionsOn, setIsReactionsOn,reactionClass }) => {
           className="video-container"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
-          onClick={() => emotePlayer('emoji1')}
+          onClick={() => emotePlayer('emoji5')}
         >
           <video
             style={{ filter: "invert(1)", width: "inherit" }}
