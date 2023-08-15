@@ -27,6 +27,7 @@ function Dock({ handleAddContent }) {
   const [isBaseCameraOn, setIsBaseCameraOn] = useState(initialIsBaseCameraOn);
   const initalIsRemoteVideoOn = localStorage.getItem('isRemoteVideoOn') === 'true' ? true : false;
   const [isRemoteVideoOn, setIsRemoteVideoOn] = useState(initalIsRemoteVideoOn);
+  const [isReactionsOn, setIsReactionsOn] = useState(false);
 
 
   const toggleScreenShare = () => {
@@ -39,6 +40,10 @@ function Dock({ handleAddContent }) {
       setIsScreenShareOn(false);
       localStorage.setItem('isScreenShareOn', 'false');
     }
+  }
+
+  const reactionHandler = () => {
+  setIsReactionsOn(!isReactionsOn);
   }
 
   useEffect(() => {
@@ -99,7 +104,7 @@ function Dock({ handleAddContent }) {
         justifyContent: "center",
       }}
     >
-      <Reactions/>
+      {isReactionsOn && <Reactions/>}
       <Box
         sx={{
           transform: "scale(0.9)",
@@ -231,6 +236,7 @@ function Dock({ handleAddContent }) {
         }}>Reactions</Button>}>
           <div style={{ width: 'fit-content', height: 'fit-content' }} className='tooltipHover2'>
             <IconButton
+              onClick={reactionHandler}
               className="dockButtons"
               variant="solid"
               sx={{
