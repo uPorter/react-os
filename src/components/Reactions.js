@@ -83,13 +83,14 @@ const Reactions = ({ isReactionsOn, setIsReactionsOn,reactionClass }) => {
           className="video-container"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
-          onClick={emotePlayer('emoji1')}
+          
         >
           <video
             style={{ filter: "invert(1)", width: "inherit" }}
             ref={videoRef}
             className="video"
             loop
+            onClick={emotePlayer('emoji1')}
             controls={false}
           >
             <source
@@ -104,13 +105,14 @@ const Reactions = ({ isReactionsOn, setIsReactionsOn,reactionClass }) => {
           className="video-container"
           onMouseEnter={handleMouseEnter2}
           onMouseLeave={handleMouseLeave2}
-          onClick={emotePlayer('emoji6')}
+         
         >
           <video
             style={{ filter: "invert(1)", width: "inherit" }}
             ref={videoRef2}
             className="video"
             loop
+            onClick={emotePlayer('emoji6')}
             controls={false}
           >
             <source
@@ -125,13 +127,14 @@ const Reactions = ({ isReactionsOn, setIsReactionsOn,reactionClass }) => {
           className="video-container"
           onMouseEnter={handleMouseEnter3}
           onMouseLeave={handleMouseLeave3}
-          onClick={emotePlayer('emoji3')}
+          
         >
           <video
             style={{ filter: "invert(1)", width: "inherit" }}
             ref={videoRef3}
             className="video"
             loop
+            onClick={emotePlayer('emoji3')}
             controls={false}
           >
             <source
@@ -146,7 +149,7 @@ const Reactions = ({ isReactionsOn, setIsReactionsOn,reactionClass }) => {
           className="video-container"
           onMouseEnter={handleMouseEnter4}
           onMouseLeave={handleMouseLeave4}
-          onClick={emotePlayer('emoji2')}
+          
         >
           <video
             style={{
@@ -156,6 +159,7 @@ const Reactions = ({ isReactionsOn, setIsReactionsOn,reactionClass }) => {
             }}
             ref={videoRef4}
             className="video"
+            onClick={emotePlayer('emoji2')}
             loop
             controls={false}
           >
