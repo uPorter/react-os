@@ -113,7 +113,7 @@ function Dock({ handleAddContent }) {
         justifyContent: "center",
       }}
     >
-      {isReactionsOn && <Reactions/>}
+      {isReactionsOn && <Reactions isReactionsOn={isReactionsOn} setIsReactionsOn={setIsReactionsOn}/>}
       <Box
         sx={{
           transform: "scale(0.9)",

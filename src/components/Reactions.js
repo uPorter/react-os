@@ -4,12 +4,26 @@ import { useRef } from "react";
 import Typography from "@mui/joy/Typography";
 import PinOutlinedIcon from "@mui/icons-material/PinOutlined";
 
-const Reactions = () => {
+const Reactions = ({ isReactionsOn, setIsReactionsOn }) => {
   const videoRef = useRef(null);
   const videoRef2 = useRef(null);
   const videoRef3 = useRef(null);
   const videoRef4 = useRef(null);
   const videoRef5 = useRef(null);
+  const [reactionClass, setReactionClass] = useState('');
+
+  useEffect(() => {
+    if (isReactionsOn) {
+      setReactionClass('reactionIn');
+    } else {
+      setReactionClass('reactionOut');
+      const timeout = setTimeout(() => {
+        setIsReactionsOn(false);
+      }, 400);
+      return () => clearTimeout(timeout); // Temizleme fonksiyonu, bileşen güncellendiğinde bu timeout'u temizler.
+    }
+  }, [isReactionsOn]);
+
 
   const handleMouseEnter = () => {
     videoRef.current.play();
@@ -53,6 +67,7 @@ const Reactions = () => {
 
   return (
     <div
+      className={`${reactionClass}`}
       style={{
         position: "absolute",
         bottom:"74px",

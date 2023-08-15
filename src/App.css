@@ -714,3 +714,36 @@ body {
   width: 24%;
 }
 
+@keyframes reactionIn {
+	0% {
+		transform: scale(0);
+        opacity: 0;
+	}
+
+	100% {
+		transform: scale(0.75);
+        opacity: 1;
+	}
+}
+
+.reactionIn{
+    animation: reactionIn 0.5s ease 0s 1 normal forwards;
+}
+
+@keyframes reactionOut {
+	0% {
+		transform: scale(0.75);
+        opacity: 1;
+	}
+
+	100% {
+		transform: scale(0);
+        opacity: 0;
+	}
+}
+
+.reactionOut{
+    animation: reactionOut 0.4s ease 0s 1 normal forwards;
+}
+
+
