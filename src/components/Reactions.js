@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { useRef } from "react";
 import Typography from "@mui/joy/Typography";
 import PinOutlinedIcon from "@mui/icons-material/PinOutlined";
+import Tooltip from '@mui/material/Tooltip';
+import { Button } from "@mui/joy";
 
 const Reactions = ({ isReactionsOn, setIsReactionsOn,reactionClass }) => {
   const videoRef = useRef(null);
@@ -78,7 +80,20 @@ const Reactions = ({ isReactionsOn, setIsReactionsOn,reactionClass }) => {
       }}
     >
       <div style={{ display: "flex" }} className="emoteGrid">
-        <button
+      <Tooltip   className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
+          fontStyle: 'bold',
+          fontWeight: 'Bold',
+          color: 'white',
+          display: !isReactionsOn ? 'block!important' : 'none!important',
+          padding: '10px',
+          marginBottom: '-4px',
+          transform: 'scale(0.7)',
+          backgroundColor: '#00000040',
+          '&:hover': {
+            backgroundColor: '#00000040',
+          },
+        }}>Pop And Lock</Button>}>
+          <button
           style={{ width: "48px", height: "48px" }}
           className="video-container"
           onMouseEnter={handleMouseEnter}
@@ -98,6 +113,8 @@ const Reactions = ({ isReactionsOn, setIsReactionsOn,reactionClass }) => {
             />
           </video>
         </button>
+        </Tooltip>
+        
 
         <button
           style={{ width: "48px", height: "48px" }}
