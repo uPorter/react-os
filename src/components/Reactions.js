@@ -6,13 +6,13 @@ import PinOutlinedIcon from "@mui/icons-material/PinOutlined";
 import Tooltip from '@mui/material/Tooltip';
 import { Button } from "@mui/joy";
 
-const Reactions = ({ isReactionsOn, setIsReactionsOn,reactionClass }) => {
+const Reactions = ({ isReactionsOn, setIsReactionsOn, reactionClass }) => {
   const videoRef = useRef(null);
   const videoRef2 = useRef(null);
   const videoRef3 = useRef(null);
   const videoRef4 = useRef(null);
   const videoRef5 = useRef(null);
-  
+
 
 
   const handleMouseEnter = () => {
@@ -59,14 +59,14 @@ const Reactions = ({ isReactionsOn, setIsReactionsOn,reactionClass }) => {
   const emotePlayer = (datainput) => {
     window.sendMessageToUnity("EmoteHandler", "emoteHandler", datainput);
   };
-  
+
 
   return (
     <div
       className={`${reactionClass ? 'reactionIn' : 'reactionOut'}`}
       style={{
         position: "absolute",
-        bottom:"74px",
+        bottom: "74px",
         backgroundColor: "rgba(0,0,0,.25)",
         borderRadius: "100px",
         padding: "8px 16px",
@@ -80,15 +80,7 @@ const Reactions = ({ isReactionsOn, setIsReactionsOn,reactionClass }) => {
       }}
     >
       <div style={{ display: "flex" }} className="emoteGrid">
-      
-          <button
-          style={{ width: "48px", height: "48px" }}
-          className="video-container"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-          onClick={() => emotePlayer('emoji5')}
-        >
-          <Tooltip   className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
+        <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
           fontStyle: 'bold',
           fontWeight: 'Bold',
           color: 'white',
@@ -101,21 +93,33 @@ const Reactions = ({ isReactionsOn, setIsReactionsOn,reactionClass }) => {
             backgroundColor: '#00000040',
           },
         }}>Pop And Lock</Button>}>
-          <video
-            style={{ filter: "invert(1)", width: "inherit" }}
-            ref={videoRef}
-            className="video"
-            loop
-            controls={false}
-          >
-            <source
-              src="https://dd2cgqlmnwvp5.cloudfront.net/emote_previews/PopAndLock.webm"
-              type="video/webm"
-            />
-          </video>
+          <div style={{ width: 'fit-content', height: 'fit-content' }} className='tooltipHover2'>
+            <button
+              style={{ width: "48px", height: "48px" }}
+              className="video-container"
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+              onClick={() => emotePlayer('emoji5')}
+            >
+
+              <video
+                style={{ filter: "invert(1)", width: "inherit" }}
+                ref={videoRef}
+                className="video"
+                loop
+                controls={false}
+              >
+                <source
+                  src="https://dd2cgqlmnwvp5.cloudfront.net/emote_previews/PopAndLock.webm"
+                  type="video/webm"
+                />
+              </video>
+
+            </button>
+          </div>
         </Tooltip>
-        </button>
-        
+
+
         <button
           style={{ width: "48px", height: "48px" }}
           className="video-container"
