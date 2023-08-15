@@ -55,7 +55,7 @@ const Reactions = ({ isReactionsOn, setIsReactionsOn,reactionClass }) => {
 
   return (
     <div
-      className={`${isReactionsOn ? 'reactionIn' : 'reactionOut'}`}
+      className={`${reactionClass ? 'reactionIn' : 'reactionOut'}`}
       style={{
         position: "absolute",
         bottom:"74px",

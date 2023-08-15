@@ -28,7 +28,7 @@ function Dock({ handleAddContent }) {
   const initalIsRemoteVideoOn = localStorage.getItem('isRemoteVideoOn') === 'true' ? true : false;
   const [isRemoteVideoOn, setIsRemoteVideoOn] = useState(initalIsRemoteVideoOn);
   const [isReactionsOn, setIsReactionsOn] = useState(false);
-  const [reactionClass, setReactionClass] = useState('');
+  const [reactionClass, setReactionClass] = useState(false);
 
 
 
@@ -47,11 +47,11 @@ function Dock({ handleAddContent }) {
   const reactionHandler = () => {
     if (!isReactionsOn) {
       setIsReactionsOn(true);
-      setReactionClass('reactionIn');
+      setReactionClass(true);
     } else {
-      setReactionClass('reactionOut');
+      setReactionClass(false);
       const timeout = setTimeout(() => {
-        setReactionClass('');
+        setIsReactionsOn(false);
       }, 400);
       return () => clearTimeout(timeout); // Temizleme fonksiyonu, bileşen güncellendiğinde bu timeout'u temizler.
     }
