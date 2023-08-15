@@ -234,7 +234,7 @@ function Dock({ handleAddContent }) {
 
         <Tooltip  className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
           fontStyle: 'bold',
-          visiblity: isReactionsOn ? 'hidden': 'visible',
+          visiblity: !isReactionsOn ? 'visible' : 'hidden',
           fontWeight: 'Bold',
           color: 'white',
           padding: '10px',
@@ -244,7 +244,7 @@ function Dock({ handleAddContent }) {
             backgroundColor: '#00000040',
           },
         }}>{reactionText}</Button>}>
-          <div  style={{ width: 'fit-content', height: 'fit-content' }} onMouseEnter={reactionHandlerVisiblity} className='tooltipHover2'>
+          <div  style={{ width: 'fit-content', height: 'fit-content' }} className='tooltipHover2'>
             <IconButton
               onClick={reactionHandler}
               className="dockButtons"
