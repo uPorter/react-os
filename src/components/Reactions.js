@@ -96,7 +96,8 @@ const Reactions = ({ isReactionsOn, setIsReactionsOn,reactionClass }) => {
           <button
           style={{ width: "48px", height: "48px" }}
           className="video-container"
-          
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
           onClick={() => emotePlayer('emoji5')}
         >
           <video
