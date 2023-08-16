@@ -61,6 +61,10 @@ const Reactions = ({ isReactionsOn, setIsReactionsOn, reactionClass }) => {
     window.sendMessageToUnity("EmoteHandler", "emoteHandler", datainput);
   };
 
+  const wipError = () => {
+    toast.error('Work in progress..');
+  }
+
 
   return (
     <div
@@ -265,7 +269,7 @@ const Reactions = ({ isReactionsOn, setIsReactionsOn, reactionClass }) => {
         }}>All Reactions</Button>}>
           <div style={{ width: 'fit-content', height: 'fit-content' }} className='tooltipHover2'>
             <button
-            onclick={() => toast.error('Work in progress..')}
+              onclick={() => wipError()}
               style={{ 
                 marginLeft: "8px",
                 width: "48px",
@@ -328,7 +332,7 @@ const Reactions = ({ isReactionsOn, setIsReactionsOn, reactionClass }) => {
         }}>Edit Hotkeys</Button>}>
           <div style={{ width: 'fit-content', height: 'fit-content' }} className='tooltipHover2'>
             <button
-              onclick={() => toast.error('Work in progress..')}
+              onclick={() => wipError()}
               style={{
                 width: "48px",
                 height: "48px",
