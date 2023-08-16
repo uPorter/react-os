@@ -76,7 +76,7 @@ const Reactions = ({ isReactionsOn, setIsReactionsOn, reactionClass }) => {
         backgroundColor: "rgba(0,0,0,.25)",
         borderRadius: "100px",
         padding: "8px 16px",
-        width: "390px",
+        width: "300px",
         display: "flex",
         height: "48px",
         zIndex: 2,
@@ -243,16 +243,16 @@ const Reactions = ({ isReactionsOn, setIsReactionsOn, reactionClass }) => {
             border: "0.5px solid hsla(0,0%,100%,.25)",
             height: "80%",
             marginTop: "4px",
-            marginLeft: "8px",
-            marginRight: "8px",
+            marginLeft: "16px",
+            marginRight: "12px",
           }}
         ></div>
 
         <button
-          style={{ width: "48px", height: "48px",color:"white!important" }}
+          style={{ width: "648px", height: "48px",color:"white" }}
           className="video-container"
         >
-          <AddReactionOutlinedIcon></AddReactionOutlinedIcon>
+          <AddReactionOutlinedIcon style={{width:"64px",height:"35px"}}></AddReactionOutlinedIcon>
         </button>
 
       </div>
