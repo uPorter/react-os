@@ -81,6 +81,7 @@ const Reactions = ({ isReactionsOn, setIsReactionsOn, reactionClass }) => {
         zIndex: 2,
         transformOrigin: "50% 100% 0px",
         opacity: 1,
+        justifyContent: "center",
         transform: "scale(.75)",
       }}
     >

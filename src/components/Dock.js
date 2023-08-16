@@ -7,7 +7,7 @@ import PresentToAllOutlinedIcon from "@mui/icons-material/PresentToAllOutlined";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import Tooltip from '@mui/material/Tooltip';
 import { Button } from "@mui/joy";
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import MicOutlinedIcon from '@mui/icons-material/MicOutlined';
 import VideocamOffOutlinedIcon from '@mui/icons-material/VideocamOffOutlined';
 import VideocamOutlinedIcon from '@mui/icons-material/VideocamOutlined';
@@ -15,6 +15,7 @@ import { Toaster, toast } from 'sonner'
 import Divider from "@mui/joy/Divider";
 import VideocamIcon from '@mui/icons-material/Videocam';
 import Reactions from "./Reactions";
+import ClickAwayListener from '@mui/material/ClickAwayListener';
 
 function Dock({ handleAddContent }) {
   //const { handleAddContent } = this.props;
@@ -75,7 +76,7 @@ function Dock({ handleAddContent }) {
 
   const toggleMic = () => {
     if (!isMicOn) {
-      window.sendMessageToUnity("AgoraConnect", "muteLocalAudio" , "false");
+      window.sendMessageToUnity("AgoraConnect", "muteLocalAudio", "false");
       setIsMicOn(true);
       localStorage.setItem('isMicOn', 'true');
     } else {
@@ -118,7 +119,10 @@ function Dock({ handleAddContent }) {
         justifyContent: "center",
       }}
     >
-      {isReactionsOn && <Reactions reactionClass={reactionClass} isReactionsOn={isReactionsOn} setIsReactionsOn={setIsReactionsOn}/>}
+      {isReactionsOn &&
+        <ClickAwayListener onClickAway={reactionHandler}>
+          <Reactions reactionClass={reactionClass} isReactionsOn={isReactionsOn} setIsReactionsOn={setIsReactionsOn} />
+        </ClickAwayListener>}
       <Box
         sx={{
           transform: "scale(0.9)",
@@ -130,7 +134,7 @@ function Dock({ handleAddContent }) {
         }}
       >
 
-        <Tooltip   className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
+        <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
           fontStyle: 'bold',
           fontWeight: 'Bold',
           color: 'white',
@@ -142,7 +146,7 @@ function Dock({ handleAddContent }) {
             backgroundColor: '#00000040',
           },
         }}>{buttonTextMic}</Button>}>
-          <div style={{ width: 'fit-content', height: 'fit-content' }}  className='tooltipHover2'>
+          <div style={{ width: 'fit-content', height: 'fit-content' }} className='tooltipHover2'>
             <IconButton
               id="dockButtonID"
               className="dockButtons"
@@ -168,10 +172,10 @@ function Dock({ handleAddContent }) {
         </Tooltip>
 
 
-        {isDockCameraOn && <Tooltip   className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={
-        
-        <div className="photoDockHolder" style={{ display: !isReactionsOn ? 'flex' : 'none' }}>
-          <Button size="sm" variant="plain" sx={{
+        {isDockCameraOn && <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={
+
+          <div className="photoDockHolder" style={{ display: !isReactionsOn ? 'flex' : 'none' }}>
+            <Button size="sm" variant="plain" sx={{
               fontStyle: 'bold',
               fontWeight: 'Bold',
               color: 'white',
@@ -211,9 +215,9 @@ function Dock({ handleAddContent }) {
               },
             }}>Remote Video</Button>
           </div>
-        
+
         }>
-          <div style={{ width: 'fit-content', height: 'fit-content', animation: 'videoIcon 0.3s ease 0s 1 normal forwards' }}  className='tooltipHover2'>
+          <div style={{ width: 'fit-content', height: 'fit-content', animation: 'videoIcon 0.3s ease 0s 1 normal forwards' }} className='tooltipHover2'>
             <IconButton
               id="dockButtonID"
               className="dockButtons"
@@ -238,7 +242,7 @@ function Dock({ handleAddContent }) {
           </div>
         </Tooltip>}
 
-        <Tooltip  className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
+        <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
           fontStyle: 'bold',
           display: !isReactionsOn ? 'block!important' : 'none!important',
           fontWeight: 'Bold',
@@ -250,7 +254,7 @@ function Dock({ handleAddContent }) {
             backgroundColor: '#00000040',
           },
         }}>{reactionText}</Button>}>
-          <div  style={{ width: 'fit-content', height: 'fit-content' }} className='tooltipHover2'>
+          <div style={{ width: 'fit-content', height: 'fit-content' }} className='tooltipHover2'>
             <IconButton
               onClick={reactionHandler}
               className="dockButtons"
@@ -303,7 +307,7 @@ function Dock({ handleAddContent }) {
           </div>
         </Tooltip>
 
-        <Tooltip   className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={
+        <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={
           <div className="photoDockHolder" style={{ display: !isReactionsOn ? 'flex' : 'none' }}>
             <Button size="sm" variant="plain" sx={{
               fontStyle: 'bold',
@@ -345,7 +349,7 @@ function Dock({ handleAddContent }) {
             }}>Filming mode</Button>
           </div>
         }>
-          <div style={{ width: 'fit-content', height: 'fit-content' }}  className='tooltipHover2'>
+          <div style={{ width: 'fit-content', height: 'fit-content' }} className='tooltipHover2'>
             <IconButton
               id="dockButtonID"
               className="dockButtons"
@@ -360,7 +364,7 @@ function Dock({ handleAddContent }) {
           </div>
         </Tooltip>
 
-        <Tooltip   className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button onClick={toggleScreenShare} size="sm" variant="plain" sx={{
+        <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button onClick={toggleScreenShare} size="sm" variant="plain" sx={{
           fontStyle: 'bold',
           fontWeight: 'Bold',
           color: 'white',
@@ -372,7 +376,7 @@ function Dock({ handleAddContent }) {
             backgroundColor: '#00000040',
           },
         }}>{buttonText}</Button>}>
-          <div style={{ width: 'fit-content', height: 'fit-content' }}  className='tooltipHover2'>
+          <div style={{ width: 'fit-content', height: 'fit-content' }} className='tooltipHover2'>
             <IconButton
               onClick={toggleScreenShare}
               id="dockButtonID"
@@ -396,7 +400,7 @@ function Dock({ handleAddContent }) {
           </div>
         </Tooltip>
 
-        <Tooltip   className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
+        <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
           fontStyle: 'bold',
           fontWeight: 'Bold',
           color: 'white',
@@ -408,7 +412,7 @@ function Dock({ handleAddContent }) {
             backgroundColor: '#00000040',
           },
         }}>Add Content</Button>}>
-          <div style={{ width: 'fit-content', height: 'fit-content' }}  className='tooltipHover2'>
+          <div style={{ width: 'fit-content', height: 'fit-content' }} className='tooltipHover2'>
             <IconButton
               id="dockButtonID"
               onClick={handleAddContent}
