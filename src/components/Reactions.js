@@ -5,6 +5,7 @@ import Typography from "@mui/joy/Typography";
 import PinOutlinedIcon from "@mui/icons-material/PinOutlined";
 import Tooltip from '@mui/material/Tooltip';
 import { Button } from "@mui/joy";
+import { Toaster, toast } from 'sonner'
 
 const Reactions = ({ isReactionsOn, setIsReactionsOn, reactionClass }) => {
   const videoRef = useRef(null);
@@ -98,7 +99,7 @@ const Reactions = ({ isReactionsOn, setIsReactionsOn, reactionClass }) => {
               className="video-container"
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
-              onClick={() => emotePlayer('emoji5')}
+              onClick={() => emotePlayer('emoji4')}
             >
 
               <video
@@ -136,7 +137,7 @@ const Reactions = ({ isReactionsOn, setIsReactionsOn, reactionClass }) => {
               className="video-container"
               onMouseEnter={handleMouseEnter2}
               onMouseLeave={handleMouseLeave2}
-              onClick={() => emotePlayer('emoji6')}
+              onClick={() => emotePlayer('emoji3')}
             >
               <video
                 style={{ filter: "invert(1)", width: "inherit" }}
@@ -172,7 +173,7 @@ const Reactions = ({ isReactionsOn, setIsReactionsOn, reactionClass }) => {
               className="video-container"
               onMouseEnter={handleMouseEnter3}
               onMouseLeave={handleMouseLeave3}
-              onClick={() => emotePlayer('emoji3')}
+              onClick={() => emotePlayer('emoji2')}
             >
               <video
                 style={{ filter: "invert(1)", width: "inherit" }}
@@ -209,7 +210,7 @@ const Reactions = ({ isReactionsOn, setIsReactionsOn, reactionClass }) => {
               className="video-container"
               onMouseEnter={handleMouseEnter4}
               onMouseLeave={handleMouseLeave4}
-              onClick={() => emotePlayer('emoji2')}
+              onClick={() => emotePlayer('emoji6')}
             >
               <video
                 style={{
@@ -261,10 +262,11 @@ const Reactions = ({ isReactionsOn, setIsReactionsOn, reactionClass }) => {
           '&:hover': {
             backgroundColor: '#00000040',
           },
-        }}>All Reactions(wip)</Button>}>
+        }}>All Reactions</Button>}>
           <div style={{ width: 'fit-content', height: 'fit-content' }} className='tooltipHover2'>
             <button
-              style={{
+            onclick={() => toast.error('Work in progress..')}
+              style={{ 
                 marginLeft: "8px",
                 width: "48px",
                 height: "48px",
@@ -323,9 +325,10 @@ const Reactions = ({ isReactionsOn, setIsReactionsOn, reactionClass }) => {
           '&:hover': {
             backgroundColor: '#00000040',
           },
-        }}>Edit Hotkeys(wip)</Button>}>
+        }}>Edit Hotkeys</Button>}>
           <div style={{ width: 'fit-content', height: 'fit-content' }} className='tooltipHover2'>
             <button
+              onclick={() => toast.error('Work in progress..')}
               style={{
                 width: "48px",
                 height: "48px",
