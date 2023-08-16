@@ -50,6 +50,10 @@ const UnityLoader = () => {
     }
   };
 
+  window.toastError = (toastText) => {
+    toast.error(toastText);
+  }
+
   window.sendMessageToUnityBasic = (objectName, methodName) => {
     if (sendMessage) {
       sendMessage(objectName, methodName);

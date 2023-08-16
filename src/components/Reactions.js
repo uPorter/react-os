@@ -62,7 +62,7 @@ const Reactions = ({ isReactionsOn, setIsReactionsOn, reactionClass }) => {
   };
 
   const wipError = () => {
-    toast.error('Work in progress..');
+    window.toastError('Work in progress...');
   }
 
 
@@ -347,7 +347,6 @@ const Reactions = ({ isReactionsOn, setIsReactionsOn, reactionClass }) => {
             </button>
           </div>
         </Tooltip>
-        <Toaster className='toasterCSS' richColors position="bottom-center" />
 
       </div>
     </div>
