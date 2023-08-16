@@ -249,7 +249,7 @@ const Reactions = ({ isReactionsOn, setIsReactionsOn, reactionClass }) => {
         ></div>
 
         <button
-          style={{ width: "648px", height: "48px",color:"white" }}
+          style={{ width: "64px", height: "48px",color:"white" }}
           className="video-container"
         >
           <AddReactionOutlinedIcon style={{width:"64px",height:"35px"}}></AddReactionOutlinedIcon>
