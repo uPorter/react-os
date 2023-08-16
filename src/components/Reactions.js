@@ -5,7 +5,8 @@ import Typography from "@mui/joy/Typography";
 import PinOutlinedIcon from "@mui/icons-material/PinOutlined";
 import Tooltip from '@mui/material/Tooltip';
 import { Button } from "@mui/joy";
-import { Toaster, toast } from 'sonner'
+import { Toaster, toast } from 'sonner';
+import AddReactionOutlinedIcon from '@mui/icons-material/AddReactionOutlined';
 
 const Reactions = ({ isReactionsOn, setIsReactionsOn, reactionClass }) => {
   const videoRef = useRef(null);
@@ -248,28 +249,11 @@ const Reactions = ({ isReactionsOn, setIsReactionsOn, reactionClass }) => {
         ></div>
 
         <button
-          style={{ width: "48px", height: "48px" }}
+          style={{ width: "48px", height: "48px",color:"white!important" }}
           className="video-container"
         >
-          <Typography level="h3">❤️</Typography>
+          <AddReactionOutlinedIcon></AddReactionOutlinedIcon>
         </button>
-
-        <button
-          style={{ width: "48px", height: "48px" }}
-          className="video-container"
-        >
-          <Typography level="h3">👍</Typography>
-        </button>
-
-        <button
-          style={{ width: "48px", height: "48px" }}
-          className="video-container"
-        >
-          <Typography level="h3">🔥</Typography>
-        </button>
-
-        
-
 
       </div>
     </div>
