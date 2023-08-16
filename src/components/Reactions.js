@@ -269,7 +269,7 @@ const Reactions = ({ isReactionsOn, setIsReactionsOn, reactionClass }) => {
         }}>All Reactions</Button>}>
           <div style={{ width: 'fit-content', height: 'fit-content' }} className='tooltipHover2'>
             <button
-              onclick={() => wipError()}
+              onClick={() => wipError()}
               style={{ 
                 marginLeft: "8px",
                 width: "48px",
@@ -332,7 +332,7 @@ const Reactions = ({ isReactionsOn, setIsReactionsOn, reactionClass }) => {
         }}>Edit Hotkeys</Button>}>
           <div style={{ width: 'fit-content', height: 'fit-content' }} className='tooltipHover2'>
             <button
-              onclick={() => wipError()}
+              onClick={() => wipError()}
               style={{
                 width: "48px",
                 height: "48px",
