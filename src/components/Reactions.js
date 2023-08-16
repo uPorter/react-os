@@ -347,7 +347,7 @@ const Reactions = ({ isReactionsOn, setIsReactionsOn, reactionClass }) => {
             </button>
           </div>
         </Tooltip>
-
+        <Toaster className='toasterCSS' richColors position="bottom-center" />
 
       </div>
     </div>
