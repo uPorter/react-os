@@ -159,6 +159,7 @@
     ></canvas>
     <script src="/external-scripts/ReadyPlayerMeFrame.js"></script>
     <script src="/external-scripts/Global.js"></script>
+    <script src="/external-scripts/CanvasRecorder.js"></script>
     <script>
       function attachFocusBlurEvents() {
         const inputElements = document.querySelectorAll("input, textarea");
@@ -182,30 +183,6 @@
       setInterval(() => {
         attachFocusBlurEvents();
       }, 500);
-    </script>
-
-    <script>
-      //set up ccapture.js with webm video format
-      capturer = new CCapture({
-        format: "webm",
-        framerate: 24,
-        timeLimit: duration, //record exactly one loop
-        display: true,
-      });
-
-      //record using ccapture.js when the record button is pressed
-      window.startRecord = function () {
-        console.log("begin recording");
-
-        start = undefined; //reset loop timing
-        recording = true;
-        capturer.start();
-      };
-
-      window.stopRecord = function () {
-        capturer.stop();
-        capturer.save();
-      };
     </script>
   </body>
 </html>
