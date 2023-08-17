@@ -16,16 +16,9 @@ const Loader = ({ loadingProgression, isLoaded }) => {
   const [userNameL, setUserNameL] = useState(localStorage.getItem('userName') || 'Guest');
   const [userImageL, setUserImageL] = useState(localStorage.getItem('userImage') || 'https://models.readyplayer.me/63d5148460d1b8cc82dca9db.png');
   // loadingProgression değerini kullanarak başka işlemler yapabilirsiniz
-  const handleEmojiSelect = (emoji) => {
-    window.sendMessageToUnity("EmoteHandler", "triggerParticle", emoji.native);
-  };
-
 
   return (
     <div className={"loader-layout"}>
-      <div style={{ position: "absolute"}}>
-        <Picker data={data} onEmojiSelect={console.log} />
-      </div>
       <div className={"load-section"}>
         <div className='loader' style={{ display: "flex", justifyContent: "center" }}>
           <div style={{ backdropFilter: 'blur(5px)' }} className='overlay'></div>
