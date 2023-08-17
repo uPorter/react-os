@@ -46,6 +46,7 @@ function Dock({ handleAddContent }) {
   const [reactionEmojiClass, setReactionEmojiClass] = useState(false);
   const initalIsVideoRecord = localStorage.getItem('isVideoRecord') === 'true' ? true : false;
   const [isVideoRecord, setIsVideoRecord] = useState(initalIsVideoRecord);
+  window.initializeSystem();
    
 
   const toggleScreenShare = () => {
@@ -116,11 +117,11 @@ function Dock({ handleAddContent }) {
 
   const toggleVideoRecord = () => {
     if (!isVideoRecord) {
-      window.startRecording();
+      window.startCanvasRecording();
       setIsVideoRecord(true);
       localStorage.setItem('isVideoRecord', 'true');
     } else {
-      window.stopRecording();
+      window.stopCanvasRecording();
       setIsVideoRecord(false);
       localStorage.setItem('isVideoRecord', 'false');
     }
