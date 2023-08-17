@@ -131,8 +131,6 @@ function Dock({ handleAddContent }) {
         </ClickAwayListener>}
       <div style={{ position: "absolute", bottom: "125px"}}>
         <Picker
-          skinTonePosition={"none"}
-          emojiVersion={1}
           data={data}
           onEmojiSelect={handleEmojiSelect}
         />
