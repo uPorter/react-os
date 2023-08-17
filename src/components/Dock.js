@@ -153,7 +153,7 @@ function Dock({ handleAddContent }) {
         justifyContent: "center",
       }}
     >
-      {isReactionsEmojiOn && <div className={`${reactionEmojiClass ? 'reactionInEmoji' : 'reactionOutEmoji'}`} style={{ position: "absolute", bottom: "125px" }}>
+      {isReactionsEmojiOn && <div className={`${reactionEmojiClass ? 'reactionInEmoji' : 'reactionOutEmoji'}`} style={{ position: "absolute", bottom: "130px" }}>
         <EmojiPicker
           onEmojiClick={onClickEmoji}
           autoFocusSearch={false}
