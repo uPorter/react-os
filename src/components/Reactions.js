@@ -243,8 +243,8 @@ const Reactions = ({ isReactionsOn, setIsReactionsOn, reactionClass, reactionEmo
             border: "0.5px solid hsla(0,0%,100%,.25)",
             height: "80%",
             marginTop: "4px",
-            marginLeft: "16px",
-            marginRight: "12px",
+            marginLeft: "14px",
+            marginRight: "14px",
           }}
         ></div>
 
@@ -262,7 +262,7 @@ const Reactions = ({ isReactionsOn, setIsReactionsOn, reactionClass, reactionEmo
         }}>All Particles</Button>}>
           <div style={{ width: 'fit-content', height: 'fit-content' }} className='tooltipHover2'>
             <button
-              style={{ width: "64px", height: "48px", color: "white" }}
+              style={{ width: "48px", height: "48px", color: "white" }}
               className="video-container"
               onClick={() => reactionEmojiHandler()}
             >
