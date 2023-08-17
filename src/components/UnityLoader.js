@@ -749,7 +749,7 @@ const UnityLoader = () => {
             {/* <Button style={{ position: 'absolute', zIndex: '15' }} onClick={ReactshowRPM} variant="soft">Edit Avatar - PreTest</Button>*/}
           </div>)}
         <Toaster className='toasterCSS' richColors position="bottom-center" />
-        <Unity className='container' unityProvider={unityProvider} style={{ cursor: 'grab', display: isLoaded ? "block" : "none" }} />
+        <Unity onFocus={() => console.log("Focused")} onBlur={() => console.log("Blured")} className='container' unityProvider={unityProvider} style={{ cursor: 'grab', display: isLoaded ? "block" : "none" }} />
       </div>
     </div>
     // JSX ile bileşeninizi render edebilirsiniz
