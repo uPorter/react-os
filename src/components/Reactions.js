@@ -8,7 +8,7 @@ import { Button } from "@mui/joy";
 import { Toaster, toast } from 'sonner';
 import AddReactionOutlinedIcon from '@mui/icons-material/AddReactionOutlined';
 
-const Reactions = ({ isReactionsOn, setIsReactionsOn, reactionClass }) => {
+const Reactions = ({ isReactionsOn, setIsReactionsOn, reactionClass, reactionEmojiHandler }) => {
   const videoRef = useRef(null);
   const videoRef2 = useRef(null);
   const videoRef3 = useRef(null);
@@ -248,12 +248,28 @@ const Reactions = ({ isReactionsOn, setIsReactionsOn, reactionClass }) => {
           }}
         ></div>
 
-        <button
-          style={{ width: "64px", height: "48px",color:"white" }}
-          className="video-container"
-        >
-          <AddReactionOutlinedIcon style={{width:"64px",height:"35px"}}></AddReactionOutlinedIcon>
-        </button>
+        <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
+          fontStyle: 'bold',
+          fontWeight: 'Bold',
+          color: 'white',
+          padding: '10px',
+          marginBottom: '-10px',
+          transform: 'scale(0.85)',
+          backgroundColor: '#00000040',
+          '&:hover': {
+            backgroundColor: '#00000040',
+          },
+        }}>All Particles</Button>}>
+          <div style={{ width: 'fit-content', height: 'fit-content' }} className='tooltipHover2'>
+            <button
+              style={{ width: "64px", height: "48px", color: "white" }}
+              className="video-container"
+              onClick={() => reactionEmojiHandler()}
+            >
+              <AddReactionOutlinedIcon style={{ width: "64px", height: "35px" }}></AddReactionOutlinedIcon>
+            </button>
+          </div>
+        </Tooltip>
 
       </div>
     </div>

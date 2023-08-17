@@ -40,6 +40,8 @@ function Dock({ handleAddContent }) {
   const [isRemoteVideoOn, setIsRemoteVideoOn] = useState(initalIsRemoteVideoOn);
   const [isReactionsOn, setIsReactionsOn] = useState(false);
   const [reactionClass, setReactionClass] = useState(false);
+  const [isReactionsEmojiOn, setIsReactionsEmojiOn] = useState(false);
+  const [reactionEmojiClass, setReactionEmojiClass] = useState(false);
 
 
 
@@ -63,6 +65,19 @@ function Dock({ handleAddContent }) {
       setReactionClass(false);
       const timeout = setTimeout(() => {
         setIsReactionsOn(false);
+      }, 400);
+      return () => clearTimeout(timeout); // Temizleme fonksiyonu, bileşen güncellendiğinde bu timeout'u temizler.
+    }
+  }
+
+  const reactionEmojiHandler = () => {
+    if (!isReactionsEmojiOn) {
+      setIsReactionsEmojiOn(true);
+      setReactionEmojiClass(true);
+    } else {
+      setReactionEmojiClass(false);
+      const timeout = setTimeout(() => {
+        setIsReactionsEmojiOn(false);
       }, 400);
       return () => clearTimeout(timeout); // Temizleme fonksiyonu, bileşen güncellendiğinde bu timeout'u temizler.
     }
@@ -125,6 +140,7 @@ function Dock({ handleAddContent }) {
 
   function onClickEmoji(emojiData) {
     window.sendMessageToUnity("EmoteHandler", "triggerParticle", emojiData.emoji);
+    reactionEmojiHandler();
   }
 
   const buttonText = isScreenShareOn ? 'Stop Screen Share' : 'Share Screen';
@@ -137,19 +153,19 @@ function Dock({ handleAddContent }) {
         justifyContent: "center",
       }}
     >
-      <div style={{ position: "absolute", bottom: "125px" }}>
+      <div className={`${reactionEmojiClass ? 'reactionInEmoji' : 'reactionOutEmoji'}`} style={{ position: "absolute", bottom: "125px" }}>
         <EmojiPicker
           onEmojiClick={onClickEmoji}
           autoFocusSearch={false}
           theme={Theme.DARK}
           skinTonePickerLocation={SkinTonePickerLocation.NONE}
-          emojiVersion="1.0"
+          emojiVersion="0.6"
           emojiStyle={EmojiStyle.NATIVE}
         />
       </div>
       {isReactionsOn &&
         <ClickAwayListener onClickAway={reactionHandler}>
-          <Reactions reactionClass={reactionClass} isReactionsOn={isReactionsOn} setIsReactionsOn={setIsReactionsOn} />
+          <Reactions reactionEmojiHandler={reactionEmojiHandler} reactionClass={reactionClass} isReactionsOn={isReactionsOn} setIsReactionsOn={setIsReactionsOn} />
         </ClickAwayListener>}
 
       <Box
