@@ -106,7 +106,7 @@
   <script src="/external-scripts/Global.js"></script>
   <script>
     function attachFocusBlurEvents() {
-      const inputElements = document.querySelectorAll('input');
+      const inputElements = document.querySelectorAll('input, textarea');
 
       inputElements.forEach(input => {
         input.addEventListener('focus', () => {
