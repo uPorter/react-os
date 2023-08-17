@@ -129,12 +129,7 @@ function Dock({ handleAddContent }) {
         <ClickAwayListener onClickAway={reactionHandler}>
           <Reactions reactionClass={reactionClass} isReactionsOn={isReactionsOn} setIsReactionsOn={setIsReactionsOn} />
         </ClickAwayListener>}
-      <div style={{ position: "absolute", bottom: "125px"}}>
-        <Picker
-          data={data}
-          onEmojiSelect={handleEmojiSelect}
-        />
-      </div>
+      
       <Box
         sx={{
           transform: "scale(0.9)",
