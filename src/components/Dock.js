@@ -16,6 +16,8 @@ import Divider from "@mui/joy/Divider";
 import VideocamIcon from '@mui/icons-material/Videocam';
 import Reactions from "./Reactions";
 import ClickAwayListener from '@mui/material/ClickAwayListener';
+import data from '@emoji-mart/data'
+import { Picker } from 'emoji-mart'
 
 function Dock({ handleAddContent }) {
   //const { handleAddContent } = this.props;
