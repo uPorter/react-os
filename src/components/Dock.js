@@ -108,7 +108,7 @@ function Dock({ handleAddContent }) {
       setIsVideoRecord(true);
       localStorage.setItem('isMicOn', 'true');
     } else {
-      indow.sendMessageToUnity("VideoManager","StopRecording");
+      window.sendMessageToUnity("VideoManager","StopRecording");
       setIsVideoRecord(false);
       localStorage.setItem('isMicOn', 'false');
     }
