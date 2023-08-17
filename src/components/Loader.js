@@ -8,8 +8,6 @@ import Avatar from '@mui/joy/Avatar';
 import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';
 import Typography from '@mui/joy/Typography';
 import { useState } from 'react';
-import data from '@emoji-mart/data'
-import { Picker } from 'emoji-mart'
 
 
 const Loader = ({ loadingProgression, isLoaded }) => {
