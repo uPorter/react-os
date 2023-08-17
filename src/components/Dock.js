@@ -366,7 +366,7 @@ function Dock({ handleAddContent }) {
               '&:hover': {
                 backgroundColor: '#00000040',
               },
-            }}>Take a photo(T)</Button>
+            }}>Take a photo (T)</Button>
             <Button size="sm" variant="plain" sx={{
               fontStyle: 'bold',
               fontWeight: 'Bold',
@@ -379,7 +379,7 @@ function Dock({ handleAddContent }) {
               '&:hover': {
                 backgroundColor: '#00000040',
               },
-            }}>Record a video(R)</Button>
+            }}>Record a video (R)</Button>
             <Button size="sm" variant="plain" sx={{
               fontStyle: 'bold',
               fontWeight: 'Bold',
