@@ -219,9 +219,6 @@ const UnityLoader = () => {
   }, []);
 
 
-
-
-
   useEffect(() => {
     if (isStarted && userSigned) {
       // belirli bir kodu buraya yazabilirsiniz
@@ -333,6 +330,7 @@ const UnityLoader = () => {
   const avatarHandler = () => {
     if (isLoaded === true) {
       sendMessage("AvatarNick", "TestSetMethod", userName);
+      window.initializeSystem();
       //admin place
       if (admin === "true") {
         sendMessage("adminManager", "setAdminTrue");
