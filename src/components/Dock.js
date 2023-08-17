@@ -46,10 +46,7 @@ function Dock({ handleAddContent }) {
   const [reactionEmojiClass, setReactionEmojiClass] = useState(false);
   const initalIsVideoRecord = localStorage.getItem('isVideoRecord') === 'true' ? true : false;
   const [isVideoRecord, setIsVideoRecord] = useState(initalIsVideoRecord);
-  const canvas2 = document.getElementById('react-unity-webgl-canvas-1');
-  const recorder = new CanvasRecorder(canvas2); 
-
-
+   
 
   const toggleScreenShare = () => {
     if (!isScreenShareOn) {
@@ -119,12 +116,11 @@ function Dock({ handleAddContent }) {
 
   const toggleVideoRecord = () => {
     if (!isVideoRecord) {
-      recorder.start();
+      window.startRecording();
       setIsVideoRecord(true);
       localStorage.setItem('isVideoRecord', 'true');
     } else {
-      recorder.stop();
-      recorder.save();
+      window.stopRecording();
       setIsVideoRecord(false);
       localStorage.setItem('isVideoRecord', 'false');
     }
