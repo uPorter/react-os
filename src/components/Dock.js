@@ -103,25 +103,25 @@ function Dock({ handleAddContent }) {
   }, [isDockCameraOn]);
 
   const toggleMic = () => {
-    if (!isVideoRecord) {
-      window.sendMessageToUnity("VideoManager","StartRecording");
-      setIsVideoRecord(true);
+    if (!isMicOn) {
+      window.sendMessageToUnity("AgoraConnect", "muteLocalAudio", "false");
+      setIsMicOn(true);
       localStorage.setItem('isMicOn', 'true');
     } else {
-      window.sendMessageToUnity("VideoManager","StopRecording");
-      setIsVideoRecord(false);
+      window.sendMessageToUnity("AgoraConnect", "muteLocalAudio", "true");
+      setIsMicOn(false);
       localStorage.setItem('isMicOn', 'false');
     }
   }
 
   const toggleVideoRecord = () => {
-    if (!isMicOn) {
-      window.sendMessageToUnity("AgoraConnect", "muteLocalAudio", "false");
-      setIsMicOn(true);
+    if (!isVideoRecord) {
+      window.sendMessageToUnity("VideoManager","StartRecording");
+      setIsVideoRecord(true);
       localStorage.setItem('isVideoRecord', 'true');
     } else {
-      window.sendMessageToUnity("AgoraConnect", "muteLocalAudio", "true");
-      setIsMicOn(false);
+      window.sendMessageToUnity("VideoManager","StopRecording");
+      setIsVideoRecord(false);
       localStorage.setItem('isVideoRecord', 'false');
     }
   }
@@ -427,7 +427,6 @@ function Dock({ handleAddContent }) {
                 }
               }}
             >
-              //TODO:Check
               {isVideoRecord && <StopIcon/>}
               {!isVideoRecord && <CameraAltOutlinedIcon />}
             </IconButton>
