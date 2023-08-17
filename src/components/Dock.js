@@ -157,6 +157,14 @@ function Dock({ handleAddContent }) {
     reactionEmojiHandler();
   }
 
+  const mediaHandler = () => {
+    if(!isVideoRecord){
+      window.sendMessageToUnityBasic("VideoManager","takeScreenShot")
+    }else{
+      toggleVideoRecord();
+    }
+  }
+
   const buttonText = isScreenShareOn ? 'Stop Screen Share' : 'Share Screen';
   const buttonTextMic = isMicOn ? 'Mute' : 'Unmute';
   const reactionText = isReactionsOn ? '' : 'Reactions';
@@ -409,6 +417,7 @@ function Dock({ handleAddContent }) {
         }>
           <div style={{ width: 'fit-content', height: 'fit-content' }} className='tooltipHover2'>
             <IconButton
+              onClick={mediaHandler}
               id="dockButtonID"
               className="dockButtons"
               variant="solid"
