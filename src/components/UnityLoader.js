@@ -42,7 +42,8 @@ const UnityLoader = () => {
     codeUrl: "/unitybuild2/Build.wasm.unityweb",
   });
   //[TODO] This line for external instance connection
-  window.unityInstance = UNSAFE__unityInstance
+  window.unityInstance = UNSAFE__unityInstance;
+  window.uarGameInstance = UNSAFE__unityInstance;
 
   window.sendMessageToUnity = (objectName, methodName, parameter) => {
     if (sendMessage) {
