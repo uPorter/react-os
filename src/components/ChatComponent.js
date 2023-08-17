@@ -43,37 +43,7 @@ const ChatComponent = (props) => {
   };
 
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      const textarea = document.querySelector('.str-chat__small-message-input textarea');
-      console.log(textarea);
 
-      const onFocus = () => {
-        // onFocus event handling logic here
-        sendMessage("AvatarNick", "Start");
-        console.log('Focused');
-      };
-
-      const onBlur = () => {
-        // onBlur event handling logic here
-        sendMessage("AvatarNick", "enableInput");
-        console.log('Blured');
-      };
-
-      if (textarea) {
-        textarea.addEventListener('focus', onFocus);
-        textarea.addEventListener('blur', onBlur);
-
-        return () => {
-          textarea.removeEventListener('focus', onFocus);
-          textarea.removeEventListener('blur', onBlur);
-        };
-      }
-    }, 2000);
-
-    return () => clearTimeout(timer);
-  }, []);
-//Refresh System Done And working well i will pass to the 2nd secenary
 
 
 
