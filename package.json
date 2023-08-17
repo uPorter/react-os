@@ -4,8 +4,6 @@
   "private": true,
   "dependencies": {
     "@braintree/sanitize-url": "5.0.0",
-    "@emoji-mart/data": "^1.1.2",
-    "@emoji-mart/react": "^1.1.1",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@mui/icons-material": "^5.11.11",
@@ -17,7 +15,6 @@
     "axios": "^1.4.0",
     "custom-event": "^1.0.1",
     "dayjs": "^1.10.3",
-    "emoji-mart": "3.0.1",
     "emoji-regex": "^9.2.0",
     "framer-motion": "^10.1.0",
     "i18next": "^19.8.4",
