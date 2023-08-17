@@ -23,11 +23,8 @@ const Loader = ({ loadingProgression, isLoaded }) => {
 
   return (
     <div className={"loader-layout"}>
-      <div style={{ position: "absolute", bottom: "125px" }}>
-        <Picker
-          data={data}
-          onEmojiSelect={handleEmojiSelect}
-        />
+      <div style={{ position: "absolute"}}>
+        <Picker data={data} onEmojiSelect={console.log} />
       </div>
       <div className={"load-section"}>
         <div className='loader' style={{ display: "flex", justifyContent: "center" }}>

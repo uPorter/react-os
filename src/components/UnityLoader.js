@@ -103,9 +103,6 @@ const UnityLoader = () => {
     setUploadOpen(true);
   }
 
-  const handleEmojiSelect = (emoji) => {
-    window.sendMessageToUnity("EmoteHandler","triggerParticle", emoji.native);
-  };
 
   function generateUID(length) {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
