@@ -16,6 +16,7 @@ import Divider from "@mui/joy/Divider";
 import VideocamIcon from '@mui/icons-material/Videocam';
 import Reactions from "./Reactions";
 import ClickAwayListener from '@mui/material/ClickAwayListener';
+import StopIcon from '@mui/icons-material/Stop';
 import EmojiPicker, {
   EmojiStyle,
   SkinTones,
@@ -42,6 +43,8 @@ function Dock({ handleAddContent }) {
   const [reactionClass, setReactionClass] = useState(false);
   const [isReactionsEmojiOn, setIsReactionsEmojiOn] = useState(false);
   const [reactionEmojiClass, setReactionEmojiClass] = useState(false);
+  const initalIsVideoRecord = localStorage.getItem('isVideoRecord') === 'true' ? true : false;
+  const [isVideoRecord, setIsVideoRecord] = useState(initalIsVideoRecord);
 
 
 
@@ -100,14 +103,26 @@ function Dock({ handleAddContent }) {
   }, [isDockCameraOn]);
 
   const toggleMic = () => {
+    if (!isVideoRecord) {
+      window.sendMessageToUnity("VideoManager","StartRecording");
+      setIsVideoRecord(true);
+      localStorage.setItem('isMicOn', 'true');
+    } else {
+      indow.sendMessageToUnity("VideoManager","StopRecording");
+      setIsVideoRecord(false);
+      localStorage.setItem('isMicOn', 'false');
+    }
+  }
+
+  const toggleVideoRecord = () => {
     if (!isMicOn) {
       window.sendMessageToUnity("AgoraConnect", "muteLocalAudio", "false");
       setIsMicOn(true);
-      localStorage.setItem('isMicOn', 'true');
+      localStorage.setItem('isVideoRecord', 'true');
     } else {
       window.sendMessageToUnity("AgoraConnect", "muteLocalAudio", "true");
       setIsMicOn(false);
-      localStorage.setItem('isMicOn', 'false');
+      localStorage.setItem('isVideoRecord', 'false');
     }
   }
 
@@ -367,7 +382,7 @@ function Dock({ handleAddContent }) {
                 backgroundColor: '#00000040',
               },
             }}>Take a photo (T)</Button>
-            <Button size="sm" variant="plain" sx={{
+            <Button onClick={toggleVideoRecord} size="sm" variant="plain" sx={{
               fontStyle: 'bold',
               fontWeight: 'Bold',
               transition: "0.5s all cubic-bezier(0, 0.2, 0.2, 1)",
@@ -400,11 +415,21 @@ function Dock({ handleAddContent }) {
               className="dockButtons"
               variant="solid"
               sx={{
+                color: isVideoRecord ? 'black' : 'white',
+                boxShadow: isVideoRecord ? '0px 0px 20px 5px rgb(0 0 0 / 34%)' : '0px 0px 0px 0px rgb(0 0 0 / 34%)',
+                backgroundColor: isVideoRecord ? '#f33!important' : 'rgba(0, 0, 0, 0.250)',
+                background: isVideoRecord ? '#f33!important' : 'rgba(0, 0, 0, 0.250)',
                 "--IconButton-size": "55px",
                 "--IconButton-radius": "50px",
+                '&:hover': {
+                  backgroundColor: isVideoRecord ? '#f33!important' : 'rgba(0, 0, 0, 0.250)',
+                  background: isVideoRecord ? '#f33!important' : 'rgba(0, 0, 0, 0.250)',
+                }
               }}
             >
-              <CameraAltOutlinedIcon />
+              //TODO:Check
+              {isVideoRecord && <StopIcon/>}
+              {!isVideoRecord && <CameraAltOutlinedIcon />}
             </IconButton>
           </div>
         </Tooltip>
