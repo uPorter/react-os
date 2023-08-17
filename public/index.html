@@ -1,40 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="utf-8" />
-  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#000000" />
-  <meta name="description" content="Web site created using create-react-app" />
-  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-  <script src="/AgoraWebSDK/libs/agora-extension-virtual-background.js"></script>
-  <script src="/AgoraWebSDK/libs/virtualbackground.js"></script>
-  <script src="/AgoraWebSDK/libs/databuilder.js"></script>
-  <script src="/AgoraWebSDK/libs/clientmanager.js"></script>
-  <script src="/AgoraWebSDK/libs/wglwrapper.js"></script>
-  <script src="/AgoraWebSDK/libs/audioeffects.js"></script>
-  <script src="/AgoraWebSDK/libs/eventmanager.js"></script>
-  <script src="/AgoraWebSDK/libs/watermark.js"></script>
-  <script src="/AgoraWebSDK/libs/customvideo.js"></script>
-  <script src="/AgoraWebSDK/libs/agorachannel.js"></script>
-  <script src="/AgoraWebSDK/libs/multichannel.js"></script>
-  <script src="/AgoraWebSDK/libs/audiosystem.js"></script>
-  <script src="/AgoraWebSDK/libs/testing.js"></script>
-  <script src="/AgoraWebSDK/libs/agorautils.js"></script>
-  <script src="/AgoraWebSDK/libs/audiomixing.js"></script>
-  <script src="/AgoraWebSDK/agorartcenginev2.js"></script>
-  <script src="/AgoraWebSDK/vendor/materialize.min.js"></script>
-  <script src="/AgoraRTC_N.js"></script>
-  <script src="/AgoraWebSDK/libs/engineglobals.js"></script>
-  <script src="/AgoraWebSDK/libs/spatial-audio-main.js" type="module"></script>
-  <script src="/AgoraWebSDK/vendor/jquery.min.js"></script>
-  <!--
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <script src="/AgoraWebSDK/libs/agora-extension-virtual-background.js"></script>
+    <script src="/AgoraWebSDK/libs/virtualbackground.js"></script>
+    <script src="/AgoraWebSDK/libs/databuilder.js"></script>
+    <script src="/AgoraWebSDK/libs/clientmanager.js"></script>
+    <script src="/AgoraWebSDK/libs/wglwrapper.js"></script>
+    <script src="/AgoraWebSDK/libs/audioeffects.js"></script>
+    <script src="/AgoraWebSDK/libs/eventmanager.js"></script>
+    <script src="/AgoraWebSDK/libs/watermark.js"></script>
+    <script src="/AgoraWebSDK/libs/customvideo.js"></script>
+    <script src="/AgoraWebSDK/libs/agorachannel.js"></script>
+    <script src="/AgoraWebSDK/libs/multichannel.js"></script>
+    <script src="/AgoraWebSDK/libs/audiosystem.js"></script>
+    <script src="/AgoraWebSDK/libs/testing.js"></script>
+    <script src="/AgoraWebSDK/libs/agorautils.js"></script>
+    <script src="/AgoraWebSDK/libs/audiomixing.js"></script>
+    <script src="/AgoraWebSDK/agorartcenginev2.js"></script>
+    <script src="/AgoraWebSDK/vendor/materialize.min.js"></script>
+    <script src="/AgoraRTC_N.js"></script>
+    <script src="/AgoraWebSDK/libs/engineglobals.js"></script>
+    <script
+      src="/AgoraWebSDK/libs/spatial-audio-main.js"
+      type="module"
+    ></script>
+    <script src="/AgoraWebSDK/vendor/jquery.min.js"></script>
+    <script src="https://unpkg.com/ccapture.js@1.1.0/build/CCapture.all.min.js"></script>
+    <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
-  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-  <!--
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
       Only files inside the `public` folder can be referenced from the HTML.
@@ -43,54 +49,93 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-  <title>Mugen</title>
-</head>
+    <title>Mugen</title>
+  </head>
 
-<body>
-  <noscript>You need to enable JavaScript to run this app.</noscript>
-  <div id="rpm-container"
-    style="width: 100%;display: none;z-index: 999;justify-content: center;position: absolute;align-items: center;backdrop-filter: blur(9px);height: 100%;">
-    <div class="frameHolder"
-      style="width: fit-content;height: fit-content;max-width: 1247px;min-width: 1193px;align-items: center;min-height: 720px;">
-      <button onclick="hideRpm()" type="button" id="rpm-hide-button" class="btn-close" style="
-    padding: 4px;
-    width: 34px;
-    height: 34px;
-">
-        <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge  css-c1sh5i" focusable="false" aria-hidden="true"
-          viewBox="0 0 24 24" data-testid="CloseOutlinedIcon" aria-label="fontSize large">
-          <path
-            d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z">
-          </path>
-        </svg>
-      </button><iframe id="rpm-frame" class="rpm-frame" allow="camera *; microphone *"
-        src="https://metaos.readyplayer.me/avatar?frameApi"
-        style="width: 100%;align-items: center;min-height: 720px;display: flex;flex-direction: row;border-radius: 30px;align-content: flex-start;border-color: transparent;"></iframe>
-
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div
+      id="rpm-container"
+      style="
+        width: 100%;
+        display: none;
+        z-index: 999;
+        justify-content: center;
+        position: absolute;
+        align-items: center;
+        backdrop-filter: blur(9px);
+        height: 100%;
+      "
+    >
+      <div
+        class="frameHolder"
+        style="
+          width: fit-content;
+          height: fit-content;
+          max-width: 1247px;
+          min-width: 1193px;
+          align-items: center;
+          min-height: 720px;
+        "
+      >
+        <button
+          onclick="hideRpm()"
+          type="button"
+          id="rpm-hide-button"
+          class="btn-close"
+          style="padding: 4px; width: 34px; height: 34px"
+        >
+          <svg
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge css-c1sh5i"
+            focusable="false"
+            aria-hidden="true"
+            viewBox="0 0 24 24"
+            data-testid="CloseOutlinedIcon"
+            aria-label="fontSize large"
+          >
+            <path
+              d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"
+            ></path>
+          </svg></button
+        ><iframe
+          id="rpm-frame"
+          class="rpm-frame"
+          allow="camera *; microphone *"
+          src="https://metaos.readyplayer.me/avatar?frameApi"
+          style="
+            width: 100%;
+            align-items: center;
+            min-height: 720px;
+            display: flex;
+            flex-direction: row;
+            border-radius: 30px;
+            align-content: flex-start;
+            border-color: transparent;
+          "
+        ></iframe>
+      </div>
     </div>
-  </div>
 
-  <div style="display: none;">
-    <div id="client-stats" class="stats"></div>
-    <div class="row video-group">
-      <div class="col">
-        <p id="local-player-name" class="player-name"></p>
-        <div class="player-with-stats">
-          <div id="local-player" class="player"></div>
-          <div id="local-stats" class="stream-stats stats"></div>
+    <div style="display: none">
+      <div id="client-stats" class="stats"></div>
+      <div class="row video-group">
+        <div class="col">
+          <p id="local-player-name" class="player-name"></p>
+          <div class="player-with-stats">
+            <div id="local-player" class="player"></div>
+            <div id="local-stats" class="stream-stats stats"></div>
+          </div>
+        </div>
+        <div class="w-100"></div>
+        <div class="col">
+          <div id="remote-playerlist"></div>
         </div>
       </div>
-      <div class="w-100"></div>
-      <div class="col">
-        <div id="remote-playerlist"></div>
-      </div>
     </div>
-  </div>
 
+    <div id="root"></div>
 
-  <div id="root"></div>
-
-  <!--
+    <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
 
@@ -100,36 +145,67 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-  <canvas id="inMem_Canvas" height="450" width="450" style="display: none;"></canvas>
-  <canvas id="myCanvas" height="450" width="450" style="display: none;"></canvas>
-  <script src="/external-scripts/ReadyPlayerMeFrame.js"></script>
-  <script src="/external-scripts/Global.js"></script>
-  <script>
-    function attachFocusBlurEvents() {
-      const inputElements = document.querySelectorAll('input, textarea');
+    <canvas
+      id="inMem_Canvas"
+      height="450"
+      width="450"
+      style="display: none"
+    ></canvas>
+    <canvas
+      id="myCanvas"
+      height="450"
+      width="450"
+      style="display: none"
+    ></canvas>
+    <script src="/external-scripts/ReadyPlayerMeFrame.js"></script>
+    <script src="/external-scripts/Global.js"></script>
+    <script>
+      function attachFocusBlurEvents() {
+        const inputElements = document.querySelectorAll("input, textarea");
 
-      inputElements.forEach(input => {
-        input.addEventListener('focus', () => {
-          unityInstance.SendMessage("AvatarNick","Start");
-          // veya istediğiniz işlemleri burada yapabilirsiniz
+        inputElements.forEach((input) => {
+          input.addEventListener("focus", () => {
+            unityInstance.SendMessage("AvatarNick", "Start");
+            // veya istediğiniz işlemleri burada yapabilirsiniz
+          });
+
+          input.addEventListener("blur", () => {
+            unityInstance.SendMessage("AvatarNick", "enableInput");
+            // veya istediğiniz işlemleri burada yapabilirsiniz
+          });
         });
-
-        input.addEventListener('blur', () => {
-          unityInstance.SendMessage("AvatarNick","enableInput");
-          // veya istediğiniz işlemleri burada yapabilirsiniz
-        });
-      });
-    }
-
-    // İlk çalıştırma
-    attachFocusBlurEvents();
-
-    // Her yarım saniyede bir çalıştırma
-    setInterval(() => {
+      }
+      // İlk çalıştırma
       attachFocusBlurEvents();
-    }, 500);
 
-  </script>
-</body>
+      // Her yarım saniyede bir çalıştırma
+      setInterval(() => {
+        attachFocusBlurEvents();
+      }, 500);
+    </script>
 
+    <script>
+      //set up ccapture.js with webm video format
+      capturer = new CCapture({
+        format: "webm",
+        framerate: 24,
+        timeLimit: duration, //record exactly one loop
+        display: true,
+      });
+
+      //record using ccapture.js when the record button is pressed
+      window.startRecord = function () {
+        console.log("begin recording");
+
+        start = undefined; //reset loop timing
+        recording = true;
+        capturer.start();
+      };
+
+      window.stopRecord = function () {
+        capturer.stop();
+        capturer.save();
+      };
+    </script>
+  </body>
 </html>

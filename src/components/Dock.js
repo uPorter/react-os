@@ -369,7 +369,7 @@ function Dock({ handleAddContent }) {
 
         <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={
           <div className="photoDockHolder" style={{ display: !isReactionsOn ? 'flex' : 'none' }}>
-            <Button size="sm" variant="plain" sx={{
+            <Button onClick={() => window.sendMessageToUnityBasic("VideoManager","takeScreenShot")} size="sm" variant="plain" sx={{
               fontStyle: 'bold',
               fontWeight: 'Bold',
               color: 'white',
@@ -389,7 +389,6 @@ function Dock({ handleAddContent }) {
               width: "100%",
               color: 'white',
               padding: '10px',
-              marginBottom: '-4px',
               backgroundColor: '#00000000',
               '&:hover': {
                 backgroundColor: '#00000040',
@@ -415,7 +414,7 @@ function Dock({ handleAddContent }) {
               className="dockButtons"
               variant="solid"
               sx={{
-                color: isVideoRecord ? 'black' : 'white',
+                color: isVideoRecord ? 'white' : 'white',
                 boxShadow: isVideoRecord ? '0px 0px 20px 5px rgb(0 0 0 / 34%)' : '0px 0px 0px 0px rgb(0 0 0 / 34%)',
                 backgroundColor: isVideoRecord ? '#f33!important' : 'rgba(0, 0, 0, 0.250)',
                 background: isVideoRecord ? '#f33!important' : 'rgba(0, 0, 0, 0.250)',
