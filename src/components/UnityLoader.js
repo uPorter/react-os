@@ -27,8 +27,6 @@ import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
 import Tooltip from '@mui/material/Tooltip';
 import Fade from '@mui/material/Fade';
 import InfoPanel from './InfoPanel';
-import emojidata from '@emoji-mart/data'
-import { Picker } from 'emoji-mart'
 
 
 const chatClient = StreamChat.getInstance('7q2yg6eutsf9');
@@ -736,10 +734,6 @@ const UnityLoader = () => {
                   </div>)}
               </Grid>
               <Grid xs={6}>
-                  <Picker
-                    data={emojidata}
-                    onEmojiSelect={handleEmojiSelect}
-                  />
                 {isDockEditorMode && <EditDock isLocked={isLocked} setIsLocked={setIsLocked} objectName={objectName} handleInfoMode={handleInfoMode} handleEditBar={handleEditBar} handleAddContent={handleAddContent}></EditDock>}
                 {!isDockEditorMode && isAdmin && <Dock handleAddContent={handleAddContent}></Dock>}
                 {!isAdmin && <GuestDock handleAddContent={handleAddContent}></GuestDock>}
