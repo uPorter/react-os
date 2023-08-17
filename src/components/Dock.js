@@ -153,7 +153,7 @@ function Dock({ handleAddContent }) {
         justifyContent: "center",
       }}
     >
-      <div className={`${reactionEmojiClass ? 'reactionInEmoji' : 'reactionOutEmoji'}`} style={{ position: "absolute", bottom: "125px" }}>
+      {isReactionsEmojiOn && <div className={`${reactionEmojiClass ? 'reactionInEmoji' : 'reactionOutEmoji'}`} style={{ position: "absolute", bottom: "125px" }}>
         <EmojiPicker
           onEmojiClick={onClickEmoji}
           autoFocusSearch={false}
@@ -162,7 +162,7 @@ function Dock({ handleAddContent }) {
           emojiVersion="0.6"
           emojiStyle={EmojiStyle.NATIVE}
         />
-      </div>
+      </div>}
       {isReactionsOn &&
         <ClickAwayListener onClickAway={reactionHandler}>
           <Reactions reactionEmojiHandler={reactionEmojiHandler} reactionClass={reactionClass} isReactionsOn={isReactionsOn} setIsReactionsOn={setIsReactionsOn} />
