@@ -46,9 +46,11 @@ function Dock({ handleAddContent }) {
   const [reactionEmojiClass, setReactionEmojiClass] = useState(false);
   const initalIsVideoRecord = localStorage.getItem('isVideoRecord') === 'true' ? true : false;
   const [isVideoRecord, setIsVideoRecord] = useState(initalIsVideoRecord);
-  window.initializeSystem();
-   
 
+  useEffect(() => {
+    window.initializeSystem();
+  }, []);
+  
   const toggleScreenShare = () => {
     if (!isScreenShareOn) {
       window.sendMessageToUnityBasic("VideoHolder", "reactStartScreenShare");

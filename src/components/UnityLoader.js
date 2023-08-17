@@ -232,6 +232,7 @@ const UnityLoader = () => {
       localStorage.setItem('isMicOn', 'false');
       localStorage.setItem('isCameraOn', 'false');
       localStorage.setItem('isBaseCameraOn', 'true');
+      localStorage.setItem('isVideoRecord', 'false');
       console.log(name);
       console.log(id);
       localStorage.setItem('isScreenShareOn', 'false');
