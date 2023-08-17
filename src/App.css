@@ -727,7 +727,7 @@ body {
 }
 
 .reactionIn{
-    animation: reactionIn 0.5s ease 0s 1 normal forwards;
+    animation: reactionIn 0.3s ease 0s 1 normal forwards;
 }
 
 @keyframes reactionOut {
@@ -743,7 +743,7 @@ body {
 }
 
 .reactionOut{
-    animation: reactionOut 0.4s ease 0s 1 normal forwards;
+    animation: reactionOut 0.2s ease 0s 1 normal forwards;
 }
 
 @keyframes reactionInEmoji {
@@ -761,7 +761,7 @@ body {
 }
 
 .reactionInEmoji{
-    animation: reactionInEmoji 0.5s ease 0s 1 normal forwards;
+    animation: reactionInEmoji 0.3s ease 0s 1 normal forwards;
 }
 
 @keyframes reactionOutEmoji {
@@ -779,7 +779,7 @@ body {
 }
 
 .reactionOutEmoji{
-    animation: reactionOutEmoji 0.4s ease 0s 1 normal forwards;
+    animation: reactionOutEmoji 0.2s ease 0s 1 normal forwards;
 }
 
 
