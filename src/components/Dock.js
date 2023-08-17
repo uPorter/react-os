@@ -109,6 +109,10 @@ function Dock({ handleAddContent }) {
     }
   }
 
+  const handleEmojiSelect = (emoji) => {
+    window.sendMessageToUnity("EmoteHandler","triggerParticle", emoji.native);
+  };
+
   const buttonText = isScreenShareOn ? 'Stop Screen Share' : 'Share Screen';
   const buttonTextMic = isMicOn ? 'Mute' : 'Unmute';
   const reactionText = isReactionsOn ? '' : 'Reactions';
@@ -123,6 +127,14 @@ function Dock({ handleAddContent }) {
         <ClickAwayListener onClickAway={reactionHandler}>
           <Reactions reactionClass={reactionClass} isReactionsOn={isReactionsOn} setIsReactionsOn={setIsReactionsOn} />
         </ClickAwayListener>}
+      <div style={{ position: "absolute", bottom: "125px"}}>
+        <Picker
+          skinTonePosition={"none"}
+          emojiVersion={1}
+          data={data}
+          onEmojiSelect={handleEmojiSelect}
+        />
+      </div>
       <Box
         sx={{
           transform: "scale(0.9)",

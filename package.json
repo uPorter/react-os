@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "@braintree/sanitize-url": "5.0.0",
+    "@emoji-mart/data": "^1.1.2",
+    "@emoji-mart/react": "^1.1.1",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@mui/icons-material": "^5.11.11",
