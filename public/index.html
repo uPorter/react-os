@@ -98,6 +98,12 @@
 	<canvas id="myCanvas" height="450" width="450" style="display: none;"></canvas>
   <script src="/external-scripts/ReadyPlayerMeFrame.js"></script>
   <script src="/external-scripts/Global.js"></script>
+  <script>
+    const pickerOptions = { onEmojiSelect: console.log }
+    const picker = new EmojiMart.Picker(pickerOptions)
+  
+    document.body.appendChild(picker)
+  </script>
 </body>
 
 </html>
