@@ -26,6 +26,7 @@
     "lodash.uniqby": "^4.7.0",
     "million": "^2.4.4",
     "mml-react": "^0.4.0",
+    "emoji-picker-react": "4.4.11",
     "pretty-bytes": "^5.4.1",
     "prop-types": "^15.7.2",
     "query-string": "^8.1.0",

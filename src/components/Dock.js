@@ -16,6 +16,16 @@ import Divider from "@mui/joy/Divider";
 import VideocamIcon from '@mui/icons-material/Videocam';
 import Reactions from "./Reactions";
 import ClickAwayListener from '@mui/material/ClickAwayListener';
+import EmojiPicker, {
+  EmojiStyle,
+  SkinTones,
+  Theme,
+  Categories,
+  EmojiClickData,
+  Emoji,
+  SuggestionMode,
+  SkinTonePickerLocation
+} from "emoji-picker-react";
 
 function Dock({ handleAddContent }) {
   //const { handleAddContent } = this.props;
@@ -110,8 +120,12 @@ function Dock({ handleAddContent }) {
   }
 
   const handleEmojiSelect = (emoji) => {
-    window.sendMessageToUnity("EmoteHandler","triggerParticle", emoji.native);
+    window.sendMessageToUnity("EmoteHandler", "triggerParticle", emoji.native);
   };
+
+  function onClickEmoji(emojiData) {
+    window.sendMessageToUnity("EmoteHandler", "triggerParticle", emojiData.emoji);
+  }
 
   const buttonText = isScreenShareOn ? 'Stop Screen Share' : 'Share Screen';
   const buttonTextMic = isMicOn ? 'Mute' : 'Unmute';
@@ -123,11 +137,21 @@ function Dock({ handleAddContent }) {
         justifyContent: "center",
       }}
     >
+      <div style={{ position: "absolute", bottom: "125px" }}>
+        <EmojiPicker
+          onEmojiClick={onClickEmoji}
+          autoFocusSearch={false}
+          theme={Theme.DARK}
+          skinTonePickerLocation={SkinTonePickerLocation.NONE}
+          emojiVersion="1.0"
+          emojiStyle={EmojiStyle.NATIVE}
+        />
+      </div>
       {isReactionsOn &&
         <ClickAwayListener onClickAway={reactionHandler}>
           <Reactions reactionClass={reactionClass} isReactionsOn={isReactionsOn} setIsReactionsOn={setIsReactionsOn} />
         </ClickAwayListener>}
-      
+
       <Box
         sx={{
           transform: "scale(0.9)",
