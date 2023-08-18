@@ -487,7 +487,7 @@ function Dock({ handleAddContent,toggleFilmingMode }) {
           '&:hover': {
             backgroundColor: '#00000040',
           },
-        }}>AI Bot</Button>}>
+        }}>AI Tools</Button>}>
           <div style={{ width: 'fit-content', height: 'fit-content' }} className='tooltipHover2'>
             <IconButton
               id="dockButtonID"
