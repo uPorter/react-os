@@ -375,7 +375,7 @@ function Dock({ handleAddContent }) {
         </Tooltip>
 
         <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={
-          <div className="photoDockHolder" style={{ display: !isReactionsOn ? 'flex' : 'none' }}>
+          <div className="photoDockHolder" style={{ display: (!isReactionsOn || !isVideoRecorder) ? 'flex' : 'none' }}>
             <Button onClick={() => window.sendMessageToUnityBasic("VideoManager","takeScreenShot")} size="sm" variant="plain" sx={{
               fontStyle: 'bold',
               fontWeight: 'Bold',
