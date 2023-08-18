@@ -85,6 +85,7 @@ const UnityLoader = () => {
   const [infoURL, setInfoURLReact] = useState('');
   const [isActive, setIsActive] = useState(false);
   const [isManual, setIsManual] = useState(false);
+  const [isFilmingMode, setIsFilmingMode] = useState(false);
 
 
   useEffect(() => {
@@ -504,6 +505,17 @@ const UnityLoader = () => {
     setIsManual(false);
   }
 
+  const toggleFilmingMode = () => {
+    if (!isFilmingMode) {
+      sendMessage("VideoManager","enableFilmingMode");
+      setIsFilmingMode(true);
+    } else {
+      sendMessage("VideoManager","disableFilmingMode");
+      setIsFilmingMode(false);
+    }
+  }
+
+
 
 
 
@@ -665,7 +677,7 @@ const UnityLoader = () => {
             </div>
           </div>
         )}
-        {isStarted && showChat && (
+        {isStarted && showChat && !isFilmingMode && (
           <div className={"ui"}>
             <Grid className="unityLoaderGrid" style={{ position: "absolute", width: "100%", bottom: "20px" }} container spacing={3} sx={{ flexGrow: 1 }}>
               <Grid className="EmptyGrid" xs style={{ opacity: 1, display: "flex", gap: "7px" }}>
@@ -734,7 +746,7 @@ const UnityLoader = () => {
               <Grid xs={6}>
 
                 {isDockEditorMode && <EditDock isLocked={isLocked} setIsLocked={setIsLocked} objectName={objectName} handleInfoMode={handleInfoMode} handleEditBar={handleEditBar} handleAddContent={handleAddContent}></EditDock>}
-                {!isDockEditorMode && isAdmin && <Dock handleAddContent={handleAddContent}></Dock>}
+                {!isDockEditorMode && isAdmin && <Dock toggleFilmingMode={toggleFilmingMode} handleAddContent={handleAddContent}></Dock>}
                 {!isAdmin && <GuestDock handleAddContent={handleAddContent}></GuestDock>}
               </Grid>
               <Grid style={{ opacity: 1 }} xs>

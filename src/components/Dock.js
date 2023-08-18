@@ -29,7 +29,7 @@ import EmojiPicker, {
   SkinTonePickerLocation
 } from "emoji-picker-react";
 
-function Dock({ handleAddContent }) {
+function Dock({ handleAddContent,toggleFilmingMode }) {
   //const { handleAddContent } = this.props;
   const initialIsScreenShareOn = localStorage.getItem('isScreenShareOn') === 'true' ? true : false;
   const [isScreenShareOn, setIsScreenShareOn] = useState(initialIsScreenShareOn);
@@ -375,7 +375,7 @@ function Dock({ handleAddContent }) {
         </Tooltip>
 
         <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={
-          <div className="photoDockHolder" style={{ display: !isReactionsOn || !isVideoRecord ? 'flex' : 'none'}}>
+          <div className="photoDockHolder" style={{ display: !isReactionsOn ? 'flex' : 'none'}}>
             <Button onClick={() => window.sendMessageToUnityBasic("VideoManager","takeScreenShot")} size="sm" variant="plain" sx={{
               fontStyle: 'bold',
               fontWeight: 'Bold',
@@ -401,7 +401,7 @@ function Dock({ handleAddContent }) {
                 backgroundColor: '#00000040',
               },
             }}>Record a video (R)</Button>
-            <Button size="sm" variant="plain" sx={{
+            <Button onClick={toggleFilmingMode} size="sm" variant="plain" sx={{
               fontStyle: 'bold',
               fontWeight: 'Bold',
               color: 'white',
