@@ -1100,8 +1100,6 @@ const UnityLoader = () => {
               }}
             >
               Record
-              {!isFilmingMode && <MicOffOutlinedIcon />}
-              {!isFilmingMode && <MicOutlinedIcon />}
             </IconButton>
             <IconButton
               id="dockButtonID"
