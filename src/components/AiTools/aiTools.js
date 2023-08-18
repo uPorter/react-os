@@ -8,8 +8,18 @@ import Typography from "@mui/joy/Typography";
 
 function aiTools() {
   return (
-    <div style={{position:"absolute", bottom:"15px", left:"30px"}} className="frame-5">
-      <div style={{ animation:"reactionInAI 0.2s cubic-bezier(0, 0.2, 0.2, 1) 0.8s 1 normal forwards",transform:"scale(0)"}} className="inner-1">
+    <div
+      style={{ position: "absolute", bottom: "15px", left: "30px" }}
+      className="frame-5"
+    >
+      <div
+        style={{
+          animation:
+            "reactionInAI 0.2s cubic-bezier(0, 0.2, 0.2, 1) 0.8s 1 normal forwards",
+          transform: "scale(0)",
+        }}
+        className="inner-1"
+      >
         <svg
           className="vector"
           width={21}
@@ -26,7 +36,14 @@ function aiTools() {
         <div className="rectangle-1" />
         <div className="assistant">Assistant</div>
       </div>
-      <div style={{ animation:"reactionInAI 0.2s cubic-bezier(0, 0.2, 0.2, 1) 0.6s 1 normal forwards",transform:"scale(0)"}} className="inner-2">
+      <div
+        style={{
+          animation:
+            "reactionInAI 0.2s cubic-bezier(0, 0.2, 0.2, 1) 0.6s 1 normal forwards",
+          transform: "scale(0)",
+        }}
+        className="inner-2"
+      >
         <svg
           className="message-outline"
           width={19}
@@ -38,12 +55,20 @@ function aiTools() {
           <path
             d="M15.5 2H3.5C2.675 2 2 2.675 2 3.5V17L5 14H15.5C16.325 14 17 13.325 17 12.5V3.5C17 2.675 16.325 2 15.5 2ZM15.5 12.5H4.4L3.5 13.4V3.5H15.5V12.5Z"
             fill="white"
+            style={{ stroke: "white" }}
           />
         </svg>
         <div className="rectangle-1" />
         <div className="chat-bot">Chat Bot</div>
       </div>
-      <div style={{ animation:"reactionInAI 0.2s cubic-bezier(0, 0.2, 0.2, 1) 0.4s 1 normal forwards",transform:"scale(0)"}} className="inner-3">
+      <div
+        style={{
+          animation:
+            "reactionInAI 0.2s cubic-bezier(0, 0.2, 0.2, 1) 0.4s 1 normal forwards",
+          transform: "scale(0)",
+        }}
+        className="inner-3"
+      >
         <svg
           className="magnify"
           width={21}
@@ -60,7 +85,14 @@ function aiTools() {
         <div className="rectangle-2" />
         <div className="search">Search</div>
       </div>
-      <div style={{ animation:"reactionInAI 0.2s cubic-bezier(0, 0.2, 0.2, 1) 0.2s 1 normal forwards",transform:"scale(0)"}} className="inner-4">
+      <div
+        style={{
+          animation:
+            "reactionInAI 0.2s cubic-bezier(0, 0.2, 0.2, 1) 0.2s 1 normal forwards",
+          transform: "scale(0)",
+        }}
+        className="inner-4"
+      >
         <svg
           className="apple-keyboard-command"
           width={21}
@@ -77,7 +109,14 @@ function aiTools() {
         <div className="rectangle-2" />
         <div className="search">Commands</div>
       </div>
-      <div style={{ animation:"reactionInAI 0.2s cubic-bezier(0, 0.2, 0.2, 1) 0s 1 normal forwards",transform:"scale(0)"}} className="skybox-gen-back">
+      <div
+        style={{
+          animation:
+            "reactionInAI 0.2s cubic-bezier(0, 0.2, 0.2, 1) 0s 1 normal forwards",
+          transform: "scale(0)",
+        }}
+        className="skybox-gen-back"
+      >
         <svg
           className="vector5"
           width={34}

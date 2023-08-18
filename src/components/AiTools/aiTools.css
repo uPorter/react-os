@@ -15,7 +15,7 @@
 }
 .inner-1 {
   background: rgba(0, 0, 0, 0.25);
-  border-radius: 16px;
+  border-radius: 12px;
   padding: 13.95px;
   display: flex;
   flex-direction: column;
@@ -50,7 +50,7 @@
 }
 .inner-2 {
   background: rgba(0, 0, 0, 0.25);
-  border-radius: 16px;
+  border-radius: 12px;
   padding: 13.95px;
   display: flex;
   flex-direction: column;
@@ -78,7 +78,7 @@
 }
 .inner-3 {
   background: rgba(0, 0, 0, 0.25);
-  border-radius: 16px;
+  border-radius: 12px;
   padding: 13.95px;
   display: flex;
   flex-direction: column;
@@ -113,7 +113,7 @@
 }
 .inner-4 {
   background: rgba(0, 0, 0, 0.25);
-  border-radius: 16px;
+  border-radius: 12px;
   padding: 13.95px;
   display: flex;
   flex-direction: column;
@@ -135,7 +135,7 @@
 }
 .skybox-gen-back {
   background: rgba(0, 0, 0, 0.25);
-  border-radius: 16px;
+  border-radius: 12px;
   padding: 13.95px;
   display: flex;
   flex-direction: row;
