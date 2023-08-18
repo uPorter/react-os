@@ -45,7 +45,7 @@
 .assistant {
   color: #ffffff;
   text-align: left;
-  font: 700 11px "Inter", sans-serif;
+  font: 700 11px "Public Sans", sans-serif;
   position: relative;
 }
 .inner-2 {
@@ -73,7 +73,7 @@
 .chat-bot {
   color: #ffffff;
   text-align: left;
-  font: 700 11px "Inter", sans-serif;
+  font: 700 11px "Public Sans", sans-serif;
   position: relative;
 }
 .inner-3 {
@@ -108,7 +108,7 @@
 .search {
   color: #ffffff;
   text-align: left;
-  font: 700 11px "Inter", sans-serif;
+  font: 700 11px "Public Sans", sans-serif;
   position: relative;
 }
 .inner-4 {
@@ -171,7 +171,7 @@
 .skybox-generator {
   color: #ffffff;
   text-align: left;
-  font: 600 14px "Inter", sans-serif;
+  font: 600 14px "Public Sans", sans-serif;
   position: relative;
   display: flex;
   align-items: center;
