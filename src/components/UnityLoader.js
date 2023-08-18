@@ -1064,6 +1064,7 @@ const UnityLoader = () => {
         {isStarted && showChat && isFilmingMode && (
           <div className="filmingController">
             <IconButton
+              onClick={toggleFilmingMode}
               id="dockButtonID"
               className="dockButtons"
               variant="solid"
