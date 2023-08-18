@@ -9,7 +9,7 @@ import Typography from "@mui/joy/Typography";
 function aiTools() {
   return (
     <div style={{position:"absolute", bottom:"15px", left:"30px"}} className="frame-5">
-      <div style={{ animation:"reactionIn 0.4s ease 0s 1 normal forwards"}} className="inner-1">
+      <div style={{ animation:"reactionInAI 0.4s ease 1.6s 1 normal forwards",transform:"scale(0)"}} className="inner-1">
         <svg
           className="vector"
           width={21}
@@ -26,7 +26,7 @@ function aiTools() {
         <div className="rectangle-1" />
         <div className="assistant">Assistant</div>
       </div>
-      <div style={{ animation:"reactionIn 0.4s ease 0.4s 1 normal forwards"}} className="inner-2">
+      <div style={{ animation:"reactionInAI 0.4s ease 1.2s 1 normal forwards",transform:"scale(0)"}} className="inner-2">
         <svg
           className="message-outline"
           width={19}
@@ -43,7 +43,7 @@ function aiTools() {
         <div className="rectangle-1" />
         <div className="chat-bot">Chat Bot</div>
       </div>
-      <div style={{ animation:"reactionIn 0.4s ease 0.8s 1 normal forwards"}} className="inner-3">
+      <div style={{ animation:"reactionInAI 0.4s ease 0.8s 1 normal forwards",transform:"scale(0)"}} className="inner-3">
         <svg
           className="magnify"
           width={21}
@@ -60,7 +60,7 @@ function aiTools() {
         <div className="rectangle-2" />
         <div className="search">Search</div>
       </div>
-      <div style={{ animation:"reactionIn 0.4s ease 1.2s 1 normal forwards"}} className="inner-4">
+      <div style={{ animation:"reactionInAI 0.4s ease 0.4s 1 normal forwards",transform:"scale(0)"}} className="inner-4">
         <svg
           className="apple-keyboard-command"
           width={21}
@@ -77,7 +77,7 @@ function aiTools() {
         <div className="rectangle-2" />
         <div className="search">Commands</div>
       </div>
-      <div style={{ animation:"reactionIn 0.4s ease 1.6s 1 normal forwards"}} className="skybox-gen-back">
+      <div style={{ animation:"reactionInAI 0.4s ease 0s 1 normal forwards",transform:"scale(0)"}} className="skybox-gen-back">
         <svg
           className="vector5"
           width={34}
