@@ -28,6 +28,7 @@ import Tooltip from "@mui/material/Tooltip";
 import Fade from "@mui/material/Fade";
 import CloseIcon from "@mui/icons-material/Close";
 import InfoPanel from "./InfoPanel";
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 
 const chatClient = StreamChat.getInstance("7q2yg6eutsf9");
 
@@ -1088,6 +1089,7 @@ const UnityLoader = () => {
               className="dockButtons"
               variant="solid"
               sx={{
+                width: "120px",
                 color: "white",
                 boxShadow: "0px 0px 0px 0px rgb(0 0 0 / 34%)",
                 backgroundColor: "rgba(0, 0, 0, 0.250)",
@@ -1108,7 +1110,6 @@ const UnityLoader = () => {
               variant="solid"
               sx={{
                 color: "white",
-                visiblity: "none",
                 boxShadow: "0px 0px 0px 0px rgb(0 0 0 / 34%)",
                 backgroundColor: "rgba(0, 0, 0, 0.250)",
                 background: "rgba(0, 0, 0, 0.250)",
@@ -1120,7 +1121,7 @@ const UnityLoader = () => {
                 },
               }}
             >
-              <CloseIcon></CloseIcon>
+              <HelpOutlineIcon></HelpOutlineIcon>
             </IconButton>
           </div>
         )}
