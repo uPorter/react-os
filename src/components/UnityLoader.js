@@ -515,6 +515,8 @@ const UnityLoader = () => {
     }
   }
 
+  window.toggleUI = toggleFilmingMode();
+
 
 
 
