@@ -28,8 +28,9 @@ import EmojiPicker, {
   SuggestionMode,
   SkinTonePickerLocation
 } from "emoji-picker-react";
+import aiTools from "./AiTools/aiTools";
 
-function Dock({ handleAddContent,toggleFilmingMode,toggleAiTools }) {
+function Dock({ handleAddContent,toggleFilmingMode,toggleAiTools,aiToolsOn }) {
   //const { handleAddContent } = this.props;
   const initialIsScreenShareOn = localStorage.getItem('isScreenShareOn') === 'true' ? true : false;
   const [isScreenShareOn, setIsScreenShareOn] = useState(initialIsScreenShareOn);
@@ -498,8 +499,16 @@ function Dock({ handleAddContent,toggleFilmingMode,toggleAiTools }) {
               className="dockButtons"
               variant="solid"
               sx={{
+                color: aiToolsOn ? 'black' : 'white',
+                boxShadow: aiToolsOn ? '0px 0px 20px 5px rgb(0 0 0 / 34%)' : '0px 0px 0px 0px rgb(0 0 0 / 34%)',
+                backgroundColor: aiToolsOn ? 'white!important' : 'rgba(0, 0, 0, 0.250)',
+                background: aiToolsOn ? 'white!important' : 'rgba(0, 0, 0, 0.250)',
                 "--IconButton-size": "55px",
                 "--IconButton-radius": "50px",
+                '&:hover': {
+                  backgroundColor: aiToolsOn ? 'white!important' : 'rgba(0, 0, 0, 0.250)',
+                  background: aiToolsOn ? 'white!important' : 'rgba(0, 0, 0, 0.250)',
+                }
               }}
             >
               <SmartToyIcon />

@@ -1273,6 +1273,7 @@ const UnityLoader = () => {
                 )}
                 {!isDockEditorMode && isAdmin && (
                   <Dock
+                    aiToolsOn={aiToolsOn}
                     toggleAiTools={toggleAiTools}
                     toggleFilmingMode={toggleFilmingMode}
                     handleAddContent={handleAddContent}
