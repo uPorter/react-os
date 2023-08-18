@@ -5,47 +5,49 @@
 .frame-5 {
   display: flex;
   flex-direction: row;
+  grid-gap: 12px;
   gap: 12px;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
   flex-wrap: wrap;
   width: 235px;
   height: 333px;
   position: relative;
+  align-content: flex-end;
 }
 
 .inner-1 {
-    background: rgba(0,0,0,.25);
-    border-radius: 12px;
-    padding: 13.95px;
-    display: flex;
-    flex-direction: column;
-    grid-gap: 0;
-    gap: 0;
-    flex-shrink: 0;
-    width: 140px;
-    height: 82px;
-    min-width: 55px;
-    min-height: 55px;
-    -webkit-backdrop-filter: blur(6px);
-    backdrop-filter: blur(6px);
-    cursor: pointer;
-    transition: all .5s cubic-bezier(0,.2,.2,1);
-    align-items: center;
-    justify-content: center;
-    align-content: center;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  padding: 13.95px;
+  display: flex;
+  flex-direction: column;
+  grid-gap: 0;
+  gap: 0;
+  flex-shrink: 0;
+  width: 140px;
+  height: 82px;
+  min-width: 55px;
+  min-height: 55px;
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0, 0.2, 0.2, 1);
+  align-items: center;
+  justify-content: center;
+  align-content: center;
 }
 
 .inner-1:hover {
-    background: rgb(255 255 255 / 25%);
+  background: rgb(255 255 255 / 25%);
 }
 
-.inner-1:hover .vector path{
-    fill:black;
+.inner-1:hover .vector path {
+  fill: black;
 }
 
-.inner-1:hover .assistant{
-    color:black;
+.inner-1:hover .assistant {
+  color: black;
 }
 .vector {
   flex-shrink: 0;
@@ -86,15 +88,15 @@
 }
 
 .inner-2:hover {
-    background: rgb(255 255 255 / 25%);
+  background: rgb(255 255 255 / 25%);
 }
 
-.inner-2:hover .message-outline path{
-    fill:black;
+.inner-2:hover .message-outline path {
+  fill: black;
 }
 
-.inner-2:hover .chat-bot{
-    color:black;
+.inner-2:hover .chat-bot {
+  color: black;
 }
 
 .message-outline {
@@ -129,15 +131,15 @@
 }
 
 .inner-3:hover {
-    background: rgb(255 255 255 / 25%);
+  background: rgb(255 255 255 / 25%);
 }
 
-.inner-3:hover .magnify path{
-    fill:black;
+.inner-3:hover .magnify path {
+  fill: black;
 }
 
-.inner-3:hover .search{
-    color:black;
+.inner-3:hover .search {
+  color: black;
 }
 .magnify {
   flex-shrink: 0;
@@ -178,15 +180,15 @@
 }
 
 .inner-4:hover {
-    background: rgb(255 255 255 / 25%);
+  background: rgb(255 255 255 / 25%);
 }
 
-.inner-4:hover .apple-keyboard-command path{
-    fill:black;
+.inner-4:hover .apple-keyboard-command path {
+  fill: black;
 }
 
-.inner-4:hover .commands{
-    color:black;
+.inner-4:hover .commands {
+  color: black;
 }
 .apple-keyboard-command {
   flex-shrink: 0;
@@ -222,15 +224,15 @@
 }
 
 .skybox-gen-back:hover {
-    background: rgb(255 255 255 / 25%);
+  background: rgb(255 255 255 / 25%);
 }
 
-.skybox-gen-back:hover .vector5 path{
-    fill:black;
+.skybox-gen-back:hover .vector5 path {
+  fill: black;
 }
 
-.skybox-gen-back:hover .skybox-generator{
-    color:black;
+.skybox-gen-back:hover .skybox-generator {
+  color: black;
 }
 
 .vector5 {
