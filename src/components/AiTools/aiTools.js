@@ -1,4 +1,3 @@
-// FileUpload.js
 import React, { useState } from "react";
 import "./aiTools.css";
 import axios from "axios";

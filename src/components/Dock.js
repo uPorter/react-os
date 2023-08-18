@@ -380,6 +380,7 @@ function Dock({ handleAddContent,toggleFilmingMode,toggleAiTools }) {
               fontStyle: 'bold',
               fontWeight: 'Bold',
               color: 'white',
+              borderRadius: "15px",
               transition: "0.5s all cubic-bezier(0, 0.2, 0.2, 1)",
               width: "100%",
               padding: '10px',
@@ -395,6 +396,7 @@ function Dock({ handleAddContent,toggleFilmingMode,toggleAiTools }) {
               transition: "0.5s all cubic-bezier(0, 0.2, 0.2, 1)",
               width: "100%",
               color: 'white',
+              borderRadius: "15px",
               padding: '10px',
               backgroundColor: '#00000000',
               '&:hover': {
@@ -407,6 +409,7 @@ function Dock({ handleAddContent,toggleFilmingMode,toggleAiTools }) {
               color: 'white',
               transition: "0.5s all cubic-bezier(0, 0.2, 0.2, 1)",
               width: "100%",
+              borderRadius: "15px",
               padding: '10px',
               backgroundColor: '#00000000',
               '&:hover': {
