@@ -16,7 +16,6 @@ import Divider from "@mui/joy/Divider";
 import VideocamIcon from '@mui/icons-material/Videocam';
 import Reactions from "./Reactions";
 import ClickAwayListener from '@mui/material/ClickAwayListener';
-import Divider from '@mui/joy/Divider';
 import StopIcon from '@mui/icons-material/Stop';
 import SmartToyIcon from '@mui/icons-material/SmartToy';
 import EmojiPicker, {
