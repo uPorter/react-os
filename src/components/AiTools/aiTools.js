@@ -55,7 +55,6 @@ function aiTools({aiToolsOn}) {
           <path
             d="M15.5 2H3.5C2.675 2 2 2.675 2 3.5V17L5 14H15.5C16.325 14 17 13.325 17 12.5V3.5C17 2.675 16.325 2 15.5 2ZM15.5 12.5H4.4L3.5 13.4V3.5H15.5V12.5Z"
             fill="white"
-            style={{ stroke: "white" }}
           />
         </svg>
         <div className="rectangle-1" />
