@@ -307,8 +307,8 @@ const UnityLoader = () => {
     await setUserSigned(true);
   };
 
-  window.toggleAiTools = () =>{
-    setAiToolsOn(!aiTools);
+  const toggleAiTools = () =>{
+    setAiToolsOn(!aiToolsOn);
   }
 
   const getUserToken = async () => {
@@ -1273,6 +1273,7 @@ const UnityLoader = () => {
                 )}
                 {!isDockEditorMode && isAdmin && (
                   <Dock
+                    toggleAiTools={toggleAiTools}
                     toggleFilmingMode={toggleFilmingMode}
                     handleAddContent={handleAddContent}
                   ></Dock>

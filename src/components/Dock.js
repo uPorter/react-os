@@ -29,7 +29,7 @@ import EmojiPicker, {
   SkinTonePickerLocation
 } from "emoji-picker-react";
 
-function Dock({ handleAddContent,toggleFilmingMode }) {
+function Dock({ handleAddContent,toggleFilmingMode,toggleAiTools }) {
   //const { handleAddContent } = this.props;
   const initialIsScreenShareOn = localStorage.getItem('isScreenShareOn') === 'true' ? true : false;
   const [isScreenShareOn, setIsScreenShareOn] = useState(initialIsScreenShareOn);
@@ -491,7 +491,7 @@ function Dock({ handleAddContent,toggleFilmingMode }) {
           <div style={{ width: 'fit-content', height: 'fit-content' }} className='tooltipHover2'>
             <IconButton
               id="dockButtonID"
-              onClick={() => window.toggleAiTools}
+              onClick={toggleAiTools}
               className="dockButtons"
               variant="solid"
               sx={{
