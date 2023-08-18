@@ -515,11 +515,6 @@ const UnityLoader = () => {
     }
   }
 
-  window.toggleUI = toggleFilmingMode();
-
-
-
-
 
   const Item = styled(Sheet)(({ theme }) => ({
     ...theme.typography.body2,
