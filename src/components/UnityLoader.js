@@ -29,6 +29,7 @@ import Fade from "@mui/material/Fade";
 import CloseIcon from "@mui/icons-material/Close";
 import InfoPanel from "./InfoPanel";
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+import aiTools from "./AiTools/aiTools";
 
 const chatClient = StreamChat.getInstance("7q2yg6eutsf9");
 
@@ -98,6 +99,7 @@ const UnityLoader = () => {
   const [isActive, setIsActive] = useState(false);
   const [isManual, setIsManual] = useState(false);
   const [isFilmingMode, setIsFilmingMode] = useState(false);
+  const [aiToolsOn, setAiToolsOn] = useState(false);
 
   useEffect(() => {
     addEventListener("setObjectName", handleObjectName);
@@ -304,6 +306,10 @@ const UnityLoader = () => {
     avatarHandler();
     await setUserSigned(true);
   };
+
+  window.toggleAiTools = () =>{
+    setAiToolsOn(!aiTools);
+  }
 
   const getUserToken = async () => {
     try {
@@ -1139,7 +1145,8 @@ const UnityLoader = () => {
                 xs
                 style={{ opacity: 1, display: "flex", gap: "7px" }}
               >
-                {isAdmin && (
+                {aiToolsOn && <aiTools/>}
+                {isAdmin && !aiToolsOn && (
                   <div className="syncDock">
                     <Tooltip
                       TransitionComponent={Fade}

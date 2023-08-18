@@ -1,0 +1,179 @@
+.frame-5,
+.frame-5 * {
+  box-sizing: border-box;
+}
+.frame-5 {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 235px;
+  height: 333px;
+  position: relative;
+}
+.inner-1 {
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 16px;
+  padding: 13.95px;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 140px;
+  height: 82px;
+  min-width: 55px;
+  min-height: 55px;
+  position: relative;
+  backdrop-filter: blur(6px);
+}
+.vector {
+  flex-shrink: 0;
+  position: relative;
+  overflow: visible;
+}
+.rectangle-1 {
+  background: transparent;
+  flex-shrink: 0;
+  width: 100px;
+  height: 6px;
+  position: relative;
+}
+.assistant {
+  color: #ffffff;
+  text-align: left;
+  font: 700 11px "Inter", sans-serif;
+  position: relative;
+}
+.inner-2 {
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 16px;
+  padding: 13.95px;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 82px;
+  height: 82px;
+  min-width: 55px;
+  min-height: 55px;
+  position: relative;
+  backdrop-filter: blur(6px);
+}
+.message-outline {
+  flex-shrink: 0;
+  position: relative;
+  overflow: visible;
+}
+.chat-bot {
+  color: #ffffff;
+  text-align: left;
+  font: 700 11px "Inter", sans-serif;
+  position: relative;
+}
+.inner-3 {
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 16px;
+  padding: 13.95px;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 82px;
+  height: 82px;
+  min-width: 55px;
+  min-height: 55px;
+  position: relative;
+  backdrop-filter: blur(6px);
+}
+.magnify {
+  flex-shrink: 0;
+  position: relative;
+  overflow: visible;
+}
+.rectangle-2 {
+  background: transparent;
+  flex-shrink: 0;
+  width: 100px;
+  height: 6px;
+  position: relative;
+}
+.search {
+  color: #ffffff;
+  text-align: left;
+  font: 700 11px "Inter", sans-serif;
+  position: relative;
+}
+.inner-4 {
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 16px;
+  padding: 13.95px;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 138px;
+  height: 80px;
+  min-width: 55px;
+  min-height: 55px;
+  position: relative;
+  backdrop-filter: blur(6px);
+}
+.apple-keyboard-command {
+  flex-shrink: 0;
+  position: relative;
+  overflow: visible;
+}
+.skybox-gen-back {
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 16px;
+  padding: 13.95px;
+  display: flex;
+  flex-direction: row;
+  gap: 0px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 232px;
+  height: 145px;
+  min-width: 55px;
+  min-height: 55px;
+  position: relative;
+  backdrop-filter: blur(6px);
+}
+.vector5 {
+  flex-shrink: 0;
+  position: relative;
+  overflow: visible;
+}
+.svg {
+  padding: 1.8px 2.56px 2.68px 2.7px;
+  display: flex;
+  flex-direction: row;
+  gap: 0px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 16px;
+  height: 22px;
+  position: relative;
+  overflow: hidden;
+}
+.skybox-generator {
+  color: #ffffff;
+  text-align: left;
+  font: 600 14px "Inter", sans-serif;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}

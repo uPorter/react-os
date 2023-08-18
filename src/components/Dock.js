@@ -491,6 +491,7 @@ function Dock({ handleAddContent,toggleFilmingMode }) {
           <div style={{ width: 'fit-content', height: 'fit-content' }} className='tooltipHover2'>
             <IconButton
               id="dockButtonID"
+              onClick={() => window.toggleAiTools}
               className="dockButtons"
               variant="solid"
               sx={{
