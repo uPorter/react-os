@@ -14,21 +14,34 @@
   position: relative;
 }
 .inner-1 {
-  background: rgba(0, 0, 0, 0.25);
-  border-radius: 12px;
-  padding: 13.95px;
-  display: flex;
-  flex-direction: column;
-  gap: 0px;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  width: 140px;
-  height: 82px;
-  min-width: 55px;
-  min-height: 55px;
-  position: relative;
-  backdrop-filter: blur(6px);
+    background: rgba(0,0,0,.25);
+    border-radius: 12px;
+    padding: 13.95px;
+    flex-direction: column;
+    grid-gap: 0;
+    gap: 0;
+    cursor: pointer;
+    flex-shrink: 0;
+    width: 140px;
+    height: 82px;
+    min-width: 55px;
+    min-height: 55px;
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    cursor: pointer;
+    transition: 0.5s all cubic-bezier(0, 0.2, 0.2, 1);
+}
+
+.inner-1:hover {
+    background: rgb(255 255 255 / 25%);
+}
+
+.inner-1:hover .vector path{
+    fill:black;
+}
+
+.inner-1:hover .assistant{
+    color:black;
 }
 .vector {
   flex-shrink: 0;
@@ -64,7 +77,22 @@
   min-height: 55px;
   position: relative;
   backdrop-filter: blur(6px);
+  cursor: pointer;
+  transition: 0.5s all cubic-bezier(0, 0.2, 0.2, 1);
 }
+
+.inner-2:hover {
+    background: rgb(255 255 255 / 25%);
+}
+
+.inner-2:hover .message-outline path{
+    fill:black;
+}
+
+.inner-2:hover .chat-bot{
+    color:black;
+}
+
 .message-outline {
   flex-shrink: 0;
   position: relative;
@@ -92,6 +120,20 @@
   min-height: 55px;
   position: relative;
   backdrop-filter: blur(6px);
+  cursor: pointer;
+  transition: 0.5s all cubic-bezier(0, 0.2, 0.2, 1);
+}
+
+.inner-3:hover {
+    background: rgb(255 255 255 / 25%);
+}
+
+.inner-3:hover .magnify path{
+    fill:black;
+}
+
+.inner-3:hover .search{
+    color:black;
 }
 .magnify {
   flex-shrink: 0;
@@ -127,12 +169,34 @@
   min-height: 55px;
   position: relative;
   backdrop-filter: blur(6px);
+  cursor: pointer;
+  transition: 0.5s all cubic-bezier(0, 0.2, 0.2, 1);
+}
+
+.inner-4:hover {
+    background: rgb(255 255 255 / 25%);
+}
+
+.inner-4:hover .apple-keyboard-command path{
+    fill:black;
+}
+
+.inner-4:hover .commands{
+    color:black;
 }
 .apple-keyboard-command {
   flex-shrink: 0;
   position: relative;
   overflow: visible;
 }
+
+.commands {
+  color: #ffffff;
+  text-align: left;
+  font: 700 11px "Public Sans", sans-serif;
+  position: relative;
+}
+
 .skybox-gen-back {
   background: rgba(0, 0, 0, 0.25);
   border-radius: 12px;
@@ -149,7 +213,22 @@
   min-height: 55px;
   position: relative;
   backdrop-filter: blur(6px);
+  cursor: pointer;
+  transition: 0.5s all cubic-bezier(0, 0.2, 0.2, 1);
 }
+
+.skybox-gen-back:hover {
+    background: rgb(255 255 255 / 25%);
+}
+
+.skybox-gen-back:hover .vector5 path{
+    fill:black;
+}
+
+.skybox-gen-back:hover .skybox-generator{
+    color:black;
+}
+
 .vector5 {
   flex-shrink: 0;
   position: relative;

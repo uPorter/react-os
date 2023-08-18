@@ -6,7 +6,7 @@ import Button from "@mui/joy/Button";
 import { Toaster, toast } from "sonner";
 import Typography from "@mui/joy/Typography";
 
-function aiTools() {
+function aiTools({aiToolsOn}) {
   return (
     <div
       style={{ position: "absolute", bottom: "15px", left: "30px" }}
@@ -107,7 +107,7 @@ function aiTools() {
           />
         </svg>
         <div className="rectangle-2" />
-        <div className="search">Commands</div>
+        <div className="commands">Commands</div>
       </div>
       <div
         style={{
