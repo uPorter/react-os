@@ -515,6 +515,16 @@ const UnityLoader = () => {
     }
   }
 
+  window.toggleFilmingMode = () => {
+    if (!isFilmingMode) {
+      sendMessage("VideoManager", "enableFilmingMode");
+      setIsFilmingMode(true);
+    } else {
+      sendMessage("VideoManager", "disableFilmingMode");
+      setIsFilmingMode(false);
+    }
+  };
+
 
   const Item = styled(Sheet)(({ theme }) => ({
     ...theme.typography.body2,
