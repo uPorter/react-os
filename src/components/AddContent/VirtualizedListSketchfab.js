@@ -31,6 +31,7 @@ const ListView = (props) => {
     }
   };
 
+
   const loadNextPage = async () => {
     if (nextPageUrl) {
       try {
@@ -101,6 +102,7 @@ const ListView = (props) => {
       //closeContent();
     }
     console.log("Clicked item UID:", item.uid);
+    console.log(models);
   };
 
   const LoadModel = (modelURL) => {
