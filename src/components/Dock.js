@@ -17,7 +17,7 @@ import VideocamIcon from '@mui/icons-material/Videocam';
 import Reactions from "./Reactions";
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import StopIcon from '@mui/icons-material/Stop';
-import SmartToyIcon from '@mui/icons-material/SmartToy';
+import SmartToyIcon from '@mui/icons-material/SmartToyOutlined';
 import EmojiPicker, {
   EmojiStyle,
   SkinTones,
