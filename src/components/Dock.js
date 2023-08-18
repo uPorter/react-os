@@ -17,7 +17,7 @@ import VideocamIcon from '@mui/icons-material/Videocam';
 import Reactions from "./Reactions";
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import StopIcon from '@mui/icons-material/Stop';
-import CanvasRecorder from './CanvasRecorder';
+import SmartToyIcon from '@mui/icons-material/SmartToy';
 import EmojiPicker, {
   EmojiStyle,
   SkinTones,
@@ -472,6 +472,33 @@ function Dock({ handleAddContent,toggleFilmingMode }) {
               }}
             >
               <PresentToAllOutlinedIcon style={{}} />
+            </IconButton>
+          </div>
+        </Tooltip>
+
+        <Tooltip className='dockTooltip' sx={{ borderRadius: '20px', backgroundColor: '#ffffff' }} interactive color="neutral" placement="top" variant="soft" title={<Button size="sm" variant="plain" sx={{
+          fontStyle: 'bold',
+          fontWeight: 'Bold',
+          color: 'white',
+          display: !isReactionsOn ? 'block!important' : 'none!important',
+          padding: '10px',
+          marginBottom: '-4px',
+          backgroundColor: '#00000040',
+          '&:hover': {
+            backgroundColor: '#00000040',
+          },
+        }}>AI Bot</Button>}>
+          <div style={{ width: 'fit-content', height: 'fit-content' }} className='tooltipHover2'>
+            <IconButton
+              id="dockButtonID"
+              className="dockButtons"
+              variant="solid"
+              sx={{
+                "--IconButton-size": "55px",
+                "--IconButton-radius": "50px",
+              }}
+            >
+              <SmartToyIcon />
             </IconButton>
           </div>
         </Tooltip>
