@@ -29,7 +29,7 @@ import Fade from "@mui/material/Fade";
 import CloseIcon from "@mui/icons-material/Close";
 import InfoPanel from "./InfoPanel";
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
-import aiTools from "./AiTools/aiTools";
+import aiToolsBase from "./AiTools/aiTools";
 
 const chatClient = StreamChat.getInstance("7q2yg6eutsf9");
 
@@ -1145,7 +1145,7 @@ const UnityLoader = () => {
                 xs
                 style={{ opacity: 1, display: "flex", gap: "7px" }}
               >
-                {aiToolsOn && <aiTools/>}
+                {aiToolsOn && <aiToolsBase/>}
                 {isAdmin && !aiToolsOn && (
                   <div className="syncDock">
                     <Tooltip
