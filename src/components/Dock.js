@@ -750,7 +750,7 @@ function Dock({
               }}
             >
               <svg
-              style={{transform:"scaley(-0.9)"}}
+              style={{transform:"scale(0.9)"}}
                 xmlns="http://www.w3.org/2000/svg"
                 width="32"
                 height="32"
