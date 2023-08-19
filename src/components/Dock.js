@@ -30,7 +30,6 @@ import EmojiPicker, {
   SkinTonePickerLocation,
 } from "emoji-picker-react";
 import aiTools from "./AiTools/aiTools";
-import AiInput from "./Ai/AiInput";
 
 function Dock({
   handleAddContent,
