@@ -164,42 +164,51 @@
       let canvas2;
       let recorder;
 
-      window.initializeSystem = () =>{
-        canvas2 = document.getElementById('react-unity-webgl-canvas-1');
+      window.initializeSystem = () => {
+        canvas2 = document.getElementById("react-unity-webgl-canvas-1");
         recorder = new CanvasRecorder(canvas2);
-      }
-      
-      window.startCanvasRecording = () =>{
-        recorder.start();
-      }
+      };
 
-      window.stopCanvasRecording = () =>{
+      window.startCanvasRecording = () => {
+        recorder.start();
+      };
+
+      window.stopCanvasRecording = () => {
         recorder.stop();
         recorder.save("Mugen_Video" + Date.now());
-      }
+      };
     </script>
     <script>
-      function attachFocusBlurEvents() {
+      function attachFocusBlurEvents(input) {
+        input.addEventListener("focus", () => {
+          unityInstance.SendMessage("AvatarNick", "Start");
+          // veya istediğiniz işlemleri burada yapabilirsiniz
+        });
+
+        input.addEventListener("blur", () => {
+          unityInstance.SendMessage("AvatarNick", "enableInput");
+          // veya istediğiniz işlemleri burada yapabilirsiniz
+        });
+
+        input.setAttribute("data-event-attached", "true");
+      }
+
+      function checkAndAttachEvents() {
         const inputElements = document.querySelectorAll("input, textarea");
 
         inputElements.forEach((input) => {
-          input.addEventListener("focus", () => {
-            unityInstance.SendMessage("AvatarNick", "Start");
-            // veya istediğiniz işlemleri burada yapabilirsiniz
-          });
-
-          input.addEventListener("blur", () => {
-            unityInstance.SendMessage("AvatarNick", "enableInput");
-            // veya istediğiniz işlemleri burada yapabilirsiniz
-          });
+          if (!input.hasAttribute("data-event-attached")) {
+            attachFocusBlurEvents(input);
+          }
         });
       }
+
       // İlk çalıştırma
-      attachFocusBlurEvents();
+      checkAndAttachEvents();
 
       // Her yarım saniyede bir çalıştırma
       setInterval(() => {
-        attachFocusBlurEvents();
+        checkAndAttachEvents();
       }, 500);
     </script>
   </body>
