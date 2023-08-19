@@ -16,7 +16,6 @@ const AiInput = () => {
         zIndex: 2,
         transformOrigin: "50% 100% 0px",
         opacity: 1,
-        marginLeft: "20px",
         boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.13)",
         bottom: "95px",
         transform: "scale(1)",
