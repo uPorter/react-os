@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import AiInput from "./Ai/AiInput";
 import Box from "@mui/joy/Box";
 import IconButton from "@mui/joy/IconButton";
 import MicOffOutlinedIcon from "@mui/icons-material/MicOffOutlined";
@@ -29,6 +30,7 @@ import EmojiPicker, {
   SkinTonePickerLocation,
 } from "emoji-picker-react";
 import aiTools from "./AiTools/aiTools";
+import AiInput from "./Ai/AiInput";
 
 function Dock({
   handleAddContent,
@@ -190,7 +192,8 @@ function Dock({
         justifyContent: "center",
       }}
     >
-      {isReactionsEmojiOn && (
+      <AiInput></AiInput>
+      {isReactionsEmojiOn && isReactionsOn && (
         <div
           className={`${
             reactionEmojiClass ? "reactionInEmoji" : "reactionOutEmoji"
@@ -750,7 +753,7 @@ function Dock({
               }}
             >
               <svg
-              style={{transform:"scale(0.9)"}}
+                style={{ transform: "scale(0.9)" }}
                 xmlns="http://www.w3.org/2000/svg"
                 width="32"
                 height="32"
