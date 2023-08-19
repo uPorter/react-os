@@ -6,8 +6,8 @@ const AiInput = () => {
       style={{
         position: "absolute",
         border: "1px solid rgb(242, 242, 242)",
-        backdropFilter: "blur(5px)",
-        backgroundColor: "rgba(0, 0, 0, 0.3)",
+        backdropFilter: "blur(12px)",
+        backgroundColor: "rgba(0, 0, 0, 0.25)",
         borderRadius: "6px",
         padding: "8px 16px",
         width: "320px",
@@ -16,6 +16,7 @@ const AiInput = () => {
         zIndex: 2,
         transformOrigin: "50% 100% 0px",
         opacity: 1,
+        boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.13)",
         bottom: "87px",
         transform: "scale(1)",
         flexDirection: "row",
@@ -41,7 +42,7 @@ const AiInput = () => {
       </svg>
 
       <input
-        className="infoInput"
+        className="aiInput"
         placeholder="Feed me your ideas, I'll do the rest..."
         style={{
           textAlign: "left",
@@ -58,6 +59,7 @@ const AiInput = () => {
       ></input>
 
       <svg
+        style={{visibility:"hidden"}}
         class="vector2"
         width="18"
         height="18"

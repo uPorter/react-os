@@ -122,3 +122,9 @@
   .infoInput::placeholder {
     color: #ffffff85;
 }
+.aiInput::placeholder {
+  font-family: Roboto, sans-serif;
+  font-weight: 520;
+  color: #ffffff85;
+}
+
