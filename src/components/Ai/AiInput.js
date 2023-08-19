@@ -17,7 +17,7 @@ const AiInput = () => {
         transformOrigin: "50% 100% 0px",
         opacity: 1,
         boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.13)",
-        bottom: "95px",
+        bottom: "87px",
         transform: "scale(1)",
         flexDirection: "row",
         flexWrap: "nowrap",
