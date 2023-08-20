@@ -28,7 +28,7 @@ import Tooltip from "@mui/material/Tooltip";
 import Fade from "@mui/material/Fade";
 import CloseIcon from "@mui/icons-material/Close";
 import InfoPanel from "./InfoPanel";
-import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import AiToolsBase from "./AiTools/aiTools";
 
 const chatClient = StreamChat.getInstance("7q2yg6eutsf9");
@@ -69,8 +69,6 @@ const UnityLoader = () => {
       sendMessage(objectName, methodName);
     }
   };
-
-  
 
   const [isAvatarSelected, setIsAvatarSelected] = useState(false);
   const [isSaveLoaded, setIsSaveLoaded] = useState(false);
@@ -166,18 +164,20 @@ const UnityLoader = () => {
   };
 
   window.aiAssistantInputHandler = () => {
-    if (!aiAssistantOn) {
+    if (
+      !aiAssistantOn &&
+      !(aiSkyboxGenOn || aiChatbotOn || aiCommandsOn || aiSearchOn)
+    ) {
       setAiAssistantOn(true);
       setAiAssistantClass(true);
-    } else {
-      setAiAssistantClass(false);
+
       const timeout = setTimeout(() => {
         setAiAssistantOn(false);
       }, 600);
-      return () => clearTimeout(timeout); // Temizleme fonksiyonu, bileşen güncellendiğinde bu timeout'u temizler.
+
+      return () => clearTimeout(timeout);
     }
   };
-
 
   useEffect(() => {
     addEventListener("setObjectName", handleObjectName);
@@ -385,9 +385,9 @@ const UnityLoader = () => {
     await setUserSigned(true);
   };
 
-  const toggleAiTools = () =>{
+  const toggleAiTools = () => {
     setAiToolsOn(!aiToolsOn);
-  }
+  };
 
   const getUserToken = async () => {
     try {
@@ -1223,7 +1223,7 @@ const UnityLoader = () => {
                 xs
                 style={{ opacity: 1, display: "flex", gap: "7px" }}
               >
-                {aiToolsOn && <AiToolsBase/>}
+                {aiToolsOn && <AiToolsBase />}
                 {isAdmin && !aiToolsOn && (
                   <div className="syncDock">
                     <Tooltip
