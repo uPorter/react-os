@@ -879,16 +879,16 @@ body {
 
 
 #path1 {
-  animation: animateFillOpacity1 1.3s linear infinite;
+  animation: animateFillOpacity1 2s linear infinite;
   animation-delay: 0.3s;
 }
 
 #path2 {
-  animation: animateFillOpacity2 1.3s linear infinite;
+  animation: animateFillOpacity2 2s linear infinite;
   animation-delay: 0.5s; /* path1'den 0.3 saniye sonra başlasın */
 }
 
 #path3 {
-  animation: animateFillOpacity3 1.3s linear infinite;
+  animation: animateFillOpacity3 2s linear infinite;
   animation-delay: 0.1s; /* path1'den 0.6 saniye sonra başlasın */
 }
