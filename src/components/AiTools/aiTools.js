@@ -37,7 +37,7 @@ function aiTools(props) {
           />
         </svg>
         <div className="rectangle-1" />
-        <div style={{color: props.aiAssistantOn ? 'black' : '',}}  className="assistant">Assistant</div>
+        <div style={{color: props.aiAssistantClass ? 'black' : '',}}  className="assistant">Assistant</div>
       </div>
       <div
         style={{
