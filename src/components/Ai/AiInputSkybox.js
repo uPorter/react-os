@@ -1,6 +1,42 @@
 import React from "react";
+import { useState, useEffect } from "react";
 
 const AiInputSkybox = (props) => {
+  const [id, setID] = useState(null);
+  const [inputValue, setInputValue] = useState('');
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Burada yapmak istediğiniz işlemi gerçekleştirin.
+    console.log("Input submitted with value:", inputValue);
+  };
+
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value);
+  };
+
+  const requestData = {
+    prompt: inputValue,
+    negative_text: "negative text example",
+    skybox_style_id: 2
+  };
+
+  const headers = {
+    'x-api-key': '5I1laH8NbZhk5xFCoRu5jOHr0p5JruBnxCpfvid8rsWoKNemj9roQUE5HFdG',
+    'Content-Type': 'application/json'
+  };
+
+  const fetchData = async () => {
+    try {
+      const apiUrl = 'https://backend.blockadelabs.com/api/v1/skybox';
+      const response = await axios.post(apiUrl, requestData, { headers });
+      setID(response.data.id); // Sunucudan gelen "id" değerini setID olarak ayarla
+      console.log(id);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
   return (
     <div
     className={`${props.aiSkyboxGenClass ? 'aiInputHolderIn' : 'aiInputHolderOut'} aiInputHolder`}
@@ -35,22 +71,26 @@ const AiInputSkybox = (props) => {
       <path d="M10.3561 20.5124C10.2585 20.4147 10.1823 20.2977 10.1325 20.1689L9.01149 17.2546V17.2529C9.00006 17.2227 8.97965 17.1968 8.953 17.1785C8.92635 17.1603 8.89475 17.1506 8.86245 17.1509H8.85678C8.82451 17.1507 8.79296 17.1604 8.76633 17.1787C8.7397 17.1969 8.71927 17.2228 8.70774 17.2529V17.2546L7.58588 20.1689C7.53566 20.2985 7.45952 20.416 7.36151 20.5132M10.3561 20.5124L10.7384 20.1309ZM10.3561 20.5124C10.4533 20.6104 10.5707 20.6865 10.7003 20.7368L13.6147 21.8578C13.6456 21.8697 13.6723 21.8907 13.691 21.918C13.7098 21.9454 13.7199 21.9777 13.72 22.0109C13.7201 22.044 13.7101 22.0763 13.6912 22.1035C13.6724 22.1308 13.6457 22.1516 13.6147 22.1632L10.702 23.2834C10.573 23.3333 10.4551 23.4096 10.3573 23.5073C10.2595 23.6051 10.1832 23.7222 10.1333 23.8512V23.8528L9.01149 26.7656C8.99979 26.7965 8.97896 26.8231 8.95176 26.8419C8.92455 26.8607 8.89227 26.8708 8.85921 26.8708C8.82615 26.8708 8.79387 26.8607 8.76667 26.8419C8.73947 26.8231 8.71863 26.7965 8.70693 26.7656L7.58669 23.8528V23.8512C7.53696 23.7224 7.46083 23.6054 7.36318 23.5077C7.26553 23.4101 7.14853 23.3339 7.01969 23.2842H7.01807L4.1215 22.1696L4.11502 22.1672C4.08123 22.1548 4.05208 22.1322 4.03151 22.1027C4.01094 22.0731 3.99994 22.038 4 22.002C4.00087 21.9706 4.01104 21.9403 4.02921 21.9148C4.04739 21.8892 4.07275 21.8697 4.10206 21.8586H4.10368L7.01726 20.7376C7.14686 20.6873 7.26431 20.6112 7.36151 20.5132M7.36151 20.5132L6.98 20.1317Z" id="path3" fill="white" fill-opacity="0.95"></path>
     </svg>
 
-      <input
-        className="aiInput"
-        placeholder="Let's Create the Sky Together..."
-        style={{
-          textAlign: "left",
-          borderWidth: "0px",
-          outline: "none",
-          fontFamily: "Roboto, sans-serif",
-          fontSize: "0.875rem",
-          width: "250px",
-          fontWeight: 500,
-          background: "transparent",
-          color: "rgba(255, 255, 255, 0.5)",
-          marginRight: "-10px",
-        }}
-      ></input>
+      <form style={{width:"fit-content",height:"fit-content"}} onSubmit={handleSubmit}>
+        <input
+          className="aiInput"
+          placeholder="Let's Create the Sky Together..."
+          style={{
+            textAlign: "left",
+            borderWidth: "0px",
+            outline: "none",
+            fontFamily: "Roboto, sans-serif",
+            fontSize: "0.875rem",
+            width: "250px",
+            fontWeight: 500,
+            background: "transparent",
+            color: "rgba(255, 255, 255, 0.5)",
+            marginRight: "-10px",
+          }}
+          value={inputValue}
+          onChange={handleInputChange}
+        />
+      </form>
 
       <svg
         style={{visibility:"hidden"}}
