@@ -164,19 +164,20 @@ const UnityLoader = () => {
   };
 
   window.aiAssistantInputHandler = () => {
-    if (!(aiSkyboxGenOn || aiChatbotOn || aiCommandsOn || aiSearchOn) && !aiAssistantOn) {
-        setAiAssistantOn(true);
-        setAiAssistantClass(true);
-
-        if (aiAssistantOn) {
-            setAiAssistantClass(false);
-            const timeout = setTimeout(() => {
-                setAiAssistantOn(false);
-            }, 600);
-            return () => clearTimeout(timeout);
-        }
+    if (
+      !(aiSkyboxGenOn || aiChatbotOn || aiCommandsOn || aiSearchOn) &&
+      !aiAssistantOn
+    ) {
+      setAiAssistantOn(true);
+      setAiAssistantClass(true);
+    } else if (aiAssistantOn) {
+      setAiAssistantClass(false);
+      const timeout = setTimeout(() => {
+        setAiAssistantOn(false);
+      }, 600);
+      return () => clearTimeout(timeout);
     }
-};
+  };
 
   useEffect(() => {
     addEventListener("setObjectName", handleObjectName);
