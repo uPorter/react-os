@@ -112,54 +112,66 @@ const UnityLoader = () => {
   const [aiAssistantClass, setAiAssistantClass] = useState(false);
 
   window.aiSkyboxInputHandler = () => {
-    if (!aiSkyboxGenOn) {
+    if (
+      !(aiChatbotOn || aiCommandsOn || aiSearchOn || aiAssistantOn) &&
+      !aiSkyboxGenOn
+    ) {
       setAiSkyboxGenOn(true);
       setAiSkyboxGenClass(true);
-    } else {
+    } else if (aiSearchOn) {
       setAiSkyboxGenClass(false);
       const timeout = setTimeout(() => {
         setAiSkyboxGenOn(false);
       }, 600);
-      return () => clearTimeout(timeout); // Temizleme fonksiyonu, bileşen güncellendiğinde bu timeout'u temizler.
+      return () => clearTimeout(timeout);
     }
   };
 
   window.aiChatbotInputHandler = () => {
-    if (!aiChatbotOn) {
+    if (
+      !(aiSkyboxGenOn || aiCommandsOn || aiSearchOn || aiAssistantOn) &&
+      !aiChatbotOn
+    ) {
       setAiChatbotOn(true);
       setAiChatbotClass(true);
-    } else {
+    } else if (aiSearchOn) {
       setAiChatbotClass(false);
       const timeout = setTimeout(() => {
         setAiChatbotOn(false);
       }, 600);
-      return () => clearTimeout(timeout); // Temizleme fonksiyonu, bileşen güncellendiğinde bu timeout'u temizler.
+      return () => clearTimeout(timeout);
     }
   };
 
   window.aiCommandsInputHandler = () => {
-    if (!aiCommandsOn) {
+    if (
+      !(aiSkyboxGenOn || aiChatbotOn || aiSearchOn || aiAssistantOn) &&
+      !aiCommandsOn
+    ) {
       setAiCommandsOn(true);
       setAiCommandsClass(true);
-    } else {
+    } else if (aiSearchOn) {
       setAiCommandsClass(false);
       const timeout = setTimeout(() => {
         setAiCommandsOn(false);
       }, 600);
-      return () => clearTimeout(timeout); // Temizleme fonksiyonu, bileşen güncellendiğinde bu timeout'u temizler.
+      return () => clearTimeout(timeout);
     }
   };
 
   window.aiSearchInputHandler = () => {
-    if (!aiSearchOn) {
+    if (
+      !(aiSkyboxGenOn || aiChatbotOn || aiCommandsOn || aiAssistantOn) &&
+      !aiSearchOn
+    ) {
       setAiSearchOn(true);
       setAiSearchClass(true);
-    } else {
+    } else if (aiSearchOn) {
       setAiSearchClass(false);
       const timeout = setTimeout(() => {
         setAiSearchOn(false);
       }, 600);
-      return () => clearTimeout(timeout); // Temizleme fonksiyonu, bileşen güncellendiğinde bu timeout'u temizler.
+      return () => clearTimeout(timeout);
     }
   };
 
