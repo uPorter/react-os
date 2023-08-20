@@ -11,7 +11,7 @@ const AiInput = () => {
         backgroundColor: "rgba(0, 0, 0, 0.25)",
         borderRadius: "6px",
         padding: "8px 18px",
-        width: "322px",
+        width: "320px",
         marginRight: "2px",
         display: "flex",
         height: "38px",
