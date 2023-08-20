@@ -880,15 +880,15 @@ body {
 
 #path1 {
   animation: animateFillOpacity1 1s linear infinite;
-  animation-delay: 0.8s;
+  animation-delay: 0.5s;
 }
 
 #path2 {
   animation: animateFillOpacity2 1s linear infinite;
-  animation-delay: 0.4s; /* path1'den 0.3 saniye sonra başlasın */
+  animation-delay: 0.3s; /* path1'den 0.3 saniye sonra başlasın */
 }
 
 #path3 {
   animation: animateFillOpacity3 1s linear infinite;
-  animation-delay: 0s; /* path1'den 0.6 saniye sonra başlasın */
+  animation-delay: 0.1s; /* path1'den 0.6 saniye sonra başlasın */
 }
