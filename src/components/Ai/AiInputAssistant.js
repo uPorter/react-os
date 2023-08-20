@@ -37,7 +37,7 @@ const AiInputAssistant = (props) => {
 
       <input
         className="aiInput"
-        placeholder="Hello there! How can Sunny brighten your day?"
+        placeholder="How can Sunny brighten your day?"
         style={{
           textAlign: "left",
           borderWidth: "0px",
