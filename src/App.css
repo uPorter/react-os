@@ -844,8 +844,11 @@ body {
   0% {
     fill-opacity: 30%; /* Başlangıç değeri */
   }
-  100% {
+  50% {
     fill-opacity: 74%; /* Bitiş değeri */
+  }
+  100% {
+    fill-opacity: 30%; /* Başlangıç değeri */
   }
 }
 
@@ -853,8 +856,11 @@ body {
   0% {
     fill-opacity: 30%; /* Başlangıç değeri */
   }
-  100% {
+  50% {
     fill-opacity: 84%; /* Bitiş değeri */
+  }
+  100% {
+    fill-opacity: 30%; /* Başlangıç değeri */
   }
 }
 
@@ -862,8 +868,11 @@ body {
   0% {
     fill-opacity: 30%; /* Başlangıç değeri */
   }
-  100% {
+  50% {
     fill-opacity: 95%; /* Bitiş değeri */
+  }
+  100% {
+    fill-opacity: 30%; /* Başlangıç değeri */
   }
 }
 
