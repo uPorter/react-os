@@ -840,3 +840,55 @@ body {
 }
 }
 
+@keyframes animateFillOpacity1 {
+  0% {
+    fill-opacity: 74%; /* Başlangıç değeri */
+  }
+  50% {
+    fill-opacity: 100%; /* Bitiş değeri */
+  }
+
+  100% {
+    fill-opacity: 74%; /* Bitiş değeri */
+  }
+}
+
+@keyframes animateFillOpacity2 {
+  0% {
+    fill-opacity: 84%; /* Başlangıç değeri */
+  }
+  50% {
+    fill-opacity: 100%; /* Bitiş değeri */
+  }
+
+  100% {
+    fill-opacity: 84%; /* Bitiş değeri */
+  }
+}
+
+@keyframes animateFillOpacity3 {
+  0% {
+    fill-opacity: 95%; /* Başlangıç değeri */
+  }
+  50% {
+    fill-opacity: 100%; /* Bitiş değeri */
+  }
+
+  100% {
+    fill-opacity: 95%; /* Bitiş değeri */
+  }
+}
+
+
+
+#path1 {
+  animation: animateFillOpacity1 2s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
+#path2 {
+  animation: animateFillOpacity2 3s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
+#path3 {
+  animation: animateFillOpacity3 3s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
