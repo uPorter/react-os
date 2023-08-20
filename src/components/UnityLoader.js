@@ -70,6 +70,8 @@ const UnityLoader = () => {
     }
   };
 
+  
+
   const [isAvatarSelected, setIsAvatarSelected] = useState(false);
   const [isSaveLoaded, setIsSaveLoaded] = useState(false);
   const [isStarted, setIsStarted] = useState(false);
@@ -100,6 +102,82 @@ const UnityLoader = () => {
   const [isManual, setIsManual] = useState(false);
   const [isFilmingMode, setIsFilmingMode] = useState(false);
   const [aiToolsOn, setAiToolsOn] = useState(false);
+  const [aiSkyboxGenOn, setAiSkyboxGenOn] = useState(false);
+  const [aiSkyboxGenClass, setAiSkyboxGenClass] = useState(false);
+  const [aiChatbotOn, setAiChatbotOn] = useState(false);
+  const [aiChatbotClass, setAiChatbotClass] = useState(false);
+  const [aiCommandsOn, setAiCommandsOn] = useState(false);
+  const [aiCommandsClass, setAiCommandsClass] = useState(false);
+  const [aiSearchOn, setAiSearchOn] = useState(false);
+  const [aiSearchClass, setAiSearchClass] = useState(false);
+  const [aiAssistantOn, setAiAssistantOn] = useState(false);
+  const [aiAssistantClass, setAiAssistantClass] = useState(false);
+
+  window.aiSkyboxInputHandler = () => {
+    if (!aiSkyboxGenOn) {
+      setAiSkyboxGenOn(true);
+      setAiSkyboxGenClass(true);
+    } else {
+      setAiSkyboxGenClass(false);
+      const timeout = setTimeout(() => {
+        setAiSkyboxGenOn(false);
+      }, 800);
+      return () => clearTimeout(timeout); // Temizleme fonksiyonu, bileşen güncellendiğinde bu timeout'u temizler.
+    }
+  };
+
+  window.aiChatbotInputHandler = () => {
+    if (!aiSkyboxGenOn) {
+      setAiChatbotOn(true);
+      setAiChatbotClass(true);
+    } else {
+      setAiChatbotClass(false);
+      const timeout = setTimeout(() => {
+        setAiChatbotOn(false);
+      }, 800);
+      return () => clearTimeout(timeout); // Temizleme fonksiyonu, bileşen güncellendiğinde bu timeout'u temizler.
+    }
+  };
+
+  window.aiCommandsInputHandler = () => {
+    if (!aiCommandsOn) {
+      setAiCommandsOn(true);
+      setAiCommandsClass(true);
+    } else {
+      setAiCommandsClass(false);
+      const timeout = setTimeout(() => {
+        setAiCommandsOn(false);
+      }, 800);
+      return () => clearTimeout(timeout); // Temizleme fonksiyonu, bileşen güncellendiğinde bu timeout'u temizler.
+    }
+  };
+
+  window.aiSearchInputHandler = () => {
+    if (!aiSearchOn) {
+      setAiSearchOn(true);
+      setAiSearchClass(true);
+    } else {
+      setAiSearchClass(false);
+      const timeout = setTimeout(() => {
+        setAiSearchOn(false);
+      }, 800);
+      return () => clearTimeout(timeout); // Temizleme fonksiyonu, bileşen güncellendiğinde bu timeout'u temizler.
+    }
+  };
+
+  window.aiAssistantInputHandler = () => {
+    if (!aiAssistantOn) {
+      setAiAssistantOn(true);
+      setAiAssistantClass(true);
+    } else {
+      setAiAssistantClass(false);
+      const timeout = setTimeout(() => {
+        setAiAssistantOn(false);
+      }, 800);
+      return () => clearTimeout(timeout); // Temizleme fonksiyonu, bileşen güncellendiğinde bu timeout'u temizler.
+    }
+  };
+
 
   useEffect(() => {
     addEventListener("setObjectName", handleObjectName);
@@ -1273,6 +1351,16 @@ const UnityLoader = () => {
                 )}
                 {!isDockEditorMode && isAdmin && (
                   <Dock
+                    aiSkyboxGenOn={aiSkyboxGenOn}
+                    aiSkyboxGenClass={aiSkyboxGenClass}
+                    aiChatbotOn={aiChatbotOn}
+                    aiChatbotClass={aiChatbotClass}
+                    aiCommandsOn={aiCommandsOn}
+                    aiCommandsClass={aiCommandsClass}
+                    aiSearchOn={aiSearchOn}
+                    aiSearchClass={aiSearchClass}
+                    aiAssistantOn={aiAssistantOn}
+                    aiAssistantClass={aiAssistantClass}
                     aiToolsOn={aiToolsOn}
                     toggleAiTools={toggleAiTools}
                     toggleFilmingMode={toggleFilmingMode}

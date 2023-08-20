@@ -1,9 +1,9 @@
 import React from "react";
 
-const AiInput = (props) => {
+const AiInputChatBot = (props) => {
   return (
     <div
-    className={`${props.aiCommandsClass ? 'aiInputHolderIn' : 'aiInputHolderOut'} aiInputHolder`}
+    className={`${props.aiChatbotClass ? 'aiInputHolderIn' : 'aiInputHolderOut'} aiInputHolder`}
       style={{
         position: "absolute",
         border: "1px solid rgb(242, 242, 242)",
@@ -37,7 +37,7 @@ const AiInput = (props) => {
 
       <input
         className="aiInput"
-        placeholder="Feed me your ideas, I'll do the rest..."
+        placeholder="Send Message"
         style={{
           textAlign: "left",
           borderWidth: "0px",
@@ -71,4 +71,4 @@ const AiInput = (props) => {
   );
 };
 
-export default AiInput;
+export default AiInputChatBot;

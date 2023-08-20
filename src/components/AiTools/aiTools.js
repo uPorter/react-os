@@ -18,6 +18,7 @@ function aiTools({aiToolsOn}) {
             "reactionInAI 0.2s cubic-bezier(0, 0.2, 0.2, 1) 0.8s 1 normal forwards",
           transform: "scale(0)",
         }}
+        onClick={() => window.aiAssistantInputHandler()}
         className="inner-1"
       >
         <svg
@@ -42,6 +43,7 @@ function aiTools({aiToolsOn}) {
             "reactionInAI 0.2s cubic-bezier(0, 0.2, 0.2, 1) 0.6s 1 normal forwards",
           transform: "scale(0)",
         }}
+        onClick={() => window.aiChatbotInputHandler()}
         className="inner-2"
       >
         <svg
@@ -66,6 +68,7 @@ function aiTools({aiToolsOn}) {
             "reactionInAI 0.2s cubic-bezier(0, 0.2, 0.2, 1) 0.4s 1 normal forwards",
           transform: "scale(0)",
         }}
+        onClick={() => window.aiSearchInputHandler()}
         className="inner-3"
       >
         <svg
@@ -90,6 +93,7 @@ function aiTools({aiToolsOn}) {
             "reactionInAI 0.2s cubic-bezier(0, 0.2, 0.2, 1) 0.2s 1 normal forwards",
           transform: "scale(0)",
         }}
+        onClick={() => window.aiCommandsInputHandler()}
         className="inner-4"
       >
         <svg
@@ -114,6 +118,7 @@ function aiTools({aiToolsOn}) {
             "reactionInAI 0.2s cubic-bezier(0, 0.2, 0.2, 1) 0s 1 normal forwards",
           transform: "scale(0)",
         }}
+        onClick={() => window.aiSkyboxInputHandler()}
         className="skybox-gen-back"
       >
         <svg
