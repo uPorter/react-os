@@ -892,3 +892,18 @@ body {
   animation: animateFillOpacity3 2s linear infinite;
   animation-delay: 0.1s; /* path1'den 0.6 saniye sonra başlasın */
 }
+
+#path1_fast {
+  animation: animateFillOpacity1 0.2s linear infinite;
+  animation-delay: 0.3s;
+}
+
+#path2_fast {
+  animation: animateFillOpacity2 0.2s linear infinite;
+  animation-delay: 0.5s; /* path1'den 0.3 saniye sonra başlasın */
+}
+
+#path3_fast {
+  animation: animateFillOpacity3 0.2s linear infinite;
+  animation-delay: 0.1s; /* path1'den 0.6 saniye sonra başlasın */
+}
