@@ -121,20 +121,20 @@ const UnityLoader = () => {
       setAiSkyboxGenClass(false);
       const timeout = setTimeout(() => {
         setAiSkyboxGenOn(false);
-      }, 800);
+      }, 600);
       return () => clearTimeout(timeout); // Temizleme fonksiyonu, bileşen güncellendiğinde bu timeout'u temizler.
     }
   };
 
   window.aiChatbotInputHandler = () => {
-    if (!aiSkyboxGenOn) {
+    if (!aiChatbotOn) {
       setAiChatbotOn(true);
       setAiChatbotClass(true);
     } else {
       setAiChatbotClass(false);
       const timeout = setTimeout(() => {
         setAiChatbotOn(false);
-      }, 800);
+      }, 600);
       return () => clearTimeout(timeout); // Temizleme fonksiyonu, bileşen güncellendiğinde bu timeout'u temizler.
     }
   };
@@ -147,7 +147,7 @@ const UnityLoader = () => {
       setAiCommandsClass(false);
       const timeout = setTimeout(() => {
         setAiCommandsOn(false);
-      }, 800);
+      }, 600);
       return () => clearTimeout(timeout); // Temizleme fonksiyonu, bileşen güncellendiğinde bu timeout'u temizler.
     }
   };
@@ -160,7 +160,7 @@ const UnityLoader = () => {
       setAiSearchClass(false);
       const timeout = setTimeout(() => {
         setAiSearchOn(false);
-      }, 800);
+      }, 600);
       return () => clearTimeout(timeout); // Temizleme fonksiyonu, bileşen güncellendiğinde bu timeout'u temizler.
     }
   };
@@ -173,7 +173,7 @@ const UnityLoader = () => {
       setAiAssistantClass(false);
       const timeout = setTimeout(() => {
         setAiAssistantOn(false);
-      }, 800);
+      }, 600);
       return () => clearTimeout(timeout); // Temizleme fonksiyonu, bileşen güncellendiğinde bu timeout'u temizler.
     }
   };
