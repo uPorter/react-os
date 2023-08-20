@@ -63,7 +63,7 @@ const AiInputSkybox = (props) => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      fetchData();
+      fetchStatus();
 
       // İşlem tamamlandıysa zamanlayıcıyı temizle
       if (isComplete) {
