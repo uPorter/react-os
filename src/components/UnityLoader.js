@@ -1254,11 +1254,11 @@ const UnityLoader = () => {
                 {aiToolsOn && (
                   <AiToolsBase
                     aiToolsOnClass={aiToolsOnClass}
-                    aiSkyboxGenOn={aiSkyboxGenOn}
-                    aiChatbotOn={aiChatbotOn}
-                    aiCommandsOn={aiCommandsOn}
-                    aiSearchOn={aiSearchOn}
-                    aiAssistantOn={aiAssistantOn}
+                    aiSkyboxGenClass={aiSkyboxGenClass}
+                    aiChatbotClass={aiChatbotClass}
+                    aiCommandsClass={aiCommandsClass}
+                    aiSearchClass={aiSearchClass}
+                    aiAssistantClass={aiAssistantClass}
                   />
                 )}
                 {isAdmin && !aiToolsOn && (

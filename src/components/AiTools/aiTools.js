@@ -7,7 +7,7 @@ import { Toaster, toast } from "sonner";
 import Typography from "@mui/joy/Typography";
 
 function aiTools(props) {
-  const fillColor = props.aiAssistantOn ? 'black' : 'white';
+  const fillColor = props.aiAssistantClass ? 'black' : 'white';
   return (
     <div
       style={{ position: "absolute", bottom: "15px", left: "30px" }}
@@ -18,8 +18,8 @@ function aiTools(props) {
           animation:
             "reactionInAI 0.2s cubic-bezier(0, 0.2, 0.2, 1) 0.8s 1 normal forwards",
           transform: "scale(0)",
+          background: props.aiAssistantClass ? 'rgb(255 255 255 / 25%)' : '',
         }}
-        style={{background: props.aiAssistantOn ? 'rgb(255 255 255 / 25%)' : '',}}
         onClick={() => window.aiAssistantInputHandler()}
         className="inner-1"
       >
