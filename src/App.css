@@ -870,13 +870,13 @@ body {
 
 
 #path1 {
-  animation: animateFillOpacity1 2s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  animation: animateFillOpacity1 2s linear infinite;
 }
 
 #path2 {
-  animation: animateFillOpacity2 2s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  animation: animateFillOpacity2 2s linear infinite;
 }
 
 #path3 {
-  animation: animateFillOpacity3 2s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  animation: animateFillOpacity3 2s linear infinite;
 }
