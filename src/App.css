@@ -842,53 +842,53 @@ body {
 
 @keyframes animateFillOpacity1 {
   0% {
-    fill-opacity: 74%; /* Başlangıç değeri */
+    fill-opacity: 30%; /* Başlangıç değeri */
   }
   50% {
-    fill-opacity: 100%; /* Bitiş değeri */
+    fill-opacity: 74%; /* Bitiş değeri */
   }
 
   100% {
-    fill-opacity: 74%; /* Bitiş değeri */
+    fill-opacity: 30%; /* Bitiş değeri */
   }
 }
 
 @keyframes animateFillOpacity2 {
   0% {
-    fill-opacity: 84%; /* Başlangıç değeri */
+    fill-opacity: 30%; /* Başlangıç değeri */
   }
   50% {
-    fill-opacity: 100%; /* Bitiş değeri */
+    fill-opacity: 84%; /* Bitiş değeri */
   }
 
   100% {
-    fill-opacity: 84%; /* Bitiş değeri */
+    fill-opacity: 30%; /* Bitiş değeri */
   }
 }
 
 @keyframes animateFillOpacity3 {
   0% {
-    fill-opacity: 95%; /* Başlangıç değeri */
+    fill-opacity: 30%; /* Başlangıç değeri */
   }
   50% {
-    fill-opacity: 100%; /* Bitiş değeri */
+    fill-opacity: 95%; /* Bitiş değeri */
   }
 
   100% {
-    fill-opacity: 95%; /* Bitiş değeri */
+    fill-opacity: 30%; /* Bitiş değeri */
   }
 }
 
 
 
 #path1 {
-  animation: animateFillOpacity1 2s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  animation: animateFillOpacity1 1s cubic-bezier(0.22, 1, 0.36, 1) infinite;
 }
 
 #path2 {
-  animation: animateFillOpacity2 3s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  animation: animateFillOpacity2 1s cubic-bezier(0.22, 1, 0.36, 1) infinite;
 }
 
 #path3 {
-  animation: animateFillOpacity3 3s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  animation: animateFillOpacity3 1s cubic-bezier(0.22, 1, 0.36, 1) infinite;
 }
