@@ -118,7 +118,7 @@ const UnityLoader = () => {
     ) {
       setAiSkyboxGenOn(true);
       setAiSkyboxGenClass(true);
-    } else if (aiSearchOn) {
+    } else if (aiSkyboxGenOn) {
       setAiSkyboxGenClass(false);
       const timeout = setTimeout(() => {
         setAiSkyboxGenOn(false);
@@ -134,7 +134,7 @@ const UnityLoader = () => {
     ) {
       setAiChatbotOn(true);
       setAiChatbotClass(true);
-    } else if (aiSearchOn) {
+    } else if (aiChatbotOn) {
       setAiChatbotClass(false);
       const timeout = setTimeout(() => {
         setAiChatbotOn(false);
@@ -150,7 +150,7 @@ const UnityLoader = () => {
     ) {
       setAiCommandsOn(true);
       setAiCommandsClass(true);
-    } else if (aiSearchOn) {
+    } else if (aiCommandsOn) {
       setAiCommandsClass(false);
       const timeout = setTimeout(() => {
         setAiCommandsOn(false);
