@@ -164,11 +164,12 @@ const UnityLoader = () => {
   };
 
   window.aiAssistantInputHandler = () => {
-    if (!(aiSkyboxGenOn || aiChatbotOn || aiCommandsOn || aiSearchOn) || aiAssistantOn) {
-        setAiAssistantOn(!aiAssistantOn);
-        setAiAssistantClass(!aiAssistantOn);
+    if (!(aiSkyboxGenOn || aiChatbotOn || aiCommandsOn || aiSearchOn) && !aiAssistantOn) {
+        setAiAssistantOn(true);
+        setAiAssistantClass(true);
 
-        if (!aiAssistantOn) {
+        if (aiAssistantOn) {
+            setAiAssistantClass(false);
             const timeout = setTimeout(() => {
                 setAiAssistantOn(false);
             }, 600);
