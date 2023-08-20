@@ -100,6 +100,7 @@ const UnityLoader = () => {
   const [isManual, setIsManual] = useState(false);
   const [isFilmingMode, setIsFilmingMode] = useState(false);
   const [aiToolsOn, setAiToolsOn] = useState(false);
+  const [aiToolsOnClass, setAiToolsOnClass] = useState(false);
   const [aiSkyboxGenOn, setAiSkyboxGenOn] = useState(false);
   const [aiSkyboxGenClass, setAiSkyboxGenClass] = useState(false);
   const [aiChatbotOn, setAiChatbotOn] = useState(false);
@@ -358,6 +359,8 @@ const UnityLoader = () => {
     }
   }, []);
 
+
+
   const tokenGenerator = async () => {
     const data = await getUserToken();
     setUserToken(data.token);
@@ -398,7 +401,20 @@ const UnityLoader = () => {
   };
 
   const toggleAiTools = () => {
-    setAiToolsOn(!aiToolsOn);
+    if (!aiToolsOn) {
+      setAiToolsOn(true);
+      setAiToolsOnClass(true);
+    } else {
+      setAiToolsOnClass(false);
+      const timeout = setTimeout(() => {
+        setAiToolsOn(false);
+      }, 600);
+      return () => clearTimeout(timeout); // Temizleme fonksiyonu, bileşen güncellendiğinde bu timeout'u temizler.
+    }
+  };
+
+  const reactionHandler = () => {
+    
   };
 
   const getUserToken = async () => {
@@ -1235,7 +1251,16 @@ const UnityLoader = () => {
                 xs
                 style={{ opacity: 1, display: "flex", gap: "7px" }}
               >
-                {aiToolsOn && <AiToolsBase />}
+                {aiToolsOn && (
+                  <AiToolsBase
+                    aiToolsOnClass={aiToolsOnClass}
+                    aiSkyboxGenOn={aiSkyboxGenOn}
+                    aiChatbotOn={aiChatbotOn}
+                    aiCommandsOn={aiCommandsOn}
+                    aiSearchOn={aiSearchOn}
+                    aiAssistantOn={aiAssistantOn}
+                  />
+                )}
                 {isAdmin && !aiToolsOn && (
                   <div className="syncDock">
                     <Tooltip

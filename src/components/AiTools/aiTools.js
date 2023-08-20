@@ -6,11 +6,12 @@ import Button from "@mui/joy/Button";
 import { Toaster, toast } from "sonner";
 import Typography from "@mui/joy/Typography";
 
-function aiTools({aiToolsOn}) {
+function aiTools(props) {
+  const fillColor = props.aiAssistantOn ? 'black' : 'white';
   return (
     <div
       style={{ position: "absolute", bottom: "15px", left: "30px" }}
-      className="frame-5"
+      className={`${props.aiToolsOnClass ? 'frame-5-1' : 'aiInputHolderOut'} frame-5`}
     >
       <div
         style={{
@@ -18,6 +19,7 @@ function aiTools({aiToolsOn}) {
             "reactionInAI 0.2s cubic-bezier(0, 0.2, 0.2, 1) 0.8s 1 normal forwards",
           transform: "scale(0)",
         }}
+        style={{background: props.aiAssistantOn ? 'rgb(255 255 255 / 25%)' : '',}}
         onClick={() => window.aiAssistantInputHandler()}
         className="inner-1"
       >
@@ -31,11 +33,11 @@ function aiTools({aiToolsOn}) {
         >
           <path
             d="M15.5 12.65C15.5 13.649 14.6909 14.45 13.6818 14.45C12.6727 14.45 11.8636 13.649 11.8636 12.65C11.8636 11.651 12.6818 10.85 13.6818 10.85C14.6818 10.85 15.5 11.66 15.5 12.65ZM7.31818 10.85C6.31818 10.85 5.5 11.66 5.5 12.65C5.5 13.64 6.31818 14.45 7.31818 14.45C8.31818 14.45 9.13636 13.649 9.13636 12.65C9.13636 11.651 8.32727 10.85 7.31818 10.85ZM20.5 12.2V14.9C20.5 15.395 20.0909 15.8 19.5909 15.8H18.6818V16.7C18.6818 17.699 17.8727 18.5 16.8636 18.5H4.13636C3.13636 18.5 2.31818 17.699 2.31818 16.7V15.8H1.40909C0.909091 15.8 0.5 15.395 0.5 14.9V12.2C0.5 11.705 0.909091 11.3 1.40909 11.3H2.31818C2.31818 7.817 5.16364 5 8.68182 5H9.59091V3.857C9.04545 3.551 8.68182 2.966 8.68182 2.3C8.68182 1.31 9.5 0.5 10.5 0.5C11.5 0.5 12.3182 1.31 12.3182 2.3C12.3182 2.966 11.9545 3.551 11.4091 3.857V5H12.3182C15.8364 5 18.6818 7.817 18.6818 11.3H19.5909C20.0909 11.3 20.5 11.705 20.5 12.2ZM18.6818 13.1H16.8636V11.3C16.8636 8.816 14.8273 6.8 12.3182 6.8H8.68182C6.17273 6.8 4.13636 8.816 4.13636 11.3V13.1H2.31818V14H4.13636V16.7H16.8636V14H18.6818V13.1Z"
-            fill="white"
+            fill={fillColor}
           />
         </svg>
         <div className="rectangle-1" />
-        <div className="assistant">Assistant</div>
+        <div style={{color: props.aiAssistantOn ? 'black' : '',}}  className="assistant">Assistant</div>
       </div>
       <div
         style={{
