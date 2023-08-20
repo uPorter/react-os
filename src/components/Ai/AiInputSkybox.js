@@ -13,8 +13,9 @@ const AiInputSkybox = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     // Burada yapmak istediğiniz işlemi gerçekleştirin.
-    fetchData();
+    console.log(id);
     setIsAiThinking(true);
+    fetchData();
   };
 
   const handleInputChange = (event) => {
@@ -36,8 +37,10 @@ const AiInputSkybox = (props) => {
     try {
       const apiUrl = 'https://backend.blockadelabs.com/api/v1/skybox';
       const response = await axios.post(apiUrl, requestData, { headers });
-      setID(response.data.id); // Sunucudan gelen "id" değerini setID olarak ayarla
-      fetchStatus(response.data.id)
+      const responseData = response.data;
+      const id = responseData.request.id;
+      setID(id); // Sunucudan gelen "id" değerini setID olarak ayarla
+      fetchStatus(id)
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -45,9 +48,9 @@ const AiInputSkybox = (props) => {
 
   
 
-  const pathAnimation1 = isAiThinking ? 'path1' : 'path1_fast';
-  const pathAnimation2 = isAiThinking ? 'path2' : 'path2_fast';
-  const pathAnimation3 = isAiThinking ? 'path3' : 'path3_fast';
+  const pathAnimation1 = !isAiThinking ? 'path1' : 'path1_fast';
+  const pathAnimation2 = !isAiThinking ? 'path2' : 'path2_fast';
+  const pathAnimation3 = !isAiThinking ? 'path3' : 'path3_fast';
 
   const fetchStatus = async (statusID) => {
     try {
