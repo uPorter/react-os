@@ -9,7 +9,7 @@ const AiInputSkybox = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     // Burada yapmak istediğiniz işlemi gerçekleştirin.
-    console.log("Input submitted with value:", inputValue);
+    fetchData();
   };
 
   const handleInputChange = (event) => {
@@ -32,11 +32,54 @@ const AiInputSkybox = (props) => {
       const apiUrl = 'https://backend.blockadelabs.com/api/v1/skybox';
       const response = await axios.post(apiUrl, requestData, { headers });
       setID(response.data.id); // Sunucudan gelen "id" değerini setID olarak ayarla
-      console.log(id);
+      fetchStatus(response.data.id)
     } catch (error) {
       console.error('Error fetching data:', error);
     }
   };
+
+  const [status, setStatus] = useState('');
+  const [fileUrl, setFileUrl] = useState('');
+  const [isComplete, setIsComplete] = useState(false); // Yeni bayrak durumu
+
+  const fetchStatus = async (statusID) => {
+    try {
+      const response = await axios.get('https://backend.blockadelabs.com/api/v1/imagine/requests/' + statusID, {
+        headers: {
+          'x-api-key': '5I1laH8NbZhk5xFCoRu5jOHr0p5JruBnxCpfvid8rsWoKNemj9roQUE5HFdG'
+        }
+      });
+      setStatus(response.data.status);
+      setFileUrl(response.data.file_url);
+      // İşlem tamamlandıysa bayrağı true olarak ayarla
+      if (response.data.status === 'complete') {
+        setIsComplete(true);
+        setFileUrl(response.data.file_url);
+      }
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      fetchData();
+
+      // İşlem tamamlandıysa zamanlayıcıyı temizle
+      if (isComplete) {
+        clearInterval(interval);
+      }
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [isComplete]);
+
+  useEffect(() => {
+    if (isComplete) {
+      window.sendMessageToUnity("skyboxUrlManager", "SetURL", fileUrl);
+      window.sendMessageToUnity("skyboxUrlManager", "SpawnObject");
+    }
+  }, [isComplete]);
 
   return (
     <div
