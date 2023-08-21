@@ -73,6 +73,21 @@ const AiInputSkybox = (props) => {
   };
 
   useEffect(() => {
+    // İşlem tamamlandıysa veya skyboxID null ise, zamanlayıcıyı temizle
+    if (isComplete || skyboxID === null) {
+      return () => clearInterval(interval);
+    }
+  
+    // Periyodik olarak fetchStatus'u çağırmak için setInterval kullanımı
+    const interval = setInterval(() => {
+      fetchStatus();
+    }, 3000);
+  
+    // Component unmount olduğunda zamanlayıcıyı temizle
+    return () => clearInterval(interval);
+  }, [skyboxID, isComplete]);
+
+  useEffect(() => {
     if (isComplete) {
       window.sendMessageToUnity("skyboxUrlManager", "SetURL", fileUrl);
       window.sendMessageToUnity("skyboxUrlManager", "SpawnObject");
