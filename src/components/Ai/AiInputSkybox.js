@@ -37,10 +37,7 @@ const AiInputSkybox = (props) => {
     try {
       const apiUrl = 'https://backend.blockadelabs.com/api/v1/skybox';
       const response = await axios.post(apiUrl, requestData, { headers });
-      const responseData = response.data;
-      const responseID = responseData.request.id;
-      setID(responseID); // Sunucudan gelen "id" değerini setID olarak ayarla
-      fetchStatus(responseID)
+      console.log(response.data);
     } catch (error) {
       console.error('Error fetching data:', error);
     }
