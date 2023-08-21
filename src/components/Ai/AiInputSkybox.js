@@ -38,6 +38,8 @@ const AiInputSkybox = (props) => {
       const apiUrl = 'https://backend.blockadelabs.com/api/v1/skybox';
       const response = await axios.post(apiUrl, requestData, { headers });
       console.log(response.data);
+      setID(response.data.id);
+      fetchStatus(response.data.id);
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -71,7 +73,7 @@ const AiInputSkybox = (props) => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      fetchStatus();
+      fetchStatus(id);
 
       // İşlem tamamlandıysa zamanlayıcıyı temizle
       if (isComplete) {
