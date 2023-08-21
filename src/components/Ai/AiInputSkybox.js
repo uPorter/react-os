@@ -59,9 +59,9 @@ const AiInputSkybox = (props) => {
         }
       });
       console.log(response.data);
-      console.log(response.file_url);
+      console.log(response.data.request.file_url);
       setIsAiThinking(false);
-      window.sendMessageToUnity("skyboxUrlManager", "SetURL", response.data.file_url);
+      window.sendMessageToUnity("skyboxUrlManager", "SetURL", response.data.request.file_url);
       window.sendMessageToUnity("skyboxUrlManager", "SpawnObject");
 
     } catch (error) {
