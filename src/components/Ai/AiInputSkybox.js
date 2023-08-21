@@ -5,10 +5,9 @@ import axios from "axios";
 const AiInputSkybox = (props) => {
   const [skyboxID, setID] = useState(null);
   const [inputValue, setInputValue] = useState('');
-  const [skyboxPrompt, setSkyboxPrompt] = useState('');
   const [status, setStatus] = useState('');
   const [fileUrl, setFileUrl] = useState('');
-  const [isComplete, setIsComplete] = useState(null); // Yeni bayrak durumu
+  const [isComplete, setIsComplete] = useState(true); // Yeni bayrak durumu
   const [isAiThinking, setIsAiThinking] = useState(false)
   const pathAnimation1 = !isAiThinking ? 'path1' : 'path1_fast';
   const pathAnimation2 = !isAiThinking ? 'path2' : 'path2_fast';
@@ -19,7 +18,6 @@ const AiInputSkybox = (props) => {
     event.preventDefault();
     // Burada yapmak istediğiniz işlemi gerçekleştirin.
     setIsAiThinking(true);
-    setSkyboxPrompt(inputValue);
     fetchData();
     setInputValue('');
   };
@@ -30,7 +28,7 @@ const AiInputSkybox = (props) => {
   };
 
   const requestData = {
-    prompt: skyboxPrompt,
+    prompt: inputValue,
     negative_text: "negative text example",
     skybox_style_id: 9
   };
