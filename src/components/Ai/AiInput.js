@@ -46,7 +46,7 @@ const AiInput = (props) => {
         {
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer ${OPENAI_API_KEY}'
+            'Authorization': 'Bearer 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'
           }
         }
       );
