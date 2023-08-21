@@ -52,9 +52,9 @@ const AiInputSkybox = (props) => {
   const pathAnimation2 = !isAiThinking ? 'path2' : 'path2_fast';
   const pathAnimation3 = !isAiThinking ? 'path3' : 'path3_fast';
 
-  const fetchStatus = async (statusID) => {
+  const fetchStatus = async () => {
     try {
-      const response = await axios.get('https://backend.blockadelabs.com/api/v1/imagine/requests/' + statusID, {
+      const response = await axios.get('https://backend.blockadelabs.com/api/v1/imagine/requests/' + skyboxID, {
         headers: {
           'x-api-key': '5I1laH8NbZhk5xFCoRu5jOHr0p5JruBnxCpfvid8rsWoKNemj9roQUE5HFdG'
         }
@@ -74,7 +74,7 @@ const AiInputSkybox = (props) => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      fetchStatus(skyboxID);
+      fetchStatus();
 
       // İşlem tamamlandıysa zamanlayıcıyı temizle
       if (isComplete) {
