@@ -91,12 +91,32 @@ const AiInputChatBot = (props) => {
 
     try {
       const response = await axios.get(url);
-      const parsedData = response.data.results.map((result) => ({
-        uid: result.uid,
-        name: result.name,
-      }));
+      const parsedData = response.data.results
+        .filter((result) => {
+          const licenseLabel = result.license && result.license.label;
+          const licenseUID = result.license && result.license.uid;
+
+          // Filtreleme koşulları: Uygun UID'ler veya null olanlar
+          const validUIDs = [
+            "322a749bcfa841b29dff1e8a1bb74b0b",
+            "b9ddc40b93e34cdca1fc152f39b9f375",
+            "72360ff1740d419791934298b8b6d270",
+            "bbfe3f7dbcdd4122b966b85b9786a989",
+            "2628dbe5140a4e9592126c8df566c0b7",
+            "34b725081a6a4184957efaec2cb84ed3",
+            "7c23a1ba438d4306920229c12afcb5f9",
+            "72eb2b1960364637901eacce19283624"
+          ];
+          return validUIDs.includes(licenseUID) || licenseLabel !== null;
+        })
+        .map((result) => ({
+          uid: result.license ? result.license.uid : null,
+          name: result.name,
+          license: result.license ? result.license.label : null
+        }));
 
       const minifiedJson = JSON.stringify(parsedData, null, 0);
+      console.log(minifiedJson);
       handleClickGPTCommand(minifiedJson);
       setError(null);
     } catch (error) {
@@ -116,7 +136,7 @@ const AiInputChatBot = (props) => {
         {
           role: "system",
           content:
-            "You are a smart assistant that writes Console commands. Generate command with no explanations.\nThe command must be wrapped in an anonymous command that is then executed.\nThe command must not define any new command.\nThe command must define all variables and constants used.\nThe command must not call any command or use any data types besides those defined by the base language spec and the following:\n- A command window.sketchfabInitialize() that takes only a string value (for example, 'db8c20c99d78454db05108735295f5fc), The return value is the object.\n- The json file will be provided by the user with json:() and the model name you need to search for will be provided in the user message with model_name:()\n- window.sketchfabInitialize() gets the uid value of the most appropriate one among the name values in the json file given to you\n- search for name values by taking the keywords in the sentence entered with model_name:() and select the uid value for the most appropriate one\n- Check if the value of model_name:() is in English, if it is not in English, convert it to English and then do the check operation\n- In the json file provided with json:(), you only need to run the uid value that most closely matches the name value with window.sketchfabInitialize() For example, when json:({\n    [\n        {\n          'uid': 'a2be0f9657da495cb00586e7d8beb929',\n          'name': 'Exploration: Office 90s'\n        },\n        ...\n        {\n          'uid': '7b94bb69fc7442c7a2da7592e8ca9e6e',\n          'name': 'HuaLian On A Bamboo Forest Picnic'\n        }\n      ]\n}) is provided as model_name(give me some purple thing), the command you need to create is window.sketchfabInitialize('0302fbca6ac745bc8db2a6248c21438a') \n",
+            "You are a smart assistant that writes Console commands. Generate command with no explanations.\nThe command must be wrapped in an anonymous command that is then executed.\nThe command must not define any new command.\nThe command must define all variables and constants used.\nThe command must not call any command or use any data types besides those defined by the base language spec and the following:\n- A command window.sketchfabInitialize() that takes only a string value (for example, 'db8c20c99d78454db05108735295f5fc), The return value is the object.\n- The json file will be provided by the user with json:() and the model name you need to search for will be provided in the user message with model_name:()\n- window.sketchfabInitialize() gets the uid value of the most appropriate one among the name values in the json file given to you\n- search for name values by taking the keywords in the sentence entered with model_name:() and select the uid value for the most appropriate one\n- Check if the value of model_name:() is in English, if it is not in English, convert it to English and then do the check operation\n- In the json file provided with json:(), you only need to run the uid value that most closely matches the name value with window.sketchfabInitialize() For example, when json:({\n    [\n        {\n          'uid': 'a2be0f9657da495cb00586e7d8beb929',\n          'name': 'Exploration: Office 90s'\n        },\n        ...\n        {\n          'uid': '7b94bb69fc7442c7a2da7592e8ca9e6e',\n          'name': 'HuaLian On A Bamboo Forest Picnic'\n        }\n      ]\n}) is provided as model_name(give me some purple thing), the command you need to create is window.sketchfabInitialize('0302fbca6ac745bc8db2a6248c21438a') \n ",
         },
         {
           role: "user",
