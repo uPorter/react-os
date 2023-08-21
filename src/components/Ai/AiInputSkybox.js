@@ -73,19 +73,6 @@ const AiInputSkybox = (props) => {
   };
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      fetchStatus();
-
-      // İşlem tamamlandıysa zamanlayıcıyı temizle
-      if (isComplete) {
-        clearInterval(interval);
-      }
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, [isComplete]);
-
-  useEffect(() => {
     if (isComplete) {
       window.sendMessageToUnity("skyboxUrlManager", "SetURL", fileUrl);
       window.sendMessageToUnity("skyboxUrlManager", "SpawnObject");
