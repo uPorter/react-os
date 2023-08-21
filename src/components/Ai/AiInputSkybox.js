@@ -30,7 +30,7 @@ const AiInputSkybox = (props) => {
   const requestData = {
     prompt: inputValue,
     negative_text: "negative text example",
-    skybox_style_id: 16
+    skybox_style_id: 9
   };
 
   const headers = {
@@ -60,9 +60,7 @@ const AiInputSkybox = (props) => {
           'x-api-key': '5I1laH8NbZhk5xFCoRu5jOHr0p5JruBnxCpfvid8rsWoKNemj9roQUE5HFdG'
         }
       });
-      console.log(response.data);
-      console.log(response.data.request.file_url);
-      if(response.data.request.status === 'complate'){
+      if(response.data.request.file_url !== ''){
         setIsAiThinking(false);
         setIsComplete(true);
         window.sendMessageToUnity("skyboxUrlManager", "SetURL", response.data.request.file_url);
