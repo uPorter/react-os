@@ -7,16 +7,21 @@ const AiInputSkybox = (props) => {
   const [inputValue, setInputValue] = useState('');
   const [status, setStatus] = useState('');
   const [fileUrl, setFileUrl] = useState('');
-  const [isComplete, setIsComplete] = useState(false); // Yeni bayrak durumu
+  const [isComplete, setIsComplete] = useState(null); // Yeni bayrak durumu
   const [isAiThinking, setIsAiThinking] = useState(false)
+  const pathAnimation1 = !isAiThinking ? 'path1' : 'path1_fast';
+  const pathAnimation2 = !isAiThinking ? 'path2' : 'path2_fast';
+  const pathAnimation3 = !isAiThinking ? 'path3' : 'path3_fast';
+  const url = `https://backend.blockadelabs.com/api/v1/imagine/requests/${skyboxID}`;
 
   const handleSubmit = (event) => {
     event.preventDefault();
     // Burada yapmak istediğiniz işlemi gerçekleştirin.
     setIsAiThinking(true);
-    fetchStatus();
+    fetchData();
     setInputValue('');
   };
+
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
@@ -39,56 +44,49 @@ const AiInputSkybox = (props) => {
       const response = await axios.post(apiUrl, requestData, { headers });
       console.log(response.data.id);
       setID(response.data.id);
-      fetchStatus(response.data.id);
+      fetchStatus();
+      setIsComplete(false);
     } catch (error) {
       console.error('Error fetching data:', error);
     }
   };
 
 
-  const pathAnimation1 = !isAiThinking ? 'path1' : 'path1_fast';
-  const pathAnimation2 = !isAiThinking ? 'path2' : 'path2_fast';
-  const pathAnimation3 = !isAiThinking ? 'path3' : 'path3_fast';
 
   const fetchStatus = async () => {
     try {
-      const response = await axios.get('https://backend.blockadelabs.com/api/v1/imagine/requests/8408615',{
+      const response = await axios.get(url,{
         headers: {
           'x-api-key': '5I1laH8NbZhk5xFCoRu5jOHr0p5JruBnxCpfvid8rsWoKNemj9roQUE5HFdG'
         }
       });
       console.log(response.data);
       console.log(response.data.request.file_url);
-      setIsAiThinking(false);
-      window.sendMessageToUnity("skyboxUrlManager", "SetURL", response.data.request.file_url);
-      window.sendMessageToUnity("skyboxUrlManager", "SpawnObject");
-
+      if(response.data.request.status === 'complate'){
+        setIsAiThinking(false);
+        setIsComplete(true);
+        window.sendMessageToUnity("skyboxUrlManager", "SetURL", response.data.request.file_url);
+        window.sendMessageToUnity("skyboxUrlManager", "SpawnObject");
+      }
     } catch (error) {
       console.error('Error fetching data:', error);
     }
   };
 
   useEffect(() => {
-    // İşlem tamamlandıysa veya skyboxID null ise, zamanlayıcıyı temizle
-    if (isComplete || skyboxID === null) {
-      return () => clearInterval(interval);
-    }
-  
-    // Periyodik olarak fetchStatus'u çağırmak için setInterval kullanımı
     const interval = setInterval(() => {
-      fetchStatus();
-    }, 3000);
-  
-    // Component unmount olduğunda zamanlayıcıyı temizle
-    return () => clearInterval(interval);
-  }, [skyboxID, isComplete]);
+      if (!isComplete) {
+        fetchStatus();
+      } else {
+        clearInterval(interval); // İşlem tamamlandıysa interval'ı temizle
+      }
+    }, 1000); // Her 1 saniyede bir çağrılacak
 
-  useEffect(() => {
-    if (isComplete) {
-      window.sendMessageToUnity("skyboxUrlManager", "SetURL", fileUrl);
-      window.sendMessageToUnity("skyboxUrlManager", "SpawnObject");
-    }
+    return () => {
+      clearInterval(interval); // Bileşen güncellenirken interval'ı temizle
+    };
   }, [isComplete]);
+
 
   return (
     <div
