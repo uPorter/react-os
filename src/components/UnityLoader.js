@@ -490,6 +490,10 @@ const UnityLoader = () => {
     container.style.cursor = "move";
   };
 
+  window.sketchfabInitialize = (modelUID) =>{
+    sendMessage("sketchfabUrlManager", "aiDownloadModel", modelUID);
+  }
+
   useEffect(() => {
     addEventListener("ObjectHoverEnter", handleObjectHoverEnter);
 
