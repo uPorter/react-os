@@ -13,14 +13,14 @@ const AiInputSkybox = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     // Burada yapmak istediğiniz işlemi gerçekleştirin.
-    console.log(id);
+    console.log(skyboxID);
     setIsAiThinking(true);
     fetchData();
   };
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
-    console.log(id);
+    console.log(skyboxID);
   };
 
   const requestData = {
