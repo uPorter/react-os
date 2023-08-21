@@ -58,6 +58,7 @@ const AiInputSkybox = (props) => {
           'x-api-key': '5I1laH8NbZhk5xFCoRu5jOHr0p5JruBnxCpfvid8rsWoKNemj9roQUE5HFdG'
         }
       });
+      console.log(response.data);
       setStatus(response.data.status);
       setFileUrl(response.data.file_url);
       // İşlem tamamlandıysa bayrağı true olarak ayarla
