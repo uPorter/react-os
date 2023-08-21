@@ -91,28 +91,28 @@ const AiInputChatBot = (props) => {
 
     try {
       const response = await axios.get(url);
+      const validUIDs = [
+        "322a749bcfa841b29dff1e8a1bb74b0b",
+        "b9ddc40b93e34cdca1fc152f39b9f375",
+        "72360ff1740d419791934298b8b6d270",
+        "bbfe3f7dbcdd4122b966b85b9786a989",
+        "2628dbe5140a4e9592126c8df566c0b7",
+        "34b725081a6a4184957efaec2cb84ed3",
+        "7c23a1ba438d4306920229c12afcb5f9",
+        "72eb2b1960364637901eacce19283624",
+      ];
+
       const parsedData = response.data.results
         .filter((result) => {
-          const licenseLabel = result.license && result.license.label;
           const licenseUID = result.license && result.license.uid;
 
-          // Filtreleme koşulları: Uygun UID'ler veya null olanlar
-          const validUIDs = [
-            "322a749bcfa841b29dff1e8a1bb74b0b",
-            "b9ddc40b93e34cdca1fc152f39b9f375",
-            "72360ff1740d419791934298b8b6d270",
-            "bbfe3f7dbcdd4122b966b85b9786a989",
-            "2628dbe5140a4e9592126c8df566c0b7",
-            "34b725081a6a4184957efaec2cb84ed3",
-            "7c23a1ba438d4306920229c12afcb5f9",
-            "72eb2b1960364637901eacce19283624"
-          ];
-          return validUIDs.includes(licenseUID) || licenseLabel !== null;
+          // Sadece geçerli UID'lere sahip sonuçları koru
+          return validUIDs.includes(licenseUID);
         })
         .map((result) => ({
-          uid: result.license ? result.license.uid : null,
+          uid: result.uid,
           name: result.name,
-          license: result.license ? result.license.label : null
+          license: result.license ? result.license.label : null,
         }));
 
       const minifiedJson = JSON.stringify(parsedData, null, 0);
