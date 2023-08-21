@@ -129,7 +129,7 @@ const AiInput = (props) => {
       >
         <input
           className="aiInput"
-          placeholder="Imagine..."
+          placeholder="Feed me your ideas, I'll do the rest..."
           style={{
             textAlign: "left",
             borderWidth: "0px",
