@@ -503,6 +503,8 @@ const UnityLoader = () => {
       })
       .then(function (data) {
         console.log(data.glb.url);
+        window.sendMessageToUnity("urlManager", "SetURL", data.glb.url);
+        window.sendMessageToUnityBasic("urlManager", "SpawnObject");
       });
   };
 
