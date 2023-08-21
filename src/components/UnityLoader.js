@@ -359,8 +359,6 @@ const UnityLoader = () => {
     }
   }, []);
 
-
-
   const tokenGenerator = async () => {
     const data = await getUserToken();
     setUserToken(data.token);
@@ -413,9 +411,7 @@ const UnityLoader = () => {
     }
   };
 
-  const reactionHandler = () => {
-    
-  };
+  const reactionHandler = () => {};
 
   const getUserToken = async () => {
     try {
@@ -490,9 +486,25 @@ const UnityLoader = () => {
     container.style.cursor = "move";
   };
 
-  window.sketchfabInitialize = (modelUID) =>{
-    sendMessage("sketchfabUrlManager", "aiDownloadModel", modelUID);
-  }
+  window.sketchfabInitialize = (modelUID) => {
+    var url =
+      "https://api.sketchfab.com/v3/models/" + modelUID + "/download";
+    var options = {
+      method: "GET",
+      headers: {
+        Authorization: "Bearer cej98gnKj7a5kYlRETZmOuWI8YhuFt",
+      },
+      mode: "cors",
+    };
+
+    fetch(url, options)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        console.log(data.glb.url);
+      });
+  };
 
   useEffect(() => {
     addEventListener("ObjectHoverEnter", handleObjectHoverEnter);
