@@ -18,9 +18,9 @@ const AiInputSkybox = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     // Burada yapmak istediğiniz işlemi gerçekleştirin.
-    fetchData();
     setIsAiThinking(true);
     setSkyboxPrompt(inputValue);
+    fetchData();
     setInputValue('');
   };
 
