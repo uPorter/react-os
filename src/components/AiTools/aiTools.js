@@ -7,22 +7,24 @@ import { Toaster, toast } from "sonner";
 import Typography from "@mui/joy/Typography";
 
 function aiTools(props) {
-  const fillColorAssistant = props.aiAssistantClass ? 'black' : 'white';
-  const fillColorChatBot = props.aiChatbotClass ? 'black' : 'white';
-  const fillColorSearch = props.aiSearchClass ? 'black' : 'white';
-  const fillColorCommands = props.aiCommandsClass ? 'black' : 'white';
-  const fillColorSkyboxgen = props.aiSkyboxGenClass ? 'black' : 'white';
+  const fillColorAssistant = props.aiAssistantClass ? "black" : "white";
+  const fillColorChatBot = props.aiChatbotClass ? "black" : "white";
+  const fillColorSearch = props.aiSearchClass ? "black" : "white";
+  const fillColorCommands = props.aiCommandsClass ? "black" : "white";
+  const fillColorSkyboxgen = props.aiSkyboxGenClass ? "black" : "white";
   return (
     <div
       style={{ position: "absolute", bottom: "15px", left: "30px" }}
-      className={`${props.aiToolsOnClass ? 'frame-5-1' : 'aiInputHolderOut'} frame-5`}
+      className={`${
+        props.aiToolsOnClass ? "frame-5-1" : "aiInputHolderOut"
+      } frame-5`}
     >
       <div
         style={{
           animation:
             "reactionInAI 0.2s cubic-bezier(0, 0.2, 0.2, 1) 0.8s 1 normal forwards",
           transform: "scale(0)",
-          background: props.aiAssistantClass ? 'rgb(255 255 255 / 25%)' : '',
+          background: props.aiAssistantClass ? "rgb(255 255 255 / 25%)" : "",
         }}
         onClick={() => window.aiAssistantInputHandler()}
         className="inner-1"
@@ -41,14 +43,19 @@ function aiTools(props) {
           />
         </svg>
         <div className="rectangle-1" />
-        <div style={{color: props.aiAssistantClass ? 'black' : '',}}  className="assistant">Assistant</div>
+        <div
+          style={{ color: props.aiAssistantClass ? "black" : "" }}
+          className="assistant"
+        >
+          Assistant
+        </div>
       </div>
       <div
         style={{
           animation:
             "reactionInAI 0.2s cubic-bezier(0, 0.2, 0.2, 1) 0.6s 1 normal forwards",
           transform: "scale(0)",
-          background: props.aiChatbotClass ? 'rgb(255 255 255 / 25%)' : '',
+          background: props.aiChatbotClass ? "rgb(255 255 255 / 25%)" : "",
         }}
         onClick={() => window.aiChatbotInputHandler()}
         className="inner-2"
@@ -67,40 +74,58 @@ function aiTools(props) {
           />
         </svg>
         <div className="rectangle-1" />
-        <div style={{color: props.aiChatbotClass ? 'black' : '',}} className="chat-bot">Chat Bot</div>
+        <div
+          style={{ color: props.aiChatbotClass ? "black" : "" }}
+          className="chat-bot"
+        >
+          Chat Bot
+        </div>
       </div>
       <div
         style={{
           animation:
             "reactionInAI 0.2s cubic-bezier(0, 0.2, 0.2, 1) 0.4s 1 normal forwards",
           transform: "scale(0)",
-          background: props.aiSearchClass ? 'rgb(255 255 255 / 25%)' : '',
+          background: props.aiSearchClass ? "rgb(255 255 255 / 25%)" : "",
         }}
         onClick={() => window.aiSearchInputHandler()}
         className="inner-3"
       >
         <svg
           className="magnify"
+          xmlns="http://www.w3.org/2000/svg"
           width={21}
           height={21}
-          viewBox="0 0 21 21"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 48 48"
+          fill={fillColorSearch}
         >
-          <path
-            d="M8.41667 3C9.85326 3 11.231 3.57068 12.2468 4.5865C13.2627 5.60233 13.8333 6.98008 13.8333 8.41667C13.8333 9.75833 13.3417 10.9917 12.5333 11.9417L12.7583 12.1667H13.4167L17.5833 16.3333L16.3333 17.5833L12.1667 13.4167V12.7583L11.9417 12.5333C10.9917 13.3417 9.75833 13.8333 8.41667 13.8333C6.98008 13.8333 5.60233 13.2627 4.5865 12.2468C3.57068 11.231 3 9.85326 3 8.41667C3 6.98008 3.57068 5.60233 4.5865 4.5865C5.60233 3.57068 6.98008 3 8.41667 3ZM8.41667 4.66667C6.33333 4.66667 4.66667 6.33333 4.66667 8.41667C4.66667 10.5 6.33333 12.1667 8.41667 12.1667C10.5 12.1667 12.1667 10.5 12.1667 8.41667C12.1667 6.33333 10.5 4.66667 8.41667 4.66667Z"
-            fill={fillColorSearch}
-          />
+          <g clipPath="url(#clip0_72_4)">
+            <path
+              d="M16.84 29.92C16.46 29.92 16.1 29.86 15.8 29.76C15.48 29.64 15.22 29.5 15 29.28C14.78 29.08 14.6 28.84 14.48 28.54C14.36 28.26 14.3 27.94 14.3 27.6H11.7C11.7 28.32 11.84 28.96 12.12 29.5C12.4 30.04 12.78 30.5 13.24 30.88C13.72 31.24 14.26 31.52 14.88 31.7C15.48 31.9 16.1199 32 16.7999 32C17.5399 32 18.24 31.9 18.86 31.7C19.5 31.5 20.06 31.2 20.52 30.82C20.98 30.44 21.36 29.96 21.62 29.38C21.88 28.8 22.02 28.16 22.02 27.44C22.02 27.06 21.9799 26.68 21.8799 26.32C21.7799 25.96 21.64 25.62 21.42 25.3C21.22 24.98 20.94 24.7 20.62 24.44C20.28 24.18 19.88 23.98 19.4 23.82C19.8 23.64 20.14 23.42 20.44 23.16C20.74 22.9 20.98 22.62 21.18 22.32C21.38 22.02 21.52 21.72 21.62 21.4C21.72 21.08 21.76 20.76 21.76 20.44C21.76 19.72 21.64 19.08 21.4 18.52C21.16 17.96 20.8199 17.5 20.3799 17.14C19.9799 16.76 19.44 16.48 18.84 16.28C18.22 16.1 17.5399 16 16.7999 16C16.0799 16 15.42 16.1 14.8 16.32C14.2 16.54 13.66 16.84 13.22 17.22C12.8 17.6 12.46 18.04 12.2 18.56C11.96 19.08 11.84 19.64 11.84 20.26H14.44C14.44 19.92 14.5 19.62 14.62 19.36C14.74 19.1 14.9 18.86 15.12 18.68C15.34 18.5 15.58 18.34 15.88 18.24C16.18 18.14 16.48 18.08 16.84 18.08C17.64 18.08 18.24 18.28 18.62 18.7C19 19.1 19.2 19.68 19.2 20.42C19.2 20.78 19.14 21.1 19.04 21.4C18.94 21.7 18.76 21.94 18.54 22.14C18.32 22.34 18.0399 22.5 17.7199 22.62C17.3999 22.74 16.9999 22.8 16.5599 22.8H15.02V24.86H16.5599C16.9999 24.86 17.4 24.9 17.76 25C18.12 25.1 18.42 25.26 18.66 25.46C18.9 25.68 19.1 25.94 19.24 26.26C19.38 26.58 19.44 26.96 19.44 27.4C19.44 28.22 19.2 28.84 18.74 29.26C18.28 29.72 17.64 29.92 16.84 29.92ZM33.94 18.08C33.3 17.42 32.54 16.9 31.66 16.54C30.78 16.18 29.7999 16 28.7199 16H24V32H28.6C29.7 32 30.72 31.82 31.62 31.46C32.52 31.1 33.3 30.6 33.94 29.94C34.58 29.28 35.08 28.48 35.42 27.56C35.76 26.62 35.94 25.58 35.94 24.42V23.62C35.94 22.46 35.76 21.42 35.42 20.48C35.08 19.54 34.58 18.74 33.94 18.08ZM33.16 24.4C33.16 25.24 33.06 25.98 32.88 26.66C32.68 27.32 32.4 27.9 32.02 28.36C31.64 28.82 31.16 29.18 30.6 29.42C30.02 29.66 29.36 29.78 28.62 29.78H26.7999V18.24H28.74C30.18 18.24 31.28 18.7 32.02 19.62C32.78 20.54 33.16 21.86 33.16 23.6V24.4Z"
+              fill="white"
+            />
+          </g>
+          <defs>
+            <clipPath id="clip0_72_4">
+              <rect width={48} height={48} fill="white" />
+            </clipPath>
+          </defs>
         </svg>
+
         <div className="rectangle-2" />
-        <div style={{color: props.aiSearchClass ? 'black' : '',}} className="search">Search</div>
+        <div
+          style={{ color: props.aiSearchClass ? "black" : "" }}
+          className="search"
+        >
+          Models
+        </div>
       </div>
       <div
         style={{
           animation:
             "reactionInAI 0.2s cubic-bezier(0, 0.2, 0.2, 1) 0.2s 1 normal forwards",
           transform: "scale(0)",
-          background: props.aiCommandsClass ? 'rgb(255 255 255 / 25%)' : '',
+          background: props.aiCommandsClass ? "rgb(255 255 255 / 25%)" : "",
         }}
         onClick={() => window.aiCommandsInputHandler()}
         className="inner-4"
@@ -119,14 +144,19 @@ function aiTools(props) {
           />
         </svg>
         <div className="rectangle-2" />
-        <div style={{color: props.aiCommandsClass ? 'black' : '',}} className="commands">Commands</div>
+        <div
+          style={{ color: props.aiCommandsClass ? "black" : "" }}
+          className="commands"
+        >
+          Commands
+        </div>
       </div>
       <div
         style={{
           animation:
             "reactionInAI 0.2s cubic-bezier(0, 0.2, 0.2, 1) 0s 1 normal forwards",
           transform: "scale(0)",
-          background: props.aiSkyboxGenClass ? 'rgb(255 255 255 / 25%)' : '',
+          background: props.aiSkyboxGenClass ? "rgb(255 255 255 / 25%)" : "",
         }}
         onClick={() => window.aiSkyboxInputHandler()}
         className="skybox-gen-back"
@@ -145,7 +175,10 @@ function aiTools(props) {
           />
         </svg>
         <div className="svg" />
-        <div style={{color: props.aiSkyboxGenClass ? 'black' : '',}} className="skybox-generator">
+        <div
+          style={{ color: props.aiSkyboxGenClass ? "black" : "" }}
+          className="skybox-generator"
+        >
           SKYBOX
           <br />
           GENERATOR
