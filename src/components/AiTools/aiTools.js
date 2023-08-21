@@ -94,32 +94,26 @@ function aiTools(props) {
           animation:
             "reactionInAI 0.2s cubic-bezier(0, 0.2, 0.2, 1) 0.4s 1 normal forwards",
           transform: "scale(0)",
-          background: props.aiSearchClass ? "rgb(255 255 255 / 25%)" : "",
+          background: props.aiSearchClass ? 'rgb(255 255 255 / 25%)' : '',
         }}
         onClick={() => window.aiSearchInputHandler()}
         className="inner-3"
       >
         <svg
           className="magnify"
-          xmlns="http://www.w3.org/2000/svg"
           width={21}
           height={21}
-          viewBox="0 0 48 48"
-          fill={fillColorSearch}
+          viewBox="0 0 21 21"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
         >
           <path
             d="M8.41667 3C9.85326 3 11.231 3.57068 12.2468 4.5865C13.2627 5.60233 13.8333 6.98008 13.8333 8.41667C13.8333 9.75833 13.3417 10.9917 12.5333 11.9417L12.7583 12.1667H13.4167L17.5833 16.3333L16.3333 17.5833L12.1667 13.4167V12.7583L11.9417 12.5333C10.9917 13.3417 9.75833 13.8333 8.41667 13.8333C6.98008 13.8333 5.60233 13.2627 4.5865 12.2468C3.57068 11.231 3 9.85326 3 8.41667C3 6.98008 3.57068 5.60233 4.5865 4.5865C5.60233 3.57068 6.98008 3 8.41667 3ZM8.41667 4.66667C6.33333 4.66667 4.66667 6.33333 4.66667 8.41667C4.66667 10.5 6.33333 12.1667 8.41667 12.1667C10.5 12.1667 12.1667 10.5 12.1667 8.41667C12.1667 6.33333 10.5 4.66667 8.41667 4.66667Z"
             fill={fillColorSearch}
           />
         </svg>
-
         <div className="rectangle-2" />
-        <div
-          style={{ color: props.aiSearchClass ? "black" : "" }}
-          className="search"
-        >
-          Search
-        </div>
+        <div style={{color: props.aiSearchClass ? 'black' : '',}} className="search">Search</div>
       </div>
       <div
         style={{
