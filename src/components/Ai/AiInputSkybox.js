@@ -5,6 +5,7 @@ import axios from "axios";
 const AiInputSkybox = (props) => {
   const [skyboxID, setID] = useState(null);
   const [inputValue, setInputValue] = useState('');
+  const [skyboxPrompt, setSkyboxPrompt] = useState('');
   const [status, setStatus] = useState('');
   const [fileUrl, setFileUrl] = useState('');
   const [isComplete, setIsComplete] = useState(null); // Yeni bayrak durumu
@@ -17,8 +18,9 @@ const AiInputSkybox = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     // Burada yapmak istediğiniz işlemi gerçekleştirin.
-    setIsAiThinking(true);
     fetchData();
+    setIsAiThinking(true);
+    setSkyboxPrompt(inputValue);
     setInputValue('');
   };
 
@@ -28,7 +30,7 @@ const AiInputSkybox = (props) => {
   };
 
   const requestData = {
-    prompt: inputValue,
+    prompt: skyboxPrompt,
     negative_text: "negative text example",
     skybox_style_id: 9
   };
@@ -60,6 +62,7 @@ const AiInputSkybox = (props) => {
           'x-api-key': '5I1laH8NbZhk5xFCoRu5jOHr0p5JruBnxCpfvid8rsWoKNemj9roQUE5HFdG'
         }
       });
+      console.log(response.data.request.file_url);
       if(response.data.request.file_url !== ''){
         setIsAiThinking(false);
         setIsComplete(true);
