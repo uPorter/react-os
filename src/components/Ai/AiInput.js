@@ -50,7 +50,7 @@ const AiInput = (props) => {
           }
         }
       );
-      
+      console.log(response.data.choices[0].message.content);
       eval(response.data.choices[0].message.content);
       setIsAiThinking(false);
     } catch (error) {
