@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 const AiInputSkybox = (props) => {
-  const [id, setID] = useState(null);
+  const [skyboxID, setID] = useState(null);
   const [inputValue, setInputValue] = useState('');
   const [status, setStatus] = useState('');
   const [fileUrl, setFileUrl] = useState('');
@@ -20,6 +20,7 @@ const AiInputSkybox = (props) => {
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
+    console.log(id);
   };
 
   const requestData = {
@@ -37,7 +38,7 @@ const AiInputSkybox = (props) => {
     try {
       const apiUrl = 'https://backend.blockadelabs.com/api/v1/skybox';
       const response = await axios.post(apiUrl, requestData, { headers });
-      console.log(response.data);
+      console.log(response.data.id);
       setID(response.data.id);
       fetchStatus(response.data.id);
     } catch (error) {
@@ -73,7 +74,7 @@ const AiInputSkybox = (props) => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      fetchStatus(id);
+      fetchStatus(skyboxID);
 
       // İşlem tamamlandıysa zamanlayıcıyı temizle
       if (isComplete) {
