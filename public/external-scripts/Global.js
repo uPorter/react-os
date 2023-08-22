@@ -26,7 +26,11 @@ window.chageNameNearest = (str) => {
   };
 
   window.changeLinkNearest = (str) => {
-    window.sendMessageToUnity("aiObjectController", "chageLinNearest", str);
+    window.sendMessageToUnity("aiObjectController", "chageLinkNearest", str);
+  };
+
+  window.chageLinkNearest = (str) => {
+    window.sendMessageToUnity("aiObjectController", "chageLinkNearest", str);
   };
 
   window.chageArtistNearest = (str) => {
