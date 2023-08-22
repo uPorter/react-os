@@ -1402,6 +1402,7 @@ const UnityLoader = () => {
                     handleInfoMode={handleInfoMode}
                     handleEditBar={handleEditBar}
                     handleAddContent={handleAddContent}
+                    setIsDockEditorMode={setIsDockEditorMode}
                   ></EditDock>
                 )}
                 {!isDockEditorMode && isAdmin && (

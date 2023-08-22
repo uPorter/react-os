@@ -12,7 +12,7 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 
 export class EditDock extends Component {
   render() {
-    const { handleEditBar, objectName, isLocked, setIsLocked,handleInfoMode } = this.props;
+    const { handleEditBar, objectName, isLocked, setIsLocked,handleInfoMode,setIsDockEditorMode } = this.props;
     const SetEnvironmentModel = () => {
       window.sendMessageToUnityBasic(objectName, "SetEnvironmentModel");
     }
@@ -22,6 +22,7 @@ export class EditDock extends Component {
     }
 
     const destroyModel = () => {
+      setIsDockEditorMode(false);
       window.sendMessageToUnityBasic(objectName + "_parent", "DestroySelf");
     }
 
