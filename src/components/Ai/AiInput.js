@@ -16,6 +16,7 @@ const AiInput = (props) => {
     // Burada yapmak istediğiniz işlemi gerçekleştirin.
     setIsAiThinking(true);
     sendRequest();
+    setSearchQuery("");
   };
 
   const data = {
