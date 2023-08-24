@@ -1349,7 +1349,7 @@ const UnityLoader = () => {
           <div className={"ui"}>
             <Tooltip
               className="dockTooltip"
-              sx={{ borderRadius: "20px", backgroundColor: "#ffffff",position:"absolute", top:"20px",left:"20px" }}
+              sx={{ borderRadius: "20px", backgroundColor: "#ffffff" }}
               interactive
               color="neutral"
               placement="bottom"
@@ -1375,7 +1375,7 @@ const UnityLoader = () => {
               }
             >
               <div
-                style={{ width: "fit-content", height: "fit-content" }}
+                style={{ width: "fit-content", height: "fit-content",position:"absolute", top:"20px",left:"20px" }}
                 className="tooltipHover2"
               >
                 <IconButton
