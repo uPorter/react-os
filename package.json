@@ -16,6 +16,7 @@
     "custom-event": "^1.0.1",
     "dayjs": "^1.10.3",
     "emoji-regex": "^9.2.0",
+    "typewriter-effect": "2.19.0",
     "framer-motion": "^10.1.0",
     "i18next": "^19.8.4",
     "isomorphic-ws": "^4.0.1",
