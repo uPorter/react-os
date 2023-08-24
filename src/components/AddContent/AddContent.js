@@ -155,20 +155,20 @@ const AddContent = (props) => {
             }}
             orientation="vertical"
           ></Divider>
-          <TabPanel className="tabPanel" sx={{ p: 2, minHeight: 200 }}>
+          <TabPanel className="tabPanel" sx={{ p: 2, minHeight: 200,overflow:"hidden" }}>
             <VirtualizedList closeContent={closeContent} data={data} />
           </TabPanel>
           <TabPanel
             className="tabPanel"
             value={1}
-            sx={{ p: 2, minHeight: 200 }}
+            sx={{ p: 2, minHeight: 200,overflow:"hidden" }}
           >
             <VirtualizedList closeContent={closeContent} data={data1} />
           </TabPanel>
           <TabPanel
             className="tabPanel"
             value={2}
-            sx={{ p: 2, minHeight: 200 }}
+            sx={{ p: 2, minHeight: 200,overflow:"hidden" }}
           >
             <VirtualizedListFurt closeContent={closeContent} data={data2} />
            
