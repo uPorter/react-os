@@ -484,7 +484,7 @@ const UnityLoader = () => {
   }, [addEventListener, removeEventListener, assistantInfoToggleOffBase]);
 
   const assistantInfoToggleOffBase = () => {
-    isetAssistantModeOnBase(false);
+    setAssistantModeOnBase(false);
     
   };
   //////////////////////
