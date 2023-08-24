@@ -43,9 +43,9 @@ export class EditDock extends Component {
 
     const assistantMenuHandler = () => {
       if (assistantModeOnBase) {
-        window.sendMessageToUnityBasic(objectName, "activeAsistant");
+        window.sendMessageToUnityBasic(objectName + "_parent", "activeAsistant");
       } else {
-        window.sendMessageToUnityBasic(objectName, "disableAsistant");
+        window.sendMessageToUnityBasic(objectName + "_parent", "disableAsistant");
       }
     };
 

@@ -455,7 +455,7 @@ const UnityLoader = () => {
   }, [addEventListener, removeEventListener, assistantInfoToggleOff]);
 
   const assistantInfoToggleOff = () => {
-    if(!isAdmin){
+    if(assistantModeOnBase){
       window.closeAssistantPanel();
     }
     
@@ -484,7 +484,7 @@ const UnityLoader = () => {
   }, [addEventListener, removeEventListener, assistantInfoToggleOffBase]);
 
   const assistantInfoToggleOffBase = () => {
-    if(isAdmin){
+    if(assistantModeOnBase){
       window.closeAssistantPanel();
     }
     
@@ -499,9 +499,7 @@ const UnityLoader = () => {
   }, [addEventListener, removeEventListener, assistantInfoToggleOnBase]);
 
   const assistantInfoToggleOnBase = () => {
-    if(isAdmin){
       setAssistantModeOnBase(true);
-    }
   };
 
   useEffect(() => {
