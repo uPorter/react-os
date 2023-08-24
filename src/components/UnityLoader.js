@@ -485,8 +485,7 @@ const UnityLoader = () => {
   }, [addEventListener, removeEventListener, assistantInfoToggleOnBase]);
 
   const assistantInfoToggleOnBase = () => {
-      setAssistantModeOnBase(true);
-      setAssistantModeOnBaseClass(true);
+    window.enableAnimation();
   };
 
   useEffect(() => {
@@ -1573,7 +1572,7 @@ const UnityLoader = () => {
                 removeEventListener={removeEventListener}
               ></InfoPanel>
             )}
-            {assistantModeOnBase && <AssistantHolder setAssistantModeOnBase={setAssistantModeOnBase} assistantModeOnBaseClass={assistantModeOnBaseClass} assistantModeOnBase={assistantModeOnBase} asistantPromptReact={asistantPromptReact} handleEditorOff={handleAssistantOff}></AssistantHolder>}
+            <AssistantHolder setAssistantModeOnBase={setAssistantModeOnBase} assistantModeOnBaseClass={assistantModeOnBaseClass} assistantModeOnBase={assistantModeOnBase} asistantPromptReact={asistantPromptReact} handleEditorOff={handleAssistantOff}></AssistantHolder>
             {/* {uploadOpen && <FileUpload setUploadOpen={setUploadOpen} sendMessage={sendMessage} style={{position: 'absolute', zIndex: '15'}}></FileUpload> } */}
             {uploadOpen && (
               <AddContent setUploadOpen={setUploadOpen}></AddContent>

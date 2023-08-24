@@ -5,7 +5,7 @@ import IconButton from '@mui/joy/IconButton'
 
 const AssistantHolder = (props) => {
   const { handleEditorOff, asistantPromptReact, setAssistantModeOnBase } = props;
-  const [animationClass, setAnimationClass] = useState(true);
+  const [animationClass, setAnimationClass] = useState(false);
   const [animationHandler, setAnimationHandler] = useState(false);
   const [isEditorMode, setIsEditorMode] = useState(true);
 
@@ -15,6 +15,10 @@ const AssistantHolder = (props) => {
       setAssistantModeOnBase(false);
     }, 550); // Animasyon süresine göre ayarlayın
   };
+
+  window.enableAnimation = () => {
+    setAnimationClass(true);
+  }
 
   return (
     <div
