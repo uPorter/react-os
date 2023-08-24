@@ -31,6 +31,7 @@ import InfoPanel from "./InfoPanel";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import AiToolsBase from "./AiTools/aiTools";
 import AssistantHolder from "./Assistant/AssistantHolder";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 const chatClient = StreamChat.getInstance("7q2yg6eutsf9");
 
@@ -115,8 +116,9 @@ const UnityLoader = () => {
   const [portalModeOn, setPortalModeOn] = useState(false);
   const [asistantPromptReact, setAssistantPromptReact] = useState("");
   const [assistantModeOn, setAssistantModeOn] = useState(false);
-  const [assistantModeOnBase,setAssistantModeOnBase] = useState(false);
-  const [assistantModeOnBaseClass,setAssistantModeOnBaseClass] = useState(false);
+  const [assistantModeOnBase, setAssistantModeOnBase] = useState(false);
+  const [assistantModeOnBaseClass, setAssistantModeOnBaseClass] =
+    useState(false);
 
   window.aiSkyboxInputHandler = () => {
     if (
@@ -133,7 +135,6 @@ const UnityLoader = () => {
       return () => clearTimeout(timeout);
     }
   };
-
 
   window.aiChatbotInputHandler = () => {
     if (
@@ -226,8 +227,6 @@ const UnityLoader = () => {
 
     return uid;
   }
-
-
 
   useEffect(() => {
     if (!userID) {
@@ -460,7 +459,6 @@ const UnityLoader = () => {
 
   const assistantInfoToggleOff = () => {
     setAssistantModeOn(false);
-    
   };
   //////////////////////
   useEffect(() => {
@@ -472,7 +470,7 @@ const UnityLoader = () => {
   }, [addEventListener, removeEventListener, assistantInfoToggleOn]);
 
   const assistantInfoToggleOn = () => {
-      setAssistantModeOn(true);
+    setAssistantModeOn(true);
   };
 
   //////////////////////
@@ -500,10 +498,10 @@ const UnityLoader = () => {
     console.log(setAvatarPrompt);
   }, []);
 
-  window.spawnSunny = () =>{
-    sendMessage("portalUrlManager","SpawnObjectSunny");
-  }
- 
+  window.spawnSunny = () => {
+    sendMessage("portalUrlManager", "SpawnObjectSunny");
+  };
+
   const reactionHandler = () => {};
 
   const getUserToken = async () => {
@@ -1349,29 +1347,59 @@ const UnityLoader = () => {
         )}
         {isStarted && showChat && !isFilmingMode && (
           <div className={"ui"}>
-            <IconButton
-              id="LeaveButton"
-              className="dockButtons"
-              variant="solid"
-              sx={{
-                width: "120px",
-                color: "white",
-                boxShadow: "0px 0px 0px 0px rgb(0 0 0 / 34%)",
-                backgroundColor: "rgba(0, 0, 0, 0.250)",
-                background: "rgba(0, 0, 0, 0.250)",
-                position: "absolute",
-                top: "20px",
-                left: "20px",
-                "--IconButton-size": "55px",
-                "--IconButton-radius": "50px",
-                "&:hover": {
-                  backgroundColor: "rgba(0, 0, 0, 0.250)",
-                  background: "rgba(0, 0, 0, 0.250)",
-                },
-              }}
+            <Tooltip
+              className="dockTooltip"
+              sx={{ borderRadius: "20px", backgroundColor: "#ffffff" }}
+              interactive
+              color="neutral"
+              placement="bottom"
+              variant="soft"
+              title={
+                <Button
+                  size="sm"
+                  variant="plain"
+                  sx={{
+                    fontStyle: "bold",
+                    fontWeight: "Bold",
+                    color: "white",
+                    padding: "10px",
+                    marginBottom: "-4px",
+                    backgroundColor: "#00000040",
+                    "&:hover": {
+                      backgroundColor: "#00000040",
+                    },
+                  }}
+                >
+                  Leave
+                </Button>
+              }
             >
-              Leave
-            </IconButton>
+              <div
+                style={{ width: "fit-content", height: "fit-content" }}
+                className="tooltipHover2"
+              >
+                <IconButton
+                  id="dockButtonID"
+                  className="dockButtons"
+                  variant="solid"
+                  sx={{
+                    width: "120px",
+                    color: "white",
+                    boxShadow: "0px 0px 0px 0px rgb(0 0 0 / 34%)",
+                    backgroundColor: "rgba(0, 0, 0, 0.250)",
+                    background: "rgba(0, 0, 0, 0.250)",
+                    "--IconButton-size": "55px",
+                    "--IconButton-radius": "50px",
+                    "&:hover": {
+                      backgroundColor: "rgba(0, 0, 0, 0.250)",
+                      background: "rgba(0, 0, 0, 0.250)",
+                    },
+                  }}
+                >
+                  <LogoutIcon style={{transform: "scaleX(-1)"}}></LogoutIcon>
+                </IconButton>
+              </div>
+            </Tooltip>
             <Grid
               className="unityLoaderGrid"
               style={{ position: "absolute", width: "100%", bottom: "20px" }}
@@ -1595,7 +1623,13 @@ const UnityLoader = () => {
                 removeEventListener={removeEventListener}
               ></InfoPanel>
             )}
-            <AssistantHolder setAssistantModeOnBase={setAssistantModeOnBase} assistantModeOnBaseClass={assistantModeOnBaseClass} assistantModeOnBase={assistantModeOnBase} asistantPromptReact={asistantPromptReact} handleEditorOff={handleAssistantOff}></AssistantHolder>
+            <AssistantHolder
+              setAssistantModeOnBase={setAssistantModeOnBase}
+              assistantModeOnBaseClass={assistantModeOnBaseClass}
+              assistantModeOnBase={assistantModeOnBase}
+              asistantPromptReact={asistantPromptReact}
+              handleEditorOff={handleAssistantOff}
+            ></AssistantHolder>
             {/* {uploadOpen && <FileUpload setUploadOpen={setUploadOpen} sendMessage={sendMessage} style={{position: 'absolute', zIndex: '15'}}></FileUpload> } */}
             {uploadOpen && (
               <AddContent setUploadOpen={setUploadOpen}></AddContent>
