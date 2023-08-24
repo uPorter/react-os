@@ -25,7 +25,7 @@ const AiInputSearch = (props) => {
       {
         role: "system",
         content:
-          "I want you to act like a search engine, generate the correct answers to all the questions asked in the search engine and give the most appropriate output now search ",
+          "I want you to act like a search engine, produce correct and short answers to all the questions asked in the search engine and give the most appropriate output with a maximum of 50 words. now search ",
       },
       {
         role: "user",
@@ -163,21 +163,39 @@ const AiInputSearch = (props) => {
           />
         </form>
 
-        <svg
-          style={{ visibility: "hidden" }}
-          class="vector2"
-          width="18"
-          height="18"
-          viewBox="0 0 18 18"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M0.679932 13.8939V17.4351H4.22111L14.6652 6.99095L11.124 3.44978L0.679932 13.8939ZM17.4037 4.25244C17.772 3.88416 17.772 3.28925 17.4037 2.92096L15.194 0.71127C14.8257 0.342988 14.2308 0.342988 13.8625 0.71127L12.1345 2.43936L15.6756 5.98054L17.4037 4.25244Z"
-            fill="white"
-            fill-opacity="0.5"
-          />
-        </svg>
+        {!isAiThinking && (
+        <div style={{ visibility: "hidden" }} class="spinner">
+          <div class="bar1"></div>
+          <div class="bar2"></div>
+          <div class="bar3"></div>
+          <div class="bar4"></div>
+          <div class="bar5"></div>
+          <div class="bar6"></div>
+          <div class="bar7"></div>
+          <div class="bar8"></div>
+          <div class="bar9"></div>
+          <div class="bar10"></div>
+          <div class="bar11"></div>
+          <div class="bar12"></div>
+        </div>
+      )}
+
+      {isAiThinking && (
+        <div class="spinner">
+          <div class="bar1"></div>
+          <div class="bar2"></div>
+          <div class="bar3"></div>
+          <div class="bar4"></div>
+          <div class="bar5"></div>
+          <div class="bar6"></div>
+          <div class="bar7"></div>
+          <div class="bar8"></div>
+          <div class="bar9"></div>
+          <div class="bar10"></div>
+          <div class="bar11"></div>
+          <div class="bar12"></div>
+        </div>
+      )}
       </div>
     </div>
   );
