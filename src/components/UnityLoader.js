@@ -1490,6 +1490,8 @@ const UnityLoader = () => {
               <Grid xs={6}>
                 {isDockEditorMode && (
                   <EditDock
+                    portalModeOn={portalModeOn}
+                    assistantModeOn={assistantModeOn}
                     isLocked={isLocked}
                     setIsLocked={setIsLocked}
                     objectName={objectName}

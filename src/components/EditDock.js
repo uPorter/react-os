@@ -20,6 +20,8 @@ export class EditDock extends Component {
       handleInfoMode,
       setIsDockEditorMode,
       assistantModeOnBase,
+      assistantModeOn,
+      portalModeOn,
     } = this.props;
     const SetEnvironmentModel = () => {
       window.sendMessageToUnityBasic(objectName, "SetEnvironmentModel");
@@ -66,52 +68,6 @@ export class EditDock extends Component {
             zIndex: "15",
           }}
         >
-          {!isLocked && (
-            <Tooltip
-              className="dockTooltip"
-              sx={{ borderRadius: "20px", backgroundColor: "#ffffff" }}
-              interactive
-              color="neutral"
-              placement="top"
-              variant="soft"
-              title={
-                <Button
-                  size="sm"
-                  variant="plain"
-                  sx={{
-                    fontStyle: "bold",
-                    fontWeight: "Bold",
-                    color: "white",
-                    padding: "10px",
-                    marginBottom: "-4px",
-                    backgroundColor: "#0046ff40",
-                    "&:hover": {
-                      backgroundColor: "#0046ff40",
-                    },
-                  }}
-                >
-                  Download Model
-                </Button>
-              }
-            >
-              <div
-                style={{ width: "fit-content", height: "fit-content" }}
-                className="tooltipHover2"
-              >
-                <IconButton
-                  id="dockButtonID"
-                  className="dockButtonsEditor"
-                  variant="solid"
-                  sx={{
-                    "--IconButton-size": "55px",
-                    "--IconButton-radius": "50px",
-                  }}
-                >
-                  <DownloadIcon />
-                </IconButton>
-              </div>
-            </Tooltip>
-          )}
 
           <Tooltip
             className="dockTooltip"
@@ -256,7 +212,7 @@ export class EditDock extends Component {
             </Tooltip>
           )}
 
-          <Tooltip
+          {!portalModeOn && !assistantModeOn && <Tooltip
             className="dockTooltip"
             sx={{ borderRadius: "20px", backgroundColor: "#ffffff" }}
             interactive
@@ -310,9 +266,9 @@ export class EditDock extends Component {
                 />
               </IconButton>
             </div>
-          </Tooltip>
+          </Tooltip>}
 
-          {!isLocked && (
+          {!isLocked && !portalModeOn && !assistantModeOn && (
             <Tooltip
               className="dockTooltip"
               sx={{ borderRadius: "20px", backgroundColor: "#ffffff" }}
@@ -416,7 +372,7 @@ export class EditDock extends Component {
             </div>
           </Tooltip>
 
-          <Tooltip
+          {assistantModeOn && <Tooltip
             className="dockTooltip"
             sx={{ borderRadius: "20px", backgroundColor: "#ffffff" }}
             interactive
@@ -472,7 +428,7 @@ export class EditDock extends Component {
                 </svg>
               </IconButton>
             </div>
-          </Tooltip>
+          </Tooltip>}
         </Box>
       </div>
     );
