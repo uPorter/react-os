@@ -6,7 +6,7 @@ import IconButton from '@mui/joy/IconButton'
 const AssistantHolder = (props) => {
   const { handleEditorOff, asistantPromptReact, setAssistantModeOnBase } = props;
   const [animationClass, setAnimationClass] = useState(false);
-  const [animationHandler, setAnimationHandler] = useState(false);
+  const [firstLoad, setFirstLoad] = useState(false);
   const [isEditorMode, setIsEditorMode] = useState(true);
 
   const closeEditor = () => {
@@ -20,12 +20,24 @@ const AssistantHolder = (props) => {
     setAnimationClass(true);
   }
 
+  useEffect(() => {
+    // Component render edildikten 0.5 saniye sonra setFirstLoad'u true olarak ayarla
+    const timer = setTimeout(() => {
+      setFirstLoad(true);
+    }, 500);
+
+    // Temizleme fonksiyonunu kullanarak, bileşen yeniden render edildiğinde zamanlayıcıyı temizle
+    return () => clearTimeout(timer);
+  }, []); // Boş dizi ile kullanıldığında, sadece bileşen monte edildiğinde useEffect çalışır
+
+
   return (
     <div
       className={`${animationClass ? "editorActive" : "editorDisabled"}`}
       style={{
         zIndex: "99",
         position: "absolute",
+        visibility: !firstLoad ? "hidden" : "visible",
         right: "0px",
         width: "400px",
         height: "100%",
