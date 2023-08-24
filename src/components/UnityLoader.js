@@ -115,6 +115,7 @@ const UnityLoader = () => {
   const [portalModeOn, setPortalModeOn] = useState(false);
   const [asistantPromptReact, setAssistantPromptReact] = useState("");
   const [assistantModeOn, setAssistantModeOn] = useState(false);
+  const [assistantModeOnBase,setAssistantModeOnBase] = useState(false);
 
   window.aiSkyboxInputHandler = () => {
     if (
@@ -256,7 +257,7 @@ const UnityLoader = () => {
 
   const handleAssistantOff = () => {
     setTimeout(() => {
-      setAssistantModeOn(false);
+      setAssistantModeOnBase(false);
     }, 600); // 500 milisaniye (0.5 saniye) bekleme süresi
   };
 
@@ -454,7 +455,10 @@ const UnityLoader = () => {
   }, [addEventListener, removeEventListener, assistantInfoToggleOff]);
 
   const assistantInfoToggleOff = () => {
-    window.closeAssistantPanel();
+    if(!isAdmin){
+      window.closeAssistantPanel();
+    }
+    
   };
   //////////////////////
   useEffect(() => {
@@ -466,7 +470,38 @@ const UnityLoader = () => {
   }, [addEventListener, removeEventListener, assistantInfoToggleOn]);
 
   const assistantInfoToggleOn = () => {
-    setAssistantModeOn(true);
+    if(!isAdmin){
+      setAssistantModeOn(true);
+    }
+  };
+
+  useEffect(() => {
+    addEventListener("assistantOff", assistantInfoToggleOffBase);
+
+    return () => {
+      removeEventListener("assistantOff", assistantInfoToggleOffBase);
+    };
+  }, [addEventListener, removeEventListener, assistantInfoToggleOffBase]);
+
+  const assistantInfoToggleOffBase = () => {
+    if(isAdmin){
+      window.closeAssistantPanel();
+    }
+    
+  };
+  //////////////////////
+  useEffect(() => {
+    addEventListener("assistantOn", assistantInfoToggleOnBase);
+
+    return () => {
+      removeEventListener("assistantOn", assistantInfoToggleOnBase);
+    };
+  }, [addEventListener, removeEventListener, assistantInfoToggleOnBase]);
+
+  const assistantInfoToggleOnBase = () => {
+    if(isAdmin){
+      setAssistantModeOnBase(true);
+    }
   };
 
   useEffect(() => {
@@ -1477,6 +1512,7 @@ const UnityLoader = () => {
                     handleEditBar={handleEditBar}
                     handleAddContent={handleAddContent}
                     setIsDockEditorMode={setIsDockEditorMode}
+                    assistantModeOnBase={assistantModeOnBase}
                   ></EditDock>
                 )}
                 {!isDockEditorMode && isAdmin && (
@@ -1550,7 +1586,7 @@ const UnityLoader = () => {
                 removeEventListener={removeEventListener}
               ></InfoPanel>
             )}
-            {assistantModeOn && <AssistantHolder handleEditorOff={handleAssistantOff}></AssistantHolder>}
+            {assistantModeOnBase && <AssistantHolder asistantPromptReact={asistantPromptReact} handleEditorOff={handleAssistantOff}></AssistantHolder>}
             {/* {uploadOpen && <FileUpload setUploadOpen={setUploadOpen} sendMessage={sendMessage} style={{position: 'absolute', zIndex: '15'}}></FileUpload> } */}
             {uploadOpen && (
               <AddContent setUploadOpen={setUploadOpen}></AddContent>

@@ -3,7 +3,7 @@ import axios from "axios";
 
 const OPENAI_API_KEY = "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"; // OpenAI API anahtarınızı buraya ekleyin
 
-function AssistantChat() {
+function AssistantChat({asistantPromptReact}) {
   const [messages, setMessages] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [isAiThinking, setIsAiThinking] = useState(false);
@@ -38,8 +38,7 @@ function AssistantChat() {
       messages: [
         {
           role: "system",
-          content:
-            "pretend you are a cute anime girl who talks in all lowercase, doesnt use punctutation, uses a tilda at the end of every sentence, and uses LOTS of emoticons",
+          content: asistantPromptReact,
         },
         ...newMessages, // Kullanıcının mesajını burada da ekleyin
       ],

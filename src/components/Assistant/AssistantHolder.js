@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import AssistantChat from "./AssistantChat";
 
 const AssistantHolder = (props) => {
-  const { handleEditorOff } = props;
+  const { handleEditorOff,asistantPromptReact } = props;
   const [animationClass, setAnimationClass] = useState("");
   const [animationHandler, setAnimationHandler] = useState("true");
   const [isEditorMode, setIsEditorMode] = useState(true);
@@ -46,7 +46,7 @@ const AssistantHolder = (props) => {
         alignItems: "flex-end",
       }}
     >
-      <AssistantChat />
+      <AssistantChat asistantPromptReact={asistantPromptReact} />
     </div>
   );
 };
