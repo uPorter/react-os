@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import AssistantChat from "./AssistantChat";
 
 const AssistantHolder = (props) => {
-  const { handleEditorOff,asistantPromptReact } = props;
+  const { handleEditorOff,asistantPromptReact,assistantModeOnBaseClass } = props;
   const [animationClass, setAnimationClass] = useState("");
   const [animationHandler, setAnimationHandler] = useState("true");
   const [isEditorMode, setIsEditorMode] = useState(true);
@@ -30,7 +30,7 @@ const AssistantHolder = (props) => {
   };
   return (
     <div
-      className={animationClass}
+      className={`${assistantModeOnBaseClass ? 'editorActive' : 'editorDisabled'}`}
       style={{
         zIndex: "99",
         position: "absolute",

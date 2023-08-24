@@ -116,6 +116,7 @@ const UnityLoader = () => {
   const [asistantPromptReact, setAssistantPromptReact] = useState("");
   const [assistantModeOn, setAssistantModeOn] = useState(false);
   const [assistantModeOnBase,setAssistantModeOnBase] = useState(false);
+  const [assistantModeOnBaseClass,setAssistantModeOnBaseClass] = useState(false);
 
   window.aiSkyboxInputHandler = () => {
     if (
@@ -130,6 +131,19 @@ const UnityLoader = () => {
         setAiSkyboxGenOn(false);
       }, 600);
       return () => clearTimeout(timeout);
+    }
+  };
+
+  const AssistantChatHandler = () => {
+    if (!isReactionsOn) {
+      assistantModeOnBase(true);
+      assistantModeOnBaseClass(true);
+    } else {
+      assistantModeOnBaseClass(false);
+      const timeout = setTimeout(() => {
+        assistantModeOnBase(false);
+      }, 400);
+      return () => clearTimeout(timeout); // Temizleme fonksiyonu, bileşen güncellendiğinde bu timeout'u temizler.
     }
   };
 
@@ -455,9 +469,7 @@ const UnityLoader = () => {
   }, [addEventListener, removeEventListener, assistantInfoToggleOff]);
 
   const assistantInfoToggleOff = () => {
-    if(assistantModeOnBase){
-      window.closeAssistantPanel();
-    }
+    setAssistantModeOn(false);
     
   };
   //////////////////////
@@ -470,9 +482,7 @@ const UnityLoader = () => {
   }, [addEventListener, removeEventListener, assistantInfoToggleOn]);
 
   const assistantInfoToggleOn = () => {
-    if(!isAdmin){
       setAssistantModeOn(true);
-    }
   };
 
   useEffect(() => {
@@ -484,7 +494,7 @@ const UnityLoader = () => {
   }, [addEventListener, removeEventListener, assistantInfoToggleOffBase]);
 
   const assistantInfoToggleOffBase = () => {
-    setAssistantModeOnBase(false);
+    AssistantChatHandler();
     
   };
   //////////////////////
@@ -497,7 +507,7 @@ const UnityLoader = () => {
   }, [addEventListener, removeEventListener, assistantInfoToggleOnBase]);
 
   const assistantInfoToggleOnBase = () => {
-      setAssistantModeOnBase(true);
+      AssistantChatHandler();
   };
 
   useEffect(() => {
