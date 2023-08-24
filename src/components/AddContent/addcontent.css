@@ -70,7 +70,7 @@
     flex-wrap: nowrap;
     align-content: space-around;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: space-between;
     overflow-y: auto;
   }
   
@@ -222,5 +222,47 @@
     100% {
       opacity: 0;
     }
+  }
+
+  .createPortal {
+    display: inline-flex;
+    position: relative;
+    margin-bottom: 20px;
+    padding-left: 1.1rem;
+    padding-right: 1.1rem;
+    padding-top: 17px;
+    padding-bottom: 15px;
+    font-weight: 600;
+    justify-content: center;
+    align-items: center;
+    border-color: #ffffffc9;
+    border-radius: 25px;
+    border-width: 2px;
+    border-style: solid;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    height: 2rem;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    color: #ffffffc9;
+    text-decoration: none;
+    text-transform: none;
+    background-color: transparent;
+    transition-property: background-color, border-color, color, fill, stroke,
+      opacity, box-shadow, -webkit-transform;
+    transition-property: background-color, border-color, color, fill, stroke,
+      opacity, box-shadow, transform;
+    transition-property: background-color, border-color, color, fill, stroke,
+      opacity, box-shadow, transform, -webkit-transform;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+  }
+  
+  .createPortal:hover {
+    color: #000000;
+    background-color: #ffffff;
+    --transform-scale-x: 1;
+    --transform-scale-y: 1;
   }
   
