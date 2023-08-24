@@ -497,7 +497,6 @@ const UnityLoader = () => {
 
   const assistantInfoToggleOffBase = () => {
     if(!isAdmin){
-      setAssistantModeOnBase(true);
       AssistantChatHandler();
     }
   };
@@ -512,7 +511,6 @@ const UnityLoader = () => {
 
   const assistantInfoToggleOnBase = () => {
     if(!isAdmin){
-      setAssistantModeOnBase(false);
       AssistantChatHandler();
     }
       
