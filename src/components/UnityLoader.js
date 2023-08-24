@@ -484,13 +484,8 @@ const UnityLoader = () => {
   }, [addEventListener, removeEventListener, assistantInfoToggleOffBase]);
 
   const assistantInfoToggleOffBase = () => {
-    if (assistantModeOnBase) {
+    setAssistantModeOnBase(false);
       setAssistantModeOnBaseClass(false);
-      const timeout = setTimeout(() => {
-        setAssistantModeOnBase(false);
-      }, 600);
-      clearTimeout(timeout); // Timeout'u temizle
-    }
   };
   //////////////////////
   useEffect(() => {
@@ -502,10 +497,8 @@ const UnityLoader = () => {
   }, [addEventListener, removeEventListener, assistantInfoToggleOnBase]);
 
   const assistantInfoToggleOnBase = () => {
-    if (!assistantModeOnBase) {
       setAssistantModeOnBase(true);
       setAssistantModeOnBaseClass(true);
-    }
   };
 
   useEffect(() => {
