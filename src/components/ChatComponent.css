@@ -50,7 +50,7 @@
 .livestream.light.str-chat .str-chat__message-livestream {
   color: #eeecec;
   background: #00000040 ;
-  border-radius: 12px;
+  border-radius: 6px;
   width: fit-content;
   height: fit-content;
   padding: 0px;
@@ -61,7 +61,7 @@
 .livestream.light.str-chat .str-chat__message-livestream:hover {
   color: #eeecec;
   background: #00000040 ;
-  border-radius: 12px;
+  border-radius: 6px;
   width: fit-content;
   height: fit-content;
   padding: 0px;
