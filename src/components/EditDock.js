@@ -34,7 +34,7 @@ export class EditDock extends Component {
     const destroyModel = () => {
       setIsDockEditorMode(false);
       if(assistantModeOn || portalModeOn){
-        window.sendMessageToUnityBasic(objectName, "DestroySelf");
+        window.sendMessageToUnityBasic(objectName + "_parent", "DestroySelf");
       }else{
         window.sendMessageToUnityBasic(objectName + "_parent", "DestroySelf");
       }
@@ -42,7 +42,12 @@ export class EditDock extends Component {
     };
 
     const lockedStateManager = () => {
-      window.sendMessageToUnityBasic(objectName, "setLocked");
+      if(assistantModeOn){
+        window.sendMessageToUnityBasic(objectName + "_parent", "setLocked");
+      }else{
+        window.sendMessageToUnityBasic(objectName, "setLocked");
+      }
+      
       setIsLocked(!isLocked);
     };
 
