@@ -12,7 +12,8 @@ const CHARACTER_LIMIT_DESC = 280;
 const InfoPanel = (props) => {
     const { portalModeOn,assistantModeOn,isActive, setIsActive, isManual, setIsManual, sendMessage, addEventListener, removeEventListener, objectName, handleEditorOff, setIsDockEditorMode, infoName, setInfoName, infoArtist, setInfoArtist, infoDesc, setInfoDesc, infoURL, setInfoURL } = props;
     
-
+    const assistantPrompter = assistantModeOn ? "Prompt" : "Description";
+    const assistantHeader = assistantModeOn ? "Assistant Panel" : "Information Panel";
     const handleChangeManual = (event) => {
         const newValue = event.target.checked;
         setIsManual(newValue);
@@ -160,7 +161,7 @@ const InfoPanel = (props) => {
                         textColor="common.white"
                         level="h4"
                     >
-                        Information Panel
+                        {assistantHeader}
                     </Typography>
                 </div>
 
@@ -305,7 +306,7 @@ const InfoPanel = (props) => {
                                 alignItems: "flex-start",
                             }}
                         >
-                            Description
+                            {assistantPrompter}
                             <textarea
                                 onFocus={onFocus}
                                 onBlur={onBlur}
