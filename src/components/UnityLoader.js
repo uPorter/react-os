@@ -134,18 +134,6 @@ const UnityLoader = () => {
     }
   };
 
-  const AssistantChatHandler = () => {
-    if (!assistantModeOnBase) {
-      assistantModeOnBase(true);
-      assistantModeOnBaseClass(true);
-    } else {
-      assistantModeOnBaseClass(false);
-      const timeout = setTimeout(() => {
-        assistantModeOnBase(false);
-      }, 400);
-      return () => clearTimeout(timeout); // Temizleme fonksiyonu, bileşen güncellendiğinde bu timeout'u temizler.
-    }
-  };
 
   window.aiChatbotInputHandler = () => {
     if (
@@ -238,6 +226,20 @@ const UnityLoader = () => {
 
     return uid;
   }
+
+
+  const AssistantChatHandler = () => {
+    if (!assistantModeOnBase) {
+      setAssistantModeOnBase(true);
+      setAssistantModeOnBaseClass(true);
+    } else {
+      setAssistantModeOnBaseClass(false);
+      const timeout = setTimeout(() => {
+        setAssistantModeOnBase(false);
+      }, 400);
+      return () => clearTimeout(timeout); // Temizleme fonksiyonu, bileşen güncellendiğinde bu timeout'u temizler.
+    }
+  };
 
   useEffect(() => {
     if (!userID) {
@@ -495,7 +497,7 @@ const UnityLoader = () => {
 
   const assistantInfoToggleOffBase = () => {
     if(!isAdmin){
-      console.log("OFF");
+      AssistantChatHandler();
     }
   };
   //////////////////////
@@ -509,7 +511,7 @@ const UnityLoader = () => {
 
   const assistantInfoToggleOnBase = () => {
     if(!isAdmin){
-      console.log("ON");
+      AssistantChatHandler();
     }
       
   };
