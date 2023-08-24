@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import AssistantChat from "./AssistantChat";
 
 const AssistantHolder = (props) => {
+  const { handleEditorOff } = props;
   const [animationClass, setAnimationClass] = useState("");
   const [animationHandler, setAnimationHandler] = useState("true");
   const [isEditorMode, setIsEditorMode] = useState(true);
@@ -13,12 +14,6 @@ const AssistantHolder = (props) => {
       setAnimationClass("editorDisabled"); // Animasyon süresine göre ayarlayın
     }
   }, [animationHandler]);
-
-  const handleEditorOff = () => {
-    setTimeout(() => {
-      setIsEditorMode(false);
-    }, 600); // 500 milisaniye (0.5 saniye) bekleme süresi
-  };
 
   const closeEditor = () => {
     setAnimationHandler(false);

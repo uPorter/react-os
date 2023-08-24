@@ -254,6 +254,12 @@ const UnityLoader = () => {
     }, 600); // 500 milisaniye (0.5 saniye) bekleme süresi
   };
 
+  const handleAssistantOff = () => {
+    setTimeout(() => {
+      setAssistantModeOn(false);
+    }, 600); // 500 milisaniye (0.5 saniye) bekleme süresi
+  };
+
   const handleEditorOffInfo = () => {
     setTimeout(() => {
       setIsInfoMode(false);
@@ -448,7 +454,7 @@ const UnityLoader = () => {
   }, [addEventListener, removeEventListener, assistantInfoToggleOff]);
 
   const assistantInfoToggleOff = () => {
-    setAssistantModeOn(false);
+    window.closeAssistantPanel();
   };
   //////////////////////
   useEffect(() => {
@@ -1544,7 +1550,7 @@ const UnityLoader = () => {
                 removeEventListener={removeEventListener}
               ></InfoPanel>
             )}
-            <AssistantHolder></AssistantHolder>
+            {assistantModeOn && <AssistantHolder handleEditorOff={handleAssistantOff}></AssistantHolder>}
             {/* {uploadOpen && <FileUpload setUploadOpen={setUploadOpen} sendMessage={sendMessage} style={{position: 'absolute', zIndex: '15'}}></FileUpload> } */}
             {uploadOpen && (
               <AddContent setUploadOpen={setUploadOpen}></AddContent>
