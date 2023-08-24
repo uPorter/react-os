@@ -1349,7 +1349,7 @@ const UnityLoader = () => {
           <div className={"ui"}>
             <Tooltip
               className="dockTooltip"
-              sx={{ borderRadius: "20px", backgroundColor: "#ffffff" }}
+              sx={{ borderRadius: "20px", backgroundColor: "#ffffff",position:"absolute", top:"20px",left:"20px" }}
               interactive
               color="neutral"
               placement="bottom"
@@ -1381,14 +1381,14 @@ const UnityLoader = () => {
                 <IconButton
                   id="dockButtonID"
                   className="dockButtons"
+                  onClick={() => window.location.href = `https://www.hahaverse.com`}
                   variant="solid"
                   sx={{
-                    width: "120px",
                     color: "white",
                     boxShadow: "0px 0px 0px 0px rgb(0 0 0 / 34%)",
                     backgroundColor: "rgba(0, 0, 0, 0.250)",
                     background: "rgba(0, 0, 0, 0.250)",
-                    "--IconButton-size": "55px",
+                    "--IconButton-size": "64px",
                     "--IconButton-radius": "50px",
                     "&:hover": {
                       backgroundColor: "rgba(0, 0, 0, 0.250)",
