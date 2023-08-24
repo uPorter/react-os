@@ -17,6 +17,27 @@ function aiTools(props) {
     props.toggleAiTools();
     window.spawnSunny()
   }
+
+  const aiTool2 = () =>{
+    props.toggleAiTools();
+    window.aiChatbotInputHandler();
+  }
+
+  const aiTool3 = () =>{
+    props.toggleAiTools();
+    window.aiSearchInputHandler();
+  }
+
+  const aiTool4 = () =>{
+    props.toggleAiTools();
+    window.aiCommandsInputHandler();
+  }
+
+  const aiTool5 = () =>{
+    props.toggleAiTools();
+    window.aiSkyboxInputHandler();
+  }
+
   return (
     <div
       style={{ position: "absolute", bottom: "15px", left: "30px" }}
@@ -62,7 +83,7 @@ function aiTools(props) {
           transform: "scale(0)",
           background: props.aiChatbotClass ? "rgb(255 255 255 / 25%)" : "",
         }}
-        onClick={() => window.aiChatbotInputHandler()}
+        onClick={() => aiTool2()}
         className="inner-2"
       >
         <svg
@@ -101,7 +122,7 @@ function aiTools(props) {
           transform: "scale(0)",
           background: props.aiSearchClass ? 'rgb(255 255 255 / 25%)' : '',
         }}
-        onClick={() => window.aiSearchInputHandler()}
+        onClick={() => aiTool3}
         className="inner-3"
       >
         <svg
@@ -127,7 +148,7 @@ function aiTools(props) {
           transform: "scale(0)",
           background: props.aiCommandsClass ? "rgb(255 255 255 / 25%)" : "",
         }}
-        onClick={() => window.aiCommandsInputHandler()}
+        onClick={() => aiTool4()}
         className="inner-4"
       >
         <svg
@@ -158,7 +179,7 @@ function aiTools(props) {
           transform: "scale(0)",
           background: props.aiSkyboxGenClass ? "rgb(255 255 255 / 25%)" : "",
         }}
-        onClick={() => window.aiSkyboxInputHandler()}
+        onClick={() => aiTool5()}
         className="skybox-gen-back"
       >
         <svg
