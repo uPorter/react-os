@@ -10,7 +10,7 @@ const CHARACTER_LIMIT = 100;
 const CHARACTER_LIMIT_DESC = 280;
 
 const InfoPanel = (props) => {
-    const { isActive, setIsActive, isManual, setIsManual, sendMessage, addEventListener, removeEventListener, objectName, handleEditorOff, setIsDockEditorMode, infoName, setInfoName, infoArtist, setInfoArtist, infoDesc, setInfoDesc, infoURL, setInfoURL } = props;
+    const { portalModeOn,assistantModeOn,isActive, setIsActive, isManual, setIsManual, sendMessage, addEventListener, removeEventListener, objectName, handleEditorOff, setIsDockEditorMode, infoName, setInfoName, infoArtist, setInfoArtist, infoDesc, setInfoDesc, infoURL, setInfoURL } = props;
     
 
     const handleChangeManual = (event) => {
@@ -27,7 +27,11 @@ const InfoPanel = (props) => {
         const inputText = event.target.value;
         if (inputText.length <= CHARACTER_LIMIT) {
             setInfoName(inputText);
-            sendMessage(objectName, "setInfoNameVoid", inputText);
+            if(portalModeOn || assistantModeOn){
+                sendMessage(objectName + "_parent", "setInfoNameVoid", inputText);
+            }else{
+                sendMessage(objectName, "setInfoNameVoid", inputText);
+            }
         }
     };
 
@@ -35,7 +39,11 @@ const InfoPanel = (props) => {
         const inputText = event.target.value;
         if (inputText.length <= CHARACTER_LIMIT) {
             setInfoArtist(inputText);
-            sendMessage(objectName, "setInfoArtistVoid", inputText);
+            if(portalModeOn || assistantModeOn){
+                sendMessage(objectName + "_parent", "setInfoArtistVoid", inputText);
+            }else{
+                sendMessage(objectName, "setInfoArtistVoid", inputText);
+            }
         }
     };
 
@@ -43,14 +51,22 @@ const InfoPanel = (props) => {
         const inputText = event.target.value;
         if (inputText.length <= CHARACTER_LIMIT_DESC) {
             setInfoDesc(inputText);
-            sendMessage(objectName, "setInfoDescVoid", inputText);
+            if(portalModeOn || assistantModeOn){
+                sendMessage(objectName + "_parent", "setInfoDescVoid", inputText);
+            }else{
+                sendMessage(objectName, "setInfoDescVoid", inputText);
+            }
         }
     };
 
     const handleInputChangeUrl = (event) => {
         const inputText = event.target.value;
         setInfoURL(inputText);
-        sendMessage(objectName, "setInfoURLVoid", inputText);
+        if(portalModeOn || assistantModeOn){
+            sendMessage(objectName + "_parent", "setInfoURLVoid", inputText);
+        }else{
+            sendMessage(objectName, "setInfoURLVoid", inputText);
+        }
     };
 
     const onFocus = () => {
@@ -384,99 +400,101 @@ const InfoPanel = (props) => {
                     ></hr>
                 </div>
 
-                <div
-                    style={{
-                        width: "fit-content",
-                        border: "1px solid rgb(255 255 255 / 30%)",
-                        borderRadius: "10px",
-                        marginTop: "30px",
-                    }}
-                >
-                    <div
-                        style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            padding: "18px 15px 18px",
-                        }}
-                    >
-                        <label
-                            style={{
-                                fontFamily: '"Segoe UI"',
-                                color: "white",
-                                display: "grid",
-                                gridAutoFlow: "column",
-                                gap: "80px",
-                                fontSize: "1rem",
-                                fontWeight: "600",
-                                "&:hover": {
-                                    color: "#00000040",
-                                },
-                            }}
-                        >
-                            Show Info Panel in Space
-                            <Switch
-                                sx={{
-                                    [`& .${switchClasses.thumb}`]: {
-                                        transition: "width 0.2s, left 0.2s",
-                                    },
-                                }}
-                                style={{
-                                    position: "relative",
-                                    right: "-5px",
-                                }}
-                                variant="soft"
-                                color="neutral"
-                                className="mainSwitch"
-                                checked={isActive}
-                                onChange={handleChange}
-                            />
-                        </label>
-                        <hr
-                            style={{
-                                boxSizing: "border-box",
-                                border: "0 solid #ffffff63",
-                                height: "0px",
-                                color: "inherit",
-                                width: "100%",
-                                borderTopWidth: "1px",
-                                marginTop: "20px",
-                            }}
-                        ></hr>
-                        <label
-                            style={{
-                                marginTop: "10px",
-                                fontFamily: '"Segoe UI"',
-                                color: "white",
-                                display: "grid",
-                                gridAutoFlow: "column",
-                                gap: "160px",
-                                fontSize: "1rem",
-                                fontWeight: "600",
-                                "&:hover": {
-                                    color: "#00000040",
-                                },
-                            }}
-                        >
-                            Manual Mode
-                            <Switch
-                                sx={{
-                                    [`& .${switchClasses.thumb}`]: {
-                                        transition: "width 0.2s, left 0.2s",
-                                    },
-                                }}
-                                style={{
-                                    position: "relative",
-                                    right: "-5px",
-                                }}
-                                variant="soft"
-                                color="neutral"
-                                className="mainSwitch"
-                                checked={isManual}
-                                onChange={handleChangeManual}
-                            />
-                        </label>
-                    </div>
-                </div>
+                {!assistantModeOn && !portalModeOn && (
+                     <div
+                     style={{
+                         width: "fit-content",
+                         border: "1px solid rgb(255 255 255 / 30%)",
+                         borderRadius: "10px",
+                         marginTop: "30px",
+                     }}
+                 >
+                     <div
+                         style={{
+                             display: "flex",
+                             flexDirection: "column",
+                             padding: "18px 15px 18px",
+                         }}
+                     >
+                         <label
+                             style={{
+                                 fontFamily: '"Segoe UI"',
+                                 color: "white",
+                                 display: "grid",
+                                 gridAutoFlow: "column",
+                                 gap: "80px",
+                                 fontSize: "1rem",
+                                 fontWeight: "600",
+                                 "&:hover": {
+                                     color: "#00000040",
+                                 },
+                             }}
+                         >
+                             Show Info Panel in Space
+                             <Switch
+                                 sx={{
+                                     [`& .${switchClasses.thumb}`]: {
+                                         transition: "width 0.2s, left 0.2s",
+                                     },
+                                 }}
+                                 style={{
+                                     position: "relative",
+                                     right: "-5px",
+                                 }}
+                                 variant="soft"
+                                 color="neutral"
+                                 className="mainSwitch"
+                                 checked={isActive}
+                                 onChange={handleChange}
+                             />
+                         </label>
+                         <hr
+                             style={{
+                                 boxSizing: "border-box",
+                                 border: "0 solid #ffffff63",
+                                 height: "0px",
+                                 color: "inherit",
+                                 width: "100%",
+                                 borderTopWidth: "1px",
+                                 marginTop: "20px",
+                             }}
+                         ></hr>
+                         <label
+                             style={{
+                                 marginTop: "10px",
+                                 fontFamily: '"Segoe UI"',
+                                 color: "white",
+                                 display: "grid",
+                                 gridAutoFlow: "column",
+                                 gap: "160px",
+                                 fontSize: "1rem",
+                                 fontWeight: "600",
+                                 "&:hover": {
+                                     color: "#00000040",
+                                 },
+                             }}
+                         >
+                             Manual Mode
+                             <Switch
+                                 sx={{
+                                     [`& .${switchClasses.thumb}`]: {
+                                         transition: "width 0.2s, left 0.2s",
+                                     },
+                                 }}
+                                 style={{
+                                     position: "relative",
+                                     right: "-5px",
+                                 }}
+                                 variant="soft"
+                                 color="neutral"
+                                 className="mainSwitch"
+                                 checked={isManual}
+                                 onChange={handleChangeManual}
+                             />
+                         </label>
+                     </div>
+                 </div>
+                )}
                 <div
                     style={{
                         display: "flex",

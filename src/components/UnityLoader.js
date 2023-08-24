@@ -111,6 +111,9 @@ const UnityLoader = () => {
   const [aiSearchClass, setAiSearchClass] = useState(false);
   const [aiAssistantOn, setAiAssistantOn] = useState(false);
   const [aiAssistantClass, setAiAssistantClass] = useState(false);
+  const [portalModeOn, setPortalModeOn] = useState(false);
+  const [asistantPromptReact, setAssistantPromptReact] = useState("");
+  const [assistantModeOn, setAssistantModeOn] = useState(false);
 
   window.aiSkyboxInputHandler = () => {
     if (
@@ -411,6 +414,66 @@ const UnityLoader = () => {
     }
   };
 
+  useEffect(() => {
+    addEventListener("portalInfoTabOff", portalInfoTabToggleOff);
+
+    return () => {
+      removeEventListener("portalInfoTabOff", portalInfoTabToggleOff);
+    };
+  }, [addEventListener, removeEventListener, portalInfoTabToggleOff]);
+
+  const portalInfoTabToggleOff = () => {
+    setPortalModeOn(false);
+  };
+  //////////////////////
+  useEffect(() => {
+    addEventListener("portalInfoTabOn", portalInfoTabToggleOn);
+
+    return () => {
+      removeEventListener("portalInfoTabOn", portalInfoTabToggleOn);
+    };
+  }, [addEventListener, removeEventListener, portalInfoTabToggleOn]);
+
+  const portalInfoTabToggleOn = () => {
+    setPortalModeOn(true);
+  };
+  //////////////
+  useEffect(() => {
+    addEventListener("assistantInfoOff", assistantInfoToggleOff);
+
+    return () => {
+      removeEventListener("assistantInfoOff", assistantInfoToggleOff);
+    };
+  }, [addEventListener, removeEventListener, assistantInfoToggleOff]);
+
+  const assistantInfoToggleOff = () => {
+    setAssistantModeOn(false);
+  };
+  //////////////////////
+  useEffect(() => {
+    addEventListener("assistantInfoOn", assistantInfoToggleOn);
+
+    return () => {
+      removeEventListener("assistantInfoOn", assistantInfoToggleOn);
+    };
+  }, [addEventListener, removeEventListener, assistantInfoToggleOn]);
+
+  const assistantInfoToggleOn = () => {
+    setAssistantModeOn(true);
+  };
+
+  useEffect(() => {
+    addEventListener("setAvatarPrompt", avatarPromptHandler);
+    return () => {
+      removeEventListener("setAvatarPrompt", avatarPromptHandler);
+    };
+  }, [addEventListener, removeEventListener, avatarPromptHandler]);
+
+  const avatarPromptHandler = useCallback((setAvatarPrompt) => {
+    setAssistantPromptReact(setAvatarPrompt);
+    console.log(setAvatarPrompt);
+  }, []);
+
   const reactionHandler = () => {};
 
   const getUserToken = async () => {
@@ -487,8 +550,7 @@ const UnityLoader = () => {
   };
 
   window.sketchfabInitialize = (modelUID) => {
-    var url =
-      "https://api.sketchfab.com/v3/models/" + modelUID + "/download";
+    var url = "https://api.sketchfab.com/v3/models/" + modelUID + "/download";
     var options = {
       method: "GET",
       headers: {
@@ -1453,6 +1515,8 @@ const UnityLoader = () => {
             )}
             {isInfoMode && (
               <InfoPanel
+                portalModeOn={portalModeOn}
+                assistantModeOn={assistantModeOn}
                 isActive={isActive}
                 setIsActive={setIsActive}
                 isManual={isManual}
