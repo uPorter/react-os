@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import AssistantChat from "./AssistantChat";
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
+import IconButton from '@mui/joy/IconButton'
 
 const AssistantHolder = (props) => {
   const { handleEditorOff, asistantPromptReact, setAssistantModeOnBase } = props;
