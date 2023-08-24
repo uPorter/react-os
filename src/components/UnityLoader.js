@@ -497,6 +497,7 @@ const UnityLoader = () => {
 
   const assistantInfoToggleOffBase = () => {
     if(!isAdmin){
+      setAssistantModeOnBase(false);
       AssistantChatHandler();
     }
   };
@@ -511,6 +512,7 @@ const UnityLoader = () => {
 
   const assistantInfoToggleOnBase = () => {
     if(!isAdmin){
+      setAssistantModeOnBase(true);
       AssistantChatHandler();
     }
       
@@ -1598,7 +1600,7 @@ const UnityLoader = () => {
                 removeEventListener={removeEventListener}
               ></InfoPanel>
             )}
-            {assistantModeOnBase && <AssistantHolder assistantModeOnBaseClass={assistantModeOnBaseClass} asistantPromptReact={asistantPromptReact} handleEditorOff={handleAssistantOff}></AssistantHolder>}
+            {assistantModeOnBase && <AssistantHolder assistantModeOnBaseClass={assistantModeOnBaseClass} assistantModeOnBase={assistantModeOnBase} asistantPromptReact={asistantPromptReact} handleEditorOff={handleAssistantOff}></AssistantHolder>}
             {/* {uploadOpen && <FileUpload setUploadOpen={setUploadOpen} sendMessage={sendMessage} style={{position: 'absolute', zIndex: '15'}}></FileUpload> } */}
             {uploadOpen && (
               <AddContent setUploadOpen={setUploadOpen}></AddContent>
