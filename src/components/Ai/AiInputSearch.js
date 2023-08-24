@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import axios from "axios";
+import Typewriter from "typewriter-effect";
 
 const AiInputSearch = (props) => {
   const [searchQuery, setSearchQuery] = useState("");
