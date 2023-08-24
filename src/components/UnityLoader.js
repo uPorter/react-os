@@ -1337,6 +1337,7 @@ const UnityLoader = () => {
               >
                 {aiToolsOn && (
                   <AiToolsBase
+                    toggleAiTools={toggleAiTools}
                     aiToolsOnClass={aiToolsOnClass}
                     aiSkyboxGenClass={aiSkyboxGenClass}
                     aiChatbotClass={aiChatbotClass}

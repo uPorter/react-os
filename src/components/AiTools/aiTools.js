@@ -12,6 +12,11 @@ function aiTools(props) {
   const fillColorSearch = props.aiSearchClass ? "black" : "white";
   const fillColorCommands = props.aiCommandsClass ? "black" : "white";
   const fillColorSkyboxgen = props.aiSkyboxGenClass ? "black" : "white";
+
+  const sunispawn = () =>{
+    props.toggleAiTools();
+    window.spawnSunny()
+  }
   return (
     <div
       style={{ position: "absolute", bottom: "15px", left: "30px" }}
@@ -26,7 +31,7 @@ function aiTools(props) {
           transform: "scale(0)",
           background: props.aiAssistantClass ? "rgb(255 255 255 / 25%)" : "",
         }}
-        onClick={() => window.spawnSunny()}
+        onClick={() => sunispawn()}
         className="inner-1"
       >
         <svg
