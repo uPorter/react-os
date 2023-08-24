@@ -42,7 +42,7 @@ export class EditDock extends Component {
     const buttonTextLock = isLocked ? "Unlock" : "Lock";
 
     const assistantMenuHandler = () => {
-      if (assistantModeOnBase) {
+      if (!assistantModeOnBase) {
         window.sendMessageToUnityBasic(objectName + "_parent", "activeAsistant");
       } else {
         window.sendMessageToUnityBasic(objectName + "_parent", "disableAsistant");

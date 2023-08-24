@@ -484,9 +484,7 @@ const UnityLoader = () => {
   }, [addEventListener, removeEventListener, assistantInfoToggleOffBase]);
 
   const assistantInfoToggleOffBase = () => {
-    if(assistantModeOnBase){
-      window.closeAssistantPanel();
-    }
+    isetAssistantModeOnBase(false);
     
   };
   //////////////////////
