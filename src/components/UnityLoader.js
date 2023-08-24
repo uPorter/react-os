@@ -474,6 +474,10 @@ const UnityLoader = () => {
     console.log(setAvatarPrompt);
   }, []);
 
+  window.spawnSunny = () =>{
+    SendMessage("portalUrlManager","SpawnObjectSunny");
+  }
+ 
   const reactionHandler = () => {};
 
   const getUserToken = async () => {

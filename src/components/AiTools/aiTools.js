@@ -26,7 +26,7 @@ function aiTools(props) {
           transform: "scale(0)",
           background: props.aiAssistantClass ? "rgb(255 255 255 / 25%)" : "",
         }}
-        onClick={() => window.aiAssistantInputHandler()}
+        onClick={() => window.spawnSunny()}
         className="inner-1"
       >
         <svg
