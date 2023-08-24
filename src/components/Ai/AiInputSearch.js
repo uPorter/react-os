@@ -59,25 +59,30 @@ const AiInputSearch = (props) => {
     setSearchQuery(event.target.value);
   };
   return (
-    <div className="searchHolderBase">
-      {responseData !== "" &&<div className="searchHolder">
-        <Typewriter
-          onInit={(typewriter) => {
-            typewriter
-              .typeString(responseData)
-              .callFunction(() => {
-                console.log("String typed out!");
-              })
-              .start();
-          }}
-        />
-      </div>}
+    <div style={{position:"absolute",bottom: "87px",display:"flex",flexDirection:"column",flexWrap:"nowrap",alignContent:"center",alignItems:"center",gap:"12px"}} className="searchHolderBase">
+      {responseData !== "" && (
+        <div
+          className={`${
+            props.aiSearchClass ? "aiInputHolderIn" : "aiInputHolderOut"
+          } searchHolder`}
+        >
+          <Typewriter
+            onInit={(typewriter) => {
+              typewriter
+                .typeString(responseData)
+                .callFunction(() => {
+                  console.log("String typed out!");
+                })
+                .start();
+            }}
+          />
+        </div>
+      )}
       <div
         className={`${
           props.aiSearchClass ? "aiInputHolderIn" : "aiInputHolderOut"
         } aiInputHolder`}
         style={{
-          position: "absolute",
           border: "1px solid rgb(242, 242, 242)",
           backdropFilter: "blur(12px)",
           backgroundColor: "rgba(0, 0, 0, 0.25)",
