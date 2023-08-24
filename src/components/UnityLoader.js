@@ -135,7 +135,7 @@ const UnityLoader = () => {
   };
 
   const AssistantChatHandler = () => {
-    if (!isReactionsOn) {
+    if (!assistantModeOnBase) {
       assistantModeOnBase(true);
       assistantModeOnBaseClass(true);
     } else {
