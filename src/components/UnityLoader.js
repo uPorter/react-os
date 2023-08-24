@@ -800,29 +800,6 @@ const UnityLoader = () => {
         )}
         {isStarted && !showChat && (
           <div backgroundColor="#fff" className="avatarContainer">
-            <IconButton
-              id="dockButtonID"
-              className="dockButtons"
-              variant="solid"
-              sx={{
-                width: "120px",
-                color: "white",
-                boxShadow: "0px 0px 0px 0px rgb(0 0 0 / 34%)",
-                backgroundColor: "rgba(0, 0, 0, 0.250)",
-                background: "rgba(0, 0, 0, 0.250)",
-                position: "absolute",
-                top: "20px",
-                left: "20px",
-                "--IconButton-size": "55px",
-                "--IconButton-radius": "50px",
-                "&:hover": {
-                  backgroundColor: "rgba(0, 0, 0, 0.250)",
-                  background: "rgba(0, 0, 0, 0.250)",
-                },
-              }}
-            >
-              Leave
-            </IconButton>
             <div className="box">
               <Stack
                 sty
@@ -1372,6 +1349,29 @@ const UnityLoader = () => {
         )}
         {isStarted && showChat && !isFilmingMode && (
           <div className={"ui"}>
+            <IconButton
+              id="LeaveButton"
+              className="dockButtons"
+              variant="solid"
+              sx={{
+                width: "120px",
+                color: "white",
+                boxShadow: "0px 0px 0px 0px rgb(0 0 0 / 34%)",
+                backgroundColor: "rgba(0, 0, 0, 0.250)",
+                background: "rgba(0, 0, 0, 0.250)",
+                position: "absolute",
+                top: "20px",
+                left: "20px",
+                "--IconButton-size": "55px",
+                "--IconButton-radius": "50px",
+                "&:hover": {
+                  backgroundColor: "rgba(0, 0, 0, 0.250)",
+                  background: "rgba(0, 0, 0, 0.250)",
+                },
+              }}
+            >
+              Leave
+            </IconButton>
             <Grid
               className="unityLoaderGrid"
               style={{ position: "absolute", width: "100%", bottom: "20px" }}

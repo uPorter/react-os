@@ -604,7 +604,6 @@ body {
 
 
 .fileUploaderHolder {
-  .fileUploaderHolder {
     border-radius: 25px;
     padding: 15px;
     outline: #ffffff75!important;
@@ -614,7 +613,6 @@ body {
     height: -webkit-fill-available;
     align-content: space-around;
     flex-direction: column;
-}
 }
 
 .file-text-holder {
