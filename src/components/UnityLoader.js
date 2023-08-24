@@ -1592,7 +1592,7 @@ const UnityLoader = () => {
                 removeEventListener={removeEventListener}
               ></InfoPanel>
             )}
-            {assistantModeOnBase && <AssistantHolder asistantPromptReact={asistantPromptReact} handleEditorOff={handleAssistantOff}></AssistantHolder>}
+            {assistantModeOnBase && <AssistantHolder assistantModeOnBaseClass={assistantModeOnBaseClass} asistantPromptReact={asistantPromptReact} handleEditorOff={handleAssistantOff}></AssistantHolder>}
             {/* {uploadOpen && <FileUpload setUploadOpen={setUploadOpen} sendMessage={sendMessage} style={{position: 'absolute', zIndex: '15'}}></FileUpload> } */}
             {uploadOpen && (
               <AddContent setUploadOpen={setUploadOpen}></AddContent>
