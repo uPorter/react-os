@@ -1,36 +1,23 @@
 import React, { useState, useEffect, useCallback } from "react";
 import AssistantChat from "./AssistantChat";
+import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 
 const AssistantHolder = (props) => {
-  const { handleEditorOff,asistantPromptReact,assistantModeOnBaseClass } = props;
-  const [animationClass, setAnimationClass] = useState("");
-  const [animationHandler, setAnimationHandler] = useState("true");
+  const { handleEditorOff, asistantPromptReact, setAssistantModeOnBase } = props;
+  const [animationClass, setAnimationClass] = useState(true);
+  const [animationHandler, setAnimationHandler] = useState(false);
   const [isEditorMode, setIsEditorMode] = useState(true);
 
-  useEffect(() => {
-    if (animationHandler) {
-      setAnimationClass("editorActive");
-    } else {
-      setAnimationClass("editorDisabled"); // Animasyon süresine göre ayarlayın
-    }
-  }, [animationHandler]);
-
   const closeEditor = () => {
-    setAnimationHandler(false);
+    setAnimationClass(false);
     setTimeout(() => {
-      handleEditorOff();
+      setAssistantModeOnBase(false);
     }, 550); // Animasyon süresine göre ayarlayın
   };
 
-  window.closeAssistantPanel = () => {
-    setAnimationHandler(false);
-    setTimeout(() => {
-      handleEditorOff();
-    }, 550); // Animasyon süresine göre ayarlayın
-  };
   return (
     <div
-      className={`${assistantModeOnBaseClass ? 'editorActive' : 'editorDisabled'}`}
+      className={`${animationClass ? "editorActive" : "editorDisabled"}`}
       style={{
         zIndex: "99",
         position: "absolute",
@@ -46,6 +33,20 @@ const AssistantHolder = (props) => {
         alignItems: "flex-end",
       }}
     >
+      <IconButton
+        id="dockButtonID"
+        className="dockButtons"
+        onClick={closeEditor}
+        variant="solid"
+        sx={{
+          position: "absolute",
+          top: "20px",
+          right: "20px",
+          background: "transparent"
+        }}
+      >
+        <CloseOutlinedIcon></CloseOutlinedIcon>
+      </IconButton>
       <AssistantChat asistantPromptReact={asistantPromptReact} />
     </div>
   );

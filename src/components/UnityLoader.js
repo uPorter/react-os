@@ -475,18 +475,6 @@ const UnityLoader = () => {
       setAssistantModeOn(true);
   };
 
-  useEffect(() => {
-    addEventListener("assistantOff", assistantInfoToggleOffBase);
-
-    return () => {
-      removeEventListener("assistantOff", assistantInfoToggleOffBase);
-    };
-  }, [addEventListener, removeEventListener, assistantInfoToggleOffBase]);
-
-  const assistantInfoToggleOffBase = () => {
-    setAssistantModeOnBase(false);
-      setAssistantModeOnBaseClass(false);
-  };
   //////////////////////
   useEffect(() => {
     addEventListener("assistantOn", assistantInfoToggleOnBase);
@@ -1583,7 +1571,7 @@ const UnityLoader = () => {
                 removeEventListener={removeEventListener}
               ></InfoPanel>
             )}
-            {assistantModeOnBase && <AssistantHolder assistantModeOnBaseClass={assistantModeOnBaseClass} assistantModeOnBase={assistantModeOnBase} asistantPromptReact={asistantPromptReact} handleEditorOff={handleAssistantOff}></AssistantHolder>}
+            {assistantModeOnBase && <AssistantHolder setAssistantModeOnBase={setAssistantModeOnBase} assistantModeOnBaseClass={assistantModeOnBaseClass} assistantModeOnBase={assistantModeOnBase} asistantPromptReact={asistantPromptReact} handleEditorOff={handleAssistantOff}></AssistantHolder>}
             {/* {uploadOpen && <FileUpload setUploadOpen={setUploadOpen} sendMessage={sendMessage} style={{position: 'absolute', zIndex: '15'}}></FileUpload> } */}
             {uploadOpen && (
               <AddContent setUploadOpen={setUploadOpen}></AddContent>
