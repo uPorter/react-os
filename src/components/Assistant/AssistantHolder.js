@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
 import AssistantChat from "./AssistantChat";
-import "./styles.css";
 const AssistantHolder = (props) => {
   const [animationClass, setAnimationClass] = useState("");
   const [animationHandler, setAnimationHandler] = useState("true");
