@@ -1600,6 +1600,8 @@ const UnityLoader = () => {
             )}
             {isInfoMode && (
               <InfoPanel
+                setAssistantPromptReact={setAssistantPromptReact}
+                asistantPromptReact={asistantPromptReact}
                 portalModeOn={portalModeOn}
                 assistantModeOn={assistantModeOn}
                 isActive={isActive}

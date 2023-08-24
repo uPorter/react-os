@@ -10,7 +10,7 @@ const CHARACTER_LIMIT = 100;
 const CHARACTER_LIMIT_DESC = 280;
 
 const InfoPanel = (props) => {
-    const { portalModeOn,assistantModeOn,isActive, setIsActive, isManual, setIsManual, sendMessage, addEventListener, removeEventListener, objectName, handleEditorOff, setIsDockEditorMode, infoName, setInfoName, infoArtist, setInfoArtist, infoDesc, setInfoDesc, infoURL, setInfoURL } = props;
+    const { portalModeOn,assistantModeOn,isActive, setIsActive, isManual, setIsManual, sendMessage, addEventListener, removeEventListener, objectName, handleEditorOff, setIsDockEditorMode, infoName, setInfoName, infoArtist, setInfoArtist, infoDesc, setInfoDesc, infoURL, setInfoURL,asistantPromptReact,setAssistantPromptReact } = props;
     
     const assistantPrompter = assistantModeOn ? "Prompt" : "Description";
     const assistantHeader = assistantModeOn ? "Assistant Panel" : "Information Panel";
@@ -52,6 +52,18 @@ const InfoPanel = (props) => {
         const inputText = event.target.value;
         if (inputText.length <= CHARACTER_LIMIT_DESC) {
             setInfoDesc(inputText);
+            if(portalModeOn || assistantModeOn){
+                sendMessage(objectName + "_parent", "setInfoDescVoid", inputText);
+            }else{
+                sendMessage(objectName, "setInfoDescVoid", inputText);
+            }
+        }
+    };
+
+    const handleInputChangeAvatarPrompt = (event) => {
+        const inputText = event.target.value;
+        if (inputText.length <= CHARACTER_LIMIT_DESC) {
+            setAssistantPromptReact(inputText);
             if(portalModeOn || assistantModeOn){
                 sendMessage(objectName + "_parent", "setInfoDescVoid", inputText);
             }else{
@@ -307,7 +319,7 @@ const InfoPanel = (props) => {
                             }}
                         >
                             {assistantPrompter}
-                            <textarea
+                            {!assistantModeOn && <textarea
                                 onFocus={onFocus}
                                 onBlur={onBlur}
                                 className="infoInput"
@@ -329,7 +341,30 @@ const InfoPanel = (props) => {
                                     margin: "6px -2px 0",
                                     outline: "none",
                                 }}
-                            ></textarea>
+                            ></textarea>}
+                            {assistantModeOn && <textarea
+                                onFocus={onFocus}
+                                onBlur={onBlur}
+                                className="infoInput"
+                                placeholder="This piece is cool because..."
+                                value={asistantPromptReact}
+                                onChange={handleInputChangeAvatarPrompt}
+                                style={{
+                                    textAlign: "left",
+                                    borderWidth: "0",
+                                    height: "100px",
+                                    resize: "none",
+                                    width: "100%",
+                                    fontFamily: "sans-serif",
+                                    fontSize: ".875rem",
+                                    fontWeight: "600",
+                                    background: "transparent",
+                                    color: "white",
+                                    flexGrow: "1",
+                                    margin: "6px -2px 0",
+                                    outline: "none",
+                                }}
+                            ></textarea>}
                         </label>
                         <span
                             style={{
