@@ -597,29 +597,31 @@ body {
   z-index: 15;
   height: 90%;
   padding: 39px;
-
 }
 
-.fileDropZone {}
-
+.fileDropZone {
+}
 
 .fileUploaderHolder {
-    border-radius: 25px;
-    padding: 15px;
-    outline: #ffffff75!important;
-    outline-style: dashed!important;
-    outline-width: 5px;
-    flex-wrap: wrap;
-    height: -webkit-fill-available;
-    align-content: space-around;
-    flex-direction: column;
+  border-radius: 25px;
+  padding: 15px;
+  display: flex;
+  outline: #ffffff75 !important;
+  outline-style: dashed !important;
+  outline-width: 5px;
+  flex-wrap: wrap;
+  height: -webkit-fill-available;
+  align-content: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .file-text-holder {
-  width: 400px;
-  height: 200px;
+  width: fit-content;
+  height: fit-content;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: nowrap;
   align-content: flex-start;
   justify-content: center;
@@ -1070,3 +1072,6 @@ div.spinner div.bar12 {
   margin-right: -10px;
   text-align: left;
 }
+
+
+
