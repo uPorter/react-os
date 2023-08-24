@@ -4,6 +4,7 @@ import AssistantChat from "./AssistantChat";
 const AssistantHolder = (props) => {
   const [animationClass, setAnimationClass] = useState("");
   const [animationHandler, setAnimationHandler] = useState("true");
+  const [isEditorMode, setIsEditorMode] = useState(true);
 
   useEffect(() => {
     if (animationHandler) {
