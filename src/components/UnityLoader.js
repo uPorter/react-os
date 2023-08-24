@@ -496,9 +496,9 @@ const UnityLoader = () => {
   }, [addEventListener, removeEventListener, assistantInfoToggleOffBase]);
 
   const assistantInfoToggleOffBase = () => {
-    if(!isAdmin){
       AssistantChatHandler();
-    }
+      console.log("OFF");
+
   };
   //////////////////////
   useEffect(() => {
@@ -510,9 +510,9 @@ const UnityLoader = () => {
   }, [addEventListener, removeEventListener, assistantInfoToggleOnBase]);
 
   const assistantInfoToggleOnBase = () => {
-    if(!isAdmin){
       AssistantChatHandler();
-    }
+      console.log("On");
+
       
   };
 
