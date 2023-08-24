@@ -35,7 +35,7 @@ const AssistantHolder = (props) => {
         zIndex: "99",
         position: "absolute",
         right: "0px",
-        width: "380px",
+        width: "400px",
         height: "100%",
         background:
           "linear-gradient(90deg, transparent, rgb(0 0 0 / 15%) 4rem, rgb(0 0 0 / 35%))",

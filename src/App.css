@@ -1003,7 +1003,7 @@ div.spinner div.bar12 {
 .chat-container {
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 380px;
+  width: 400px;
 }
 
 .messages {
@@ -1039,7 +1039,7 @@ div.spinner div.bar12 {
   backdrop-filter: blur(12px);
   background-color: rgba(0, 0, 0, 0.25);
   padding: 8px 18px;
-  width: 355px;
+  width: 365px;
   display: flex;
   height: 38px;
   z-index: 2;
