@@ -475,7 +475,7 @@ const UnityLoader = () => {
   }, []);
 
   window.spawnSunny = () =>{
-    SendMessage("portalUrlManager","SpawnObjectSunny");
+    sendMessage("portalUrlManager","SpawnObjectSunny");
   }
  
   const reactionHandler = () => {};
