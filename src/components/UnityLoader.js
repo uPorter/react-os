@@ -30,6 +30,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import InfoPanel from "./InfoPanel";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import AiToolsBase from "./AiTools/aiTools";
+import AssistantHolder from "./Assistant/AssistantHolder";
 
 const chatClient = StreamChat.getInstance("7q2yg6eutsf9");
 
@@ -1543,6 +1544,7 @@ const UnityLoader = () => {
                 removeEventListener={removeEventListener}
               ></InfoPanel>
             )}
+            <AssistantHolder></AssistantHolder>
             {/* {uploadOpen && <FileUpload setUploadOpen={setUploadOpen} sendMessage={sendMessage} style={{position: 'absolute', zIndex: '15'}}></FileUpload> } */}
             {uploadOpen && (
               <AddContent setUploadOpen={setUploadOpen}></AddContent>

@@ -999,3 +999,81 @@ div.spinner div.bar12 {
   -webkit-transform:rotate(330deg) translate(0, -130%); 
   -webkit-animation-delay: -0.0833s;
 }
+
+.chat-container {
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 380px;
+}
+
+.messages {
+  padding: 16px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.message {
+  margin-bottom: 8px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  max-width: 80%;
+}
+
+.user {
+  font-family: Roboto, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-left: 180px;
+  background: transparent;
+  color: rgb(255 255 255 / 83%);
+  margin-right: -10px;
+  text-align: right;
+}
+
+.server {
+  background-color: #e1f5fe;
+  align-self: flex-start;
+}
+
+.input-container {
+  backdrop-filter: blur(12px);
+  background-color: rgba(0, 0, 0, 0.25);
+  padding: 8px 18px;
+  width: 355px;
+  display: flex;
+  height: 38px;
+  z-index: 2;
+  transform-origin: 50% 100% 0px;
+  opacity: 1;
+  bottom: 87px;
+  transform: scale(1);
+  flex-flow: row;
+  place-content: center space-between;
+  align-items: center;
+}
+
+.input-container input {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  outline: none;
+}
+
+.input-container button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.assistant {
+  font-family: Roboto, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  background: transparent;
+  color: rgb(255 255 255 / 83%);
+  margin-right: -10px;
+  text-align: left;
+}
