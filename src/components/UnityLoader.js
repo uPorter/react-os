@@ -228,18 +228,6 @@ const UnityLoader = () => {
   }
 
 
-  const AssistantChatHandler = () => {
-    if (!assistantModeOnBase) {
-      setAssistantModeOnBase(true);
-      setAssistantModeOnBaseClass(true);
-    } else {
-      setAssistantModeOnBaseClass(false);
-      const timeout = setTimeout(() => {
-        setAssistantModeOnBase(false);
-      }, 400);
-      return () => clearTimeout(timeout); // Temizleme fonksiyonu, bileşen güncellendiğinde bu timeout'u temizler.
-    }
-  };
 
   useEffect(() => {
     if (!userID) {
@@ -496,9 +484,13 @@ const UnityLoader = () => {
   }, [addEventListener, removeEventListener, assistantInfoToggleOffBase]);
 
   const assistantInfoToggleOffBase = () => {
-      AssistantChatHandler();
-      console.log("OFF");
-
+    if (assistantModeOnBase) {
+      setAssistantModeOnBaseClass(false);
+      const timeout = setTimeout(() => {
+        setAssistantModeOnBase(false);
+      }, 600);
+      clearTimeout(timeout); // Timeout'u temizle
+    }
   };
   //////////////////////
   useEffect(() => {
@@ -510,10 +502,10 @@ const UnityLoader = () => {
   }, [addEventListener, removeEventListener, assistantInfoToggleOnBase]);
 
   const assistantInfoToggleOnBase = () => {
-      AssistantChatHandler();
-      console.log("On");
-
-      
+    if (!assistantModeOnBase) {
+      setAssistantModeOnBase(true);
+      setAssistantModeOnBaseClass(true);
+    }
   };
 
   useEffect(() => {
