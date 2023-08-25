@@ -10,7 +10,7 @@ import Typography from '@mui/joy/Typography';
 import { useState } from 'react';
 
 
-const Loader = ({ loadingProgression, isLoaded }) => {
+const Loader = ({ loadingProgression, isLoaded,userSpaceName,userSpaceDesc }) => {
   const [userNameL, setUserNameL] = useState(localStorage.getItem('userName') || 'Guest');
   const [userImageL, setUserImageL] = useState(localStorage.getItem('userImage') || 'https://models.readyplayer.me/63d5148460d1b8cc82dca9db.png');
   // loadingProgression değerini kullanarak başka işlemler yapabilirsiniz
@@ -28,7 +28,7 @@ const Loader = ({ loadingProgression, isLoaded }) => {
                     <Avatar style={{ background: '#246eff' }} alt={userNameL} src={"https://models.readyplayer.me/63d5148460d1b8cc82dca9db.png"} size="md" ></Avatar>
                     <Typography style={{ position: 'relative', top: '3px' }} className='loaderAvatarText' textColor="common.white" level="body2">Mugen</Typography>
                   </div>
-                  <Typography className='loaderText' style={{ position: 'relative', bottom: '50px' }} fontWeight="lg" textColor="common.white" level="h1">Function Demo
+                  <Typography className='loaderText' style={{ position: 'relative', bottom: '50px' }} fontWeight="lg" textColor="common.white" level="h1">{userSpaceName}
                     <Button
                       style={{
                         backgroundColor: '#00000000;',
@@ -46,9 +46,7 @@ const Loader = ({ loadingProgression, isLoaded }) => {
                       <FavoriteOutlinedIcon className='favIconFilled' Color="common.white"></FavoriteOutlinedIcon>
                     </Button>
                   </Typography>
-                  <Typography className='loaderTextDesc' style={{ fontSize: '15px', maxWidth: '500px', position: 'relative', bottom: '35px' }} fontWeight="lg" textColor="common.white" level="h1">
-                    This demo was created to present all the functions of mugen to the user and to have a general idea of ​​what they want to do. You can create your avatar, chat with people, have meetings, and even create your own worlds.
-                  </Typography>
+                  <Typography className='loaderTextDesc' style={{ fontSize: '15px', maxWidth: '500px', position: 'relative', bottom: '35px' }} fontWeight="lg" textColor="common.white" level="h1">{userSpaceDesc}</Typography>
                   {isLoaded === false && (<LinearProgress className="loader-progress" color="neutral" thickness={5} style={{ maxWidth: '600px' }} determinate size="lg" value={loadingProgression * 100} />)}
                   {isLoaded === true && (<LinearProgress className="loader-progress-success" color="success" thickness={5} style={{ maxWidth: '600px' }} determinate size="lg" value={loadingProgression * 100} />)}
                   <div className='descContainer' style={{ display: 'flex' }}>

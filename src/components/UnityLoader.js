@@ -36,7 +36,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 const chatClient = StreamChat.getInstance("gte62wacdhnr");
 
 const UnityLoader = () => {
-  const { spaceName, name, id, admin } = useParams();
+  const { spaceName, name, id, admin,userSpaceName,userSpaceDesc } = useParams();
 
   const {
     unityProvider,
@@ -770,6 +770,8 @@ const UnityLoader = () => {
         {isStarted === false && (
           <div className="holder">
             <Loader
+              userSpaceName={userSpaceName}
+              userSpaceDesc={userSpaceDesc}
               loadingProgression={loadingProgression}
               avatarHandler={avatarHandler}
               isLoaded={isLoaded}
@@ -1370,7 +1372,7 @@ const UnityLoader = () => {
                     boxShadow: "0px 0px 0px 0px rgb(0 0 0 / 34%)",
                     backgroundColor: "rgba(0, 0, 0, 0.250)",
                     background: "rgba(0, 0, 0, 0.250)",
-                    "--IconButton-size": "50px",
+                    "--IconButton-size": "55px",
                     "--IconButton-radius": "50px",
                     "&:hover": {
                       backgroundColor: "rgba(0, 0, 0, 0.250)",
