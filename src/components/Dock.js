@@ -646,7 +646,7 @@ function Dock({
           </div>
         </Tooltip>
 
-        {!isAdmin && <Tooltip
+        {isAdmin && <Tooltip
           className="dockTooltip"
           sx={{ borderRadius: "20px", backgroundColor: "#ffffff" }}
           interactive
@@ -712,7 +712,7 @@ function Dock({
           </div>
         </Tooltip>}
 
-        {!isAdmin && <Tooltip
+        {isAdmin && <Tooltip
           className="dockTooltip"
           sx={{ borderRadius: "20px", backgroundColor: "#ffffff" }}
           interactive
@@ -809,7 +809,7 @@ function Dock({
           </div>
         </Tooltip>}
 
-        {!isAdmin && <Tooltip
+        {isAdmin && <Tooltip
           className="dockTooltip"
           sx={{ borderRadius: "20px", backgroundColor: "#ffffff" }}
           interactive
