@@ -512,8 +512,8 @@ const UnityLoader = () => {
   const avatarHandler = () => {
     if (isLoaded === true) {
       sendMessage("AvatarNick", "TestSetMethod", userName);
-      sendMessage("AvatarNick", "AvatarURLSet", getCookie("avatarURL"));
       var sharedValue = getCookie("avatarURL");
+      sendMessage("AvatarNick", "AvatarURLSet", sharedValue);
       console.log(sharedValue)
       window.initializeSystem();
       //admin place
