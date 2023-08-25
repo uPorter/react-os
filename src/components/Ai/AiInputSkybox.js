@@ -82,7 +82,7 @@ const AiInputSkybox = (props) => {
       } else {
         clearInterval(interval); // İşlem tamamlandıysa interval'ı temizle
       }
-    }, 3000); // Her 1 saniyede bir çağrılacak
+    }, 1000); // Her 1 saniyede bir çağrılacak
 
     return () => {
       clearInterval(interval); // Bileşen güncellenirken interval'ı temizle

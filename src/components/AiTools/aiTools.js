@@ -44,8 +44,7 @@ function aiTools(props) {
       className={`${
         props.aiToolsOnClass ? "frame-5-1" : "aiInputHolderOut"
       } frame-5`}
-    >   
-      //
+    >  
       <div
         style={{
           animation:
@@ -85,7 +84,6 @@ function aiTools(props) {
           Models
         </div>
       </div>
-      //
       <div
         style={{
           animation:
