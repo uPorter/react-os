@@ -44,38 +44,8 @@ function aiTools(props) {
       className={`${
         props.aiToolsOnClass ? "frame-5-1" : "aiInputHolderOut"
       } frame-5`}
-    >
-      <div
-        style={{
-          animation:
-            "reactionInAI 0.2s cubic-bezier(0, 0.2, 0.2, 1) 0.8s 1 normal forwards",
-          transform: "scale(0)",
-          background: props.aiAssistantClass ? "rgb(255 255 255 / 25%)" : "",
-        }}
-        onClick={() => sunispawn()}
-        className="inner-1"
-      >
-        <svg
-          className="vector"
-          width={21}
-          height={19}
-          viewBox="0 0 21 19"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M15.5 12.65C15.5 13.649 14.6909 14.45 13.6818 14.45C12.6727 14.45 11.8636 13.649 11.8636 12.65C11.8636 11.651 12.6818 10.85 13.6818 10.85C14.6818 10.85 15.5 11.66 15.5 12.65ZM7.31818 10.85C6.31818 10.85 5.5 11.66 5.5 12.65C5.5 13.64 6.31818 14.45 7.31818 14.45C8.31818 14.45 9.13636 13.649 9.13636 12.65C9.13636 11.651 8.32727 10.85 7.31818 10.85ZM20.5 12.2V14.9C20.5 15.395 20.0909 15.8 19.5909 15.8H18.6818V16.7C18.6818 17.699 17.8727 18.5 16.8636 18.5H4.13636C3.13636 18.5 2.31818 17.699 2.31818 16.7V15.8H1.40909C0.909091 15.8 0.5 15.395 0.5 14.9V12.2C0.5 11.705 0.909091 11.3 1.40909 11.3H2.31818C2.31818 7.817 5.16364 5 8.68182 5H9.59091V3.857C9.04545 3.551 8.68182 2.966 8.68182 2.3C8.68182 1.31 9.5 0.5 10.5 0.5C11.5 0.5 12.3182 1.31 12.3182 2.3C12.3182 2.966 11.9545 3.551 11.4091 3.857V5H12.3182C15.8364 5 18.6818 7.817 18.6818 11.3H19.5909C20.0909 11.3 20.5 11.705 20.5 12.2ZM18.6818 13.1H16.8636V11.3C16.8636 8.816 14.8273 6.8 12.3182 6.8H8.68182C6.17273 6.8 4.13636 8.816 4.13636 11.3V13.1H2.31818V14H4.13636V16.7H16.8636V14H18.6818V13.1Z"
-            fill={fillColorAssistant}
-          />
-        </svg>
-        <div className="rectangle-1" />
-        <div
-          style={{ color: props.aiAssistantClass ? "black" : "" }}
-          className="assistant"
-        >
-          Assistant
-        </div>
-      </div>
+    >   
+      //
       <div
         style={{
           animation:
@@ -115,32 +85,7 @@ function aiTools(props) {
           Models
         </div>
       </div>
-      <div
-        style={{
-          animation:
-            "reactionInAI 0.2s cubic-bezier(0, 0.2, 0.2, 1) 0.4s 1 normal forwards",
-          transform: "scale(0)",
-          background: props.aiSearchClass ? 'rgb(255 255 255 / 25%)' : '',
-        }}
-        onClick={() => aiTool3}
-        className="inner-3"
-      >
-        <svg
-          className="magnify"
-          width={21}
-          height={21}
-          viewBox="0 0 21 21"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M8.41667 3C9.85326 3 11.231 3.57068 12.2468 4.5865C13.2627 5.60233 13.8333 6.98008 13.8333 8.41667C13.8333 9.75833 13.3417 10.9917 12.5333 11.9417L12.7583 12.1667H13.4167L17.5833 16.3333L16.3333 17.5833L12.1667 13.4167V12.7583L11.9417 12.5333C10.9917 13.3417 9.75833 13.8333 8.41667 13.8333C6.98008 13.8333 5.60233 13.2627 4.5865 12.2468C3.57068 11.231 3 9.85326 3 8.41667C3 6.98008 3.57068 5.60233 4.5865 4.5865C5.60233 3.57068 6.98008 3 8.41667 3ZM8.41667 4.66667C6.33333 4.66667 4.66667 6.33333 4.66667 8.41667C4.66667 10.5 6.33333 12.1667 8.41667 12.1667C10.5 12.1667 12.1667 10.5 12.1667 8.41667C12.1667 6.33333 10.5 4.66667 8.41667 4.66667Z"
-            fill={fillColorSearch}
-          />
-        </svg>
-        <div className="rectangle-2" />
-        <div style={{color: props.aiSearchClass ? 'black' : '',}} className="search">Search</div>
-      </div>
+      //
       <div
         style={{
           animation:
