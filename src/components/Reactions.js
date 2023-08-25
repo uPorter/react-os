@@ -116,7 +116,7 @@ const Reactions = ({ isReactionsOn, setIsReactionsOn, reactionClass, reactionEmo
                 controls={false}
               >
                 <source
-                  src="https://dd2cgqlmnwvp5.cloudfront.net/emote_previews/PopAndLock.webm"
+                  src="https://react-os-three.vercel.app/img/PopAndLock.webm"
                   type="video/webm"
                 />
               </video>
@@ -153,7 +153,7 @@ const Reactions = ({ isReactionsOn, setIsReactionsOn, reactionClass, reactionEmo
                 controls={false}
               >
                 <source
-                  src="https://dd2cgqlmnwvp5.cloudfront.net/emote_previews/JupiterTwist.webm"
+                  src="https://react-os-three.vercel.app/img/JupiterTwist.webm"
                   type="video/webm"
                 />
               </video>
@@ -189,7 +189,7 @@ const Reactions = ({ isReactionsOn, setIsReactionsOn, reactionClass, reactionEmo
                 controls={false}
               >
                 <source
-                  src="https://dd2cgqlmnwvp5.cloudfront.net/emote_previews/Clap.webm"
+                  src="https://react-os-three.vercel.app/img/Clap.webm"
                   type="video/webm"
                 />
               </video>
@@ -230,7 +230,7 @@ const Reactions = ({ isReactionsOn, setIsReactionsOn, reactionClass, reactionEmo
                 controls={false}
               >
                 <source
-                  src="https://dd2cgqlmnwvp5.cloudfront.net/emote_previews/GetDown.webm"
+                  src="https://react-os-three.vercel.app/img/GetDown.webm"
                   type="video/webm"
                 />
               </video>
