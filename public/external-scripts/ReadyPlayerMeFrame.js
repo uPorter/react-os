@@ -11,6 +11,21 @@ rpmHideButton.onclick = function () {
 
 setupRpmFrame();
 
+// Çerezi oluştur
+function setCookie(name, value, days) {
+    var expires = "";
+    if (days) {
+      var date = new Date();
+      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+      expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+  }
+  
+  // Çerezi "sharedData" adıyla ve değeri "yourSharedValue" olarak ayarla
+  
+  
+
 function setupRpmFrame(subdomain) {
     rpmFrame.src = `https://metaos.readyplayer.me/avatar?frameApi`;
 
@@ -54,6 +69,7 @@ function setupRpmFrame(subdomain) {
                 "LoadWebviewAvatar", // Name of function to run
                 json.data.url
             );
+            setCookie("avatarURL", json.data.url, 30); // 30 gün boyunca geçerli
             console.log(`Avatar URL: ${json.data.url}`);
         }
 
