@@ -50,6 +50,7 @@ function Dock({
   aiSearchClass,
   aiAssistantOn,
   aiAssistantClass,
+  isAdmin,
 }) {
   //const { handleAddContent } = this.props;
   const initialIsScreenShareOn =
@@ -645,7 +646,7 @@ function Dock({
           </div>
         </Tooltip>
 
-        <Tooltip
+        {!isAdmin && <Tooltip
           className="dockTooltip"
           sx={{ borderRadius: "20px", backgroundColor: "#ffffff" }}
           interactive
@@ -709,9 +710,9 @@ function Dock({
               <PresentToAllOutlinedIcon style={{}} />
             </IconButton>
           </div>
-        </Tooltip>
+        </Tooltip>}
 
-        <Tooltip
+        {!isAdmin && <Tooltip
           className="dockTooltip"
           sx={{ borderRadius: "20px", backgroundColor: "#ffffff" }}
           interactive
@@ -806,9 +807,9 @@ function Dock({
               </svg>
             </IconButton>
           </div>
-        </Tooltip>
+        </Tooltip>}
 
-        <Tooltip
+        {!isAdmin && <Tooltip
           className="dockTooltip"
           sx={{ borderRadius: "20px", backgroundColor: "#ffffff" }}
           interactive
@@ -853,7 +854,7 @@ function Dock({
               <AddOutlinedIcon />
             </IconButton>
           </div>
-        </Tooltip>
+        </Tooltip>}
       </Box>
     </div>
   );

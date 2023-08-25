@@ -24,7 +24,7 @@ import ManageAccountsOutlinedIcon from '@mui/icons-material/ManageAccountsOutlin
 import CameraMode from './CamManager/CameraMode';
 import Fade from '@mui/material/Fade';
 
-const chatClient = StreamChat.getInstance('7q2yg6eutsf9');
+const chatClient = StreamChat.getInstance('gte62wacdhnr');
 
 const ChatComponent = (props) => {
   const { spaceName, userName, userID, userToken, userImage, sendMessage, showChat, isStarted } = props;

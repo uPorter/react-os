@@ -33,7 +33,7 @@ import AiToolsBase from "./AiTools/aiTools";
 import AssistantHolder from "./Assistant/AssistantHolder";
 import LogoutIcon from "@mui/icons-material/Logout";
 
-const chatClient = StreamChat.getInstance("7q2yg6eutsf9");
+const chatClient = StreamChat.getInstance("gte62wacdhnr");
 
 const UnityLoader = () => {
   const { spaceName, name, id, admin } = useParams();
@@ -512,9 +512,9 @@ const UnityLoader = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          apiKey: "7q2yg6eutsf9",
+          apiKey: "gte62wacdhnr",
           apiSecret:
-            "uy8xbg6m4b7r28amk7vm83a5fzqsy37hyn4zjuykzqyzrjx4jtet892msmy476tq",
+            "xy2mq3dartszjkdkua2rs5utrmsqkwwf7q27nq76n5dad32y4phehbp26cx4zcx3",
           userId: userID,
         }),
       });
@@ -1552,8 +1552,9 @@ const UnityLoader = () => {
                     assistantModeOnBase={assistantModeOnBase}
                   ></EditDock>
                 )}
-                {!isDockEditorMode && isAdmin && (
+                {!isDockEditorMode && (
                   <Dock
+                    isAdmin={isAdmin}
                     aiSkyboxGenOn={aiSkyboxGenOn}
                     aiSkyboxGenClass={aiSkyboxGenClass}
                     aiChatbotOn={aiChatbotOn}
@@ -1569,9 +1570,6 @@ const UnityLoader = () => {
                     toggleFilmingMode={toggleFilmingMode}
                     handleAddContent={handleAddContent}
                   ></Dock>
-                )}
-                {!isAdmin && (
-                  <GuestDock handleAddContent={handleAddContent}></GuestDock>
                 )}
               </Grid>
               <Grid style={{ opacity: 1 }} xs>
