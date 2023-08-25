@@ -22,7 +22,7 @@ function FileUpload(props) {
       let response;
       
       if (fileType === 'pdf') {
-        response = await axios.post('https://api.hahaverse.com/convert', formData, {
+        response = await axios.post('https://26ec-103-133-178-51.ngrok-free.app/convert', formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
@@ -34,7 +34,7 @@ function FileUpload(props) {
   
         console.log(response.data);
       }else if (fileType === 'png' || fileType === 'jpg' || fileType === 'jpeg') {
-        response = await axios.post('https://api.hahaverse.com/upload', formData, {
+        response = await axios.post('https://26ec-103-133-178-51.ngrok-free.app/upload', formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
@@ -48,7 +48,7 @@ function FileUpload(props) {
         window.sendMessageToUnityBasic('imageUrlManager', 'SpawnObject');
         console.log(response.data);
       } else if (fileType === 'mp4') {
-        response = await axios.post('https://api.hahaverse.com/upload', formData, {
+        response = await axios.post('https://26ec-103-133-178-51.ngrok-free.app/upload', formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
@@ -62,7 +62,7 @@ function FileUpload(props) {
         window.sendMessageToUnityBasic('videoUrlManager', 'SpawnObject');
         console.log(response.data);
       } else if (fileType === 'glb') {
-        response = await axios.post('https://api.hahaverse.com/upload', formData, {
+        response = await axios.post('https://26ec-103-133-178-51.ngrok-free.app/upload', formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },

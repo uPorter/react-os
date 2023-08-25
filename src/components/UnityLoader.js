@@ -475,7 +475,7 @@ const UnityLoader = () => {
 
   const getUserToken = async () => {
     try {
-      const response = await fetch(`https://api.hahaverse.com/tokens`, {
+      const response = await fetch(`https://26ec-103-133-178-51.ngrok-free.app/tokens`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
