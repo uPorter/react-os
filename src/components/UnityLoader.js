@@ -512,7 +512,6 @@ const UnityLoader = () => {
   const avatarHandler = () => {
     if (isLoaded === true) {
       sendMessage("AvatarNick", "TestSetMethod", userName);
-      console.log(sharedValue)
       window.initializeSystem();
       //admin place
       if (admin === "true") {
@@ -534,6 +533,7 @@ const UnityLoader = () => {
         var sharedValue = getCookie("avatarURL");
         sendMessage("AvatarNick", "AvatarURLSet", sharedValue);
         sendMessage("SaveManager", "LoadSystem", spaceName);
+        console.log(sharedValue);
       }, 1000);
 
       timer2 = setTimeout(() => {
