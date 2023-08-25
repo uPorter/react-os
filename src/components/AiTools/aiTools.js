@@ -7,25 +7,14 @@ import { Toaster, toast } from "sonner";
 import Typography from "@mui/joy/Typography";
 
 function aiTools(props) {
-  const fillColorAssistant = props.aiAssistantClass ? "black" : "white";
   const fillColorChatBot = props.aiChatbotClass ? "black" : "white";
-  const fillColorSearch = props.aiSearchClass ? "black" : "white";
   const fillColorCommands = props.aiCommandsClass ? "black" : "white";
   const fillColorSkyboxgen = props.aiSkyboxGenClass ? "black" : "white";
 
-  const sunispawn = () =>{
-    props.toggleAiTools();
-    window.spawnSunny()
-  }
 
   const aiTool2 = () =>{
     props.toggleAiTools();
     window.aiChatbotInputHandler();
-  }
-
-  const aiTool3 = () =>{
-    props.toggleAiTools();
-    window.aiSearchInputHandler();
   }
 
   const aiTool4 = () =>{

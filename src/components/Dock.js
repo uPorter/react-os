@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import AiInput from "./Ai/AiInput";
-import AiInputAssistant from "./Ai/AiInputAssistant";
 import AiInputChatBot from "./Ai/AiInputChatBot";
-import AiInputSearch from "./Ai/AiInputSearch";
 import AiInputSkybox from "./Ai/AiInputSkybox";
 import Box from "@mui/joy/Box";
 import IconButton from "@mui/joy/IconButton";
@@ -209,10 +207,6 @@ function Dock({
       {aiCommandsOn && <AiInput aiCommandsClass={aiCommandsClass} />}
       {aiSkyboxGenOn && <AiInputSkybox aiSkyboxGenClass={aiSkyboxGenClass} />}
       {aiChatbotOn && <AiInputChatBot aiChatbotClass={aiChatbotClass} />}
-      {aiSearchOn && <AiInputSearch aiSearchClass={aiSearchClass} />}
-      {aiAssistantOn && (
-        <AiInputAssistant aiAssistantClass={aiAssistantClass} />
-      )}
       {isReactionsEmojiOn && isReactionsOn && (
         <div
           className={`${

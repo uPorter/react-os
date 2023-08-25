@@ -168,37 +168,6 @@ const UnityLoader = () => {
     }
   };
 
-  window.aiSearchInputHandler = () => {
-    if (
-      !(aiSkyboxGenOn || aiChatbotOn || aiCommandsOn || aiAssistantOn) &&
-      !aiSearchOn
-    ) {
-      setAiSearchOn(true);
-      setAiSearchClass(true);
-    } else if (aiSearchOn) {
-      setAiSearchClass(false);
-      const timeout = setTimeout(() => {
-        setAiSearchOn(false);
-      }, 600);
-      return () => clearTimeout(timeout);
-    }
-  };
-
-  window.aiAssistantInputHandler = () => {
-    if (
-      !(aiSkyboxGenOn || aiChatbotOn || aiCommandsOn || aiSearchOn) &&
-      !aiAssistantOn
-    ) {
-      setAiAssistantOn(true);
-      setAiAssistantClass(true);
-    } else if (aiAssistantOn) {
-      setAiAssistantClass(false);
-      const timeout = setTimeout(() => {
-        setAiAssistantOn(false);
-      }, 600);
-      return () => clearTimeout(timeout);
-    }
-  };
 
   useEffect(() => {
     addEventListener("setObjectName", handleObjectName);
