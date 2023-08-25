@@ -1370,7 +1370,7 @@ const UnityLoader = () => {
                     boxShadow: "0px 0px 0px 0px rgb(0 0 0 / 34%)",
                     backgroundColor: "rgba(0, 0, 0, 0.250)",
                     background: "rgba(0, 0, 0, 0.250)",
-                    "--IconButton-size": "64px",
+                    "--IconButton-size": "50px",
                     "--IconButton-radius": "50px",
                     "&:hover": {
                       backgroundColor: "rgba(0, 0, 0, 0.250)",
