@@ -1418,6 +1418,7 @@ const UnityLoader = () => {
                   backgroundColor: "rgb(0 0 0 / 0%)",
                   borderColor: "rgb(0 0 0 / 0%)",
                   padding: "0",
+                  backDropFilter: "blur(20px)",
                 }}
               >
                 <div
@@ -1434,11 +1435,11 @@ const UnityLoader = () => {
                     alignContent: "center",
                     justifyContent: "center",
                     alignItems: "center",
-                    backDropFilter: "blur(20px)",
+                    
                   }}
                 >
                   <Typography style={{ color: "white" }} level="h3">
-                    Travel To {infoName}
+                    Travel To "{infoName}"
                   </Typography>
 
                   <div>
