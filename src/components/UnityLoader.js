@@ -1413,7 +1413,7 @@ const UnityLoader = () => {
               }}
             >
               <Sheet
-                variant="outlined"
+                variant="plain"
                 sx={{
                   maxWidth: 500,
                   borderRadius: "16px",
@@ -1423,6 +1423,7 @@ const UnityLoader = () => {
                   backgroundColor: "rgb(0 0 0 / 0%)",
                   borderColor: "rgb(0 0 0 / 0%)",
                   padding: "0",
+                  outline:"none"
                 }}
               >
                 <div
@@ -1439,6 +1440,8 @@ const UnityLoader = () => {
                     alignContent: "center",
                     justifyContent: "center",
                     alignItems: "center",
+                    backdropFilter: "blur(20px)",
+                    outline:"none"
                   }}
                 >
                   <Typography
@@ -1472,10 +1475,13 @@ const UnityLoader = () => {
                   >
                     <Button
                       sx={{
-                        background: "transparent",
+                        
                         borderColor: "white",
                         borderStyle: "solid",
                         borderWidth: "2px",
+                      }}
+                      style={{
+                        background: "transparent",
                       }}
                       onClick={() => setPortalRedirectModal(false)}
                       className="portalCreateButton"
