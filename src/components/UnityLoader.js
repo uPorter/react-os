@@ -1401,6 +1401,7 @@ const UnityLoader = () => {
                   backgroundColor: "rgb(0 0 0 / 0%)",
                   borderColor: "rgb(0 0 0 / 0%)",
                   padding: "0",
+                  backDropFilter: "blur(20px)"
                 }}
               >
                 <ModalClose
