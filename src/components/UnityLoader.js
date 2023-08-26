@@ -1359,7 +1359,6 @@ const doubleClickForFullVoid = () => {
               <Sheet
                 variant="outlined"
                 sx={{
-                  maxWidth: 500,
                   borderRadius: "md",
                   p: 3,
                   boxShadow: "lg",
@@ -1380,12 +1379,14 @@ const doubleClickForFullVoid = () => {
                   }}
                 />
                 <img
+
                   src={infoURL}
                   draggable="false"
                   style={{
                     opacity: 1,
                     marginBottom: "-7px",
                     borderRadius: "8px",
+                    maxHeight: "1000px",
                   }}
                 />
               </Sheet>
