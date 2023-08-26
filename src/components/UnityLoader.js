@@ -461,7 +461,13 @@ const UnityLoader = () => {
     const currentTime = Date.now();
 
     if (currentTime - lastExecutionTime >= cooldownDuration) {
-      toast("Double click for fullscreen");
+      toast.custom((t) => (
+        <div>
+          <h1>Double click for image preview</h1>
+           <button onClick={() => toast.dismiss(t)}>Dismiss</button>
+        </div>
+      ));
+      
       lastExecutionTime = currentTime;
     } else {
       console.log("CoolDown");
