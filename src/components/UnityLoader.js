@@ -454,14 +454,11 @@ const UnityLoader = () => {
     };
   }, [addEventListener, removeEventListener, doubleClickForFullVoid]);
 
-
   const doubleClickForFullVoid = () => {
-    if(!isAdmin){
+    if (!isAdmin) {
       setImageModalOn(true);
     }
   };
-
-  
 
   useEffect(() => {
     addEventListener("portalOnClick", portalRedirectVoid);
@@ -472,7 +469,7 @@ const UnityLoader = () => {
   }, [addEventListener, removeEventListener, portalRedirectVoid]);
 
   const portalRedirectVoid = () => {
-      setPortalRedirectModal(true);
+    setPortalRedirectModal(true);
   };
 
   useEffect(() => {
@@ -592,14 +589,13 @@ const UnityLoader = () => {
   };
 
   const handleObjectHoverEnter = () => {
-    if(isAdmin){
+    if (isAdmin) {
       const container = document.querySelector(".container");
       container.style.cursor = "move";
-    }else{
+    } else {
       const container = document.querySelector(".container");
       container.style.cursor = "pointer";
     }
-    
   };
 
   window.sketchfabInitialize = (modelUID) => {
@@ -632,8 +628,8 @@ const UnityLoader = () => {
   }, [addEventListener, removeEventListener, handleObjectHoverEnter]);
 
   const handleObjectHoverExit = () => {
-      const container = document.querySelector(".container");
-      container.style.cursor = "grab";
+    const container = document.querySelector(".container");
+    container.style.cursor = "grab";
   };
 
   useEffect(() => {
@@ -811,10 +807,20 @@ const UnityLoader = () => {
     }
   };
 
+  function formatInfoURL(infoUrl, maxLength) {
+    if (infoUrl.length <= maxLength) {
+      return infoUrl;
+    } else {
+      const shortenedUrl = infoUrl.substring(0, maxLength - 3) + '...';
+      return shortenedUrl;
+    }
+  }
+
   const handleRedirect = (url) => {
-    window.open(url, '_blank'); // Yeni sekmede URL'yi aç
+    window.open(url, "_blank"); // Yeni sekmede URL'yi aç
   };
 
+  const formattedUrl = formatInfoURL(infoURL, 20);
 
   return (
     <div className={"unity-instance"}>
@@ -1404,11 +1410,10 @@ const UnityLoader = () => {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                outline: "none"
               }}
             >
               <Sheet
-                variant="plain"
+                variant="outlined"
                 sx={{
                   maxWidth: 500,
                   borderRadius: "16px",
@@ -1418,29 +1423,15 @@ const UnityLoader = () => {
                   backgroundColor: "rgb(0 0 0 / 0%)",
                   borderColor: "rgb(0 0 0 / 0%)",
                   padding: "0",
-                  outline: "none"
                 }}
               >
-                <ModalClose
-                  variant="plain"
-                  sx={{
-                    top: "calc(-1/4 * var(--IconButton-size + 5))",
-                    right: "calc(-1/4 * var(--IconButton-size + 5))",
-                    boxShadow: "0 2px 12px 0 rgba(0 0 0 / 0.0)",
-                    borderRadius: "50%",
-                    bgcolor: "transparent",
-                    borderColor: "transparent",
-                    "--Icon-color": "#ffffff",
-                  }}
-                />
                 <div
-                className="portalRedirect"
                   style={{
                     background: "rgb(0 0 0 / 25%)",
                     width: "fit-content",
-                    minWidth: "365px",
+                    minWidth: "380px",
                     height: "160px",
-                    padding: "40px",
+                    padding: "40px 60px",
                     borderRadius: "18px",
                     display: "flex",
                     flexDirection: "column",
@@ -1448,27 +1439,55 @@ const UnityLoader = () => {
                     alignContent: "center",
                     justifyContent: "center",
                     alignItems: "center",
-                    outline: "none"
                   }}
                 >
-                  <Typography style={{ color: "white" }} level="h3">
-                    Travel To "{infoName}"
+                  <Typography
+                    style={{ color: "white", paddingBottom: "16px" }}
+                    level="h3"
+                  >
+                    You're Leaving MetaOS
                   </Typography>
 
-                  <div>
+                  <Typography
+                    style={{ color: "#ffffff87", fontWeight: "600" }}
+                    level="body1"
+                  >
+                    Are you sure you want to go to
+                  </Typography>
+
+                  <Typography
+                    style={{ color: "white", fontWeight: "600" }}
+                    level="body1"
+                  >
+                    {formattedUrl}
+                  </Typography>
+
+                  <div
+                    style={{
+                      display: "flex",
+                      width: "90%",
+                      justifyContent: "space-between",
+                      marginTop: "30px",
+                    }}
+                  >
                     <Button
-                      style={{ marginTop: "10px", marginLeft: "-15px" }}
-                      className="editorDoneButtonWhite"
+                      sx={{
+                        background: "transparent",
+                        borderColor: "white",
+                        borderStyle: "solid",
+                        borderWidth: "2px",
+                      }}
                       onClick={() => setPortalRedirectModal(false)}
+                      className="portalCreateButton"
                     >
-                      Cancel
+                      No, Stay here
                     </Button>
                     <Button
-                      style={{ marginTop: "10px", marginLeft: "15px" }}
+                      style={{ background: "black" }}
                       className="portalCreateButton"
                       onClick={() => handleRedirect(infoURL)}
                     >
-                      Travel
+                      Yes, Let's Go
                     </Button>
                   </div>
                 </div>
@@ -1514,8 +1533,8 @@ const UnityLoader = () => {
                 <div
                   style={{
                     background: "rgb(0 0 0 / 25%)",
-                    width: "365px",
-                    height: "296px",
+                    width: "345px",
+                    height: "256px",
                     padding: "40px",
                     borderRadius: "16px",
                     display: "flex",
@@ -1524,7 +1543,7 @@ const UnityLoader = () => {
                     alignContent: "center",
                     justifyContent: "center",
                     alignItems: "center",
-                    backdropFilter: "blur(20px)"
+                    backdropFilter: "blur(20px)",
                   }}
                 >
                   <Typography style={{ color: "white" }} level="h3">
@@ -1611,7 +1630,12 @@ const UnityLoader = () => {
                     </label>
                   </div>
                   <Button
-                    style={{ marginTop: "10px" }}
+                    style={{
+                      marginTop: "10px",
+                      width: "200px",
+                      background: "black!important",
+                      color: "white!important",
+                    }}
                     className="portalCreateButton"
                     onClick={portalCreate}
                   >
@@ -2012,7 +2036,12 @@ const UnityLoader = () => {
             {/* <Button style={{ position: 'absolute', zIndex: '15' }} onClick={ReactshowRPM} variant="soft">Edit Avatar - PreTest</Button>*/}
           </div>
         )}
-        <Toaster closeButton className="toasterCSS" richColors position="bottom-center" />
+        <Toaster
+          closeButton
+          className="toasterCSS"
+          richColors
+          position="bottom-center"
+        />
         <Unity
           onFocus={() => console.log("Focused")}
           onBlur={() => console.log("Blured")}

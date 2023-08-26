@@ -1080,23 +1080,19 @@ div.spinner div.bar12 {
 
 .portalCreateButton {
   position: relative !important;
-  margin-top: 30px !important;
   border-radius: 50px !important;
-  -webkit-transform: scale(1.3);
-  transform: scale(1.3);
-  padding-top: 0px !important;
-  padding-bottom: 0px !important;
-  padding-left: 45px !important;
-  padding-right: 45px !important;
   font-weight: 500 !important;
-  background: white !important;
-  color: black !important;
+  font-size: 16px;
+  width: 116px;
+  height: 56px;
+  padding: 0 32px !important;
   transition: 0.2s cubic-bezier(0.46, 0.03, 0.52, 0.96) 0s;
   width: fit-content;
 }
 
 .portalCreateButton:hover {
-  transform: scale(1.4);
+  transform: scale(1.1);
+  background: transparent;
 }
 
 .portalRedirect{
