@@ -472,9 +472,7 @@ const UnityLoader = () => {
   }, [addEventListener, removeEventListener, portalRedirectVoid]);
 
   const portalRedirectVoid = () => {
-    if(!isAdmin){
       setPortalRedirectModal(true);
-    }
   };
 
   useEffect(() => {
@@ -1423,6 +1421,18 @@ const UnityLoader = () => {
                   outline: "none"
                 }}
               >
+                <ModalClose
+                  variant="outlined"
+                  sx={{
+                    top: "calc(-1/4 * var(--IconButton-size + 5))",
+                    right: "calc(-1/4 * var(--IconButton-size + 5))",
+                    boxShadow: "0 2px 12px 0 rgba(0 0 0 / 0.0)",
+                    borderRadius: "50%",
+                    bgcolor: "transparent",
+                    borderColor: "transparent",
+                    "--Icon-color": "#fff",
+                  }}
+                />
                 <div
                 className="portalRedirect"
                   style={{
