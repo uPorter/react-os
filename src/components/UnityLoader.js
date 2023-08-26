@@ -480,7 +480,9 @@ const UnityLoader = () => {
   }, [addEventListener, removeEventListener, portalRedirectVoid]);
 
   const portalRedirectVoid = () => {
-    setPortalRedirectModal(true);
+    if(!isAdmin){
+      setImageModalOn(true);
+    }
   };
 
   useEffect(() => {
@@ -492,7 +494,7 @@ const UnityLoader = () => {
   }, [addEventListener, removeEventListener, fullScreenImageVoid]);
 
   const fullScreenImageVoid = () => {
-    setImageModalOn(true);
+    console.log("hello")
   };
 
   useEffect(() => {
@@ -634,8 +636,13 @@ const UnityLoader = () => {
   }, [addEventListener, removeEventListener, handleObjectHoverEnter]);
 
   const handleObjectHoverExit = () => {
-    const container = document.querySelector(".container");
-    container.style.cursor = "grab";
+    if(isAdmin){
+      const container = document.querySelector(".container");
+      container.style.cursor = "grab";
+    }else{
+      const container = document.querySelector(".container");
+      container.style.cursor = "pointer";
+    }
   };
 
   useEffect(() => {
