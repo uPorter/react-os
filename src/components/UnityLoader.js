@@ -1641,6 +1641,8 @@ const UnityLoader = () => {
                       width: "200px",
                       background: "black!important",
                       color: "white!important",
+                      fontWeight: "700",
+                      minHeight: "50px"
                     }}
                     className="portalCreateButton"
                     onClick={portalCreate}
