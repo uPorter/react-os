@@ -1639,8 +1639,8 @@ const UnityLoader = () => {
                     style={{
                       marginTop: "10px",
                       width: "200px",
-                      background: "black!important",
-                      color: "white!important",
+                      background: "white",
+                      color: "black",
                       fontWeight: "700",
                       minHeight: "50px"
                     }}
