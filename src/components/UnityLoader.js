@@ -1405,6 +1405,7 @@ const UnityLoader = () => {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
+                outline: "none"
               }}
             >
               <Sheet
@@ -1418,6 +1419,7 @@ const UnityLoader = () => {
                   backgroundColor: "rgb(0 0 0 / 0%)",
                   borderColor: "rgb(0 0 0 / 0%)",
                   padding: "0",
+                  outline: "none"
                 }}
               >
                 <div
@@ -1435,6 +1437,7 @@ const UnityLoader = () => {
                     alignContent: "center",
                     justifyContent: "center",
                     alignItems: "center",
+                    outline: "none"
                   }}
                 >
                   <Typography style={{ color: "white" }} level="h3">
