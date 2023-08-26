@@ -461,9 +461,7 @@ const UnityLoader = () => {
     const currentTime = Date.now();
 
     if (currentTime - lastExecutionTime >= cooldownDuration) {
-      toast('Image Preview', {
-        description: 'Double Click For Image Preview',
-      })
+      toast('Double click for image preview')
          
       lastExecutionTime = currentTime;
     } else {
