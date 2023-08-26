@@ -69,6 +69,7 @@ const AiInputSkybox = (props) => {
         );
         window.sendMessageToUnity("skyboxUrlManager", "SpawnObject");
         setID("");
+        window.aiSkyboxInputHandler();
       }
     } catch (error) {
       console.error("Error fetching data:", error);
