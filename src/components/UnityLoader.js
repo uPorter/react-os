@@ -35,6 +35,7 @@ import AssistantHolder from "./Assistant/AssistantHolder";
 import LogoutIcon from "@mui/icons-material/Logout";
 import Modal from "@mui/joy/Modal";
 import ModalClose from "@mui/joy/ModalClose";
+import IosShareOutlinedIcon from '@mui/icons-material/IosShareOutlined';
 
 const chatClient = StreamChat.getInstance("gte62wacdhnr");
 
@@ -821,8 +822,22 @@ const UnityLoader = () => {
     window.open(url, "_blank"); // Yeni sekmede URL'yi aç
   };
 
-  const formattedUrl = formatInfoURL(infoURL, 20);
+  const formattedUrl = formatInfoURL(infoURL, 35);
 
+  function copyToClipboard(text) {
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textarea);
+  }
+
+  const stringToCopy = `https://react-os-three.vercel.app/${spaceName}/${userSpaceName}/${userSpaceDesc}/${ownerName}`;
+  const shareURL = () =>{
+    copyToClipboard(stringToCopy);
+    toast.success("Copied to clipboard");
+  }
   return (
     <div className={"unity-instance"}>
       <div
@@ -1767,6 +1782,66 @@ const UnityLoader = () => {
                     },
                   }}
                 >
+                  Share
+                </Button>
+              }
+            >
+              <div
+                style={{
+                  width: "fit-content",
+                  height: "fit-content",
+                  position: "absolute",
+                  top: "20px",
+                  right: "20px",
+                }}
+                className="tooltipHover2"
+              >
+                <IconButton
+                  id="dockButtonID"
+                  className="dockButtons"
+                  onClick={() => shareURL()} 
+                  variant="solid"
+                  sx={{
+                    color: "white",
+                    boxShadow: "0px 0px 0px 0px rgb(0 0 0 / 34%)",
+                    backgroundColor: "rgba(0, 0, 0, 0.250)",
+                    background: "rgba(0, 0, 0, 0.250)",
+                    "--IconButton-size": "55px",
+                    "--IconButton-radius": "50px",
+                    "&:hover": {
+                      backgroundColor: "rgba(0, 0, 0, 0.250)",
+                      background: "rgba(0, 0, 0, 0.250)",
+                    },
+                  }}
+                >
+                  <LogoutIcon style={{ transform: "scaleX(-1)" }}></LogoutIcon>
+                </IconButton>
+              </div>
+            </Tooltip>
+
+            <Tooltip
+              className="dockTooltip"
+              sx={{ borderRadius: "20px", backgroundColor: "#ffffff" }}
+              interactive
+              color="neutral"
+              placement="bottom"
+              variant="soft"
+              title={
+                <Button
+                  size="sm"
+                  variant="plain"
+                  sx={{
+                    fontStyle: "bold",
+                    fontWeight: "Bold",
+                    color: "white",
+                    padding: "10px",
+                    marginBottom: "-4px",
+                    backgroundColor: "#00000040",
+                    "&:hover": {
+                      backgroundColor: "#00000040",
+                    },
+                  }}
+                >
                   Leave
                 </Button>
               }
@@ -1784,9 +1859,7 @@ const UnityLoader = () => {
                 <IconButton
                   id="dockButtonID"
                   className="dockButtons"
-                  onClick={() =>
-                    (window.location.href = `https://www.hahaverse.com`)
-                  }
+                  onClick={}
                   variant="solid"
                   sx={{
                     color: "white",
@@ -1801,7 +1874,7 @@ const UnityLoader = () => {
                     },
                   }}
                 >
-                  <LogoutIcon style={{ transform: "scaleX(-1)" }}></LogoutIcon>
+                  <IosShareOutlinedIcon ></IosShareOutlinedIcon>
                 </IconButton>
               </div>
             </Tooltip>
