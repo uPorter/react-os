@@ -10,7 +10,7 @@ import Typography from '@mui/joy/Typography';
 import { useState } from 'react';
 
 
-const Loader = ({ loadingProgression, isLoaded,userSpaceName,userSpaceDesc }) => {
+const Loader = ({ loadingProgression, isLoaded,userSpaceName,userSpaceDesc,ownerName }) => {
   const [userNameL, setUserNameL] = useState(localStorage.getItem('userName') || 'Guest');
   const [userImageL, setUserImageL] = useState(localStorage.getItem('userImage') || 'https://models.readyplayer.me/63d5148460d1b8cc82dca9db.png');
   // loadingProgression değerini kullanarak başka işlemler yapabilirsiniz
@@ -26,7 +26,7 @@ const Loader = ({ loadingProgression, isLoaded,userSpaceName,userSpaceDesc }) =>
                 <Grid xs={16}>
                   <div className='avatar-container' style={{ bottom: '60px', display: 'flex' }}>
                     <Avatar style={{ background: '#246eff' }} alt={userNameL} src={"https://models.readyplayer.me/63d5148460d1b8cc82dca9db.png"} size="md" ></Avatar>
-                    <Typography style={{ position: 'relative', top: '3px' }} className='loaderAvatarText' textColor="common.white" level="body2">Mugen</Typography>
+                    <Typography style={{ position: 'relative', top: '3px' }} className='loaderAvatarText' textColor="common.white" level="body2">{ownerName}</Typography>
                   </div>
                   <Typography className='loaderText' style={{ position: 'relative', bottom: '50px' }} fontWeight="lg" textColor="common.white" level="h1">{userSpaceName}
                     <Button

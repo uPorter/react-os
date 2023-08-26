@@ -71,8 +71,8 @@ function App() {
       <Router>
         <Routes>
           <Route path='/' element={<UnityLoader/>} />
-          <Route path='/space/:spaceName/:userSpaceName/:userSpaceDesc' element={<UnityLoader/>}/>
-          <Route path="/space/:spaceName/:name/:id/:admin/:userSpaceName/:userSpaceDesc" element={<UnityLoader />} />
+          <Route path='/space/:spaceName/:userSpaceName/:userSpaceDesc/:ownerName' element={<UnityLoader/>}/>
+          <Route path="/space/:spaceName/:name/:id/:admin/:userSpaceName/:userSpaceDesc/:ownerName" element={<UnityLoader />} />
         </Routes>
       </Router>
     </div>

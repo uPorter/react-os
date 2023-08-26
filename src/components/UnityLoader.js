@@ -36,7 +36,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 const chatClient = StreamChat.getInstance("gte62wacdhnr");
 
 const UnityLoader = () => {
-  const { spaceName, name, id, admin,userSpaceName,userSpaceDesc } = useParams();
+  const { spaceName, name, id, admin,userSpaceName,userSpaceDesc,ownerName } = useParams();
 
   const {
     unityProvider,
@@ -770,6 +770,7 @@ const UnityLoader = () => {
         {isStarted === false && (
           <div className="holder">
             <Loader
+              ownerName={ownerName}
               userSpaceName={userSpaceName}
               userSpaceDesc={userSpaceDesc}
               loadingProgression={loadingProgression}
