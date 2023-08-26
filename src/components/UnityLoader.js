@@ -84,6 +84,7 @@ const UnityLoader = () => {
 
   const [isAvatarSelected, setIsAvatarSelected] = useState(false);
   const [imageModalOn, setImageModalOn] = useState(false);
+  const [videoModalOn, setVideoModalOn] = useState(false);
   const [isSaveLoaded, setIsSaveLoaded] = useState(false);
   const [isStarted, setIsStarted] = useState(false);
   const [inputText, setInputText] = useState("");
@@ -440,7 +441,6 @@ const UnityLoader = () => {
   };
   //////////////
 
-
   useEffect(() => {
     addEventListener("doubleClickForFull", doubleClickForFullVoid);
 
@@ -450,18 +450,18 @@ const UnityLoader = () => {
   }, [addEventListener, removeEventListener, doubleClickForFullVoid]);
 
   let lastExecutionTime = 0;
-const cooldownDuration = 3000; // 3 seconds in milliseconds
+  const cooldownDuration = 3000; // 3 seconds in milliseconds
 
-const doubleClickForFullVoid = () => {
-  const currentTime = Date.now();
-  
-  if (currentTime - lastExecutionTime >= cooldownDuration) {
-    toast('Double click for fullscreen');
-    lastExecutionTime = currentTime;
-  } else {
-    console.log("CoolDown");
-  }
-};
+  const doubleClickForFullVoid = () => {
+    const currentTime = Date.now();
+
+    if (currentTime - lastExecutionTime >= cooldownDuration) {
+      toast("Double click for fullscreen");
+      lastExecutionTime = currentTime;
+    } else {
+      console.log("CoolDown");
+    }
+  };
 
   useEffect(() => {
     addEventListener("fullScreenImage", fullScreenImageVoid);
@@ -473,6 +473,18 @@ const doubleClickForFullVoid = () => {
 
   const fullScreenImageVoid = () => {
     setImageModalOn(true);
+  };
+
+  useEffect(() => {
+    addEventListener("fullScreenVideo", fullScreenVideoVoid);
+
+    return () => {
+      removeEventListener("fullScreenVideo", fullScreenVideoVoid);
+    };
+  }, [addEventListener, removeEventListener, fullScreenVideoVoid]);
+
+  const fullScreenVideoVoid = () => {
+    setVideoModalOn(true);
   };
 
   useEffect(() => {
@@ -1348,6 +1360,52 @@ const doubleClickForFullVoid = () => {
             <Modal
               aria-labelledby="modal-title"
               aria-describedby="modal-desc"
+              open={videoModalOn}
+              onClose={() => setVideoModalOn(false)}
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Sheet
+                variant="outlined"
+                sx={{
+                  maxWidth: 500,
+                  borderRadius: "md",
+                  p: 3,
+                  boxShadow: "lg",
+                  maxWidth: "fit-content",
+                  backgroundColor: "rgb(0 0 0 / 0%)",
+                  borderColor: "rgb(0 0 0 / 0%)",
+                  padding: "0",
+                }}
+              >
+                <ModalClose
+                  variant="outlined"
+                  sx={{
+                    top: "calc(-1/4 * var(--IconButton-size + 5))",
+                    right: "calc(-1/4 * var(--IconButton-size + 5))",
+                    boxShadow: "0 2px 12px 0 rgba(0 0 0 / 0.2)",
+                    borderRadius: "50%",
+                    bgcolor: "background.surface",
+                  }}
+                />
+                <video
+                  style={{
+                    opacity: 1,
+                    marginBottom: "-7px",
+                    borderRadius: "8px",
+                    maxHeight: "870px",
+                  }}
+                  controls
+                  src={infoURL}
+                ></video>
+              </Sheet>
+            </Modal>
+            <Modal
+              aria-labelledby="modal-title"
+              aria-describedby="modal-desc"
               open={imageModalOn}
               onClose={() => setImageModalOn(false)}
               sx={{
@@ -1379,7 +1437,6 @@ const doubleClickForFullVoid = () => {
                   }}
                 />
                 <img
-
                   src={infoURL}
                   draggable="false"
                   style={{
