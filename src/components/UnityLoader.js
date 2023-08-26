@@ -461,13 +461,10 @@ const UnityLoader = () => {
     const currentTime = Date.now();
 
     if (currentTime - lastExecutionTime >= cooldownDuration) {
-      toast.custom((t) => (
-        <div>
-          <h1>Double click for image preview</h1>
-           <button onClick={() => toast.dismiss(t)}>Dismiss</button>
-        </div>
-      ));
-      
+      toast('Image Preview', {
+        description: 'Double Click For Image Preview',
+      })
+         
       lastExecutionTime = currentTime;
     } else {
       console.log("CoolDown");
@@ -2047,7 +2044,7 @@ const UnityLoader = () => {
             {/* <Button style={{ position: 'absolute', zIndex: '15' }} onClick={ReactshowRPM} variant="soft">Edit Avatar - PreTest</Button>*/}
           </div>
         )}
-        <Toaster className="toasterCSS" richColors position="bottom-center" />
+        <Toaster closeButton className="toasterCSS" richColors position="bottom-center" />
         <Unity
           onFocus={() => console.log("Focused")}
           onBlur={() => console.log("Blured")}
