@@ -83,12 +83,13 @@ const UnityLoader = () => {
   };
 
   const [isAvatarSelected, setIsAvatarSelected] = useState(false);
+  const [portalRedirectModal, setPortalRedirectModal] = useState(false);
   const [imageModalOn, setImageModalOn] = useState(false);
   const [videoModalOn, setVideoModalOn] = useState(false);
   const [portalModalOn, setPortalModalOn] = useState(false);
-  const [portalName, setPortalName] = useState('');
-  const [portalArtist, setPortalArtist] = useState('');
-  const [portalURL, setPortalURL] = useState('');
+  const [portalName, setPortalName] = useState("");
+  const [portalArtist, setPortalArtist] = useState("");
+  const [portalURL, setPortalURL] = useState("");
   const [isSaveLoaded, setIsSaveLoaded] = useState(false);
   const [isStarted, setIsStarted] = useState(false);
   const [inputText, setInputText] = useState("");
@@ -183,8 +184,6 @@ const UnityLoader = () => {
       return () => clearTimeout(timeout);
     }
   };
-
-
 
   function getCookie(name) {
     var nameEQ = name + "=";
@@ -370,7 +369,6 @@ const UnityLoader = () => {
     }
   }, []);
 
-
   const tokenGenerator = async () => {
     const data = await getUserToken();
     setUserToken(data.token);
@@ -468,6 +466,20 @@ const UnityLoader = () => {
     } else {
       console.log("CoolDown");
     }
+  };
+
+  
+
+  useEffect(() => {
+    addEventListener("portalOnClick", portalRedirectVoid);
+
+    return () => {
+      removeEventListener("portalOnClick", portalRedirectVoid);
+    };
+  }, [addEventListener, removeEventListener, portalRedirectVoid]);
+
+  const portalRedirectVoid = () => {
+    setPortalRedirectModal(true);
   };
 
   useEffect(() => {
@@ -786,9 +798,9 @@ const UnityLoader = () => {
   };
 
   const portalCreate = () => {
-    if (portalName === '' || portalArtist === '' || portalURL === '') {
-      toast.error("Please fill all fields")
-    }else {
+    if (portalName === "" || portalArtist === "" || portalURL === "") {
+      toast.error("Please fill all fields");
+    } else {
       sendMessage("portalUrlManager", "SetURLName", portalName);
       sendMessage("portalUrlManager", "setUrlArtist", portalArtist);
       sendMessage("portalUrlManager", "setUrlLink", portalURL);
@@ -798,7 +810,12 @@ const UnityLoader = () => {
       setPortalName("");
       setPortalURL("");
     }
-  }
+  };
+
+  const handleRedirect = (url) => {
+    window.open(url, '_blank'); // Yeni sekmede URL'yi aç
+  };
+
 
   return (
     <div className={"unity-instance"}>
@@ -1382,6 +1399,70 @@ const UnityLoader = () => {
             <Modal
               aria-labelledby="modal-title"
               aria-describedby="modal-desc"
+              open={portalRedirectModal}
+              onClose={() => setPortalRedirectModal(false)}
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Sheet
+                variant="outlined"
+                sx={{
+                  maxWidth: 500,
+                  borderRadius: "16px",
+                  p: 3,
+                  boxShadow: "lg",
+                  maxWidth: "fit-content",
+                  backgroundColor: "rgb(0 0 0 / 0%)",
+                  borderColor: "rgb(0 0 0 / 0%)",
+                  padding: "0",
+                }}
+              >
+                <div
+                  style={{
+                    background: "rgb(0 0 0 / 25%)",
+                    width: "fit-content",
+                    minWidth: "365px",
+                    height: "160px",
+                    padding: "40px",
+                    borderRadius: "18px",
+                    display: "flex",
+                    flexDirection: "column",
+                    flexWrap: "nowrap",
+                    alignContent: "center",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    backDropFilter: "blur(20px)",
+                  }}
+                >
+                  <Typography style={{ color: "white" }} level="h3">
+                    Travel To {infoName}
+                  </Typography>
+
+                  <div>
+                    <Button
+                      style={{ marginTop: "10px", marginLeft: "-15px" }}
+                      className="editorDoneButtonWhite"
+                      onClick={() => setPortalRedirectModal(false)}
+                    >
+                      Cancel
+                    </Button>
+                    <Button
+                      style={{ marginTop: "10px", marginLeft: "15px" }}
+                      className="portalCreateButton"
+                      onClick={() => handleRedirect(infoURL)}
+                    >
+                      Travel
+                    </Button>
+                  </div>
+                </div>
+              </Sheet>
+            </Modal>
+            <Modal
+              aria-labelledby="modal-title"
+              aria-describedby="modal-desc"
               open={portalModalOn}
               onClose={() => setPortalModalOn(false)}
               sx={{
@@ -1401,7 +1482,7 @@ const UnityLoader = () => {
                   backgroundColor: "rgb(0 0 0 / 0%)",
                   borderColor: "rgb(0 0 0 / 0%)",
                   padding: "0",
-                  backDropFilter: "blur(20px)"
+                  backDropFilter: "blur(20px)",
                 }}
               >
                 <ModalClose
@@ -1453,7 +1534,7 @@ const UnityLoader = () => {
                         display: "flex",
                         flexDirection: "column",
                         padding: "13px",
-                        gap: "4px"
+                        gap: "4px",
                       }}
                     >
                       Title
@@ -1491,7 +1572,7 @@ const UnityLoader = () => {
                         display: "flex",
                         flexDirection: "column",
                         padding: "13px",
-                        gap: "4px"
+                        gap: "4px",
                       }}
                     >
                       Creator
@@ -1499,7 +1580,9 @@ const UnityLoader = () => {
                         className="infoInput"
                         placeholder="Porter"
                         value={portalArtist}
-                        onChange={(event) => setPortalArtist(event.target.value)}
+                        onChange={(event) =>
+                          setPortalArtist(event.target.value)
+                        }
                         style={{
                           textAlign: "left",
                           borderWidth: "0",
@@ -1530,7 +1613,7 @@ const UnityLoader = () => {
                         flexDirection: "column",
                         padding: "13px",
                         gap: "4px",
-                        marginBottom: "4px"
+                        marginBottom: "4px",
                       }}
                     >
                       Link
@@ -1946,7 +2029,10 @@ const UnityLoader = () => {
             ></AssistantHolder>
             {/* {uploadOpen && <FileUpload setUploadOpen={setUploadOpen} sendMessage={sendMessage} style={{position: 'absolute', zIndex: '15'}}></FileUpload> } */}
             {uploadOpen && (
-              <AddContent setPortalModalOn={setPortalModalOn} setUploadOpen={setUploadOpen}></AddContent>
+              <AddContent
+                setPortalModalOn={setPortalModalOn}
+                setUploadOpen={setUploadOpen}
+              ></AddContent>
             )}
             {/* <Button style={{ position: 'absolute', zIndex: '15' }} onClick={ReactshowRPM} variant="soft">Edit Avatar - PreTest</Button>*/}
           </div>
