@@ -812,7 +812,7 @@ const UnityLoader = () => {
     if (infoUrl.length <= maxLength) {
       return infoUrl;
     } else {
-      const shortenedUrl = infoUrl.substring(0, maxLength - 3) + "...";
+      const shortenedUrl = infoUrl.substring(0, maxLength - 3) + '...';
       return shortenedUrl;
     }
   }
@@ -1413,99 +1413,92 @@ const UnityLoader = () => {
                 alignItems: "center",
               }}
             >
-              <Transition
-                in={portalRedirectModal}
-                timeout={300}
-                classNames="modal"
-                unmountOnExit
+              <Sheet
+                variant="plain"
+                sx={{
+                  maxWidth: 500,
+                  borderRadius: "16px",
+                  p: 3,
+                  boxShadow: "lg",
+                  maxWidth: "fit-content",
+                  backgroundColor: "rgb(0 0 0 / 0%)",
+                  borderColor: "rgb(0 0 0 / 0%)",
+                  padding: "0",
+                  outline:"none"
+                }}
               >
-                <Sheet
-                  variant="plain"
-                  sx={{
-                    maxWidth: 500,
-                    borderRadius: "16px",
-                    p: 3,
-                    boxShadow: "lg",
-                    maxWidth: "fit-content",
-                    backgroundColor: "rgb(0 0 0 / 0%)",
-                    borderColor: "rgb(0 0 0 / 0%)",
-                    padding: "0",
-                    outline: "none",
+                <div
+                  style={{
+                    background: "rgb(0 0 0 / 25%)",
+                    width: "fit-content",
+                    minWidth: "380px",
+                    height: "160px",
+                    padding: "40px 60px",
+                    borderRadius: "18px",
+                    display: "flex",
+                    flexDirection: "column",
+                    flexWrap: "nowrap",
+                    alignContent: "center",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    backdropFilter: "blur(20px)",
+                    outline:"none"
                   }}
                 >
+                  <Typography
+                    style={{ color: "white", paddingBottom: "16px" }}
+                    level="h3"
+                  >
+                    You're Leaving MetaOS
+                  </Typography>
+
+                  <Typography
+                    style={{ color: "#ffffff87", fontWeight: "600" }}
+                    level="body1"
+                  >
+                    Are you sure you want to go to
+                  </Typography>
+
+                  <Typography
+                    style={{ color: "white", fontWeight: "600" }}
+                    level="body1"
+                  >
+                    {formattedUrl}
+                  </Typography>
+
                   <div
-                    className="modal-content"
                     style={{
-                      background: "rgb(0 0 0 / 25%)",
-                      width: "fit-content",
-                      minWidth: "380px",
-                      height: "160px",
-                      padding: "40px 60px",
-                      borderRadius: "18px",
                       display: "flex",
-                      flexDirection: "column",
-                      flexWrap: "nowrap",
-                      alignContent: "center",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      backdropFilter: "blur(20px)",
-                      outline: "none",
+                      width: "90%",
+                      justifyContent: "space-between",
+                      marginTop: "30px",
                     }}
                   >
-                    <Typography
-                      style={{ color: "white", paddingBottom: "16px" }}
-                      level="h3"
-                    >
-                      You're Leaving MetaOS
-                    </Typography>
-
-                    <Typography
-                      style={{ color: "#ffffff87", fontWeight: "600" }}
-                      level="body1"
-                    >
-                      Are you sure you want to go to
-                    </Typography>
-
-                    <Typography
-                      style={{ color: "white", fontWeight: "600" }}
-                      level="body1"
-                    >
-                      {formattedUrl}
-                    </Typography>
-
-                    <div
-                      style={{
-                        display: "flex",
-                        width: "90%",
-                        justifyContent: "space-between",
-                        marginTop: "30px",
+                    <Button
+                      sx={{
+                        
+                        borderColor: "white",
+                        borderStyle: "solid",
+                        borderWidth: "2px",
                       }}
+                      style={{
+                        background: "transparent",
+                      }}
+                      onClick={() => setPortalRedirectModal(false)}
+                      className="portalCreateButton"
                     >
-                      <Button
-                        sx={{
-                          borderColor: "white",
-                          borderStyle: "solid",
-                          borderWidth: "2px",
-                        }}
-                        style={{
-                          background: "transparent",
-                        }}
-                        onClick={() => setPortalRedirectModal(false)}
-                        className="portalCreateButton"
-                      >
-                        No, Stay here
-                      </Button>
-                      <Button
-                        style={{ background: "black" }}
-                        className="portalCreateButton"
-                        onClick={() => handleRedirect(infoURL)}
-                      >
-                        Yes, Let's Go
-                      </Button>
-                    </div>
+                      No, Stay here
+                    </Button>
+                    <Button
+                      style={{ background: "black" }}
+                      className="portalCreateButton"
+                      onClick={() => handleRedirect(infoURL)}
+                    >
+                      Yes, Let's Go
+                    </Button>
                   </div>
-                </Sheet>
-              </Transition>
+                </div>
+              </Sheet>
             </Modal>
             <Modal
               aria-labelledby="modal-title"
@@ -1650,7 +1643,7 @@ const UnityLoader = () => {
                       background: "white",
                       color: "black",
                       fontWeight: "700",
-                      minHeight: "50px",
+                      minHeight: "50px"
                     }}
                     className="portalCreateButton"
                     onClick={portalCreate}
