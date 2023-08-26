@@ -1450,6 +1450,7 @@ const UnityLoader = () => {
                         display: "flex",
                         flexDirection: "column",
                         padding: "13px",
+                        gap: "4px"
                       }}
                     >
                       Title
@@ -1487,6 +1488,7 @@ const UnityLoader = () => {
                         display: "flex",
                         flexDirection: "column",
                         padding: "13px",
+                        gap: "4px"
                       }}
                     >
                       Creator
@@ -1524,6 +1526,8 @@ const UnityLoader = () => {
                         display: "flex",
                         flexDirection: "column",
                         padding: "13px",
+                        gap: "4px",
+                        marginBottom: "4px"
                       }}
                     >
                       Link
