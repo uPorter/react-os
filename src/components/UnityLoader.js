@@ -833,7 +833,7 @@ const UnityLoader = () => {
     document.body.removeChild(textarea);
   }
 
-  const stringToCopy = `https://react-os-three.vercel.app/${spaceName}/${userSpaceName}/${userSpaceDesc}/${ownerName}`;
+  const stringToCopy = `https://react-os-three.vercel.app/space/${spaceName}/${userSpaceName}/${userSpaceDesc}/${ownerName}`;
   const shareURL = () =>{
     copyToClipboard(stringToCopy);
     toast.success("Copied to clipboard");
