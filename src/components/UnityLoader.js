@@ -794,8 +794,10 @@ const UnityLoader = () => {
       sendMessage("portalUrlManager", "setUrlLink", portalURL);
       sendMessage("portalUrlManager", "SpawnObject");
       setPortalModalOn(false);
+      setPortalArtist("");
+      setPortalName("");
+      setPortalURL("");
     }
-    
   }
 
   return (
@@ -1416,9 +1418,9 @@ const UnityLoader = () => {
                 <div
                   style={{
                     background: "rgb(0 0 0 / 25%)",
-                    width: "365px",
+                    width: "385px",
                     height: "360px",
-                    padding: "40px",
+                    padding: "60px",
                     borderRadius: "16px",
                     display: "flex",
                     flexDirection: "column",
