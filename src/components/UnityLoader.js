@@ -1408,7 +1408,7 @@ const UnityLoader = () => {
               }}
             >
               <Sheet
-                variant="outlined"
+                variant="plain"
                 sx={{
                   maxWidth: 500,
                   borderRadius: "16px",
@@ -1418,7 +1418,7 @@ const UnityLoader = () => {
                   backgroundColor: "rgb(0 0 0 / 0%)",
                   borderColor: "rgb(0 0 0 / 0%)",
                   padding: "0",
-                  backDropFilter: "blur(20px)",
+                  backDropFilter: "blur(20px)!important",
                 }}
               >
                 <div
@@ -1435,7 +1435,7 @@ const UnityLoader = () => {
                     alignContent: "center",
                     justifyContent: "center",
                     alignItems: "center",
-                    
+                    backDropFilter: "blur(20px)!important",
                   }}
                 >
                   <Typography style={{ color: "white" }} level="h3">
@@ -1473,7 +1473,7 @@ const UnityLoader = () => {
               }}
             >
               <Sheet
-                variant="outlined"
+                variant="plain"
                 sx={{
                   maxWidth: 500,
                   borderRadius: "16px",
@@ -1659,7 +1659,7 @@ const UnityLoader = () => {
               }}
             >
               <Sheet
-                variant="outlined"
+                variant="plain"
                 sx={{
                   maxWidth: 500,
                   borderRadius: "md",
