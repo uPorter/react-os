@@ -32,11 +32,21 @@ import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import AiToolsBase from "./AiTools/aiTools";
 import AssistantHolder from "./Assistant/AssistantHolder";
 import LogoutIcon from "@mui/icons-material/Logout";
+import Modal from "@mui/joy/Modal";
+import ModalClose from "@mui/joy/ModalClose";
 
 const chatClient = StreamChat.getInstance("gte62wacdhnr");
 
 const UnityLoader = () => {
-  const { spaceName, name, id, admin,userSpaceName,userSpaceDesc,ownerName } = useParams();
+  const {
+    spaceName,
+    name,
+    id,
+    admin,
+    userSpaceName,
+    userSpaceDesc,
+    ownerName,
+  } = useParams();
 
   const {
     unityProvider,
@@ -73,6 +83,7 @@ const UnityLoader = () => {
   };
 
   const [isAvatarSelected, setIsAvatarSelected] = useState(false);
+  const [imageModalOn, setImageModalOn] = useState(false);
   const [isSaveLoaded, setIsSaveLoaded] = useState(false);
   const [isStarted, setIsStarted] = useState(false);
   const [inputText, setInputText] = useState("");
@@ -170,10 +181,10 @@ const UnityLoader = () => {
 
   function getCookie(name) {
     var nameEQ = name + "=";
-    var ca = document.cookie.split(';');
+    var ca = document.cookie.split(";");
     for (var i = 0; i < ca.length; i++) {
       var c = ca[i];
-      while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+      while (c.charAt(0) == " ") c = c.substring(1, c.length);
       if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
     }
     return null;
@@ -428,41 +439,30 @@ const UnityLoader = () => {
     setPortalModeOn(true);
   };
   //////////////
+
+
   useEffect(() => {
-    addEventListener("assistantInfoOff", assistantInfoToggleOff);
+    addEventListener("doubleClickForFull", doubleClickForFullVoid);
 
     return () => {
-      removeEventListener("assistantInfoOff", assistantInfoToggleOff);
+      removeEventListener("doubleClickForFull", doubleClickForFullVoid);
     };
-  }, [addEventListener, removeEventListener, assistantInfoToggleOff]);
+  }, [addEventListener, removeEventListener, doubleClickForFullVoid]);
 
-  const assistantInfoToggleOff = () => {
-    setAssistantModeOn(false);
-  };
-  //////////////////////
-  useEffect(() => {
-    addEventListener("assistantInfoOn", assistantInfoToggleOn);
-
-    return () => {
-      removeEventListener("assistantInfoOn", assistantInfoToggleOn);
-    };
-  }, [addEventListener, removeEventListener, assistantInfoToggleOn]);
-
-  const assistantInfoToggleOn = () => {
-    setAssistantModeOn(true);
+  const doubleClickForFullVoid = () => {
+    toast('Double click for fullscreen');
   };
 
-  //////////////////////
   useEffect(() => {
-    addEventListener("assistantOn", assistantInfoToggleOnBase);
+    addEventListener("fullScreenImage", fullScreenImageVoid);
 
     return () => {
-      removeEventListener("assistantOn", assistantInfoToggleOnBase);
+      removeEventListener("fullScreenImage", fullScreenImageVoid);
     };
-  }, [addEventListener, removeEventListener, assistantInfoToggleOnBase]);
+  }, [addEventListener, removeEventListener, fullScreenImageVoid]);
 
-  const assistantInfoToggleOnBase = () => {
-    window.enableAnimation();
+  const fullScreenImageVoid = () => {
+    setImageModalOn(true);
   };
 
   useEffect(() => {
@@ -485,18 +485,21 @@ const UnityLoader = () => {
 
   const getUserToken = async () => {
     try {
-      const response = await fetch(`https://26ec-103-133-178-51.ngrok-free.app/tokens`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          apiKey: "gte62wacdhnr",
-          apiSecret:
-            "xy2mq3dartszjkdkua2rs5utrmsqkwwf7q27nq76n5dad32y4phehbp26cx4zcx3",
-          userId: userID,
-        }),
-      });
+      const response = await fetch(
+        `https://26ec-103-133-178-51.ngrok-free.app/tokens`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            apiKey: "gte62wacdhnr",
+            apiSecret:
+              "xy2mq3dartszjkdkua2rs5utrmsqkwwf7q27nq76n5dad32y4phehbp26cx4zcx3",
+            userId: userID,
+          }),
+        }
+      );
       const data = await response.json();
       return data;
     } catch (error) {
@@ -1332,6 +1335,51 @@ const UnityLoader = () => {
         )}
         {isStarted && showChat && !isFilmingMode && (
           <div className={"ui"}>
+            <Modal
+              aria-labelledby="modal-title"
+              aria-describedby="modal-desc"
+              open={imageModalOn}
+              onClose={() => setImageModalOn(false)}
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Sheet
+                variant="outlined"
+                sx={{
+                  maxWidth: 500,
+                  borderRadius: "md",
+                  p: 3,
+                  boxShadow: "lg",
+                  maxWidth: "fit-content",
+                  backgroundColor: "rgb(0 0 0 / 25%)",
+                  borderColor: "rgb(0 0 0 / 25%)",
+                  padding: "0",
+                }}
+              >
+                <ModalClose
+                  variant="outlined"
+                  sx={{
+                    top: "calc(-1/4 * var(--IconButton-size + 5))",
+                    right: "calc(-1/4 * var(--IconButton-size + 5))",
+                    boxShadow: "0 2px 12px 0 rgba(0 0 0 / 0.2)",
+                    borderRadius: "50%",
+                    bgcolor: "background.surface",
+                  }}
+                />
+                <img
+                  src={infoURL}
+                  draggable="false"
+                  style={{
+                    opacity: 1,
+                    marginBottom: "-7px",
+                    borderRadius: "8px",
+                  }}
+                />
+              </Sheet>
+            </Modal>
             <Tooltip
               className="dockTooltip"
               sx={{ borderRadius: "20px", backgroundColor: "#ffffff" }}
@@ -1360,13 +1408,21 @@ const UnityLoader = () => {
               }
             >
               <div
-                style={{ width: "fit-content", height: "fit-content",position:"absolute", top:"20px",left:"20px" }}
+                style={{
+                  width: "fit-content",
+                  height: "fit-content",
+                  position: "absolute",
+                  top: "20px",
+                  left: "20px",
+                }}
                 className="tooltipHover2"
               >
                 <IconButton
                   id="dockButtonID"
                   className="dockButtons"
-                  onClick={() => window.location.href = `https://www.hahaverse.com`}
+                  onClick={() =>
+                    (window.location.href = `https://www.hahaverse.com`)
+                  }
                   variant="solid"
                   sx={{
                     color: "white",
@@ -1381,7 +1437,7 @@ const UnityLoader = () => {
                     },
                   }}
                 >
-                  <LogoutIcon style={{transform: "scaleX(-1)"}}></LogoutIcon>
+                  <LogoutIcon style={{ transform: "scaleX(-1)" }}></LogoutIcon>
                 </IconButton>
               </div>
             </Tooltip>
