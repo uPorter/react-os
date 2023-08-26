@@ -1510,6 +1510,7 @@ const UnityLoader = () => {
                     alignContent: "center",
                     justifyContent: "center",
                     alignItems: "center",
+                    backdropFilter: "blur(20px)"
                   }}
                 >
                   <Typography style={{ color: "white" }} level="h3">
