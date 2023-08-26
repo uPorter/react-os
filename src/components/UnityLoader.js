@@ -454,8 +454,6 @@ const UnityLoader = () => {
     };
   }, [addEventListener, removeEventListener, doubleClickForFullVoid]);
 
-  let lastExecutionTime = 0;
-  const cooldownDuration = 3000; // 3 seconds in milliseconds
 
   const doubleClickForFullVoid = () => {
     if(!isAdmin){
@@ -475,7 +473,7 @@ const UnityLoader = () => {
 
   const portalRedirectVoid = () => {
     if(!isAdmin){
-      setPortalModalOn(true);
+      setPortalRedirectModal(true);
     }
   };
 
