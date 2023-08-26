@@ -1073,5 +1073,9 @@ div.spinner div.bar12 {
   text-align: left;
 }
 
+.MuiModal-backdrop{
+  background-color: #0000003d!important;
+}
+
 
 

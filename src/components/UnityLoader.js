@@ -1363,8 +1363,8 @@ const doubleClickForFullVoid = () => {
                   p: 3,
                   boxShadow: "lg",
                   maxWidth: "fit-content",
-                  backgroundColor: "rgb(0 0 0 / 25%)",
-                  borderColor: "rgb(0 0 0 / 25%)",
+                  backgroundColor: "rgb(0 0 0 / 0%)",
+                  borderColor: "rgb(0 0 0 / 0%)",
                   padding: "0",
                 }}
               >
@@ -1386,7 +1386,7 @@ const doubleClickForFullVoid = () => {
                     opacity: 1,
                     marginBottom: "-7px",
                     borderRadius: "8px",
-                    maxHeight: "1000px",
+                    maxHeight: "870px",
                   }}
                 />
               </Sheet>
