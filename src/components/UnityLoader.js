@@ -786,7 +786,7 @@ const UnityLoader = () => {
   };
 
   const portalCreate = () => {
-    if (portalName === '' || portalArtist === '' || portalUrl === '') {
+    if (portalName === '' || portalArtist === '' || portalURL === '') {
       toast.error("Please fill all fields")
     }else {
       sendMessage("portalUrlManager", "SetURLName", portalName);
