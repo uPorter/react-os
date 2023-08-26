@@ -458,14 +458,8 @@ const UnityLoader = () => {
   const cooldownDuration = 3000; // 3 seconds in milliseconds
 
   const doubleClickForFullVoid = () => {
-    const currentTime = Date.now();
-
-    if (currentTime - lastExecutionTime >= cooldownDuration) {
-      toast('Double click for image preview')
-         
-      lastExecutionTime = currentTime;
-    } else {
-      console.log("CoolDown");
+    if(!isAdmin){
+      setImageModalOn(true);
     }
   };
 
@@ -481,7 +475,7 @@ const UnityLoader = () => {
 
   const portalRedirectVoid = () => {
     if(!isAdmin){
-      setImageModalOn(true);
+      setPortalModalOn(true);
     }
   };
 
@@ -494,7 +488,7 @@ const UnityLoader = () => {
   }, [addEventListener, removeEventListener, fullScreenImageVoid]);
 
   const fullScreenImageVoid = () => {
-    console.log("hello")
+    console.log("");
   };
 
   useEffect(() => {
@@ -602,8 +596,14 @@ const UnityLoader = () => {
   };
 
   const handleObjectHoverEnter = () => {
-    const container = document.querySelector(".container");
-    container.style.cursor = "move";
+    if(isAdmin){
+      const container = document.querySelector(".container");
+      container.style.cursor = "move";
+    }else{
+      const container = document.querySelector(".container");
+      container.style.cursor = "pointer";
+    }
+    
   };
 
   window.sketchfabInitialize = (modelUID) => {
@@ -636,13 +636,8 @@ const UnityLoader = () => {
   }, [addEventListener, removeEventListener, handleObjectHoverEnter]);
 
   const handleObjectHoverExit = () => {
-    if(isAdmin){
       const container = document.querySelector(".container");
       container.style.cursor = "grab";
-    }else{
-      const container = document.querySelector(".container");
-      container.style.cursor = "pointer";
-    }
   };
 
   useEffect(() => {
