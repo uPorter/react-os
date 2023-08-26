@@ -88,7 +88,7 @@ const UnityLoader = () => {
   const [videoModalOn, setVideoModalOn] = useState(false);
   const [portalModalOn, setPortalModalOn] = useState(false);
   const [portalName, setPortalName] = useState("");
-  const [portalArtist, setPortalArtist] = useState("");
+  const [portalArtist, setPortalArtist] = useState("Mugen");
   const [portalURL, setPortalURL] = useState("");
   const [isSaveLoaded, setIsSaveLoaded] = useState(false);
   const [isStarted, setIsStarted] = useState(false);
@@ -1422,7 +1422,7 @@ const UnityLoader = () => {
                 }}
               >
                 <ModalClose
-                  variant="outlined"
+                  variant="plain"
                   sx={{
                     top: "calc(-1/4 * var(--IconButton-size + 5))",
                     right: "calc(-1/4 * var(--IconButton-size + 5))",
@@ -1430,7 +1430,7 @@ const UnityLoader = () => {
                     borderRadius: "50%",
                     bgcolor: "transparent",
                     borderColor: "transparent",
-                    "--Icon-color": "#fff",
+                    "--Icon-color": "#ffffff",
                   }}
                 />
                 <div
@@ -1500,7 +1500,7 @@ const UnityLoader = () => {
                 }}
               >
                 <ModalClose
-                  variant="outlined"
+                  variant="plain"
                   sx={{
                     top: "calc(-1/4 * var(--IconButton-size + 5))",
                     right: "calc(-1/4 * var(--IconButton-size + 5))",
@@ -1508,15 +1508,15 @@ const UnityLoader = () => {
                     borderRadius: "50%",
                     bgcolor: "transparent",
                     borderColor: "transparent",
-                    "--Icon-color": "#fff",
+                    "--Icon-color": "#ffffff",
                   }}
                 />
                 <div
                   style={{
                     background: "rgb(0 0 0 / 25%)",
-                    width: "385px",
-                    height: "360px",
-                    padding: "60px",
+                    width: "365px",
+                    height: "296px",
+                    padding: "40px",
                     borderRadius: "16px",
                     display: "flex",
                     flexDirection: "column",
@@ -1588,50 +1588,10 @@ const UnityLoader = () => {
                         flexDirection: "column",
                         padding: "13px",
                         gap: "4px",
-                      }}
-                    >
-                      Creator
-                      <input
-                        className="infoInput"
-                        placeholder="Porter"
-                        value={portalArtist}
-                        onChange={(event) =>
-                          setPortalArtist(event.target.value)
-                        }
-                        style={{
-                          textAlign: "left",
-                          borderWidth: "0",
-                          outline: "none",
-                          fontFamily: "sans-serif",
-                          fontSize: ".875rem",
-                          fontWeight: "600",
-                          background: "transparent",
-                          color: "white",
-                        }}
-                      ></input>
-                    </label>
-                    <hr
-                      style={{
-                        boxSizing: "border-box",
-                        border: "0 solid rgb(229, 231, 235)",
-                        height: "0px",
-                        color: "inherit",
-                        borderTopWidth: "2px",
-                      }}
-                    ></hr>
-                    <label
-                      style={{
-                        fontFamily: '"Segoe UI"',
-                        fontWeight: "600",
-                        color: "#ffffffbf",
-                        display: "flex",
-                        flexDirection: "column",
-                        padding: "13px",
-                        gap: "4px",
                         marginBottom: "4px",
                       }}
                     >
-                      Link
+                      Link*
                       <input
                         className="infoInput"
                         placeholder="https://"
@@ -1685,7 +1645,7 @@ const UnityLoader = () => {
                 }}
               >
                 <ModalClose
-                  variant="outlined"
+                  variant="plain"
                   sx={{
                     top: "calc(-1/4 * var(--IconButton-size + 5))",
                     right: "calc(-1/4 * var(--IconButton-size + 5))",
@@ -1730,7 +1690,7 @@ const UnityLoader = () => {
                 }}
               >
                 <ModalClose
-                  variant="outlined"
+                  variant="plain"
                   sx={{
                     top: "calc(-1/4 * var(--IconButton-size + 5))",
                     right: "calc(-1/4 * var(--IconButton-size + 5))",

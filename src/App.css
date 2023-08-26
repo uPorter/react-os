@@ -1074,8 +1074,8 @@ div.spinner div.bar12 {
 }
 
 .MuiModal-backdrop{
-  background-color: #00000000!important;
-  backdrop-filter: blur(0px)!important;
+  background-color: #00000040!important;
+  backdrop-filter: blur(0)!important;
 }
 
 .portalCreateButton {
