@@ -449,9 +449,19 @@ const UnityLoader = () => {
     };
   }, [addEventListener, removeEventListener, doubleClickForFullVoid]);
 
-  const doubleClickForFullVoid = () => {
+  let lastExecutionTime = 0;
+const cooldownDuration = 3000; // 3 seconds in milliseconds
+
+const doubleClickForFullVoid = () => {
+  const currentTime = Date.now();
+  
+  if (currentTime - lastExecutionTime >= cooldownDuration) {
     toast('Double click for fullscreen');
-  };
+    lastExecutionTime = currentTime;
+  } else {
+    console.log("CoolDown");
+  }
+};
 
   useEffect(() => {
     addEventListener("fullScreenImage", fullScreenImageVoid);
