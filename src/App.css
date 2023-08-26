@@ -1099,3 +1099,6 @@ div.spinner div.bar12 {
   transform: scale(1.4);
 }
 
+.portalRedirect{
+  backdrop-filter: 20px!important;
+}

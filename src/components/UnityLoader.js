@@ -1418,10 +1418,10 @@ const UnityLoader = () => {
                   backgroundColor: "rgb(0 0 0 / 0%)",
                   borderColor: "rgb(0 0 0 / 0%)",
                   padding: "0",
-                  backDropFilter: "blur(20px)!important",
                 }}
               >
                 <div
+                className="portalRedirect"
                   style={{
                     background: "rgb(0 0 0 / 25%)",
                     width: "fit-content",
@@ -1435,7 +1435,6 @@ const UnityLoader = () => {
                     alignContent: "center",
                     justifyContent: "center",
                     alignItems: "center",
-                    backDropFilter: "blur(20px)!important",
                   }}
                 >
                   <Typography style={{ color: "white" }} level="h3">
@@ -1705,7 +1704,7 @@ const UnityLoader = () => {
               }}
             >
               <Sheet
-                variant="outlined"
+                variant="plain"
                 sx={{
                   borderRadius: "md",
                   p: 3,
