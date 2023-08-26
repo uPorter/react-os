@@ -1100,5 +1100,5 @@ div.spinner div.bar12 {
 }
 
 .portalRedirect{
-  backdrop-filter: 20px!important;
+  backdrop-filter: blur(20px)!important;
 }
