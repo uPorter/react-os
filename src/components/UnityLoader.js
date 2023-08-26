@@ -1814,7 +1814,7 @@ const UnityLoader = () => {
                     },
                   }}
                 >
-                  <LogoutIcon style={{ transform: "scaleX(-1)" }}></LogoutIcon>
+                  <IosShareOutlinedIcon ></IosShareOutlinedIcon>
                 </IconButton>
               </div>
             </Tooltip>
@@ -1859,7 +1859,9 @@ const UnityLoader = () => {
                 <IconButton
                   id="dockButtonID"
                   className="dockButtons"
-                  onClick={}
+                  onClick={() =>
+                    (window.location.href = `https://www.hahaverse.com`)
+                  }
                   variant="solid"
                   sx={{
                     color: "white",
@@ -1874,7 +1876,7 @@ const UnityLoader = () => {
                     },
                   }}
                 >
-                  <IosShareOutlinedIcon ></IosShareOutlinedIcon>
+                  <LogoutIcon style={{ transform: "scaleX(-1)" }}></LogoutIcon>
                 </IconButton>
               </div>
             </Tooltip>
