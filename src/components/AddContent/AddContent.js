@@ -17,7 +17,7 @@ import data2 from "./data2";
 import FileUpload from "../FileUpload";
 
 const AddContent = (props) => {
-  const { setUploadOpen } = props;
+  const { setUploadOpen, setPortalModalOn } = props;
   const [isClosed, setIsClosed] = React.useState(false);
   const [animationClass, setAnimationClass] = useState("");
   const [backClass, setBackClass] = useState("");
@@ -63,6 +63,12 @@ const AddContent = (props) => {
       handleClose();
     }, 450); // Animasyon süresine göre ayarlayın
   };
+
+  const createPortal = () => {
+    closeContent();
+    setPortalModalOn(true);
+  }
+  
 
   return (
     <div>
@@ -156,7 +162,7 @@ const AddContent = (props) => {
               </TabList>
             </div>
 
-            <button onClick={() => window.sendMessageToUnityBasic("portalUrlManager","SpawnObject")} className="createPortal" type="button">
+            <button onClick={createPortal} className="createPortal" type="button">
               <span class="inline-flex flex-shrink-0 mr-1">
                 <svg
                   width="27"

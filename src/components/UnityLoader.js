@@ -85,6 +85,10 @@ const UnityLoader = () => {
   const [isAvatarSelected, setIsAvatarSelected] = useState(false);
   const [imageModalOn, setImageModalOn] = useState(false);
   const [videoModalOn, setVideoModalOn] = useState(false);
+  const [portalModalOn, setPortalModalOn] = useState(false);
+  const [portalName, setPortalName] = useState('');
+  const [portalArtist, setPortalArtist] = useState('');
+  const [portalURL, setPortalURL] = useState('');
   const [isSaveLoaded, setIsSaveLoaded] = useState(false);
   const [isStarted, setIsStarted] = useState(false);
   const [inputText, setInputText] = useState("");
@@ -179,6 +183,8 @@ const UnityLoader = () => {
       return () => clearTimeout(timeout);
     }
   };
+
+
 
   function getCookie(name) {
     var nameEQ = name + "=";
@@ -363,6 +369,7 @@ const UnityLoader = () => {
       setIsAdmin(false);
     }
   }, []);
+
 
   const tokenGenerator = async () => {
     const data = await getUserToken();
@@ -777,6 +784,19 @@ const UnityLoader = () => {
       error: "Error",
     });
   };
+
+  const portalCreate = () => {
+    if (portalName === '' || portalArtist === '' || portalUrl === '') {
+      toast.error("Please fill all fields")
+    }else {
+      sendMessage("portalUrlManager", "SetURLName", portalName);
+      sendMessage("portalUrlManager", "setUrlArtist", portalArtist);
+      sendMessage("portalUrlManager", "setUrlLink", portalURL);
+      sendMessage("portalUrlManager", "SpawnObject");
+      setPortalModalOn(false);
+    }
+    
+  }
 
   return (
     <div className={"unity-instance"}>
@@ -1360,6 +1380,184 @@ const UnityLoader = () => {
             <Modal
               aria-labelledby="modal-title"
               aria-describedby="modal-desc"
+              open={portalModalOn}
+              onClose={() => setPortalModalOn(false)}
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Sheet
+                variant="outlined"
+                sx={{
+                  maxWidth: 500,
+                  borderRadius: "16px",
+                  p: 3,
+                  boxShadow: "lg",
+                  maxWidth: "fit-content",
+                  backgroundColor: "rgb(0 0 0 / 0%)",
+                  borderColor: "rgb(0 0 0 / 0%)",
+                  padding: "0",
+                }}
+              >
+                <ModalClose
+                  variant="outlined"
+                  sx={{
+                    top: "calc(-1/4 * var(--IconButton-size + 5))",
+                    right: "calc(-1/4 * var(--IconButton-size + 5))",
+                    boxShadow: "0 2px 12px 0 rgba(0 0 0 / 0.0)",
+                    borderRadius: "50%",
+                    bgcolor: "transparent",
+                    borderColor: "transparent",
+                    "--Icon-color": "#fff",
+                  }}
+                />
+                <div
+                  style={{
+                    background: "rgb(0 0 0 / 25%)",
+                    width: "365px",
+                    height: "360px",
+                    padding: "40px",
+                    borderRadius: "16px",
+                    display: "flex",
+                    flexDirection: "column",
+                    flexWrap: "nowrap",
+                    alignContent: "center",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <Typography style={{ color: "white" }} level="h3">
+                    New Portal
+                  </Typography>
+
+                  <div
+                    style={{
+                      marginTop: "25px",
+                      borderRadius: "1rem",
+                      borderWidth: "2px",
+                      borderColor: "#E5E7EB",
+                      borderStyle: "solid",
+                      width: "325px",
+                    }}
+                  >
+                    <label
+                      style={{
+                        fontFamily: '"Segoe UI"',
+                        fontWeight: "600",
+                        color: "#ffffffbf",
+                        display: "flex",
+                        flexDirection: "column",
+                        padding: "13px",
+                      }}
+                    >
+                      Title
+                      <input
+                        className="infoInput"
+                        placeholder="Cool Art Piece"
+                        value={portalName}
+                        onChange={(event) => setPortalName(event.target.value)}
+                        style={{
+                          textAlign: "left",
+                          borderWidth: "0",
+                          outline: "none",
+                          fontFamily: "sans-serif",
+                          fontSize: ".875rem",
+                          fontWeight: "600",
+                          background: "transparent",
+                          color: "white",
+                        }}
+                      ></input>
+                    </label>
+                    <hr
+                      style={{
+                        boxSizing: "border-box",
+                        border: "0 solid rgb(229, 231, 235)",
+                        height: "0px",
+                        color: "inherit",
+                        borderTopWidth: "2px",
+                      }}
+                    ></hr>
+                    <label
+                      style={{
+                        fontFamily: '"Segoe UI"',
+                        fontWeight: "600",
+                        color: "#ffffffbf",
+                        display: "flex",
+                        flexDirection: "column",
+                        padding: "13px",
+                      }}
+                    >
+                      Creator
+                      <input
+                        className="infoInput"
+                        placeholder="Porter"
+                        value={portalArtist}
+                        onChange={(event) => setPortalArtist(event.target.value)}
+                        style={{
+                          textAlign: "left",
+                          borderWidth: "0",
+                          outline: "none",
+                          fontFamily: "sans-serif",
+                          fontSize: ".875rem",
+                          fontWeight: "600",
+                          background: "transparent",
+                          color: "white",
+                        }}
+                      ></input>
+                    </label>
+                    <hr
+                      style={{
+                        boxSizing: "border-box",
+                        border: "0 solid rgb(229, 231, 235)",
+                        height: "0px",
+                        color: "inherit",
+                        borderTopWidth: "2px",
+                      }}
+                    ></hr>
+                    <label
+                      style={{
+                        fontFamily: '"Segoe UI"',
+                        fontWeight: "600",
+                        color: "#ffffffbf",
+                        display: "flex",
+                        flexDirection: "column",
+                        padding: "13px",
+                      }}
+                    >
+                      Link
+                      <input
+                        className="infoInput"
+                        placeholder="https://"
+                        value={portalURL}
+                        onChange={(event) => setPortalURL(event.target.value)}
+                        style={{
+                          textAlign: "left",
+                          borderWidth: "0",
+                          outline: "none",
+                          fontFamily: "sans-serif",
+                          fontSize: ".875rem",
+                          fontWeight: "600",
+                          background: "transparent",
+                          color: "white",
+                        }}
+                      ></input>
+                    </label>
+                  </div>
+                  <Button
+                    style={{ marginTop: "10px" }}
+                    className="portalCreateButton"
+                    onClick={portalCreate}
+                  >
+                    Create
+                  </Button>
+                </div>
+              </Sheet>
+            </Modal>
+            <Modal
+              aria-labelledby="modal-title"
+              aria-describedby="modal-desc"
               open={videoModalOn}
               onClose={() => setVideoModalOn(false)}
               sx={{
@@ -1741,7 +1939,7 @@ const UnityLoader = () => {
             ></AssistantHolder>
             {/* {uploadOpen && <FileUpload setUploadOpen={setUploadOpen} sendMessage={sendMessage} style={{position: 'absolute', zIndex: '15'}}></FileUpload> } */}
             {uploadOpen && (
-              <AddContent setUploadOpen={setUploadOpen}></AddContent>
+              <AddContent setPortalModalOn={setPortalModalOn} setUploadOpen={setUploadOpen}></AddContent>
             )}
             {/* <Button style={{ position: 'absolute', zIndex: '15' }} onClick={ReactshowRPM} variant="soft">Edit Avatar - PreTest</Button>*/}
           </div>
