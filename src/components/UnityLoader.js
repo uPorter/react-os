@@ -1,4 +1,4 @@
-import { ChangeEvent, useState, useEffect, useCallback } from "react";
+import { ChangeEvent, useState, useEffect, useCallback, useRef } from "react";
 import { Unity, useUnityContext } from "react-unity-webgl";
 import Dock from "./Dock";
 import Sheet from "@mui/joy/Sheet";
@@ -500,7 +500,7 @@ const UnityLoader = () => {
     setVideoModalOn(true);
   };
 
-  const fileInputRef = React.useRef(null);
+  const fileInputRef = useRef(null);
 
     const dosyaSec = () => {
         fileInputRef.current.click();
