@@ -22,7 +22,7 @@ export class EditDock extends Component {
       setIsDockEditorMode,
     } = this.props;
     const SetEnvironmentModel = () => {
-      setEnvironmentModalOn(false);
+      setEnvironmentModalOn(true);
     };
 
     const duplicateModel = () => {

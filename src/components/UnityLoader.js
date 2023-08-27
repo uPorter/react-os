@@ -508,6 +508,7 @@ const UnityLoader = () => {
 
     const dosyaDegistir = async (event) => {
       const dosya = event.target.files[0];
+      setEnvironmentModalOn(false);
       if (dosya) {
           const fileType = dosya.name.split('.').pop().toLowerCase();
 
@@ -813,6 +814,11 @@ const UnityLoader = () => {
       setIsFilmingMode(false);
     }
   };
+
+  const environmentModalFunction = () => {
+    window.sendMessageToUnityBasic(objectName, "SetEnvironmentModel");
+    setEnvironmentModalOn(false);
+  }
 
   const Item = styled(Sheet)(({ theme }) => ({
     ...theme.typography.body2,
@@ -1527,7 +1533,7 @@ const UnityLoader = () => {
                   <Button
                     style={{ background: "black", marginTop: "20px" }}
                     className="portalCreateButton"
-                    onClick={() => window.sendMessageToUnityBasic(objectName, "SetEnvironmentModel")}
+                    onClick={() => environmentModalFunction}
                   >
                     Set Environment model
                   </Button>
