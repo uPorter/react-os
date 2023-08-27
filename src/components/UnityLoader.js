@@ -1537,7 +1537,7 @@ const UnityLoader = () => {
                   <Button
                     style={{ background: "black", marginTop: "20px" }}
                     className="portalCreateButton"
-                    onClick={() => environmentModalFunction}
+                    onClick={environmentModalFunction}
                   >
                     Set Environment model
                   </Button>
