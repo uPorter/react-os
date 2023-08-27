@@ -818,6 +818,7 @@ const UnityLoader = () => {
   const environmentModalFunction = () => {
     window.sendMessageToUnityBasic(objectName, "SetEnvironmentModel");
     setEnvironmentModalOn(false);
+    toast("Selected model set as environment model");
   }
 
   const Item = styled(Sheet)(({ theme }) => ({
