@@ -514,7 +514,7 @@ const UnityLoader = () => {
 
           if (fileType === 'png' || fileType === 'jpg' || fileType === 'jpeg') {
               const formData = new FormData();
-              formData.append('dosya', dosya);
+              formData.append('file', dosya);
 
               try {
                   const response = await axios.post(
@@ -1509,6 +1509,7 @@ const UnityLoader = () => {
                     alignContent: "center",
                     justifyContent: "center",
                     alignItems: "center",
+                    backdropFilter: "blur(20px)"
                   }}
                 >
                   <input
@@ -1519,6 +1520,9 @@ const UnityLoader = () => {
             />
                   <Button
                   onClick={dosyaSec}
+                  style={{
+                    background:"transparent"
+                  }}
                     sx={{
                       background: "transparent",
                       borderColor: "white",
