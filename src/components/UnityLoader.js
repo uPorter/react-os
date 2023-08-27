@@ -2249,7 +2249,6 @@ const UnityLoader = () => {
           </div>
         )}
         <Toaster
-          closeButton
           className="toasterCSS"
           richColors
           position="bottom-center"
