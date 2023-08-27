@@ -36,6 +36,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import Modal from "@mui/joy/Modal";
 import ModalClose from "@mui/joy/ModalClose";
 import IosShareOutlinedIcon from "@mui/icons-material/IosShareOutlined";
+import axios from 'axios';
 
 const chatClient = StreamChat.getInstance("gte62wacdhnr");
 
@@ -499,7 +500,7 @@ const UnityLoader = () => {
     setVideoModalOn(true);
   };
 
-  const fileInputRef = useRef(null);
+  const fileInputRef = React.useRef(null);
 
     const dosyaSec = () => {
         fileInputRef.current.click();
