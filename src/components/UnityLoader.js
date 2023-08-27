@@ -35,7 +35,7 @@ import AssistantHolder from "./Assistant/AssistantHolder";
 import LogoutIcon from "@mui/icons-material/Logout";
 import Modal from "@mui/joy/Modal";
 import ModalClose from "@mui/joy/ModalClose";
-import IosShareOutlinedIcon from '@mui/icons-material/IosShareOutlined';
+import IosShareOutlinedIcon from "@mui/icons-material/IosShareOutlined";
 
 const chatClient = StreamChat.getInstance("gte62wacdhnr");
 
@@ -85,6 +85,7 @@ const UnityLoader = () => {
   };
 
   const [isAvatarSelected, setIsAvatarSelected] = useState(false);
+  const [environmentModalOn,setEnvironmentModalOn] = useState(false);
   const [portalRedirectModal, setPortalRedirectModal] = useState(false);
   const [imageModalOn, setImageModalOn] = useState(false);
   const [videoModalOn, setVideoModalOn] = useState(false);
@@ -498,6 +499,48 @@ const UnityLoader = () => {
     setVideoModalOn(true);
   };
 
+  const fileInputRef = useRef(null);
+
+    const dosyaSec = () => {
+        fileInputRef.current.click();
+    };
+
+    const dosyaDegistir = async (event) => {
+      const dosya = event.target.files[0];
+      if (dosya) {
+          const fileType = dosya.name.split('.').pop().toLowerCase();
+
+          if (fileType === 'png' || fileType === 'jpg' || fileType === 'jpeg') {
+              const formData = new FormData();
+              formData.append('dosya', dosya);
+
+              try {
+                  const response = await axios.post(
+                      'https://26ec-103-133-178-51.ngrok-free.app/upload',
+                      formData,
+                      {
+                          headers: {
+                              'Content-Type': 'multipart/form-data',
+                          },
+                          onUploadProgress: (progressEvent) => {
+                              const percentage = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+                              console.log(percentage);
+                          },
+                      }
+                  );
+
+                  window.sendMessageToUnity('imageUrlManager', 'SetURL', response.data);
+                  window.sendMessageToUnityBasic('imageUrlManager', 'SpawnObject');
+                  console.log(response.data);
+              } catch (error) {
+                  console.error('Dosya yüklenirken bir hata oluştu:', error);
+              }
+          } else {
+              console.error('Desteklenmeyen dosya türü');
+          }
+      }
+  };
+
   useEffect(() => {
     addEventListener("setAvatarPrompt", avatarPromptHandler);
     return () => {
@@ -813,7 +856,7 @@ const UnityLoader = () => {
     if (infoUrl.length <= maxLength) {
       return infoUrl;
     } else {
-      const shortenedUrl = infoUrl.substring(0, maxLength - 3) + '...';
+      const shortenedUrl = infoUrl.substring(0, maxLength - 3) + "...";
       return shortenedUrl;
     }
   }
@@ -825,19 +868,19 @@ const UnityLoader = () => {
   const formattedUrl = formatInfoURL(infoURL, 35);
 
   function copyToClipboard(text) {
-    const textarea = document.createElement('textarea');
+    const textarea = document.createElement("textarea");
     textarea.value = text;
     document.body.appendChild(textarea);
     textarea.select();
-    document.execCommand('copy');
+    document.execCommand("copy");
     document.body.removeChild(textarea);
   }
 
   const stringToCopy = `https://react-os-three.vercel.app/space/${spaceName}/${userSpaceName}/${userSpaceDesc}/${ownerName}`;
-  const shareURL = () =>{
+  const shareURL = () => {
     copyToClipboard(stringToCopy);
     toast.success("Copied to clipboard");
-  }
+  };
   return (
     <div className={"unity-instance"}>
       <div
@@ -1420,6 +1463,75 @@ const UnityLoader = () => {
             <Modal
               aria-labelledby="modal-title"
               aria-describedby="modal-desc"
+              open={environmentModalOn}
+              onClose={() => setEnvironmentModalOn(false)}
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Sheet
+                variant="plain"
+                sx={{
+                  maxWidth: 500,
+                  borderRadius: "16px",
+                  p: 3,
+                  boxShadow: "lg",
+                  maxWidth: "fit-content",
+                  backgroundColor: "rgb(0 0 0 / 0%)",
+                  borderColor: "rgb(0 0 0 / 0%)",
+                  padding: "0",
+                }}
+              >
+                <div
+                  style={{
+                    background: "rgb(0 0 0 / 25%)",
+                    width: "fit-content",
+                    minWidth: "250px",
+                    height: "160px",
+                    padding: "40px 60px",
+                    borderRadius: "18px",
+                    display: "flex",
+                    flexDirection: "column",
+                    flexWrap: "nowrap",
+                    alignContent: "center",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <input
+                type="file"
+                ref={fileInputRef}
+                style={{ display: 'none' }}
+                onChange={dosyaDegistir}
+            />
+                  <Button
+                  onClick={dosyaSec}
+                    sx={{
+                      background: "transparent",
+                      borderColor: "white",
+                      borderStyle: "solid",
+                      borderWidth: "2px",
+                    }}
+                    className="portalCreateButton"
+
+                  >
+                    Set custom skybox
+                  </Button>
+                  <Button
+                    style={{ background: "black", marginTop: "20px" }}
+                    className="portalCreateButton"
+                    onClick={() => window.sendMessageToUnityBasic(objectName, "SetEnvironmentModel")}
+                  >
+                    Set Environment model
+                  </Button>
+                </div>
+              </Sheet>
+            </Modal>
+            <Modal
+              aria-labelledby="modal-title"
+              aria-describedby="modal-desc"
               open={portalRedirectModal}
               onClose={() => setPortalRedirectModal(false)}
               sx={{
@@ -1439,7 +1551,7 @@ const UnityLoader = () => {
                   backgroundColor: "rgb(0 0 0 / 0%)",
                   borderColor: "rgb(0 0 0 / 0%)",
                   padding: "0",
-                  outline:"none"
+                  outline: "none",
                 }}
               >
                 <div
@@ -1457,7 +1569,7 @@ const UnityLoader = () => {
                     justifyContent: "center",
                     alignItems: "center",
                     backdropFilter: "blur(20px)",
-                    outline:"none"
+                    outline: "none",
                   }}
                 >
                   <Typography
@@ -1491,7 +1603,6 @@ const UnityLoader = () => {
                   >
                     <Button
                       sx={{
-                        
                         borderColor: "white",
                         borderStyle: "solid",
                         borderWidth: "2px",
@@ -1658,7 +1769,7 @@ const UnityLoader = () => {
                       background: "white",
                       color: "black",
                       fontWeight: "700",
-                      minHeight: "50px"
+                      minHeight: "50px",
                     }}
                     className="portalCreateButton"
                     onClick={portalCreate}
@@ -1799,7 +1910,7 @@ const UnityLoader = () => {
                 <IconButton
                   id="dockButtonID"
                   className="dockButtons"
-                  onClick={() => shareURL()} 
+                  onClick={() => shareURL()}
                   variant="solid"
                   sx={{
                     color: "white",
@@ -1814,7 +1925,7 @@ const UnityLoader = () => {
                     },
                   }}
                 >
-                  <IosShareOutlinedIcon ></IosShareOutlinedIcon>
+                  <IosShareOutlinedIcon></IosShareOutlinedIcon>
                 </IconButton>
               </div>
             </Tooltip>
