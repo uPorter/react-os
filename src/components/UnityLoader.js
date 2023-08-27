@@ -616,7 +616,11 @@ const UnityLoader = () => {
     if (isLoaded) {
       timer1 = setTimeout(() => {
         var sharedValue = getCookie("avatarURL");
-        sendMessage("AvatarNick", "AvatarURLSet", sharedValue);
+        if (shareddata === null || shareddata === undefined) {
+          sendMessage("AvatarNick", "AvatarURLSet", "");
+        }else{
+          sendMessage("AvatarNick", "AvatarURLSet", sharedValue);
+        }
         sendMessage("SaveManager", "LoadSystem", spaceName);
         console.log(sharedValue);
       }, 1000);
