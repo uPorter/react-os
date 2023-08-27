@@ -530,8 +530,12 @@ const UnityLoader = () => {
                       }
                   );
 
-                  window.sendMessageToUnity('imageUrlManager', 'SetURL', response.data);
-                  window.sendMessageToUnityBasic('imageUrlManager', 'SpawnObject');
+                  window.sendMessageToUnity(
+                    "skyboxUrlManager",
+                    "SetURL",
+                    response.data
+                  );
+                  window.sendMessageToUnity("skyboxUrlManager", "SpawnObject");
                   console.log(response.data);
               } catch (error) {
                   console.error('Dosya yüklenirken bir hata oluştu:', error);
