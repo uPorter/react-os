@@ -1493,7 +1493,7 @@ const UnityLoader = () => {
                   maxWidth: 500,
                   borderRadius: "16px",
                   p: 3,
-                  boxShadow: "lg",
+                  boxShadow: "0px 0px 20px 0px rgba(0, 0, 0, 0.171)",
                   maxWidth: "fit-content",
                   backgroundColor: "rgb(0 0 0 / 0%)",
                   borderColor: "rgb(0 0 0 / 0%)",
@@ -1545,6 +1545,13 @@ const UnityLoader = () => {
                     onClick={environmentModalFunction}
                   >
                     Set Environment model
+                  </Button>
+                  <Button
+                    style={{ background: "black", marginTop: "20px" }}
+                    className="portalCreateButton"
+                    onClick={() => window.sendMessageToUnity("skyboxUrlManager", "removeSkybox")}
+                  >
+                    Remove Skybox
                   </Button>
                 </div>
               </Sheet>
