@@ -1514,7 +1514,8 @@ const UnityLoader = () => {
                     alignContent: "center",
                     justifyContent: "center",
                     alignItems: "center",
-                    backdropFilter: "blur(20px)"
+                    backdropFilter: "blur(20px)",
+                    gap:"16px"
                   }}
                 >
                   <input
@@ -1609,7 +1610,7 @@ const UnityLoader = () => {
                     justifyContent: "center",
                     alignItems: "center",
                     backdropFilter: "blur(20px)",
-                    outline: "none",
+                    outline: "none"
                   }}
                 >
                   <Typography

@@ -1088,6 +1088,7 @@ div.spinner div.bar12 {
   padding: 0 32px !important;
   transition: 0.2s cubic-bezier(0.46, 0.03, 0.52, 0.96) 0s;
   width: fit-content;
+  background: transparent;
 }
 
 .portalCreateButton:hover {
