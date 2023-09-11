@@ -1529,8 +1529,10 @@ const UnityLoader = () => {
                   style={{
                     background:"transparent"
                   }}
+                  style={{
+                    background: "transparent",
+                  }}
                     sx={{
-                      background: "transparent",
                       borderColor: "white",
                       borderStyle: "solid",
                       borderWidth: "2px",
@@ -1542,26 +1544,30 @@ const UnityLoader = () => {
                     Set custom skybox
                   </Button>
                   <Button
-                    sx={{
+                    style={{
                       background: "transparent",
-                      borderColor: "white",
-                      borderStyle: "solid",
-                      borderWidth: "2px",
-                      minWidth: "225px",
                     }}
+                      sx={{
+                        borderColor: "white",
+                        borderStyle: "solid",
+                        borderWidth: "2px",
+                        minWidth: "225px",
+                      }}
                     className="portalCreateButton"
                     onClick={environmentModalFunction}
                   >
                     Set Environment model
                   </Button>
                   <Button
-                    sx={{
+                    style={{
                       background: "transparent",
-                      borderColor: "white",
-                      borderStyle: "solid",
-                      borderWidth: "2px",
-                      minWidth: "225px",
                     }}
+                      sx={{
+                        borderColor: "white",
+                        borderStyle: "solid",
+                        borderWidth: "2px",
+                        minWidth: "225px",
+                      }}
                     className="portalCreateButton"
                     onClick={() => window.sendMessageToUnity("skyboxUrlManager", "removeSkybox")}
                   >
