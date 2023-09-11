@@ -1505,7 +1505,7 @@ const UnityLoader = () => {
                     background: "rgb(0 0 0 / 25%)",
                     width: "fit-content",
                     minWidth: "250px",
-                    height: "160px",
+                    height: "230px",
                     padding: "40px 60px",
                     borderRadius: "18px",
                     display: "flex",
@@ -1533,6 +1533,7 @@ const UnityLoader = () => {
                       borderColor: "white",
                       borderStyle: "solid",
                       borderWidth: "2px",
+                      minWidth: "225px",
                     }}
                     className="portalCreateButton"
 
@@ -1540,14 +1541,26 @@ const UnityLoader = () => {
                     Set custom skybox
                   </Button>
                   <Button
-                    style={{ background: "black", marginTop: "20px" }}
+                    sx={{
+                      background: "transparent",
+                      borderColor: "white",
+                      borderStyle: "solid",
+                      borderWidth: "2px",
+                      minWidth: "225px",
+                    }}
                     className="portalCreateButton"
                     onClick={environmentModalFunction}
                   >
                     Set Environment model
                   </Button>
                   <Button
-                    style={{ background: "black", marginTop: "20px" }}
+                    sx={{
+                      background: "transparent",
+                      borderColor: "white",
+                      borderStyle: "solid",
+                      borderWidth: "2px",
+                      minWidth: "225px",
+                    }}
                     className="portalCreateButton"
                     onClick={() => window.sendMessageToUnity("skyboxUrlManager", "removeSkybox")}
                   >
