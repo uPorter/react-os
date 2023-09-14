@@ -812,7 +812,7 @@ const UnityLoader = () => {
     }, [addEventListener, removeEventListener, handlenpcEditOn]);
   
     const handlenpcEditOn = () => {
-      setIsEditorMode(true);
+      setIssDockEditorMode(true);
       setIsNpcEdit(true);
     };
   
@@ -825,7 +825,7 @@ const UnityLoader = () => {
     }, [addEventListener, removeEventListener, handlenpcEditOff]);
   
     const handlenpcEditOff = () => {
-      setIsEditorMode(false);
+      setIssDockEditorMode(false);
       setIsNpcEdit(false);
     };
     //
