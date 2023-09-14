@@ -41,18 +41,20 @@ function setCookie(name, value, days) {
 
   
   function setupRpmFrame() {
+    eval("removeAllMessageEventListeners();")
     rpmFrame.src = `https://metaos.readyplayer.me/avatar?frameApi`;
+    window.addEventListener("message", subscribe);
+    document.addEventListener("message", subscribe);
 
     // window ve document olay dinleyicilerini yalnızca eklerken mevcut olanları kontrol ederek ekleyin
-    if (!window._messageEventListenerAdded) {
-        window.addEventListener("message", subscribe);
-        window._messageEventListenerAdded = true;
-    }
-
-    if (!document._messageEventListenerAdded) {
-        document.addEventListener("message", subscribe);
-        document._messageEventListenerAdded = true;
-    }
+    //if (!window._messageEventListenerAdded) {
+    //    window.addEventListener("message", subscribe);
+    //    window._messageEventListenerAdded = true;
+    //}
+    //if (!document._messageEventListenerAdded) {
+    //    document.addEventListener("message", subscribe);
+    //    document._messageEventListenerAdded = true;
+    //}
 
     function subscribe(event) {
         const json = parse(event);
@@ -111,18 +113,19 @@ function setCookie(name, value, days) {
 }
 //okey
 function setupRpmFrameNpc() {
+    eval("removeAllMessageEventListeners();")
     rpmFrame.src = `https://metaos.readyplayer.me/avatar?frameApi`;
-
+    window.addEventListener("message", subscribe);
+    document.addEventListener("message", subscribe);
     // window ve document olay dinleyicilerini yalnızca eklerken mevcut olanları kontrol ederek ekleyin
-    if (!window._messageEventListenerAdded) {
-        window.addEventListener("message", subscribe);
-        window._messageEventListenerAdded = true;
-    }
-
-    if (!document._messageEventListenerAdded) {
-        document.addEventListener("message", subscribe);
-        document._messageEventListenerAdded = true;
-    }
+    //if (!window._messageEventListenerAdded) {
+    //    window.addEventListener("message", subscribe);
+    //    window._messageEventListenerAdded = true;
+    //}
+    //if (!document._messageEventListenerAdded) {
+    //    document.addEventListener("message", subscribe);
+    //    document._messageEventListenerAdded = true;
+    //}
 
     function subscribe(event) {
         const json = parse(event);
