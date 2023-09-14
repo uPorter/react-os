@@ -594,7 +594,20 @@ const UnityLoader = () => {
   };
 
   //ReadyPlayerMeLoader
+  function setCookie(name, value, days) {
+    var expires = "";
+    if (days) {
+      var date = new Date();
+      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+      expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+  }
+
+
   const setupRpmFrame = () => {
+    var rpmFrame = document.getElementById("rpm-frame");
+    var rpmContainer = document.getElementById("rpm-container");
     rpmFrame.src = `https://metaos.readyplayer.me/avatar?frameApi`;
 
     // window ve document olay dinleyicilerini yalnızca eklerken mevcut olanları kontrol ederek ekleyin
@@ -609,19 +622,7 @@ const UnityLoader = () => {
 
     function subscribe(event) {
       const json = parse(event);
-      if (
-        unityInstance == null ||
-        json?.source !== "readyplayerme" ||
-        json?.eventName == null
-      ) {
-        return;
-      }
       // Send web event names to Unity can be useful for debugging. Can safely be removed
-      unityInstance.SendMessage(
-        "DebugPanel",
-        "LogMessage",
-        `Event: ${json.eventName}`
-      );
 
       // Subscribe to all events sent from Ready Player Me once frame is ready
       if (json.eventName === "v1.frame.ready") {
@@ -661,13 +662,13 @@ const UnityLoader = () => {
 
   const rpmToUnity = () => {
     if(isNpcEdit){
-      unityInstance.SendMessage(
+      sendMessage(
         "WebAvatarLoaderNPC", // Target GameObject name
         "objectLoad", // Name of function to run
         json.data.url
       );
     }else{
-      unityInstance.SendMessage(
+      sendMessage(
         "WebAvatarLoader", // Target GameObject name
         "LoadWebviewAvatar", // Name of function to run
         json.data.url
