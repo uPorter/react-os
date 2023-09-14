@@ -640,7 +640,7 @@ const UnityLoader = () => {
       if (json.eventName === "v1.avatar.exported") {
         rpmContainer.style.display = "none";
         // Send message to a Gameobject in the current scene
-        rpmToUnity();
+        rpmToUnity(json);
       }
 
       // Get user id
@@ -660,7 +660,7 @@ const UnityLoader = () => {
     }
   }
 
-  const rpmToUnity = () => {
+  const rpmToUnity = (json) => {
     if(isNpcEdit){
       sendMessage(
         "WebAvatarLoaderNPC", // Target GameObject name
