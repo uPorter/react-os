@@ -24,12 +24,15 @@ function setCookie(name, value, days) {
   
   // Çerezi "sharedData" adıyla ve değeri "yourSharedValue" olarak ayarla
   
-  
+function removeMessageEventListeners() {
+    window.removeEventListener("message", messageEventListener);
+    document.removeEventListener("message", messageEventListener);
+}
+
+removeMessageEventListeners();
 
 function setupRpmFrame(subdomain) {
-    
-    window.removeEventListener("message", subscribe);
-    document.removeEventListener("message", subscribe);
+
     rpmFrame.src = `https://metaos.readyplayer.me/avatar?frameApi`;
 
     window.addEventListener("message", subscribe);
