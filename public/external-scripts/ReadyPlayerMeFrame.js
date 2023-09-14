@@ -1,5 +1,4 @@
 var ui = document.getElementById('ui').className = 'newclass';
-let isCharacter = "true"; // Başlangıçta true olarak başlatın
 rpmHideButton.onclick = function () {
     if (document.fullscreenElement) {
         canvasWrapper.requestFullscreen();
@@ -9,9 +8,12 @@ rpmHideButton.onclick = function () {
 
 };
 
+
 function toggleNpcAvatar(value) {
     isCharacter = value; // Değişkenin değerini ters çevir (true ise false, false ise true yap)
 }
+
+let isCharacter = "true"; // Başlangıçta true olarak başlatın
 
 toggleNpcAvatar("true");
 setupRpmFrame();
