@@ -25,10 +25,20 @@ function setCookie(name, value, days) {
   // Çerezi "sharedData" adıyla ve değeri "yourSharedValue" olarak ayarla
   
   function removeAllMessageEventListeners() {
-    window.removeEventListener("message", listener.listener);
-    window._messageEventListenerAdded = false;
-    document.removeEventListener("message", listener.listener);
-    document._messageEventListenerAdded = false;
+    const messageListeners = getEventListeners(window).message;
+    const documentMessageListeners = getEventListeners(document).message;
+    if (messageListeners) {
+        messageListeners.forEach(listener => {
+            window.removeEventListener("message", listener.listener);
+            console.log("window done");
+        });
+    }
+    if (documentMessageListeners) {
+        documentMessageListeners.forEach(listener => {
+            document.removeEventListener("message", listener.listener);
+            console.log("document done");
+        });
+    }
   }
 
   
