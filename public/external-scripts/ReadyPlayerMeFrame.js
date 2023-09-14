@@ -112,7 +112,7 @@ function setCookie(name, value, days) {
         }
     }
 }
-
+//okey
 function setupRpmFrameNpc() {
     removeAllMessageEventListeners();
     rpmFrame.src = `https://metaos.readyplayer.me/avatar?frameApi`;
