@@ -97,9 +97,6 @@ function setCookie(name, value, days) {
 }
 
 function setupRpmFrameNpc() {
-    removeAllEventListeners(window);
-    // document için tüm olay dinleyicilerini kaldır ve _messageEventListenerAdded'ı sıfırla
-    removeAllEventListeners(document);
     rpmFrame.src = `https://metaos.readyplayer.me/avatar?frameApi`;
 
     // window ve document olay dinleyicilerini yalnızca eklerken mevcut olanları kontrol ederek ekleyin
