@@ -605,7 +605,11 @@ const UnityLoader = () => {
   }
 
 
-  const setupRpmFrame = () => {
+  const setupRpmFrameNpc = () => {
+    window.removeEventListener("message", subscribe);
+    window._messageEventListenerAdded = false;
+    document.removeEventListener("message", subscribe);
+    document._messageEventListenerAdded = false;
     var rpmFrame = document.getElementById("rpm-frame");
     var rpmContainer = document.getElementById("rpm-container");
     rpmFrame.src = `https://metaos.readyplayer.me/avatar?frameApi`;
@@ -639,8 +643,11 @@ const UnityLoader = () => {
       // Get avatar GLB URL
       if (json.eventName === "v1.avatar.exported") {
         rpmContainer.style.display = "none";
-        // Send message to a Gameobject in the current scene
-        rpmToUnity(json);
+        sendMessage(
+          "WebAvatarLoaderNPC", // Target GameObject name
+          "objectLoad", // Name of function to run
+          json.data.url
+        );
         window.removeEventListener("message", subscribe);
         window._messageEventListenerAdded = false;
         document.removeEventListener("message", subscribe);
@@ -664,23 +671,77 @@ const UnityLoader = () => {
     }
   }
 
-  const rpmToUnity = (json) => {
-    if(isDockEditorMode){
-      sendMessage(
-        "WebAvatarLoaderNPC", // Target GameObject name
-        "objectLoad", // Name of function to run
-        json.data.url
-      );
-    }else{
-      sendMessage(
-        "WebAvatarLoader", // Target GameObject name
-        "LoadWebviewAvatar", // Name of function to run
-        json.data.url
-      );
-      setCookie("avatarURL", json.data.url, 30); // 30 gün boyunca geçerli
-      console.log(`Avatar URL: ${json.data.url}`);
+  const setupRpmFrame = () => {
+    var rpmFrame = document.getElementById("rpm-frame");
+    var rpmContainer = document.getElementById("rpm-container");
+    rpmFrame.src = `https://metaos.readyplayer.me/avatar?frameApi`;
+
+    window.removeEventListener("message", subscribe);
+    window._messageEventListenerAdded = false;
+    document.removeEventListener("message", subscribe);
+    document._messageEventListenerAdded = false;
+
+    // window ve document olay dinleyicilerini yalnızca eklerken mevcut olanları kontrol ederek ekleyin
+    if (!window._messageEventListenerAdded) {
+      window.addEventListener("message", subscribe);
+      window._messageEventListenerAdded = true;
+    }
+    if (!document._messageEventListenerAdded) {
+      document.addEventListener("message", subscribe);
+      document._messageEventListenerAdded = true;
+    }
+
+    function subscribe(event) {
+      const json = parse(event);
+      // Send web event names to Unity can be useful for debugging. Can safely be removed
+
+      // Subscribe to all events sent from Ready Player Me once frame is ready
+      if (json.eventName === "v1.frame.ready") {
+        rpmFrame.contentWindow.postMessage(
+          JSON.stringify({
+            target: "readyplayerme",
+            type: "subscribe",
+            eventName: "v1.**",
+          }),
+          "*"
+        );
+      }
+
+      // Get avatar GLB URL
+      if (json.eventName === "v1.avatar.exported") {
+        rpmContainer.style.display = "none";
+        sendMessage(
+          "WebAvatarLoader", // Target GameObject name
+          "LoadWebviewAvatar", // Name of function to run
+          json.data.url
+        );
+        setCookie("avatarURL", json.data.url, 30); // 30 gün boyunca geçerli
+        console.log(`Avatar URL: ${json.data.url}`);
+
+        window.removeEventListener("message", subscribe);
+        window._messageEventListenerAdded = false;
+        document.removeEventListener("message", subscribe);
+        document._messageEventListenerAdded = false;
+      }
+
+      // Get user id
+      if (json.eventName === "v1.user.set") {
+        console.log(
+          `User with id ${json.data.id} set: ${JSON.stringify(json)}`
+        );
+      }
+    }
+
+    function parse(event) {
+      try {
+        return JSON.parse(event.data);
+      } catch (error) {
+        return null;
+      }
     }
   }
+
+
   //
 
 
@@ -700,7 +761,6 @@ const UnityLoader = () => {
         sendMessage("adminManager", "setAdminFalse");
       }
       //sendMessage("AvatarNick", "enableInput");
-      setupRpmFrame();
     }
   };
 
@@ -2305,7 +2365,7 @@ const UnityLoader = () => {
               <Grid xs={6}>
                 {isDockEditorMode && (
                   <EditDock
-                    setupRpmFrame={setupRpmFrame}
+                    setupRpmFrameNpc={setupRpmFrameNpc}
                     setEnvironmentModalOn={setEnvironmentModalOn}
                     portalModeOn={portalModeOn}
                     assistantModeOn={assistantModeOn}
@@ -2342,6 +2402,7 @@ const UnityLoader = () => {
               </Grid>
               <Grid style={{ opacity: 1 }} xs>
                 <ChatComponent
+                  setupRpmFrame={setupRpmFrame}
                   spaceName={spaceName}
                   userName={userName}
                   showChat={showChat}

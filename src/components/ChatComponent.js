@@ -27,7 +27,7 @@ import Fade from '@mui/material/Fade';
 const chatClient = StreamChat.getInstance('gte62wacdhnr');
 
 const ChatComponent = (props) => {
-  const { spaceName, userName, userID, userToken, userImage, sendMessage, showChat, isStarted } = props;
+  const { spaceName, userName, userID, userToken, userImage, sendMessage, showChat, isStarted,setupRpmFrame } = props;
   const [isActive, setIsActive] = useState(true);
   const [toggleChatText, setToggleChatText] = useState('Hide Chat')
   const [checked, setChecked] = useState(false);
@@ -85,6 +85,7 @@ const ChatComponent = (props) => {
   }
 
   const ReactshowRPM = () => {
+    setupRpmFrame();
     window.showRpm();
     //sendMessage("AvatarEdit", "EditorON");
     handleTooltipClose();

@@ -22,7 +22,7 @@ export class EditDock extends Component {
       handleInfoMode,
       setIsDockEditorMode,
       isNpcEdit,
-      setupRpmFrame
+      setupRpmFrameNpc
     } = this.props;
     const SetEnvironmentModel = () => {
       setEnvironmentModalOn(true);
@@ -44,6 +44,7 @@ export class EditDock extends Component {
 
 
     const ReactshowRPM = () => {
+      setupRpmFrameNpc();
       window.showRpm();
     }
 
