@@ -111,3 +111,17 @@ function hideRpm() {
     document.removeEventListener("message", subscribe);
     document._messageEventListenerAdded = false;
 }
+
+function listEventListeners(element, eventType) {
+    const allListeners = getEventListeners(element);
+    const eventListeners = allListeners[eventType];
+    
+    if (eventListeners) {
+        console.log(`Event Listeners for ${eventType}:`);
+        eventListeners.forEach(listener => {
+            console.log(listener.listener);
+        });
+    } else {
+        console.log(`No event listeners found for ${eventType}`);
+    }
+}
