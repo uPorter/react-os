@@ -24,25 +24,22 @@ function setCookie(name, value, days) {
   
   // Çerezi "sharedData" adıyla ve değeri "yourSharedValue" olarak ayarla
   
-  function removeAllMessageEventListeners() {
-    const messageListeners = getEventListeners(window).message;
-    const documentMessageListeners = getEventListeners(document).message;
+  function removeMessageListeners() {
+    // Tüm message event listener'larını alın
+    const messageListeners = window.getEventListeners(window).message;
+  
+    // Her bir listener'ı kaldırın
     if (messageListeners) {
-        messageListeners.forEach(listener => {
-            window.removeEventListener("message", listener.listener);
-            console.log("window done")
-        });
-    }
-    if (documentMessageListeners) {
-        documentMessageListeners.forEach(listener => {
-            document.removeEventListener("message", listener.listener);
-            console.log("document done")
-        });
+      messageListeners.forEach((listener) => {
+        window.removeEventListener('message', listener.listener);
+        window._messageEventListenerAdded = false;
+      });
     }
   }
-
+  
   
   function setupRpmFrame() {
+    removeMessageListeners();
     rpmFrame.src = `https://metaos.readyplayer.me/avatar?frameApi`;
 
 
@@ -87,7 +84,6 @@ function setCookie(name, value, days) {
         // Get avatar GLB URL
         if (json.eventName === "v1.avatar.exported") {
             rpmContainer.style.display = "none";
-            removeAllMessageEventListeners();
             // Send message to a Gameobject in the current scene
             unityInstance.SendMessage(
                 "WebAvatarLoader", // Target GameObject name
@@ -156,7 +152,6 @@ function setupRpmFrameNpc() {
         // Get avatar GLB URL
         if (json.eventName === "v1.avatar.exported") {
             rpmContainer.style.display = "none";
-            removeAllMessageEventListeners();
             // Send message to a Gameobject in the current scene
             unityInstance.SendMessage(
                 "WebAvatarLoaderNPC", // Target GameObject name
