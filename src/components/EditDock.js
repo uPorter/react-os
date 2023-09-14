@@ -42,7 +42,7 @@ export class EditDock extends Component {
     };
 
     const changeNpcSkin = () => {
-        window.setupRpmFrame("false");
+        window.setupRpmFrame();
         window.showRpm();
     }
 
@@ -185,7 +185,7 @@ export class EditDock extends Component {
                   id="dockButtonID"
                   className="dockButtonsEditor"
                   variant="solid"
-                  onClick={changeNpcSkin}
+                  onClick={() => changeNpcSkin}
                   sx={{
                     "--IconButton-size": "55px",
                     "--IconButton-radius": "50px",

@@ -85,7 +85,7 @@ const ChatComponent = (props) => {
   }
 
   const ReactshowRPM = () => {
-    window.setupRpmFrame("true");
+    window.setupRpmFrame();
     window.showRpm();
     //sendMessage("AvatarEdit", "EditorON");
     handleTooltipClose();
