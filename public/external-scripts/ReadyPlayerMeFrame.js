@@ -1,4 +1,5 @@
 var ui = document.getElementById('ui').className = 'newclass';
+
 rpmHideButton.onclick = function () {
     if (document.fullscreenElement) {
         canvasWrapper.requestFullscreen();
@@ -8,8 +9,7 @@ rpmHideButton.onclick = function () {
 
 };
 
-
-//setupRpmFrame("");
+setupRpmFrame();
 
 // Çerezi oluştur
 function setCookie(name, value, days) {
@@ -24,15 +24,9 @@ function setCookie(name, value, days) {
   
   // Çerezi "sharedData" adıyla ve değeri "yourSharedValue" olarak ayarla
   
-function removeMessageEventListeners() {
-    window.removeEventListener("message", messageEventListener);
-    document.removeEventListener("message", messageEventListener);
-}
-
-removeMessageEventListeners();
+  
 
 function setupRpmFrame(subdomain) {
-
     rpmFrame.src = `https://metaos.readyplayer.me/avatar?frameApi`;
 
     window.addEventListener("message", subscribe);
@@ -70,18 +64,13 @@ function setupRpmFrame(subdomain) {
         if (json.eventName === "v1.avatar.exported") {
             rpmContainer.style.display = "none";
             // Send message to a Gameobject in the current scene
-            if(subdomain === "true"){
-                unityInstance.SendMessage(
-                    "WebAvatarLoader", // Target GameObject name
-                    "LoadWebviewAvatar", // Name of function to run
-                    json.data.url
-                );
-                setCookie("avatarURL", json.data.url, 30); // 30 gün boyunca geçerli
-                console.log(`Avatar URL: ${json.data.url}`);
-            }else if(subdomain === "false"){
-                
-            }
-            
+            unityInstance.SendMessage(
+                "WebAvatarLoader", // Target GameObject name
+                "LoadWebviewAvatar", // Name of function to run
+                json.data.url
+            );
+            setCookie("avatarURL", json.data.url, 30); // 30 gün boyunca geçerli
+            console.log(`Avatar URL: ${json.data.url}`);
         }
 
         // Get user id
@@ -107,6 +96,4 @@ function showRpm() {
 
 function hideRpm() {
     rpmContainer.style.display = "none";
-    // Tüm event listener'ları temizle
-    
 }
