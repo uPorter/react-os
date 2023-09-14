@@ -24,27 +24,9 @@ function setCookie(name, value, days) {
   
   // Çerezi "sharedData" adıyla ve değeri "yourSharedValue" olarak ayarla
   
-  function removeAllEventListeners(element) {
-    const eventTypes = Object.keys(element._events || {});
-
-    eventTypes.forEach(eventType => {
-        const eventListeners = element._events[eventType];
-        if (eventListeners) {
-            eventListeners.forEach(listener => {
-                element.removeEventListener(eventType, listener.listener);
-            });
-        }
-    });
-
-    // Belirli bir element için _messageEventListenerAdded gibi bool değerlerini sıfırla
-    element._messageEventListenerAdded = false;
-   }
   
 
   function setupRpmFrame() {
-    removeAllEventListeners(window);
-    // document için tüm olay dinleyicilerini kaldır ve _messageEventListenerAdded'ı sıfırla
-    removeAllEventListeners(document);
     rpmFrame.src = `https://metaos.readyplayer.me/avatar?frameApi`;
 
     // window ve document olay dinleyicilerini yalnızca eklerken mevcut olanları kontrol ederek ekleyin
