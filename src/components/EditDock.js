@@ -41,11 +41,15 @@ export class EditDock extends Component {
       setIsLocked(!isLocked);
     };
 
-    const changeNpcSkin = () => {
-        eval("removeAllMessageEventListeners();")
-        window.setupRpmFrameNpc();
-        window.showRpm();
+    const changeNpcSkin = async () => {
+      eval("removeAllMessageEventListeners();");
+  
+      await new Promise(resolve => setTimeout(resolve, 1000)); // 1 saniye bekleyin
+  
+      window.setupRpmFrameNpc();
+      window.showRpm();
     }
+  
 
     const buttonTextLock = isLocked ? "Unlock" : "Lock";
 
