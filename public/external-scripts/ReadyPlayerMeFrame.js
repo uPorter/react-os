@@ -1,12 +1,11 @@
 var ui = document.getElementById('ui').className = 'newclass';
-let isCharacter = true;
+let isCharacter = true; // isCharacter'ı başlatın ve varsayılan olarak true olarak ayarlayın
 rpmHideButton.onclick = function () {
     if (document.fullscreenElement) {
         canvasWrapper.requestFullscreen();
     }
     rpmContainer.style.display = "none";
     ui.style.display = "none";
-
 };
 
 setupRpmFrame();
@@ -26,7 +25,7 @@ function setCookie(name, value, days) {
   
   
 
-function setupRpmFrame(subdomain) {
+function setupRpmFrame() {
     rpmFrame.src = `https://metaos.readyplayer.me/avatar?frameApi`;
 
     window.addEventListener("message", subscribe);
