@@ -641,6 +641,10 @@ const UnityLoader = () => {
         rpmContainer.style.display = "none";
         // Send message to a Gameobject in the current scene
         rpmToUnity(json);
+        window.removeEventListener("message", subscribe);
+        window._messageEventListenerAdded = false;
+        document.removeEventListener("message", subscribe);
+        document._messageEventListenerAdded = false;
       }
 
       // Get user id
