@@ -1,6 +1,6 @@
 var ui = document.getElementById('ui').className = 'newclass';
 let isCharacter;
-isCharacter = true;
+isCharacter = "true";
 rpmHideButton.onclick = function () {
     if (document.fullscreenElement) {
         canvasWrapper.requestFullscreen();
@@ -11,11 +11,7 @@ rpmHideButton.onclick = function () {
 };
 
 function toggleNpcAvatar(value) {
-    if (typeof value === 'boolean') {
-        isCharacter = value;
-    } else {
-        isCharacter = !isCharacter; // Değişkenin değerini ters çevir (true ise false, false ise true yap)
-    }
+    isCharacter = value; // Değişkenin değerini ters çevir (true ise false, false ise true yap)
 }
 
 toggleNpcAvatar(true);
@@ -74,7 +70,7 @@ function setupRpmFrame(subdomain) {
         if (json.eventName === "v1.avatar.exported") {
             rpmContainer.style.display = "none";
             // Send message to a Gameobject in the current scene
-            if(isCharacter){
+            if(isCharacter === "true"){
                 unityInstance.SendMessage(
                     "WebAvatarLoader", // Target GameObject name
                     "LoadWebviewAvatar", // Name of function to run
