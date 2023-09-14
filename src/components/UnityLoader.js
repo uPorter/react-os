@@ -607,7 +607,7 @@ const UnityLoader = () => {
         sendMessage("adminManager", "setAdminFalse");
       }
       //sendMessage("AvatarNick", "enableInput");
-      window.setupRpmFrame();
+      //window.setupRpmFrame();
     }
   };
 

@@ -78,12 +78,8 @@ function setupRpmFrame(subdomain) {
                 );
                 setCookie("avatarURL", json.data.url, 30); // 30 gün boyunca geçerli
                 console.log(`Avatar URL: ${json.data.url}`);
-            }else{
-                unityInstance.SendMessage(
-                    "WebAvatarLoaderNPC", // Target GameObject name
-                    "objectLoad", // Name of function to run
-                    json.data.url
-                );
+            }else if(subdomain === "false"){
+                
             }
             
         }
