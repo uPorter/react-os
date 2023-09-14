@@ -546,7 +546,7 @@ function Dock({
                   fontStyle: "bold",
                   fontWeight: "Bold",
                   color: "white",
-                  borderRadius: "15px",
+                  borderRadius: "8px",
                   transition: "0.5s all cubic-bezier(0, 0.2, 0.2, 1)",
                   width: "100%",
                   padding: "10px",
@@ -569,7 +569,7 @@ function Dock({
                   transition: "0.5s all cubic-bezier(0, 0.2, 0.2, 1)",
                   width: "100%",
                   color: "white",
-                  borderRadius: "15px",
+                  borderRadius: "8px",
                   padding: "10px",
                   backgroundColor: "#00000000",
                   "&:hover": {
@@ -589,7 +589,7 @@ function Dock({
                   color: "white",
                   transition: "0.5s all cubic-bezier(0, 0.2, 0.2, 1)",
                   width: "100%",
-                  borderRadius: "15px",
+                  borderRadius: "8px",
                   padding: "10px",
                   backgroundColor: "#00000000",
                   "&:hover": {

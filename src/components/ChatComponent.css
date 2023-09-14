@@ -205,7 +205,7 @@
   margin-bottom: 60px;
   padding-bottom: 16px;
   margin-top: 345px;
-  pointer-events: all;
+  pointer-events: none;
 }
 
 @keyframes videoIcon {
