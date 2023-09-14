@@ -27,19 +27,26 @@ function setCookie(name, value, days) {
   function removeMessageListeners() {
     // Tüm message event listener'larını alın
     const messageListeners = window.getEventListeners(window).message;
-  
+    const messageListenersDoc = document.getEventListeners(document).message;
     // Her bir listener'ı kaldırın
     if (messageListeners) {
       messageListeners.forEach((listener) => {
         window.removeEventListener('message', listener.listener);
         window._messageEventListenerAdded = false;
+        console.log("window clean done")
       });
     }
+    if (messageListenersDoc) {
+        messageListenersDoc.forEach((listener) => {
+          document.removeEventListener('message', listener.listener);
+          document._messageEventListenerAdded = false;
+          console.log("document clean done")
+        });
+      }
   }
   
   
   function setupRpmFrame() {
-    removeMessageListeners();
     rpmFrame.src = `https://metaos.readyplayer.me/avatar?frameApi`;
 
 
@@ -83,7 +90,7 @@ function setCookie(name, value, days) {
 
         // Get avatar GLB URL
         if (json.eventName === "v1.avatar.exported") {
-            rpmContainer.style.display = "none";
+            hideRpm();
             // Send message to a Gameobject in the current scene
             unityInstance.SendMessage(
                 "WebAvatarLoader", // Target GameObject name
@@ -113,15 +120,15 @@ function setupRpmFrameNpc() {
     rpmFrame.src = `https://metaos.readyplayer.me/avatar?frameApi`;
     // window ve document olay dinleyicilerini yalnızca eklerken mevcut olanları kontrol ederek ekleyin
     if (!window._messageEventListenerAdded) {
-        window.addEventListener("message", subscribe);
+        window.addEventListener("message", subscribeNpc);
         window._messageEventListenerAdded = true;
     }
     if (!document._messageEventListenerAdded) {
-        document.addEventListener("message", subscribe);
+        document.addEventListener("message", subscribeNpc);
         document._messageEventListenerAdded = true;
     }
 
-    function subscribe(event) {
+    function subscribeNpc(event) {
         const json = parse(event);
         if (
             unityInstance == null ||
@@ -151,7 +158,7 @@ function setupRpmFrameNpc() {
 
         // Get avatar GLB URL
         if (json.eventName === "v1.avatar.exported") {
-            rpmContainer.style.display = "none";
+            hideRpm();
             // Send message to a Gameobject in the current scene
             unityInstance.SendMessage(
                 "WebAvatarLoaderNPC", // Target GameObject name
@@ -179,11 +186,18 @@ function setupRpmFrameNpc() {
 
 
 function showRpm() {
+    setupRpmFrame();
+    rpmContainer.style.display = "flex";
+}
+
+function showRpmNpc() {
+    setupRpmFrameNpc();
     rpmContainer.style.display = "flex";
 }
 
 function hideRpm() {
     rpmContainer.style.display = "none";
+    removeMessageListeners();
 }
 
 function listEventListeners(element, eventType) {

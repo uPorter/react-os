@@ -42,8 +42,7 @@ export class EditDock extends Component {
     };
 
     const changeNpcSkin = () => {
-        window.setupRpmFrameNpc();
-        window.showRpm();
+        window.showRpmNpc();
     }
 
     const buttonTextLock = isLocked ? "Unlock" : "Lock";
