@@ -661,7 +661,7 @@ const UnityLoader = () => {
   }
 
   const rpmToUnity = (json) => {
-    if(isNpcEdit){
+    if(isDockEditorMode){
       sendMessage(
         "WebAvatarLoaderNPC", // Target GameObject name
         "objectLoad", // Name of function to run
