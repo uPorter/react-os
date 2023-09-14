@@ -42,6 +42,7 @@ export class EditDock extends Component {
     };
 
     const changeNpcSkin = () => {
+        eval("removeAllMessageEventListeners();")
         window.setupRpmFrameNpc();
         window.showRpm();
     }
