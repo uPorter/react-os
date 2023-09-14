@@ -105,11 +105,6 @@ function showRpm() {
 
 function hideRpm() {
     rpmContainer.style.display = "none";
-
-    window.removeEventListener("message", subscribe);
-    window._messageEventListenerAdded = false;
-    document.removeEventListener("message", subscribe);
-    document._messageEventListenerAdded = false;
 }
 
 function listEventListeners(element, eventType) {
