@@ -84,7 +84,7 @@ export class EditDock extends Component {
                     },
                   }}
                 >
-                  Change agent location
+                  Start Following
                 </Button>
               }
             >
@@ -168,7 +168,7 @@ export class EditDock extends Component {
                     },
                   }}
                 >
-                  Change agent skin
+                  Change skin
                 </Button>
               }
             >
@@ -337,7 +337,7 @@ export class EditDock extends Component {
             </Tooltip>
           )}
 
-          <Tooltip
+          {!isNpcEdit && <Tooltip
             className="dockTooltip"
             sx={{ borderRadius: "20px", backgroundColor: "#ffffff" }}
             interactive
@@ -391,7 +391,7 @@ export class EditDock extends Component {
                 />
               </IconButton>
             </div>
-          </Tooltip>
+          </Tooltip>}
 
           {!isLocked && !isNpcEdit && (
             <Tooltip
