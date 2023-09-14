@@ -24,9 +24,26 @@ function setCookie(name, value, days) {
   
   // Çerezi "sharedData" adıyla ve değeri "yourSharedValue" olarak ayarla
   
-  
+  function removeAllMessageEventListeners() {
+    const messageListeners = getEventListeners(window).message;
+    const documentMessageListeners = getEventListeners(document).message;
+    if (messageListeners) {
+        messageListeners.forEach(listener => {
+            window.removeEventListener("message", listener.listener);
+            window._messageEventListenerAdded = false;
+        });
+    }
+    if (documentMessageListeners) {
+        documentMessageListeners.forEach(listener => {
+            document.removeEventListener("message", listener.listener);
+            window._messageEventListenerAdded = false;
+        });
+    }
+  }
 
+  
   function setupRpmFrame() {
+    removeAllMessageEventListeners();
     rpmFrame.src = `https://metaos.readyplayer.me/avatar?frameApi`;
 
     // window ve document olay dinleyicilerini yalnızca eklerken mevcut olanları kontrol ederek ekleyin
@@ -75,6 +92,77 @@ function setCookie(name, value, days) {
             unityInstance.SendMessage(
                 "WebAvatarLoader", // Target GameObject name
                 "LoadWebviewAvatar", // Name of function to run
+                json.data.url
+            );
+            setCookie("avatarURL", json.data.url, 30); // 30 gün boyunca geçerli
+            console.log(`Avatar URL: ${json.data.url}`);
+        }
+
+        // Get user id
+        if (json.eventName === "v1.user.set") {
+            console.log(`User with id ${json.data.id} set: ${JSON.stringify(json)}`);
+        }
+    }
+
+    function parse(event) {
+        try {
+            return JSON.parse(event.data);
+        } catch (error) {
+            return null;
+        }
+    }
+}
+
+function setupRpmFrameNpc() {
+    removeAllMessageEventListeners();
+    rpmFrame.src = `https://metaos.readyplayer.me/avatar?frameApi`;
+
+    // window ve document olay dinleyicilerini yalnızca eklerken mevcut olanları kontrol ederek ekleyin
+    if (!window._messageEventListenerAdded) {
+        window.addEventListener("message", subscribe);
+        window._messageEventListenerAdded = true;
+    }
+
+    if (!document._messageEventListenerAdded) {
+        document.addEventListener("message", subscribe);
+        document._messageEventListenerAdded = true;
+    }
+
+    function subscribe(event) {
+        const json = parse(event);
+        if (
+            unityInstance == null ||
+            json?.source !== "readyplayerme" ||
+            json?.eventName == null
+        ) {
+            return;
+        }
+        // Send web event names to Unity can be useful for debugging. Can safely be removed
+        unityInstance.SendMessage(
+            "DebugPanel",
+            "LogMessage",
+            `Event: ${json.eventName}`
+        );
+
+        // Subscribe to all events sent from Ready Player Me once frame is ready
+        if (json.eventName === "v1.frame.ready") {
+            rpmFrame.contentWindow.postMessage(
+                JSON.stringify({
+                    target: "readyplayerme",
+                    type: "subscribe",
+                    eventName: "v1.**",
+                }),
+                "*"
+            );
+        }
+
+        // Get avatar GLB URL
+        if (json.eventName === "v1.avatar.exported") {
+            rpmContainer.style.display = "none";
+            // Send message to a Gameobject in the current scene
+            unityInstance.SendMessage(
+                "WebAvatarLoaderNPC", // Target GameObject name
+                "objectLoad", // Name of function to run
                 json.data.url
             );
             setCookie("avatarURL", json.data.url, 30); // 30 gün boyunca geçerli
