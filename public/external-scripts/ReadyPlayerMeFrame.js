@@ -8,15 +8,14 @@ rpmHideButton.onclick = function () {
 
 };
 
-let isCharacter; // Başlangıçta true olarak başlatın
-isCharacter = "true";
-setupRpmFrame();
+var isCharacter = "true"; // Başlangıçta true olarak başlatın
 
  window.toggleNpcAvatar = (value) => {
     isCharacter = value; // Değişkenin değerini ters çevir (true ise false, false ise true yap)
 }
 
-
+toggleNpcAvatar("true");
+setupRpmFrame();
 
 // Çerezi oluştur
 function setCookie(name, value, days) {
