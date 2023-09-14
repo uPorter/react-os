@@ -1,11 +1,12 @@
 var ui = document.getElementById('ui').className = 'newclass';
-let isCharacter = true; // isCharacter'ı başlatın ve varsayılan olarak true olarak ayarlayın
+
 rpmHideButton.onclick = function () {
     if (document.fullscreenElement) {
         canvasWrapper.requestFullscreen();
     }
     rpmContainer.style.display = "none";
     ui.style.display = "none";
+
 };
 
 setupRpmFrame();
@@ -25,7 +26,7 @@ function setCookie(name, value, days) {
   
   
 
-function setupRpmFrame() {
+function setupRpmFrame(subdomain) {
     rpmFrame.src = `https://metaos.readyplayer.me/avatar?frameApi`;
 
     window.addEventListener("message", subscribe);
@@ -63,22 +64,13 @@ function setupRpmFrame() {
         if (json.eventName === "v1.avatar.exported") {
             rpmContainer.style.display = "none";
             // Send message to a Gameobject in the current scene
-            if(isCharacter){
-                unityInstance.SendMessage(
-                    "WebAvatarLoader", // Target GameObject name
-                    "LoadWebviewAvatar", // Name of function to run
-                    json.data.url
-                );
-                setCookie("avatarURL", json.data.url, 30); // 30 gün boyunca geçerli
-                console.log(`Avatar URL: ${json.data.url}`);
-            }else{
-                unityInstance.SendMessage(
-                    "WebAvatarLoaderNPC", // Target GameObject name
-                    "objectLoad", // Name of function to run
-                    json.data.url
-                );
-            }
-            
+            unityInstance.SendMessage(
+                "WebAvatarLoader", // Target GameObject name
+                "LoadWebviewAvatar", // Name of function to run
+                json.data.url
+            );
+            setCookie("avatarURL", json.data.url, 30); // 30 gün boyunca geçerli
+            console.log(`Avatar URL: ${json.data.url}`);
         }
 
         // Get user id
@@ -104,12 +96,4 @@ function showRpm() {
 
 function hideRpm() {
     rpmContainer.style.display = "none";
-}
-
-function isCharacterTrue(){
-    isCharacter = true;
-}
-
-function isCharacterFalse(){
-    isCharacter = false;
 }
