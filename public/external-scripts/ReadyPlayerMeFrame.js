@@ -9,6 +9,7 @@ rpmHideButton.onclick = function () {
 
 };
 
+setupRpmFrame();
 
 // Çerezi oluştur
 function setCookie(name, value, days) {
@@ -22,10 +23,28 @@ function setCookie(name, value, days) {
   }
   
   // Çerezi "sharedData" adıyla ve değeri "yourSharedValue" olarak ayarla
+  
+  function removeAllMessageEventListeners() {
+    const messageListeners = getEventListeners(window).message;
+    const documentMessageListeners = getEventListeners(document).message;
+    if (messageListeners) {
+        messageListeners.forEach(listener => {
+            window.removeEventListener("message", listener.listener);
+            console.log("window done")
+        });
+    }
+    if (documentMessageListeners) {
+        documentMessageListeners.forEach(listener => {
+            document.removeEventListener("message", listener.listener);
+            console.log("document done")
+        });
+    }
+  }
 
   
   function setupRpmFrame() {
     rpmFrame.src = `https://metaos.readyplayer.me/avatar?frameApi`;
+
 
     // window ve document olay dinleyicilerini yalnızca eklerken mevcut olanları kontrol ederek ekleyin
     if (!window._messageEventListenerAdded) {
@@ -46,7 +65,6 @@ function setCookie(name, value, days) {
         ) {
             return;
         }
-
         // Send web event names to Unity can be useful for debugging. Can safely be removed
         unityInstance.SendMessage(
             "DebugPanel",
@@ -69,7 +87,7 @@ function setCookie(name, value, days) {
         // Get avatar GLB URL
         if (json.eventName === "v1.avatar.exported") {
             rpmContainer.style.display = "none";
-
+            removeAllMessageEventListeners();
             // Send message to a Gameobject in the current scene
             unityInstance.SendMessage(
                 "WebAvatarLoader", // Target GameObject name
@@ -78,12 +96,6 @@ function setCookie(name, value, days) {
             );
             setCookie("avatarURL", json.data.url, 30); // 30 gün boyunca geçerli
             console.log(`Avatar URL: ${json.data.url}`);
-
-            // Remove event listeners when v1.avatar.exported is triggered
-            window.removeEventListener("message", subscribe);
-            document.removeEventListener("message", subscribe);
-            delete window._messageEventListenerAdded;
-            delete document._messageEventListenerAdded;
         }
 
         // Get user id
@@ -100,11 +112,9 @@ function setCookie(name, value, days) {
         }
     }
 }
-
 //okey
 function setupRpmFrameNpc() {
     rpmFrame.src = `https://metaos.readyplayer.me/avatar?frameApi`;
-
     // window ve document olay dinleyicilerini yalnızca eklerken mevcut olanları kontrol ederek ekleyin
     if (!window._messageEventListenerAdded) {
         window.addEventListener("message", subscribe);
@@ -124,7 +134,6 @@ function setupRpmFrameNpc() {
         ) {
             return;
         }
-
         // Send web event names to Unity can be useful for debugging. Can safely be removed
         unityInstance.SendMessage(
             "DebugPanel",
@@ -147,7 +156,7 @@ function setupRpmFrameNpc() {
         // Get avatar GLB URL
         if (json.eventName === "v1.avatar.exported") {
             rpmContainer.style.display = "none";
-
+            removeAllMessageEventListeners();
             // Send message to a Gameobject in the current scene
             unityInstance.SendMessage(
                 "WebAvatarLoaderNPC", // Target GameObject name
@@ -156,12 +165,6 @@ function setupRpmFrameNpc() {
             );
             setCookie("avatarURL", json.data.url, 30); // 30 gün boyunca geçerli
             console.log(`Avatar URL: ${json.data.url}`);
-
-            // Remove event listeners when v1.avatar.exported is triggered
-            window.removeEventListener("message", subscribe);
-            document.removeEventListener("message", subscribe);
-            delete window._messageEventListenerAdded;
-            delete document._messageEventListenerAdded;
         }
 
         // Get user id
@@ -178,8 +181,6 @@ function setupRpmFrameNpc() {
         }
     }
 }
-
-
 
 
 function showRpm() {
