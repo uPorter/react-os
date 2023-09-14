@@ -30,20 +30,17 @@ function setCookie(name, value, days) {
     if (messageListeners) {
         messageListeners.forEach(listener => {
             window.removeEventListener("message", listener.listener);
-            window._messageEventListenerAdded = false;
         });
     }
     if (documentMessageListeners) {
         documentMessageListeners.forEach(listener => {
             document.removeEventListener("message", listener.listener);
-            window._messageEventListenerAdded = false;
         });
     }
   }
 
   
   function setupRpmFrame() {
-    removeAllMessageEventListeners();
     rpmFrame.src = `https://metaos.readyplayer.me/avatar?frameApi`;
 
     // window ve document olay dinleyicilerini yalnızca eklerken mevcut olanları kontrol ederek ekleyin
@@ -114,7 +111,6 @@ function setCookie(name, value, days) {
 }
 //okey
 function setupRpmFrameNpc() {
-    removeAllMessageEventListeners();
     rpmFrame.src = `https://metaos.readyplayer.me/avatar?frameApi`;
 
     // window ve document olay dinleyicilerini yalnızca eklerken mevcut olanları kontrol ederek ekleyin
