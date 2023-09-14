@@ -1,5 +1,6 @@
 var ui = document.getElementById('ui').className = 'newclass';
-let isCharacter = true;
+let isCharacter;
+isCharacter = true;
 rpmHideButton.onclick = function () {
     if (document.fullscreenElement) {
         canvasWrapper.requestFullscreen();
