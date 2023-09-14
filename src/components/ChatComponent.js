@@ -85,7 +85,6 @@ const ChatComponent = (props) => {
   }
 
   const ReactshowRPM = () => {
-    eval("removeAllMessageEventListeners();")
     window.setupRpmFrame();
     window.showRpm();
     //sendMessage("AvatarEdit", "EditorON");
