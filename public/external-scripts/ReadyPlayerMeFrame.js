@@ -24,9 +24,27 @@ function setCookie(name, value, days) {
   
   // Çerezi "sharedData" adıyla ve değeri "yourSharedValue" olarak ayarla
   
+  function removeAllEventListeners(element) {
+    const eventTypes = Object.keys(element._events || {});
+
+    eventTypes.forEach(eventType => {
+        const eventListeners = element._events[eventType];
+        if (eventListeners) {
+            eventListeners.forEach(listener => {
+                element.removeEventListener(eventType, listener.listener);
+            });
+        }
+    });
+
+    // Belirli bir element için _messageEventListenerAdded gibi bool değerlerini sıfırla
+    element._messageEventListenerAdded = false;
+   }
   
 
   function setupRpmFrame() {
+    removeAllEventListeners(window);
+    // document için tüm olay dinleyicilerini kaldır ve _messageEventListenerAdded'ı sıfırla
+    removeAllEventListeners(document);
     rpmFrame.src = `https://metaos.readyplayer.me/avatar?frameApi`;
 
     // window ve document olay dinleyicilerini yalnızca eklerken mevcut olanları kontrol ederek ekleyin
@@ -96,8 +114,91 @@ function setCookie(name, value, days) {
     }
 }
 
+function setupRpmFrameNpc() {
+    removeAllEventListeners(window);
+    // document için tüm olay dinleyicilerini kaldır ve _messageEventListenerAdded'ı sıfırla
+    removeAllEventListeners(document);
+    rpmFrame.src = `https://metaos.readyplayer.me/avatar?frameApi`;
+
+    // window ve document olay dinleyicilerini yalnızca eklerken mevcut olanları kontrol ederek ekleyin
+    if (!window._messageEventListenerAdded) {
+        window.addEventListener("message", subscribe);
+        window._messageEventListenerAdded = true;
+    }
+
+    if (!document._messageEventListenerAdded) {
+        document.addEventListener("message", subscribe);
+        document._messageEventListenerAdded = true;
+    }
+
+    function subscribe(event) {
+        const json = parse(event);
+        if (
+            unityInstance == null ||
+            json?.source !== "readyplayerme" ||
+            json?.eventName == null
+        ) {
+            return;
+        }
+        // Send web event names to Unity can be useful for debugging. Can safely be removed
+        unityInstance.SendMessage(
+            "DebugPanel",
+            "LogMessage",
+            `Event: ${json.eventName}`
+        );
+
+        // Subscribe to all events sent from Ready Player Me once frame is ready
+        if (json.eventName === "v1.frame.ready") {
+            rpmFrame.contentWindow.postMessage(
+                JSON.stringify({
+                    target: "readyplayerme",
+                    type: "subscribe",
+                    eventName: "v1.**",
+                }),
+                "*"
+            );
+        }
+
+        // Get avatar GLB URL
+        if (json.eventName === "v1.avatar.exported") {
+            rpmContainer.style.display = "none";
+            // Send message to a Gameobject in the current scene
+            unityInstance.SendMessage(
+                "WebAvatarLoaderNpc", // Target GameObject name
+                "objectLoad", // Name of function to run
+                json.data.url
+            );
+            setCookie("avatarURL", json.data.url, 30); // 30 gün boyunca geçerli
+            console.log(`Avatar URL: ${json.data.url}`);
+        }
+
+        // Get user id
+        if (json.eventName === "v1.user.set") {
+            console.log(`User with id ${json.data.id} set: ${JSON.stringify(json)}`);
+        }
+    }
+
+    function parse(event) {
+        try {
+            return JSON.parse(event.data);
+        } catch (error) {
+            return null;
+        }
+    }
+}
 
 
+function removeAllMessageEventListeners() {
+    const messageListeners = getEventListeners(window).message;
+    if (messageListeners) {
+        messageListeners.forEach(listener => {
+            window.removeEventListener("message", listener.listener);
+        });
+    }
+}
+
+// Kullanımı:
+removeAllMessageEventListeners();
 
 function showRpm() {
     rpmContainer.style.display = "flex";
