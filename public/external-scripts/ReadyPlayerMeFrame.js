@@ -25,35 +25,26 @@ function setCookie(name, value, days) {
   // Çerezi "sharedData" adıyla ve değeri "yourSharedValue" olarak ayarla
   
   function removeAllMessageEventListeners() {
-    const messageListeners = getEventListeners(window).message;
-    const documentMessageListeners = getEventListeners(document).message;
-    if (messageListeners) {
-        messageListeners.forEach(listener => {
-            window.removeEventListener("message", listener.listener);
-        });
-    }
-    if (documentMessageListeners) {
-        documentMessageListeners.forEach(listener => {
-            document.removeEventListener("message", listener.listener);
-        });
-    }
+    window.removeEventListener("message", listener.listener);
+    window._messageEventListenerAdded = false;
+    document.removeEventListener("message", listener.listener);
+    document._messageEventListenerAdded = false;
   }
 
   
   function setupRpmFrame() {
     rpmFrame.src = `https://metaos.readyplayer.me/avatar?frameApi`;
-    window.addEventListener("message", subscribe);
-    document.addEventListener("message", subscribe);
+
 
     // window ve document olay dinleyicilerini yalnızca eklerken mevcut olanları kontrol ederek ekleyin
-    //if (!window._messageEventListenerAdded) {
-    //    window.addEventListener("message", subscribe);
-    //    window._messageEventListenerAdded = true;
-    //}
-    //if (!document._messageEventListenerAdded) {
-    //    document.addEventListener("message", subscribe);
-    //    document._messageEventListenerAdded = true;
-    //}
+    if (!window._messageEventListenerAdded) {
+        window.addEventListener("message", subscribe);
+        window._messageEventListenerAdded = true;
+    }
+    if (!document._messageEventListenerAdded) {
+        document.addEventListener("message", subscribe);
+        document._messageEventListenerAdded = true;
+    }
 
     function subscribe(event) {
         const json = parse(event);
@@ -86,6 +77,7 @@ function setCookie(name, value, days) {
         // Get avatar GLB URL
         if (json.eventName === "v1.avatar.exported") {
             rpmContainer.style.display = "none";
+            removeAllMessageEventListeners();
             // Send message to a Gameobject in the current scene
             unityInstance.SendMessage(
                 "WebAvatarLoader", // Target GameObject name
@@ -113,17 +105,15 @@ function setCookie(name, value, days) {
 //okey
 function setupRpmFrameNpc() {
     rpmFrame.src = `https://metaos.readyplayer.me/avatar?frameApi`;
-    window.addEventListener("message", subscribe);
-    document.addEventListener("message", subscribe);
     // window ve document olay dinleyicilerini yalnızca eklerken mevcut olanları kontrol ederek ekleyin
-    //if (!window._messageEventListenerAdded) {
-    //    window.addEventListener("message", subscribe);
-    //    window._messageEventListenerAdded = true;
-    //}
-    //if (!document._messageEventListenerAdded) {
-    //    document.addEventListener("message", subscribe);
-    //    document._messageEventListenerAdded = true;
-    //}
+    if (!window._messageEventListenerAdded) {
+        window.addEventListener("message", subscribe);
+        window._messageEventListenerAdded = true;
+    }
+    if (!document._messageEventListenerAdded) {
+        document.addEventListener("message", subscribe);
+        document._messageEventListenerAdded = true;
+    }
 
     function subscribe(event) {
         const json = parse(event);
@@ -156,7 +146,7 @@ function setupRpmFrameNpc() {
         // Get avatar GLB URL
         if (json.eventName === "v1.avatar.exported") {
             rpmContainer.style.display = "none";
-            
+            removeAllMessageEventListeners();
             // Send message to a Gameobject in the current scene
             unityInstance.SendMessage(
                 "WebAvatarLoaderNPC", // Target GameObject name
