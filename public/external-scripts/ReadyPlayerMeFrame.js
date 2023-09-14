@@ -9,7 +9,6 @@ rpmHideButton.onclick = function () {
 
 };
 
-setupRpmFrame();
 
 // Çerezi oluştur
 function setCookie(name, value, days) {
