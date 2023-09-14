@@ -41,29 +41,8 @@ export class EditDock extends Component {
       setIsLocked(!isLocked);
     };
 
-    const removeMessageListeners = () => {
-      // Tüm message event listener'larını alın
-      const messageListeners = window.getEventListeners(window).message;
-      const messageListenersDoc = document.getEventListeners(document).message;
-      // Her bir listener'ı kaldırın
-      if (messageListeners) {
-        messageListeners.forEach((listener) => {
-          window.removeEventListener('message', listener.listener);
-          window._messageEventListenerAdded = false;
-          console.log("window clean done")
-        });
-      }
-      if (messageListenersDoc) {
-          messageListenersDoc.forEach((listener) => {
-            document.removeEventListener('message', listener.listener);
-            document._messageEventListenerAdded = false;
-            console.log("document clean done")
-          });
-        }
-    }
 
-    const changeNpcSkin = () => {
-      removeMessageListeners();        
+    const changeNpcSkin = () => {   
       window.setupRpmFrameNpc();
       window.showRpm();
     }
