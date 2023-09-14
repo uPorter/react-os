@@ -1,4 +1,5 @@
 var ui = document.getElementById('ui').className = 'newclass';
+let isNpc = false;
 
 rpmHideButton.onclick = function () {
     if (document.fullscreenElement) {
@@ -8,6 +9,10 @@ rpmHideButton.onclick = function () {
     ui.style.display = "none";
 
 };
+
+function setIsNpc(bool){
+    isNpc = bool;
+} 
 
 setupRpmFrame();
 
@@ -64,13 +69,22 @@ function setupRpmFrame(subdomain) {
         if (json.eventName === "v1.avatar.exported") {
             rpmContainer.style.display = "none";
             // Send message to a Gameobject in the current scene
-            unityInstance.SendMessage(
-                "WebAvatarLoader", // Target GameObject name
-                "LoadWebviewAvatar", // Name of function to run
-                json.data.url
-            );
-            setCookie("avatarURL", json.data.url, 30); // 30 gün boyunca geçerli
-            console.log(`Avatar URL: ${json.data.url}`);
+            if(!isNpc){
+                unityInstance.SendMessage(
+                    "WebAvatarLoader", // Target GameObject name
+                    "LoadWebviewAvatar", // Name of function to run
+                    json.data.url
+                );
+                setCookie("avatarURL", json.data.url, 30); // 30 gün boyunca geçerli
+                console.log(`Avatar URL: ${json.data.url}`);
+            }else{
+                unityInstance.SendMessage(
+                    "WebAvatarLoaderNPC", // Target GameObject name
+                    "objectLoad", // Name of function to run
+                    json.data.url
+                );
+            }
+            
         }
 
         // Get user id

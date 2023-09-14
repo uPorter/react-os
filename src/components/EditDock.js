@@ -41,6 +41,12 @@ export class EditDock extends Component {
       setIsLocked(!isLocked);
     };
 
+    const changeNpcSkin = () => {
+        window.setIsNpc(true)
+        window.setupRpmFrame();
+        window.showRpm();
+    }
+
     const buttonTextLock = isLocked ? "Unlock" : "Lock";
 
     return (
@@ -180,6 +186,7 @@ export class EditDock extends Component {
                   id="dockButtonID"
                   className="dockButtonsEditor"
                   variant="solid"
+                  onClick={() => changeNpcSkin}
                   sx={{
                     "--IconButton-size": "55px",
                     "--IconButton-radius": "50px",
