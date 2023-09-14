@@ -10,11 +10,11 @@ rpmHideButton.onclick = function () {
 
 var isCharacter = "true"; // Başlangıçta true olarak başlatın
 
- window.toggleNpcAvatar = (value) => {
-    isCharacter = value; // Değişkenin değerini ters çevir (true ise false, false ise true yap)
-}
+window.toggleNpcAvatar = (value) => {
+    isCharacter = value;
+};
 
-toggleNpcAvatar("true");
+window.toggleNpcAvatar("true");
 setupRpmFrame();
 
 // Çerezi oluştur
