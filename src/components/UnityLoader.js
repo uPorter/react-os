@@ -36,7 +36,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import Modal from "@mui/joy/Modal";
 import ModalClose from "@mui/joy/ModalClose";
 import IosShareOutlinedIcon from "@mui/icons-material/IosShareOutlined";
-import axios from 'axios';
+import axios from "axios";
 
 const chatClient = StreamChat.getInstance("gte62wacdhnr");
 
@@ -88,7 +88,7 @@ const UnityLoader = () => {
   const [isNpcEdit, setIsNpcEdit] = useState(false);
   const [isNpcChatMode, setIsNpcChatMode] = useState(false);
   const [isAvatarSelected, setIsAvatarSelected] = useState(false);
-  const [environmentModalOn,setEnvironmentModalOn] = useState(false);
+  const [environmentModalOn, setEnvironmentModalOn] = useState(false);
   const [portalRedirectModal, setPortalRedirectModal] = useState(false);
   const [imageModalOn, setImageModalOn] = useState(false);
   const [videoModalOn, setVideoModalOn] = useState(false);
@@ -504,49 +504,51 @@ const UnityLoader = () => {
 
   const fileInputRef = useRef(null);
 
-    const dosyaSec = () => {
-        fileInputRef.current.click();
-    };
+  const dosyaSec = () => {
+    fileInputRef.current.click();
+  };
 
-    const dosyaDegistir = async (event) => {
-      const dosya = event.target.files[0];
-      setEnvironmentModalOn(false);
-      if (dosya) {
-          const fileType = dosya.name.split('.').pop().toLowerCase();
+  const dosyaDegistir = async (event) => {
+    const dosya = event.target.files[0];
+    setEnvironmentModalOn(false);
+    if (dosya) {
+      const fileType = dosya.name.split(".").pop().toLowerCase();
 
-          if (fileType === 'png' || fileType === 'jpg' || fileType === 'jpeg') {
-              const formData = new FormData();
-              formData.append('file', dosya);
+      if (fileType === "png" || fileType === "jpg" || fileType === "jpeg") {
+        const formData = new FormData();
+        formData.append("file", dosya);
 
-              try {
-                  const response = await axios.post(
-                      'https://26ec-103-133-178-51.ngrok-free.app/upload',
-                      formData,
-                      {
-                          headers: {
-                              'Content-Type': 'multipart/form-data',
-                          },
-                          onUploadProgress: (progressEvent) => {
-                              const percentage = Math.round((progressEvent.loaded * 100) / progressEvent.total);
-                              console.log(percentage);
-                          },
-                      }
-                  );
+        try {
+          const response = await axios.post(
+            "https://26ec-103-133-178-51.ngrok-free.app/upload",
+            formData,
+            {
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+              onUploadProgress: (progressEvent) => {
+                const percentage = Math.round(
+                  (progressEvent.loaded * 100) / progressEvent.total
+                );
+                console.log(percentage);
+              },
+            }
+          );
 
-                  window.sendMessageToUnity(
-                    "skyboxUrlManager",
-                    "SetURL",
-                    response.data
-                  );
-                  window.sendMessageToUnity("skyboxUrlManager", "SpawnObject");
-                  console.log(response.data);
-              } catch (error) {
-                  console.error('Dosya yüklenirken bir hata oluştu:', error);
-              }
-          } else {
-              console.error('Desteklenmeyen dosya türü');
-          }
+          window.sendMessageToUnity(
+            "skyboxUrlManager",
+            "SetURL",
+            response.data
+          );
+          window.sendMessageToUnity("skyboxUrlManager", "SpawnObject");
+          console.log(response.data);
+        } catch (error) {
+          console.error("Dosya yüklenirken bir hata oluştu:", error);
+        }
+      } else {
+        console.error("Desteklenmeyen dosya türü");
       }
+    }
   };
 
   useEffect(() => {
@@ -591,6 +593,92 @@ const UnityLoader = () => {
     }
   };
 
+  //ReadyPlayerMeLoader
+  const setupRpmFrame = () => {
+    rpmFrame.src = `https://metaos.readyplayer.me/avatar?frameApi`;
+
+    // window ve document olay dinleyicilerini yalnızca eklerken mevcut olanları kontrol ederek ekleyin
+    if (!window._messageEventListenerAdded) {
+      window.addEventListener("message", subscribe);
+      window._messageEventListenerAdded = true;
+    }
+    if (!document._messageEventListenerAdded) {
+      document.addEventListener("message", subscribe);
+      document._messageEventListenerAdded = true;
+    }
+
+    function subscribe(event) {
+      const json = parse(event);
+      if (
+        unityInstance == null ||
+        json?.source !== "readyplayerme" ||
+        json?.eventName == null
+      ) {
+        return;
+      }
+      // Send web event names to Unity can be useful for debugging. Can safely be removed
+      unityInstance.SendMessage(
+        "DebugPanel",
+        "LogMessage",
+        `Event: ${json.eventName}`
+      );
+
+      // Subscribe to all events sent from Ready Player Me once frame is ready
+      if (json.eventName === "v1.frame.ready") {
+        rpmFrame.contentWindow.postMessage(
+          JSON.stringify({
+            target: "readyplayerme",
+            type: "subscribe",
+            eventName: "v1.**",
+          }),
+          "*"
+        );
+      }
+
+      // Get avatar GLB URL
+      if (json.eventName === "v1.avatar.exported") {
+        rpmContainer.style.display = "none";
+        // Send message to a Gameobject in the current scene
+        rpmToUnity();
+      }
+
+      // Get user id
+      if (json.eventName === "v1.user.set") {
+        console.log(
+          `User with id ${json.data.id} set: ${JSON.stringify(json)}`
+        );
+      }
+    }
+
+    function parse(event) {
+      try {
+        return JSON.parse(event.data);
+      } catch (error) {
+        return null;
+      }
+    }
+  }
+
+  const rpmToUnity = () => {
+    if(isNpcEdit){
+      unityInstance.SendMessage(
+        "WebAvatarLoaderNPC", // Target GameObject name
+        "objectLoad", // Name of function to run
+        json.data.url
+      );
+    }else{
+      unityInstance.SendMessage(
+        "WebAvatarLoader", // Target GameObject name
+        "LoadWebviewAvatar", // Name of function to run
+        json.data.url
+      );
+      setCookie("avatarURL", json.data.url, 30); // 30 gün boyunca geçerli
+      console.log(`Avatar URL: ${json.data.url}`);
+    }
+  }
+  //
+
+
   const gameHandler = useCallback(() => {
     setIsStarted(true);
     console.log("Instance Started!");
@@ -607,6 +695,7 @@ const UnityLoader = () => {
         sendMessage("adminManager", "setAdminFalse");
       }
       //sendMessage("AvatarNick", "enableInput");
+      setupRpmFrame();
     }
   };
 
@@ -619,7 +708,7 @@ const UnityLoader = () => {
         var sharedValue = getCookie("avatarURL");
         if (sharedValue === null || sharedValue === undefined) {
           sendMessage("AvatarNick", "AvatarURLSet", "");
-        }else{
+        } else {
           sendMessage("AvatarNick", "AvatarURLSet", sharedValue);
         }
         sendMessage("SaveManager", "LoadSystem", spaceName);
@@ -639,7 +728,6 @@ const UnityLoader = () => {
   }, [isLoaded, spaceName]);
 
   const ReactshowRPM = () => {
-    window.setupRpmFrame();
     window.showRpm();
     //sendMessage("AvatarEdit", "EditorON");
   };
@@ -801,33 +889,33 @@ const UnityLoader = () => {
   };
 
   //
-    //
-    useEffect(() => {
-      addEventListener("npcEditOn", handlenpcEditOn);
-  
-      return () => {
-        removeEventListener("npcEditOn", handlenpcEditOn);
-      };
-    }, [addEventListener, removeEventListener, handlenpcEditOn]);
-  
-    const handlenpcEditOn = () => {
-      setIsDockEditorMode(true);
-      setIsNpcEdit(true);
+  //
+  useEffect(() => {
+    addEventListener("npcEditOn", handlenpcEditOn);
+
+    return () => {
+      removeEventListener("npcEditOn", handlenpcEditOn);
     };
-  
-    useEffect(() => {
-      addEventListener("npcEditOff", handlenpcEditOff);
-  
-      return () => {
-        removeEventListener("npcEditOff", handlenpcEditOff);
-      };
-    }, [addEventListener, removeEventListener, handlenpcEditOff]);
-  
-    const handlenpcEditOff = () => {
-      setIsDockEditorMode(false);
-      setIsNpcEdit(false);
+  }, [addEventListener, removeEventListener, handlenpcEditOn]);
+
+  const handlenpcEditOn = () => {
+    setIsDockEditorMode(true);
+    setIsNpcEdit(true);
+  };
+
+  useEffect(() => {
+    addEventListener("npcEditOff", handlenpcEditOff);
+
+    return () => {
+      removeEventListener("npcEditOff", handlenpcEditOff);
     };
-    //
+  }, [addEventListener, removeEventListener, handlenpcEditOff]);
+
+  const handlenpcEditOff = () => {
+    setIsDockEditorMode(false);
+    setIsNpcEdit(false);
+  };
+  //
   //
   const toggleFilmingMode = () => {
     if (!isFilmingMode) {
@@ -853,7 +941,7 @@ const UnityLoader = () => {
     window.sendMessageToUnityBasic(objectName, "SetEnvironmentModel");
     setEnvironmentModalOn(false);
     toast("Selected model set as environment model");
-  }
+  };
 
   const Item = styled(Sheet)(({ theme }) => ({
     ...theme.typography.body2,
@@ -1545,23 +1633,23 @@ const UnityLoader = () => {
                     justifyContent: "center",
                     alignItems: "center",
                     backdropFilter: "blur(20px)",
-                    gap:"16px"
+                    gap: "16px",
                   }}
                 >
                   <input
-                type="file"
-                ref={fileInputRef}
-                style={{ display: 'none' }}
-                onChange={dosyaDegistir}
-            />
+                    type="file"
+                    ref={fileInputRef}
+                    style={{ display: "none" }}
+                    onChange={dosyaDegistir}
+                  />
                   <Button
-                  onClick={dosyaSec}
-                  style={{
-                    background:"transparent"
-                  }}
-                  style={{
-                    background: "transparent",
-                  }}
+                    onClick={dosyaSec}
+                    style={{
+                      background: "transparent",
+                    }}
+                    style={{
+                      background: "transparent",
+                    }}
                     sx={{
                       borderColor: "white",
                       borderStyle: "solid",
@@ -1569,7 +1657,6 @@ const UnityLoader = () => {
                       minWidth: "225px",
                     }}
                     className="portalCreateButton"
-
                   >
                     Set custom skybox
                   </Button>
@@ -1577,12 +1664,12 @@ const UnityLoader = () => {
                     style={{
                       background: "transparent",
                     }}
-                      sx={{
-                        borderColor: "white",
-                        borderStyle: "solid",
-                        borderWidth: "2px",
-                        minWidth: "225px",
-                      }}
+                    sx={{
+                      borderColor: "white",
+                      borderStyle: "solid",
+                      borderWidth: "2px",
+                      minWidth: "225px",
+                    }}
                     className="portalCreateButton"
                     onClick={environmentModalFunction}
                   >
@@ -1592,14 +1679,19 @@ const UnityLoader = () => {
                     style={{
                       background: "transparent",
                     }}
-                      sx={{
-                        borderColor: "white",
-                        borderStyle: "solid",
-                        borderWidth: "2px",
-                        minWidth: "225px",
-                      }}
+                    sx={{
+                      borderColor: "white",
+                      borderStyle: "solid",
+                      borderWidth: "2px",
+                      minWidth: "225px",
+                    }}
                     className="portalCreateButton"
-                    onClick={() => window.sendMessageToUnity("skyboxUrlManager", "removeSkybox")}
+                    onClick={() =>
+                      window.sendMessageToUnity(
+                        "skyboxUrlManager",
+                        "removeSkybox"
+                      )
+                    }
                   >
                     Remove Skybox
                   </Button>
@@ -1646,7 +1738,7 @@ const UnityLoader = () => {
                     justifyContent: "center",
                     alignItems: "center",
                     backdropFilter: "blur(20px)",
-                    outline: "none"
+                    outline: "none",
                   }}
                 >
                   <Typography
@@ -2208,6 +2300,7 @@ const UnityLoader = () => {
               <Grid xs={6}>
                 {isDockEditorMode && (
                   <EditDock
+                    setupRpmFrame={setupRpmFrame}
                     setEnvironmentModalOn={setEnvironmentModalOn}
                     portalModeOn={portalModeOn}
                     assistantModeOn={assistantModeOn}
@@ -2310,11 +2403,7 @@ const UnityLoader = () => {
             {/* <Button style={{ position: 'absolute', zIndex: '15' }} onClick={ReactshowRPM} variant="soft">Edit Avatar - PreTest</Button>*/}
           </div>
         )}
-        <Toaster
-          className="toasterCSS"
-          richColors
-          position="bottom-center"
-        />
+        <Toaster className="toasterCSS" richColors position="bottom-center" />
         <Unity
           onFocus={() => console.log("Focused")}
           onBlur={() => console.log("Blured")}
