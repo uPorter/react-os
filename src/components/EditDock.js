@@ -42,7 +42,7 @@ export class EditDock extends Component {
     };
 
     const changeNpcSkin = () => {
-        window.isCharacterFalse();
+        window.toggleNpcAvatar(false);
         window.setupRpmFrame();
         window.showRpm();
     }
