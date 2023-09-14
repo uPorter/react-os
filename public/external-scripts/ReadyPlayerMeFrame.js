@@ -27,6 +27,9 @@ function setCookie(name, value, days) {
   
 
 function setupRpmFrame(subdomain) {
+    
+    window.removeEventListener("message", subscribe);
+    document.removeEventListener("message", subscribe);
     rpmFrame.src = `https://metaos.readyplayer.me/avatar?frameApi`;
 
     window.addEventListener("message", subscribe);
@@ -106,6 +109,5 @@ function showRpm() {
 function hideRpm() {
     rpmContainer.style.display = "none";
     // Tüm event listener'ları temizle
-    window.removeEventListener("message", subscribe);
-    document.removeEventListener("message", subscribe);
+    
 }
