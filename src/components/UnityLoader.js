@@ -85,6 +85,8 @@ const UnityLoader = () => {
     }
   };
 
+  const [isNpcEdit, setIsNpcEdit] = useState(false);
+  const [isNpcChatMode, setIsNpcChatMode] = useState(false);
   const [isAvatarSelected, setIsAvatarSelected] = useState(false);
   const [environmentModalOn,setEnvironmentModalOn] = useState(false);
   const [portalRedirectModal, setPortalRedirectModal] = useState(false);
@@ -799,6 +801,35 @@ const UnityLoader = () => {
     setIsManual(false);
   };
 
+  //
+    //
+    useEffect(() => {
+      addEventListener("npcEditOn", handlenpcEditOn);
+  
+      return () => {
+        removeEventListener("npcEditOn", handlenpcEditOn);
+      };
+    }, [addEventListener, removeEventListener, handlenpcEditOn]);
+  
+    const handlenpcEditOn = () => {
+      setIsEditorMode(true);
+      setIsNpcEdit(true);
+    };
+  
+    useEffect(() => {
+      addEventListener("npcEditOff", handlenpcEditOff);
+  
+      return () => {
+        removeEventListener("npcEditOff", handlenpcEditOff);
+      };
+    }, [addEventListener, removeEventListener, handlenpcEditOff]);
+  
+    const handlenpcEditOff = () => {
+      setIsEditorMode(false);
+      setIsNpcEdit(false);
+    };
+    //
+  //
   const toggleFilmingMode = () => {
     if (!isFilmingMode) {
       sendMessage("VideoManager", "enableFilmingMode");
@@ -2189,6 +2220,7 @@ const UnityLoader = () => {
                     handleAddContent={handleAddContent}
                     setIsDockEditorMode={setIsDockEditorMode}
                     assistantModeOnBase={assistantModeOnBase}
+                    isNpcEdit={isNpcEdit}
                   ></EditDock>
                 )}
                 {!isDockEditorMode && (
