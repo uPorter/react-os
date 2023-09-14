@@ -13,9 +13,8 @@ function toggleNpcAvatar(value) {
     isCharacter = value; // Değişkenin değerini ters çevir (true ise false, false ise true yap)
 }
 
-let isCharacter = "true"; // Başlangıçta true olarak başlatın
-
-toggleNpcAvatar("true");
+let isCharacter; // Başlangıçta true olarak başlatın
+isCharacter = "true";
 setupRpmFrame();
 
 // Çerezi oluştur
