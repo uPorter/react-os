@@ -41,7 +41,6 @@ function setCookie(name, value, days) {
 
   
   function setupRpmFrame() {
-    eval("removeAllMessageEventListeners();")
     rpmFrame.src = `https://metaos.readyplayer.me/avatar?frameApi`;
     window.addEventListener("message", subscribe);
     document.addEventListener("message", subscribe);
@@ -113,7 +112,6 @@ function setCookie(name, value, days) {
 }
 //okey
 function setupRpmFrameNpc() {
-    eval("removeAllMessageEventListeners();")
     rpmFrame.src = `https://metaos.readyplayer.me/avatar?frameApi`;
     window.addEventListener("message", subscribe);
     document.addEventListener("message", subscribe);
@@ -158,6 +156,7 @@ function setupRpmFrameNpc() {
         // Get avatar GLB URL
         if (json.eventName === "v1.avatar.exported") {
             rpmContainer.style.display = "none";
+            
             // Send message to a Gameobject in the current scene
             unityInstance.SendMessage(
                 "WebAvatarLoaderNPC", // Target GameObject name
