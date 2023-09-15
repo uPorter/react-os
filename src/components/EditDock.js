@@ -44,7 +44,7 @@ export class EditDock extends Component {
 
 
     const ReactshowRPM = () => {
-      setupRpmFrameNpc("false");
+      setupRpmFrameNpc();
       window.showRpm();
     }
 

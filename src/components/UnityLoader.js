@@ -611,11 +611,108 @@ const UnityLoader = () => {
     return element.__eventListeners;
   }
 
+  function removeAllSubscribeListeners(eventName) {
+    // Document nesnesinin message olayındaki "subscribe" kelimesini içeren dinleyicileri kaldır
+    const documentMessageListeners = getEventListeners(document).message;
   
-  const setupRpmFrame = (npcMode) => {
+    if (documentMessageListeners) {
+      const documentSubscribeListeners = documentMessageListeners.filter((listener) =>
+        listener.listener.toString().includes(eventName)
+      );
+  
+      documentSubscribeListeners.forEach((listener) => {
+        document.removeEventListener("message", listener.listener);
+      });
+    }
+  
+    // Window nesnesinin tüm olaylarındaki "subscribe" kelimesini içeren dinleyicileri kaldır
+    const windowEventListeners = getEventListeners(window);
+  
+    for (const eventName in windowEventListeners) {
+      if (windowEventListeners.hasOwnProperty(eventName)) {
+        const eventListeners = windowEventListeners[eventName];
+  
+        const windowSubscribeListeners = eventListeners.filter((listener) =>
+          listener.listener.toString().includes(eventName)
+        );
+  
+        windowSubscribeListeners.forEach((listener) => {
+          window.removeEventListener(eventName, listener.listener);
+        });
+      }
+    }
+  }
+
+
+  const setupRpmFrameNpc = () => {
     var rpmFrame = document.getElementById("rpm-frame");
     var rpmContainer = document.getElementById("rpm-container");
     rpmFrame.src = `https://metaos.readyplayer.me/avatar?frameApi`;
+
+    removeAllSubscribeListeners("subscribe2");
+    // window ve document olay dinleyicilerini yalnızca eklerken mevcut olanları kontrol ederek ekleyin
+    if (!window._messageEventListenerAdded) {
+      window.addEventListener("message", subscribe2);
+      window._messageEventListenerAdded = true;
+    }
+    if (!document._messageEventListenerAdded) {
+      document.addEventListener("message", subscribe2);
+      document._messageEventListenerAdded = true;
+    }
+
+    function subscribe2(event) {
+      const json = parse(event);
+      // Send web event names to Unity can be useful for debugging. Can safely be removed
+
+      // Subscribe to all events sent from Ready Player Me once frame is ready
+      if (json.eventName === "v1.frame.ready") {
+        rpmFrame.contentWindow.postMessage(
+          JSON.stringify({
+            target: "readyplayerme",
+            type: "subscribe",
+            eventName: "v1.**",
+          }),
+          "*"
+        );
+      }
+
+      // Get avatar GLB URL
+      if (json.eventName === "v1.avatar.exported") {
+        rpmContainer.style.display = "none";
+        sendMessage(
+          "WebAvatarLoaderNPC", // Target GameObject name
+          "objectLoad", // Name of function to run
+          json.data.url
+        );
+        window.removeEventListener("message", subscribe2);
+        window._messageEventListenerAdded = false;
+        document.removeEventListener("message", subscribe2);
+        document._messageEventListenerAdded = false;
+      }
+      // Get user id
+      if (json.eventName === "v1.user.set") {
+        console.log(
+          `User with id ${json.data.id} set: ${JSON.stringify(json)}`
+        );
+      }
+    }
+
+    function parse(event) {
+      try {
+        return JSON.parse(event.data);
+      } catch (error) {
+        return null;
+      }
+    }
+  }
+
+  
+  const setupRpmFrame = () => {
+    var rpmFrame = document.getElementById("rpm-frame");
+    var rpmContainer = document.getElementById("rpm-container");
+    rpmFrame.src = `https://metaos.readyplayer.me/avatar?frameApi`;
+
+    removeAllSubscribeListeners("subscribe");
 
     // window ve document olay dinleyicilerini yalnızca eklerken mevcut olanları kontrol ederek ekleyin
     if (!window._messageEventListenerAdded) {
@@ -646,23 +743,15 @@ const UnityLoader = () => {
       // Get avatar GLB URL
       if (json.eventName === "v1.avatar.exported") {
         rpmContainer.style.display = "none";
-        if(npcMode === "true"){
-          sendMessage(
-            "WebAvatarLoader", // Target GameObject name
-            "LoadWebviewAvatar", // Name of function to run
-            json.data.url
-          );
-          if(!isNpcEdit){
-            setCookie("avatarURL", json.data.url, 30); // 30 gün boyunca geçerli
-            console.log(`Avatar URL: ${json.data.url}`);
-            console.log('Cookies created 🍪');
-          }
-        }else{
-          sendMessage(
-            "WebAvatarLoaderNPC", // Target GameObject name
-            "objectLoad", // Name of function to run
-            json.data.url
-          );
+        sendMessage(
+          "WebAvatarLoader", // Target GameObject name
+          "LoadWebviewAvatar", // Name of function to run
+          json.data.url
+        );
+        if(!isNpcEdit){
+          setCookie("avatarURL", json.data.url, 30); // 30 gün boyunca geçerli
+          console.log(`Avatar URL: ${json.data.url}`);
+          console.log('Cookies created 🍪');
         }
         window.removeEventListener("message", subscribe);
         window._messageEventListenerAdded = false;
@@ -2311,7 +2400,7 @@ const UnityLoader = () => {
               <Grid xs={6}>
                 {isDockEditorMode && (
                   <EditDock
-                    setupRpmFrameNpc={setupRpmFrame}
+                    setupRpmFrameNpc={setupRpmFrameNpc}
                     setEnvironmentModalOn={setEnvironmentModalOn}
                     portalModeOn={portalModeOn}
                     assistantModeOn={assistantModeOn}
