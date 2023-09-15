@@ -249,7 +249,7 @@ export class EditDock extends Component {
             </Tooltip>
           )}
 
-          {!isLocked && !isNpcEdit && (
+          {!isLocked && (
             <Tooltip
               className="dockTooltip"
               sx={{ borderRadius: "20px", backgroundColor: "#ffffff" }}
