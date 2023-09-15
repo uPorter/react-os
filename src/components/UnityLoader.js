@@ -1031,7 +1031,7 @@ const UnityLoader = () => {
     setIsNpcChatModeBase(false);
     sendMessage("WebAvatarLoaderNPC", "SetNpcModeFalse");
   };
-  
+
   const openNpcChat = () => {
     setIsNpcChatModeBase(true);
     sendMessage("WebAvatarLoaderNPC", "SetNpcModeTrue");
@@ -1049,7 +1049,6 @@ const UnityLoader = () => {
     console.log("ZoneExit");
     setIsNpcChatMode(false);
   };
-
 
   //
   const toggleFilmingMode = () => {
@@ -1733,10 +1732,8 @@ const UnityLoader = () => {
             isNpcChatModeBase ? "addContentActive" : "addContentDisabled"
           } div-container`}
         >
-          <button
+          <Button
             onclick={closeNpcChat}
-            type="button"
-            id="rpm-hide-button"
             className="close-button"
             style={{
               padding: 4,
@@ -1757,7 +1754,7 @@ const UnityLoader = () => {
             >
               <path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z" />
             </svg>
-          </button>
+          </Button>
           <iframe
             src="http://localhost:3000/chat/KWfA70Kl7pSAhbsf"
             style={{
@@ -2475,29 +2472,31 @@ const UnityLoader = () => {
                         </IconButton>
                       </div>
                     </Tooltip>
+                  </div>
+                )}
 
-                    {isNpcChatMode && <IconButton
-                      id="dockButtonID"
-                      className="dockButtons"
-                      onClick={openNpcChat}
-                      variant="solid"
-                      sx={{
-                        width: "120px",
-                        color: "white",
-                        boxShadow: "0px 0px 0px 0px rgb(0 0 0 / 34%)",
+                {isNpcChatMode && (
+                  <IconButton
+                    id="dockButtonID"
+                    className="startAgentBtn"
+                    onClick={openNpcChat}
+                    variant="solid"
+                    sx={{
+                      width: "120px",
+                      color: "white",
+                      boxShadow: "0px 0px 0px 0px rgb(0 0 0 / 34%)",
+                      backgroundColor: "rgba(0, 0, 0, 0.250)",
+                      background: "rgba(0, 0, 0, 0.250)",
+                      "--IconButton-size": "55px",
+                      "--IconButton-radius": "50px",
+                      "&:hover": {
                         backgroundColor: "rgba(0, 0, 0, 0.250)",
                         background: "rgba(0, 0, 0, 0.250)",
-                        "--IconButton-size": "55px",
-                        "--IconButton-radius": "50px",
-                        "&:hover": {
-                          backgroundColor: "rgba(0, 0, 0, 0.250)",
-                          background: "rgba(0, 0, 0, 0.250)",
-                        },
-                      }}
-                    >
-                      Start Agent
-                    </IconButton>}
-                  </div>
+                      },
+                    }}
+                  >
+                    Start Agent
+                  </IconButton>
                 )}
               </Grid>
               <Grid xs={6}>
