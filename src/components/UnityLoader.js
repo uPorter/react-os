@@ -1023,8 +1023,7 @@ const UnityLoader = () => {
 
   const handlenpcTalkEnter = () => {
     if(isStarted){
-      sendMessage("WebAvatarLoaderNPC","SetNpcModeTrue");
-      setIsNpcChatMode(true);
+      console.log("ZoneEnter")
     }
   };
 
@@ -1042,8 +1041,7 @@ const UnityLoader = () => {
   }, [addEventListener, removeEventListener, handlenpcTalkExit]);
 
   const handlenpcTalkExit = () => {
-    setIsNpcChatMode(false);
-    sendMessage("WebAvatarLoaderNPC","SetNpcModeFalse");
+    console.log("ZoneExit")
   };
   //
   const toggleFilmingMode = () => {
