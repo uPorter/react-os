@@ -87,6 +87,7 @@ const UnityLoader = () => {
 
   const [isNpcEdit, setIsNpcEdit] = useState(false);
   const [isNpcChatMode, setIsNpcChatMode] = useState(false);
+  const [isNpcChatModeBase, setIsNpcChatModeBase] = useState(false);
   const [isAvatarSelected, setIsAvatarSelected] = useState(false);
   const [environmentModalOn, setEnvironmentModalOn] = useState(false);
   const [portalRedirectModal, setPortalRedirectModal] = useState(false);
@@ -1011,7 +1012,7 @@ const UnityLoader = () => {
     setIsNpcEdit(false);
   };
   //
-  
+
   //
   useEffect(() => {
     addEventListener("npcTalkZoneEnter", handlenpcTalkEnter);
@@ -1022,13 +1023,19 @@ const UnityLoader = () => {
   }, [addEventListener, removeEventListener, handlenpcTalkEnter]);
 
   const handlenpcTalkEnter = () => {
-      console.log("ZoneEnter")
+    console.log("ZoneEnter");
+    setIsNpcChatMode(true);
   };
 
-  const closeNpcChat = () =>{
-    setIsNpcChatMode(false);
-    sendMessage("WebAvatarLoaderNPC","SetNpcModeFalse");
-  }
+  const closeNpcChat = () => {
+    setIsNpcChatModeBase(false);
+    sendMessage("WebAvatarLoaderNPC", "SetNpcModeFalse");
+  };
+  
+  const openNpcChat = () => {
+    setIsNpcChatModeBase(true);
+    sendMessage("WebAvatarLoaderNPC", "SetNpcModeTrue");
+  };
 
   useEffect(() => {
     addEventListener("npcTalkZoneExit", handlenpcTalkExit);
@@ -1039,8 +1046,11 @@ const UnityLoader = () => {
   }, [addEventListener, removeEventListener, handlenpcTalkExit]);
 
   const handlenpcTalkExit = () => {
-    console.log("ZoneExit")
+    console.log("ZoneExit");
+    setIsNpcChatMode(false);
   };
+
+
   //
   const toggleFilmingMode = () => {
     if (!isFilmingMode) {
@@ -1718,7 +1728,11 @@ const UnityLoader = () => {
           </div>
         )}
 
-        <div className={`${ isNpcChatMode ? "addContentActive" : "addContentDisabled"} div-container`}>
+        <div
+          className={`${
+            isNpcChatModeBase ? "addContentActive" : "addContentDisabled"
+          } div-container`}
+        >
           <button
             onclick={closeNpcChat}
             type="button"
@@ -1746,13 +1760,21 @@ const UnityLoader = () => {
           </button>
           <iframe
             src="http://localhost:3000/chat/KWfA70Kl7pSAhbsf"
-            style={{ width: "100%", height: "100%", minHeight: 700, borderRadius: 12 }}
+            style={{
+              width: "100%",
+              height: "100%",
+              minHeight: 700,
+              borderRadius: 12,
+            }}
             frameBorder={0}
             allow="microphone"
           />
         </div>
         {isStarted && showChat && !isFilmingMode && (
-          <div className={"ui"} style={{display: isNpcChatMode ? 'none' : 'block'}}>
+          <div
+            className={"ui"}
+            style={{ display: isNpcChatMode ? "none" : "block" }}
+          >
             <Modal
               aria-labelledby="modal-title"
               aria-describedby="modal-desc"
@@ -2453,6 +2475,28 @@ const UnityLoader = () => {
                         </IconButton>
                       </div>
                     </Tooltip>
+
+                    {isNpcChatMode && <IconButton
+                      id="dockButtonID"
+                      className="dockButtons"
+                      onClick={openNpcChat}
+                      variant="solid"
+                      sx={{
+                        width: "120px",
+                        color: "white",
+                        boxShadow: "0px 0px 0px 0px rgb(0 0 0 / 34%)",
+                        backgroundColor: "rgba(0, 0, 0, 0.250)",
+                        background: "rgba(0, 0, 0, 0.250)",
+                        "--IconButton-size": "55px",
+                        "--IconButton-radius": "50px",
+                        "&:hover": {
+                          backgroundColor: "rgba(0, 0, 0, 0.250)",
+                          background: "rgba(0, 0, 0, 0.250)",
+                        },
+                      }}
+                    >
+                      Start Agent
+                    </IconButton>}
                   </div>
                 )}
               </Grid>
