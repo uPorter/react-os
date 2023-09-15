@@ -1773,7 +1773,7 @@ const UnityLoader = () => {
         {isStarted && showChat && !isFilmingMode && (
           <div
             className={"ui"}
-            style={{ display: isNpcChatMode ? "none" : "block" }}
+            style={{ display: isNpcChatModeBase ? "none" : "block" }}
           >
             <Modal
               aria-labelledby="modal-title"
