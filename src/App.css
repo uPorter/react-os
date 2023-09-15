@@ -1102,12 +1102,14 @@ div.spinner div.bar12 {
 
 .div-container {
   position: absolute;
-  width: 960px;
-  height: 800px;
-  border-radius: 25px;
-  right: 24px;
-  top: 50%;
-  margin-top: -400px;
+    width: 960px;
+    height: 800px;
+    border-radius: 25px;
+    right: 24px;
+    display: flex;
+    top: 50%;
+    margin-top: -400px;
+    flex-direction: column;
 }
 
 /* Kapatma düğmesi stil */

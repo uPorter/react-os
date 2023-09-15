@@ -1732,7 +1732,7 @@ const UnityLoader = () => {
             isNpcChatModeBase ? "addContentActive" : "addContentDisabled"
           } div-container`}
         >
-          <Button onClick={() => console.log("hiya")}/>
+          <Button onClick={closeNpcChat}>Close</Button>
           <iframe
             src="http://localhost:3000/chat/KWfA70Kl7pSAhbsf"
             style={{
