@@ -1022,9 +1022,16 @@ const UnityLoader = () => {
   }, [addEventListener, removeEventListener, handlenpcTalkEnter]);
 
   const handlenpcTalkEnter = () => {
+    if(isStarted){
       sendMessage("WebAvatarLoaderNPC","SetNpcModeTrue");
       setIsNpcChatMode(true);
+    }
   };
+
+  const closeNpcChat = () =>{
+    setIsNpcChatMode(false);
+    sendMessage("WebAvatarLoaderNPC","SetNpcModeFalse");
+  }
 
   useEffect(() => {
     addEventListener("npcTalkZoneExit", handlenpcTalkExit);
@@ -1035,7 +1042,8 @@ const UnityLoader = () => {
   }, [addEventListener, removeEventListener, handlenpcTalkExit]);
 
   const handlenpcTalkExit = () => {
-    console.log("A")
+    setIsNpcChatMode(false);
+    sendMessage("WebAvatarLoaderNPC","SetNpcModeFalse");
   };
   //
   const toggleFilmingMode = () => {
@@ -1716,7 +1724,7 @@ const UnityLoader = () => {
 
         <div className={`${ isNpcChatMode ? "addContentActive" : "addContentDisabled"} div-container`}>
           <button
-            onclick={() => {setIsNpcChatMode(false); sendMessage("WebAvatarLoaderNPC","SetNpcModeFalse");} }
+            onclick={closeNpcChat}
             type="button"
             id="rpm-hide-button"
             className="close-button"
