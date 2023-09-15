@@ -604,6 +604,13 @@ const UnityLoader = () => {
     document.cookie = name + "=" + (value || "") + expires + "; path=/";
   }
 
+  function getEventListeners(element) {
+    if (!element.__eventListeners) {
+      element.__eventListeners = {};
+    }
+    return element.__eventListeners;
+  }
+
   function removeAllSubscribeListeners() {
     // Document nesnesinin message olayındaki "subscribe" kelimesini içeren dinleyicileri kaldır
     const documentMessageListeners = getEventListeners(document).message;
