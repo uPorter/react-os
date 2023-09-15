@@ -748,9 +748,11 @@ const UnityLoader = () => {
           "LoadWebviewAvatar", // Name of function to run
           json.data.url
         );
-        setCookie("avatarURL", json.data.url, 30); // 30 gün boyunca geçerli
-        console.log(`Avatar URL: ${json.data.url}`);
-
+        if(!isNpcEdit){
+          setCookie("avatarURL", json.data.url, 30); // 30 gün boyunca geçerli
+          console.log(`Avatar URL: ${json.data.url}`);
+          console.log('Cookies created 🍪');
+        }
         window.removeEventListener("message", subscribe);
         window._messageEventListenerAdded = false;
         document.removeEventListener("message", subscribe);
