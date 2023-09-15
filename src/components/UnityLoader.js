@@ -1036,7 +1036,7 @@ const UnityLoader = () => {
 
   const openNpcChat = () => {
     setIsNpcChatModeBase(true);
-    sendMessage("WebAvatarLoaderNPC", "SetNpcModeTrue");
+    window.sendMessageToUnityBasic("WebAvatarLoaderNPC", "SetNpcModeTrue");
   };
 
   useEffect(() => {
@@ -1048,8 +1048,7 @@ const UnityLoader = () => {
   }, [addEventListener, removeEventListener, handlenpcTalkExit]);
 
   const handlenpcTalkExit = () => {
-    setIsNpcChatModeBase(true);
-    sendMessage("WebAvatarLoaderNPC", "SetNpcModeTrue");
+    openNpcChat();
   };
 
   //
