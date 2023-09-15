@@ -611,13 +611,13 @@ const UnityLoader = () => {
     return element.__eventListeners;
   }
 
-  function removeAllSubscribeListeners() {
+  function removeAllSubscribeListeners(eventName) {
     // Document nesnesinin message olayındaki "subscribe" kelimesini içeren dinleyicileri kaldır
     const documentMessageListeners = getEventListeners(document).message;
   
     if (documentMessageListeners) {
       const documentSubscribeListeners = documentMessageListeners.filter((listener) =>
-        listener.listener.toString().includes("subscribe")
+        listener.listener.toString().includes(eventName)
       );
   
       documentSubscribeListeners.forEach((listener) => {
@@ -633,7 +633,7 @@ const UnityLoader = () => {
         const eventListeners = windowEventListeners[eventName];
   
         const windowSubscribeListeners = eventListeners.filter((listener) =>
-          listener.listener.toString().includes("subscribe")
+          listener.listener.toString().includes(eventName)
         );
   
         windowSubscribeListeners.forEach((listener) => {
@@ -649,18 +649,18 @@ const UnityLoader = () => {
     var rpmContainer = document.getElementById("rpm-container");
     rpmFrame.src = `https://metaos.readyplayer.me/avatar?frameApi`;
 
-    removeAllSubscribeListeners();
+    removeAllSubscribeListeners("subscribe2");
     // window ve document olay dinleyicilerini yalnızca eklerken mevcut olanları kontrol ederek ekleyin
     if (!window._messageEventListenerAdded) {
-      window.addEventListener("message", subscribe);
+      window.addEventListener("message", subscribe2);
       window._messageEventListenerAdded = true;
     }
     if (!document._messageEventListenerAdded) {
-      document.addEventListener("message", subscribe);
+      document.addEventListener("message", subscribe2);
       document._messageEventListenerAdded = true;
     }
 
-    function subscribe(event) {
+    function subscribe2(event) {
       const json = parse(event);
       // Send web event names to Unity can be useful for debugging. Can safely be removed
 
@@ -684,9 +684,9 @@ const UnityLoader = () => {
           "objectLoad", // Name of function to run
           json.data.url
         );
-        window.removeEventListener("message", subscribe);
+        window.removeEventListener("message", subscribe2);
         window._messageEventListenerAdded = false;
-        document.removeEventListener("message", subscribe);
+        document.removeEventListener("message", subscribe2);
         document._messageEventListenerAdded = false;
       }
       // Get user id
@@ -712,7 +712,7 @@ const UnityLoader = () => {
     var rpmContainer = document.getElementById("rpm-container");
     rpmFrame.src = `https://metaos.readyplayer.me/avatar?frameApi`;
 
-    removeAllSubscribeListeners();
+    removeAllSubscribeListeners("subscribe");
 
     // window ve document olay dinleyicilerini yalnızca eklerken mevcut olanları kontrol ederek ekleyin
     if (!window._messageEventListenerAdded) {
