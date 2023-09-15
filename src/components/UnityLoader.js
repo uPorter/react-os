@@ -340,7 +340,6 @@ const UnityLoader = () => {
     if (isStarted && userSigned) {
       // belirli bir kodu buraya yazabilirsiniz
       handleClick();
-      console.clear();
       sendMessage("AvatarNick", "enableInput");
       sendMessage("AvatarNick", "TestSetMethod", userName);
       localStorage.setItem("isMicOn", "false");
