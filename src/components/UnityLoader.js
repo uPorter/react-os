@@ -597,7 +597,7 @@ const UnityLoader = () => {
     var expires = "";
     if (days) {
       var date = new Date();
-      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+      date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
       expires = "; expires=" + date.toUTCString();
     }
     document.cookie = name + "=" + (value || "") + expires + "; path=/";
@@ -613,35 +613,34 @@ const UnityLoader = () => {
   function removeAllSubscribeListeners(eventName) {
     // Document nesnesinin message olayındaki "subscribe" kelimesini içeren dinleyicileri kaldır
     const documentMessageListeners = getEventListeners(document).message;
-  
+
     if (documentMessageListeners) {
-      const documentSubscribeListeners = documentMessageListeners.filter((listener) =>
-        listener.listener.toString().includes(eventName)
+      const documentSubscribeListeners = documentMessageListeners.filter(
+        (listener) => listener.listener.toString().includes(eventName)
       );
-  
+
       documentSubscribeListeners.forEach((listener) => {
         document.removeEventListener("message", listener.listener);
       });
     }
-  
+
     // Window nesnesinin tüm olaylarındaki "subscribe" kelimesini içeren dinleyicileri kaldır
     const windowEventListeners = getEventListeners(window);
-  
+
     for (const eventName in windowEventListeners) {
       if (windowEventListeners.hasOwnProperty(eventName)) {
         const eventListeners = windowEventListeners[eventName];
-  
+
         const windowSubscribeListeners = eventListeners.filter((listener) =>
           listener.listener.toString().includes(eventName)
         );
-  
+
         windowSubscribeListeners.forEach((listener) => {
           window.removeEventListener(eventName, listener.listener);
         });
       }
     }
   }
-
 
   const setupRpmFrameNpc = () => {
     var rpmFrame = document.getElementById("rpm-frame");
@@ -703,9 +702,8 @@ const UnityLoader = () => {
         return null;
       }
     }
-  }
+  };
 
-  
   const setupRpmFrame = () => {
     var rpmFrame = document.getElementById("rpm-frame");
     var rpmContainer = document.getElementById("rpm-container");
@@ -747,10 +745,10 @@ const UnityLoader = () => {
           "LoadWebviewAvatar", // Name of function to run
           json.data.url
         );
-        if(!isNpcEdit){
+        if (!isNpcEdit) {
           setCookie("avatarURL", json.data.url, 30); // 30 gün boyunca geçerli
           console.log(`Avatar URL: ${json.data.url}`);
-          console.log('Cookies created 🍪');
+          console.log("Cookies created 🍪");
         }
         window.removeEventListener("message", subscribe);
         window._messageEventListenerAdded = false;
@@ -773,11 +771,9 @@ const UnityLoader = () => {
         return null;
       }
     }
-  }
-
+  };
 
   //
-
 
   const gameHandler = useCallback(() => {
     setIsStarted(true);
@@ -1015,6 +1011,31 @@ const UnityLoader = () => {
     setIsNpcEdit(false);
   };
   //
+  
+  //
+  useEffect(() => {
+    addEventListener("npcTalkZoneEnter", handlenpcTalkEnter);
+
+    return () => {
+      removeEventListener("npcTalkZoneEnter", handlenpcTalkEnter);
+    };
+  }, [addEventListener, removeEventListener, handlenpcTalkEnter]);
+
+  const handlenpcTalkEnter = () => {
+    setIsNpcChatMode(true);
+  };
+
+  useEffect(() => {
+    addEventListener("npcTalkZoneEnter", handlenpcTalkExit);
+
+    return () => {
+      removeEventListener("npcTalkZoneExit", handlenpcTalkExit);
+    };
+  }, [addEventListener, removeEventListener, handlenpcTalkExit]);
+
+  const handlenpcTalkExit = () => {
+    setIsNpcChatMode(false);
+  };
   //
   const toggleFilmingMode = () => {
     if (!isFilmingMode) {
@@ -1691,8 +1712,43 @@ const UnityLoader = () => {
             </IconButton>
           </div>
         )}
+
+        <div className="div-container">
+          <button
+            onclick={() => setIsNpcChatMode(false)}
+            type="button"
+            id="rpm-hide-button"
+            className="close-button"
+            style={{
+              padding: 4,
+              width: 34,
+              height: 34,
+              outline: "none",
+              border: "transparent",
+              background: "#eaeaea",
+              display: isNpcChatMode ? 'block' : 'none'
+            }}
+          >
+            <svg
+              className="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge css-c1sh5i"
+              focusable="false"
+              aria-hidden="true"
+              viewBox="0 0 24 24"
+              data-testid="CloseOutlinedIcon"
+              aria-label="fontSize large"
+            >
+              <path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z" />
+            </svg>
+          </button>
+          <iframe
+            src="http://localhost:3000/chat/KWfA70Kl7pSAhbsf"
+            style={{ width: "100%", height: "100%", minHeight: 700, borderRadius: 12 }}
+            frameBorder={0}
+            allow="microphone"
+          />
+        </div>
         {isStarted && showChat && !isFilmingMode && (
-          <div className={"ui"}>
+          <div className={"ui"} style={{display: isNpcChatMode ? 'none' : 'block'}}>
             <Modal
               aria-labelledby="modal-title"
               aria-describedby="modal-desc"

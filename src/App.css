@@ -1099,3 +1099,28 @@ div.spinner div.bar12 {
 .portalRedirect{
   backdrop-filter: blur(20px)!important;
 }
+
+.div-container {
+  position: absolute;
+  width: 960px;
+  height: 800px;
+  border-radius: 25px;
+  right: 24px;
+  top: 50%;
+  margin-top: -400px;
+}
+
+/* Kapatma düğmesi stil */
+.close-button {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  cursor: pointer;
+  border-radius: 52px;
+  padding: 4px;
+  width: 34px;
+  height: 34px;
+  outline: none;
+  border: transparent;
+  background: white;
+}
