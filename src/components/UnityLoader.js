@@ -1022,7 +1022,11 @@ const UnityLoader = () => {
   }, [addEventListener, removeEventListener, handlenpcTalkEnter]);
 
   const handlenpcTalkEnter = () => {
+    if(isStarted){
+      sendMessage("WebAvatarLoaderNPC","SetNpcModeTrue");
     setIsNpcChatMode(true);
+    }
+    
   };
 
   useEffect(() => {
@@ -1034,7 +1038,7 @@ const UnityLoader = () => {
   }, [addEventListener, removeEventListener, handlenpcTalkExit]);
 
   const handlenpcTalkExit = () => {
-    setIsNpcChatMode(false);
+    console.log("A")
   };
   //
   const toggleFilmingMode = () => {
@@ -1713,9 +1717,9 @@ const UnityLoader = () => {
           </div>
         )}
 
-        <div className="div-container" style={{display: isNpcChatMode ? 'block' : 'none'}}>
+        <div className={`${ isNpcChatMode ? "addContentActive" : "addContentDisabled"} div-container`} style={{display: isNpcChatMode ? 'block' : 'none'}}>
           <button
-            onclick={() => setIsNpcChatMode(false)}
+            onclick={() => {setIsNpcChatMode(false); sendMessage("WebAvatarLoaderNPC","SetNpcModeFalse");} }
             type="button"
             id="rpm-hide-button"
             className="close-button"
@@ -2541,13 +2545,6 @@ const UnityLoader = () => {
                 removeEventListener={removeEventListener}
               ></InfoPanel>
             )}
-            <AssistantHolder
-              setAssistantModeOnBase={setAssistantModeOnBase}
-              assistantModeOnBaseClass={assistantModeOnBaseClass}
-              assistantModeOnBase={assistantModeOnBase}
-              asistantPromptReact={asistantPromptReact}
-              handleEditorOff={handleAssistantOff}
-            ></AssistantHolder>
             {/* {uploadOpen && <FileUpload setUploadOpen={setUploadOpen} sendMessage={sendMessage} style={{position: 'absolute', zIndex: '15'}}></FileUpload> } */}
             {uploadOpen && (
               <AddContent
