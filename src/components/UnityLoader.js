@@ -1022,11 +1022,8 @@ const UnityLoader = () => {
   }, [addEventListener, removeEventListener, handlenpcTalkEnter]);
 
   const handlenpcTalkEnter = () => {
-    if(isStarted){
       sendMessage("WebAvatarLoaderNPC","SetNpcModeTrue");
-    setIsNpcChatMode(true);
-    }
-    
+      setIsNpcChatMode(true);
   };
 
   useEffect(() => {
@@ -1717,7 +1714,7 @@ const UnityLoader = () => {
           </div>
         )}
 
-        <div className={`${ isNpcChatMode ? "addContentActive" : "addContentDisabled"} div-container`} style={{display: isNpcChatMode ? 'block' : 'none'}}>
+        <div className={`${ isNpcChatMode ? "addContentActive" : "addContentDisabled"} div-container`}>
           <button
             onclick={() => {setIsNpcChatMode(false); sendMessage("WebAvatarLoaderNPC","SetNpcModeFalse");} }
             type="button"
