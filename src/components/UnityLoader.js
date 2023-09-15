@@ -1026,7 +1026,7 @@ const UnityLoader = () => {
   };
 
   useEffect(() => {
-    addEventListener("npcTalkZoneEnter", handlenpcTalkExit);
+    addEventListener("npcTalkZoneExit", handlenpcTalkExit);
 
     return () => {
       removeEventListener("npcTalkZoneExit", handlenpcTalkExit);
@@ -1713,7 +1713,7 @@ const UnityLoader = () => {
           </div>
         )}
 
-        <div className="div-container">
+        <div className="div-container" style={{display: isNpcChatMode ? 'block' : 'none'}}>
           <button
             onclick={() => setIsNpcChatMode(false)}
             type="button"
@@ -1726,7 +1726,6 @@ const UnityLoader = () => {
               outline: "none",
               border: "transparent",
               background: "#eaeaea",
-              display: isNpcChatMode ? 'block' : 'none'
             }}
           >
             <svg
