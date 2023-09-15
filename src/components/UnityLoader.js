@@ -996,9 +996,11 @@ const UnityLoader = () => {
   }, [addEventListener, removeEventListener, handlenpcEditOn]);
 
   const handlenpcEditOn = () => {
-    setIsDockEditorMode(true);
-    setIsNpcEdit(true);
-    setIsLocked(false);
+    if(isAdmin){
+      setIsDockEditorMode(true);
+      setIsNpcEdit(true);
+      setIsLocked(false);
+    }
   };
 
   useEffect(() => {
