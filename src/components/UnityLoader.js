@@ -1022,9 +1022,7 @@ const UnityLoader = () => {
   }, [addEventListener, removeEventListener, handlenpcTalkEnter]);
 
   const handlenpcTalkEnter = () => {
-    if(isStarted){
       console.log("ZoneEnter")
-    }
   };
 
   const closeNpcChat = () =>{
