@@ -22,7 +22,9 @@ export class EditDock extends Component {
       handleInfoMode,
       setIsDockEditorMode,
       isNpcEdit,
-      setupRpmFrameNpc
+      setupRpmFrameNpc,
+      isNpcFollowing,
+      setIsNpcFollowing
     } = this.props;
     const SetEnvironmentModel = () => {
       setEnvironmentModalOn(true);
@@ -42,6 +44,18 @@ export class EditDock extends Component {
       setIsLocked(!isLocked);
     };
 
+    const buttonTextFollow = isNpcFollowing ? "Stop Following" : "Start Following";
+
+    const followHandler = () => {
+      if(!isNpcFollowing){
+        setIsNpcFollowing(true);
+        window.sendMessageToUnityBasic("WebAvatarLoaderNPC","startFollowing");
+      }else{
+        setIsNpcFollowing(false);
+        window.sendMessageToUnityBasic("WebAvatarLoaderNPC","stopFollowing");
+      }
+      
+    }
 
     const ReactshowRPM = () => {
       setupRpmFrameNpc();
@@ -91,7 +105,7 @@ export class EditDock extends Component {
                     },
                   }}
                 >
-                  Start Following
+                  {buttonTextFollow}
                 </Button>
               }
             >
@@ -103,9 +117,28 @@ export class EditDock extends Component {
                   id="dockButtonID"
                   className="dockButtonsEditor"
                   variant="solid"
+                  onClick={followHandler}
                   sx={{
+                    color: isNpcFollowing ? "black" : "white",
+                    boxShadow: isNpcFollowing
+                      ? "0px 0px 20px 5px rgb(0 0 0 / 34%)"
+                      : "0px 0px 0px 0px rgb(0 0 0 / 34%)",
+                    backgroundColor: isNpcFollowing
+                      ? "white!important"
+                      : "",
+                    background: isNpcFollowing
+                      ? "white!important"
+                      : "",
                     "--IconButton-size": "55px",
                     "--IconButton-radius": "50px",
+                    "&:hover": {
+                      backgroundColor: isNpcFollowing
+                        ? "white!important"
+                        : "",
+                      background: isNpcFollowing
+                        ? "white!important"
+                        : "",
+                    },
                   }}
                 >
                   <svg

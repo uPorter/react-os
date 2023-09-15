@@ -86,6 +86,7 @@ const UnityLoader = () => {
   };
 
   const [isNpcEdit, setIsNpcEdit] = useState(false);
+  const [isNpcFollowing, setIsNpcFollowing] = useState(false);
   const [isNpcChatMode, setIsNpcChatMode] = useState(false);
   const [isNpcChatModeBase, setIsNpcChatModeBase] = useState(false);
   const [isAvatarSelected, setIsAvatarSelected] = useState(false);
@@ -997,6 +998,7 @@ const UnityLoader = () => {
   const handlenpcEditOn = () => {
     setIsDockEditorMode(true);
     setIsNpcEdit(true);
+    setIsLocked(false);
   };
 
   useEffect(() => {
@@ -1046,8 +1048,8 @@ const UnityLoader = () => {
   }, [addEventListener, removeEventListener, handlenpcTalkExit]);
 
   const handlenpcTalkExit = () => {
-    console.log("ZoneExit");
-    setIsNpcChatMode(false);
+    setIsNpcChatModeBase(true);
+    sendMessage("WebAvatarLoaderNPC", "SetNpcModeTrue");
   };
 
   //
@@ -2453,33 +2455,12 @@ const UnityLoader = () => {
                   </div>
                 )}
 
-                {isNpcChatMode && (
-                  <IconButton
-                    id="dockButtonID"
-                    className="startAgentBtn"
-                    onClick={openNpcChat}
-                    variant="solid"
-                    sx={{
-                      width: "120px",
-                      color: "white",
-                      boxShadow: "0px 0px 0px 0px rgb(0 0 0 / 34%)",
-                      backgroundColor: "rgba(0, 0, 0, 0.250)",
-                      background: "rgba(0, 0, 0, 0.250)",
-                      "--IconButton-size": "55px",
-                      "--IconButton-radius": "50px",
-                      "&:hover": {
-                        backgroundColor: "rgba(0, 0, 0, 0.250)",
-                        background: "rgba(0, 0, 0, 0.250)",
-                      },
-                    }}
-                  >
-                    Start Agent
-                  </IconButton>
-                )}
               </Grid>
               <Grid xs={6}>
                 {isDockEditorMode && (
                   <EditDock
+                    isNpcFollowing={isNpcFollowing}
+                    setIsNpcFollowing={setIsNpcFollowing}
                     setupRpmFrameNpc={setupRpmFrameNpc}
                     setEnvironmentModalOn={setEnvironmentModalOn}
                     portalModeOn={portalModeOn}
