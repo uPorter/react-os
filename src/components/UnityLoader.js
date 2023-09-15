@@ -1733,9 +1733,9 @@ const UnityLoader = () => {
           } div-container`}
         >
           <button
-            onclick={() => console.log("asd")}
             type="button"
             className="close-button"
+            onclick={() => console.log("asd")}
             style={{
               padding: 4,
               width: 34,
@@ -1747,6 +1747,7 @@ const UnityLoader = () => {
             }}
           >
             <svg
+              onclick={() => console.log("asd")}
               className="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge css-c1sh5i"
               focusable="false"
               aria-hidden="true"
