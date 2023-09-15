@@ -604,16 +604,45 @@ const UnityLoader = () => {
     document.cookie = name + "=" + (value || "") + expires + "; path=/";
   }
 
+  function removeAllSubscribeListeners() {
+    // Document nesnesinin message olayındaki "subscribe" kelimesini içeren dinleyicileri kaldır
+    const documentMessageListeners = getEventListeners(document).message;
+  
+    if (documentMessageListeners) {
+      const documentSubscribeListeners = documentMessageListeners.filter((listener) =>
+        listener.listener.toString().includes("subscribe")
+      );
+  
+      documentSubscribeListeners.forEach((listener) => {
+        document.removeEventListener("message", listener.listener);
+      });
+    }
+  
+    // Window nesnesinin tüm olaylarındaki "subscribe" kelimesini içeren dinleyicileri kaldır
+    const windowEventListeners = getEventListeners(window);
+  
+    for (const eventName in windowEventListeners) {
+      if (windowEventListeners.hasOwnProperty(eventName)) {
+        const eventListeners = windowEventListeners[eventName];
+  
+        const windowSubscribeListeners = eventListeners.filter((listener) =>
+          listener.listener.toString().includes("subscribe")
+        );
+  
+        windowSubscribeListeners.forEach((listener) => {
+          window.removeEventListener(eventName, listener.listener);
+        });
+      }
+    }
+  }
+
 
   const setupRpmFrameNpc = () => {
-    window.removeEventListener("message", subscribe);
-    window._messageEventListenerAdded = false;
-    document.removeEventListener("message", subscribe);
-    document._messageEventListenerAdded = false;
     var rpmFrame = document.getElementById("rpm-frame");
     var rpmContainer = document.getElementById("rpm-container");
     rpmFrame.src = `https://metaos.readyplayer.me/avatar?frameApi`;
 
+    removeAllSubscribeListeners();
     // window ve document olay dinleyicilerini yalnızca eklerken mevcut olanları kontrol ederek ekleyin
     if (!window._messageEventListenerAdded) {
       window.addEventListener("message", subscribe);
@@ -653,7 +682,6 @@ const UnityLoader = () => {
         document.removeEventListener("message", subscribe);
         document._messageEventListenerAdded = false;
       }
-
       // Get user id
       if (json.eventName === "v1.user.set") {
         console.log(
@@ -671,15 +699,13 @@ const UnityLoader = () => {
     }
   }
 
+  
   const setupRpmFrame = () => {
     var rpmFrame = document.getElementById("rpm-frame");
     var rpmContainer = document.getElementById("rpm-container");
     rpmFrame.src = `https://metaos.readyplayer.me/avatar?frameApi`;
 
-    window.removeEventListener("message", subscribe);
-    window._messageEventListenerAdded = false;
-    document.removeEventListener("message", subscribe);
-    document._messageEventListenerAdded = false;
+    removeAllSubscribeListeners();
 
     // window ve document olay dinleyicilerini yalnızca eklerken mevcut olanları kontrol ederek ekleyin
     if (!window._messageEventListenerAdded) {
