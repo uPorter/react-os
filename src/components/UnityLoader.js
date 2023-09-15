@@ -1732,32 +1732,7 @@ const UnityLoader = () => {
             isNpcChatModeBase ? "addContentActive" : "addContentDisabled"
           } div-container`}
         >
-          <button
-            type="button"
-            className="close-button"
-            onclick={() => console.log("asd")}
-            style={{
-              padding: 4,
-              width: 34,
-              height: 34,
-              outline: "none",
-              border: "transparent",
-              background: "#eaeaea",
-              zIndex:"999"
-            }}
-          >
-            <svg
-              onclick={() => console.log("asd")}
-              className="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge css-c1sh5i"
-              focusable="false"
-              aria-hidden="true"
-              viewBox="0 0 24 24"
-              data-testid="CloseOutlinedIcon"
-              aria-label="fontSize large"
-            >
-              <path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z" />
-            </svg>
-          </button>
+          <Button onClick={() => console.log("hiya")}/>
           <iframe
             src="http://localhost:3000/chat/KWfA70Kl7pSAhbsf"
             style={{
