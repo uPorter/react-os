@@ -8,7 +8,7 @@
         "type": "user_http",
         "authorization_type": "bearer",
         "verification_tokens": {
-        "x-api-key": ""
+        "x-api-key": "sk-ak-i0XmPpqCupOi4DTcLbJy087DtC"
     }
     },
     "api": {
