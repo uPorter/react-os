@@ -38,7 +38,7 @@ import ModalClose from "@mui/joy/ModalClose";
 import IosShareOutlinedIcon from "@mui/icons-material/IosShareOutlined";
 import axios from "axios";
 
-const chatClient = StreamChat.getInstance("gte62wacdhnr");
+const chatClient = StreamChat.getInstance("7yaeqgh26e5w");
 
 const UnityLoader = () => {
   const {
@@ -580,9 +580,9 @@ const UnityLoader = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            apiKey: "gte62wacdhnr",
+            apiKey: "7yaeqgh26e5w",
             apiSecret:
-              "xy2mq3dartszjkdkua2rs5utrmsqkwwf7q27nq76n5dad32y4phehbp26cx4zcx3",
+              "4wyvujn83phpxd7mkc3vwxgkecm64bze43bw964dxcgqy794u9tuvahzne9v2yvr",
             userId: userID,
           }),
         }
