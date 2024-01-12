@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const OPENAI_API_KEY = "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";
+const OPENAI_API_KEY = "sk-Jr6PTxJiYrsL0Vu7B640E3F32090434b81B2EeCaD9D9F151";
 
 const AiInputChatBot = (props) => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -28,7 +28,7 @@ const AiInputChatBot = (props) => {
 
   const handleClickGPT = async () => {
     const data = {
-      model: "gpt-3.5-turbo",
+      model: "gpt-4",
       messages: [
         {
           role: "system",
@@ -59,7 +59,7 @@ const AiInputChatBot = (props) => {
 
     try {
       const response = await axios.post(
-        "https://api.openai.com/v1/chat/completions",
+        "https://api.zeroai.link/v1/chat/completions",
         data,
         {
           headers: {
