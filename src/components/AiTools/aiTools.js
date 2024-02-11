@@ -37,7 +37,7 @@ function aiTools(props) {
       <div
         style={{
           animation:
-            "reactionInAI 0.2s cubic-bezier(0, 0.2, 0.2, 1) 0.6s 1 normal forwards",
+            "reactionInAI 0.2s cubic-bezier(0, 0.2, 0.2, 1) 0.4s 1 normal forwards",
           transform: "scale(0)",
           background: props.aiChatbotClass ? "rgb(255 255 255 / 25%)" : "",
         }}
