@@ -11,6 +11,7 @@ import InfoIcon from "@mui/icons-material/Info";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import AccessibilityNewOutlinedIcon from '@mui/icons-material/AccessibilityNewOutlined';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import LandscapeIcon from '@mui/icons-material/Landscape';
 
 export class EditDock extends Component {
   render() {
@@ -406,17 +407,7 @@ export class EditDock extends Component {
                   "--IconButton-radius": "50px",
                 }}
               >
-                <img
-                  style={{
-                    width: "27px",
-                    height: "27px",
-                    verticalAlign: "middle",
-                    marginBottom: "1px",
-                  }}
-                  alt="Duplicate"
-                  src="https://www.spatial.io/_next/static/media/duplicate@2x.089e3183.png"
-                  className="selected-object-buttons_icon__vNK_0"
-                />
+                <ContentCopyIcon/>
               </IconButton>
             </div>
           </Tooltip>}
@@ -463,7 +454,7 @@ export class EditDock extends Component {
                     "--IconButton-radius": "50px",
                   }}
                 >
-                  <ContentCopyIcon/>
+                  <LandscapeIcon />
                 </IconButton>
               </div>
             </Tooltip>
