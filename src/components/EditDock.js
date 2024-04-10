@@ -10,6 +10,7 @@ import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import InfoIcon from "@mui/icons-material/Info";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import AccessibilityNewOutlinedIcon from '@mui/icons-material/AccessibilityNewOutlined';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 
 export class EditDock extends Component {
   render() {
@@ -462,17 +463,7 @@ export class EditDock extends Component {
                     "--IconButton-radius": "50px",
                   }}
                 >
-                  <img
-                    style={{
-                      width: "27px",
-                      height: "27px",
-                      verticalAlign: "middle",
-                      marginBottom: "1px",
-                    }}
-                    alt="Duplicate"
-                    src="https://www.spatial.io/_next/static/media/custom-environment@2x.03b69899.png"
-                    className="selected-object-buttons_icon__vNK_0"
-                  />
+                  <ContentCopyIcon/>
                 </IconButton>
               </div>
             </Tooltip>
